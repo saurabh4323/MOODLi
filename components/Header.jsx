@@ -5,12 +5,7 @@ const Header = () => {
   return (
     <header className="header-container">
       <div className="header-content">
-        <img
-          src="/logo.svg"
-          alt="Logo"
-          width={100}
-          height={50} // Adjust as needed
-        />
+      <Image src="/path/to/image.jpg" alt="Description" width={500} height={300} />
 
         <nav className="nav">
           <Link href="/dashboard" className="nav-item">
