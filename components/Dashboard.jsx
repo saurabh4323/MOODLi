@@ -5,7 +5,7 @@ import Calendar from "./Calander";
 
 export default function Dashboard() {
   const status = {
-    Days: 10,
+    Days: 0,
     Time: new Date().toLocaleTimeString(),
     Date: new Date().toDateString(),
   };
@@ -44,7 +44,6 @@ export default function Dashboard() {
       {/* Mood Display */}
       <div className="mood-heading">
         <h1>How&apos;s your mood shaping up today?</h1>
-
       </div>
 
       {/* Emoji Display */}
