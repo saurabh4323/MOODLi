@@ -19,7 +19,7 @@ const Register = () => {
       </Head>
       <form className={styles.form}>
         <h1 className={styles.title}>Log In / Register</h1>
-        <p className={styles.subtitle}>You're one step away!</p>
+        <p className={styles.subtitle}>You&apos;re one step away!</p>
         <input type="email" placeholder="Email" className={styles.input} />
         <input
           type="password"
