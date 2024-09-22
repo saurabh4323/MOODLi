@@ -1,0 +1,65 @@
+.button {
+  background-color: #4f73ff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: #3a5adb;
+  transform: scale(1.05);
+}
+
+
+.background-shapes::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 100, 100, 0.169);
+  clip-path: polygon(60% 50%, 100% 100%, 0% 100%);
+  top: -150px;
+  left: -150px;
+  filter: blur(60px);
+}
+.background-shape::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(83, 175, 245, 0.228);
+  clip-path: polygon(60% 50%, 100% 100%, 0% 100%);
+  top: 50px;
+  left: -150px;
+  filter: blur(60px);
+}
+
+.background-shapes::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 100, 100, 0.176);
+  clip-path: polygon(60% 50%, 100% 100%, 0% 100%);
+  top: -150px;
+  left: -150px;
+  filter: blur(60px);
+}
+.background-shap::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(134, 48, 121, 0.205);
+  clip-path: polygon(60% 50%, 100% 100%, 0% 100%);
+  top: 250px;
+  left: -150px;
+  filter: blur(60px);
+}
+
+

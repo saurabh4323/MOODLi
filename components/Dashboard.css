@@ -1,0 +1,105 @@
+/* Main container for the dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap');
+
+.dashboard-container {
+  /* background-color: #; */
+  margin-top: 3%;
+  height: 150vh;
+  padding: 30px;
+  font-family:  'Fugaz One';
+
+}
+
+/* Section for status display */
+.status-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.status-item {
+  background-color: #0b30d3c3;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.status-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.status-text {
+  font-size: 1.5rem;
+  color: #faef8d;
+  font-weight: 200;
+  text-align: center;
+}
+
+/* Mood heading styling */
+.mood-heading {
+  margin-top: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mood-heading h1 {
+  margin-top: 40px;
+  font-size: 2.5rem;
+  color: #070707; /* Text color */
+  font-weight: bld;
+  -webkit-text-stroke: 1px #f3eded; 
+  /* text-stroke: 1px #f90b0b; For standard compliance */
+}
+
+/* Emoji section layout */
+.emoji-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Adjust gap as needed */
+}
+@keyframes upDownkk {
+  0% {
+    transform: translateY(0); /* Starting point */
+  }
+  25% {
+    transform: translateY(-15px); /* Move up by 90px */
+  }
+  50% {
+    transform: translateY(0); /* Return to starting point */
+  }
+  75% {
+    transform: translateY(15px); /* Move down by 90px */
+  }
+  100% {
+    transform: translateY(0); /* Return to starting point */
+  }
+}
+/* Enhanced emoji card design */
+.emoji-card {
+  animation: upDownkk 5s ease-in-out infinite;
+  margin-top: 20px;
+  border: 1px solid #666363af;
+  background-color: #adbbf9d2; /* Light blue */
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: calc(25% - 20px); /* Adjust width for 4 cards per row */
+  text-align: center;
+  
+}
+
+.emoji-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.emoji-text {
+  font-size: 1.5rem;
+  /* font-weight: 200; */
+}
+
+/* Other styles remain unchanged... */

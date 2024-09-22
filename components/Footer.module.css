@@ -1,0 +1,51 @@
+.footer {
+  background-color: rgb(234, 237, 243);
+  color: #0460bc;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #c4e0fc;
+}
+
+.footerContent {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px; /* Space between contact items */
+  margin: 10px 0;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between social icons */
+  margin-top: 10px;
+}
+
+.socialLinks a {
+  color: #003366;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 24px; /* Adjust icon size */
+}
+
+.socialLinks a:hover {
+  color: #007acc;
+  text-decoration: underline;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.heart {
+  width: 30px;
+  color: gold;
+}
