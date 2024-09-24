@@ -23,7 +23,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         // "http://localhost:3000/api/users/login",
-        "hhttps://moodly-mood.vercel.app/api/users/login",
+        "https://moodly-mood.vercel.app/api/users/login",
         login,
         {
           headers: {
