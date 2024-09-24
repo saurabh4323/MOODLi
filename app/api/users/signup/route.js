@@ -3,12 +3,15 @@ import { connect } from "@/config/Dbconfig";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/helper/Mail";
-import Cors from "@/lib/cors";
+import Cors, { runMiddleware } from "@/lib/cors"; // Import CORS
+
 connect();
 const saltRounds = 10;
 
 export async function POST(req) {
   try {
+    await runMiddleware(req, NextResponse, Cors); // Run CORS middleware
+
     const reqBody = await req.json();
     const { name, email, password } = reqBody;
 

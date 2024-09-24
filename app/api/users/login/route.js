@@ -3,11 +3,14 @@ import User from "@/model/SignUp";
 import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+import Cors, { runMiddleware } from "@/lib/cors"; // Import CORS
 
 connect();
 
 export async function POST(req) {
   try {
+    await runMiddleware(req, NextResponse, Cors); // Run CORS middleware
+
     const reqBody = await req.json();
     const { email, password } = reqBody;
     console.log("Got request for login:", reqBody);
@@ -27,7 +30,6 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    //localStorage.setItem("isAuthenticated", "true");
 
     return NextResponse.json({ message: "Login successful" }, { status: 200 });
   } catch (error) {
