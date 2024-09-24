@@ -1,21 +1,45 @@
+// app/api/users/login/route.js
 import mongoose from "mongoose";
 import User from "@/model/SignUp";
 import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+import Cors from "@/lib/cors"; // Ensure this imports the CORS setup correctly
 
-import Cors, { runMiddleware } from "@/lib/cors"; // Import CORS
-
+// Connect to the database
 connect();
 
+// Initialize CORS middleware
+const cors = Cors({
+  methods: ["POST", "GET", "HEAD"],
+});
+
+// Helper function to run middleware
+async function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
+
 export async function POST(req) {
+  // Define a response object for the middleware
+  const res = NextResponse.next();
+
   try {
-    await runMiddleware(req, NextResponse, Cors); // Run CORS middleware
+    // Run CORS middleware
+    await runMiddleware(req, res, cors);
 
     const reqBody = await req.json();
     const { email, password } = reqBody;
+
     console.log("Got request for login:", reqBody);
 
+    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return NextResponse.json(
@@ -24,6 +48,7 @@ export async function POST(req) {
       );
     }
 
+    // Check password
     const passwordCheck = await bcrypt.compare(password, user.password);
     if (!passwordCheck) {
       return NextResponse.json(
@@ -32,6 +57,7 @@ export async function POST(req) {
       );
     }
 
+    // Successful login
     return NextResponse.json({ message: "Login successful" }, { status: 200 });
   } catch (error) {
     console.error("Login error:", error);
