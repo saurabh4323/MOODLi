@@ -3,7 +3,7 @@ import { connect } from "@/config/Dbconfig";
 import bcrypt from "bcrypt";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/helper/Mail";
-
+import Cors from "@/lib/cors";
 connect();
 const saltRounds = 10;
 

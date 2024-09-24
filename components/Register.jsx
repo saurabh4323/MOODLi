@@ -8,7 +8,7 @@ import axios from "axios";
 import Button from "./Button";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
+const cors = require("cors");
 const Register = () => {
   const router = useRouter();
   const [signup, setsignup] = useState({
@@ -37,7 +37,8 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/signup",
+        // "http://localhost:3000/api/users/signup",
+        "https://moodly-nine.vercel.app/api/users/signup",
         signup
       );
       console.log(response.data);
