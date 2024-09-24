@@ -3,6 +3,7 @@ import User from "@/model/SignUp";
 import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+
 import Cors, { runMiddleware } from "@/lib/cors"; // Import CORS
 
 connect();
