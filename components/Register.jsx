@@ -37,8 +37,8 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/users/signup",
-        // "https://moodly-nine.vercel.app/api/users/signup",
+        "/api/users/signup",
+
         signup
       );
       console.log(response.data);

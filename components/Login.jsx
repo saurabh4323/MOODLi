@@ -21,16 +21,11 @@ const Login = () => {
   const handlesubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        // "http://localhost:3000/api/users/login",
-        "https://moodly-mood.vercel.app/api/users/login",
-        login,
-        {
-          headers: {
-            "Content-Type": "application/json", // Explicitly set content type
-          },
-        }
-      );
+      const response = await axios.post("/api/users/login", login, {
+        headers: {
+          "Content-Type": "application/json", // Explicitly set content type
+        },
+      });
 
       // Set localStorage on successful login
       localStorage.setItem("isAuthenticated", "true");

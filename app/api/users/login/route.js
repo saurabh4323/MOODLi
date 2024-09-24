@@ -4,14 +4,13 @@ import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
-import Cors, { runMiddleware } from "@/lib/cors"; // Import CORS
-
 connect();
 
 export async function POST(req) {
-  try {
-    await runMiddleware(req, NextResponse, Cors); // Run CORS middleware
+  // Create a response object
+  const res = NextResponse.next();
 
+  try {
     const reqBody = await req.json();
     const { email, password } = reqBody;
     console.log("Got request for login:", reqBody);
@@ -41,3 +40,11 @@ export async function POST(req) {
     );
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "1mb",
+    },
+  },
+};
