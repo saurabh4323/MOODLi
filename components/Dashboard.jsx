@@ -11,16 +11,16 @@ export default function Dashboard() {
   };
 
   const mood = {
-    Happy: "😊", // Happy face
-    // Crying face
-    Tired: "😴", // Sleeping face
-    Angry: "😡", // Angry face
+    Happy: "😊",
+
+    Tired: "😴",
+    Angry: "😡",
     Surprised: "😲",
-    Sad: "😢", // Astonished face
-    Cool: "😎", // Face with sunglasses
+    Sad: "😢",
+    Cool: "😎",
     Worried: "😟",
-    // Worried face
-    Confused: "😕", // Confused face
+
+    Confused: "😕",
   };
 
   // Define colors for each mood
@@ -29,8 +29,7 @@ export default function Dashboard() {
     <div className="dashboard-container">
       <div className="backgroun-shapes"></div>
       <div className="backgroun-shape"></div>
-      {/* <div className="backgroun-shap"></div> */}
-      {/* Status Display */}
+
       <div className="status-section">
         {Object.keys(status).map((key, index) => (
           <div key={index} className="status-item">
