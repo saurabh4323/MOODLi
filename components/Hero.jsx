@@ -3,8 +3,23 @@ import Link from "next/link";
 import Button from "./Button";
 import "./hero.css"; // Ensure your CSS file path is correct
 import Head from "next/head";
+import "./MoodRecommendation.css";
+import { useState } from "react";
+import MoodRecommendations from "./MoodRexommendation";
 
 export default function Hero(props) {
+  const [showCard, setShowCard] = useState(false);
+  const [selectemoji, setselectemoji] = useState("😀");
+
+  const emojihandle = (emoji) => {
+    setselectemoji(emoji);
+    setShowCard(true);
+  };
+
+  const handleClose = () => {
+    setShowCard(false);
+  };
+
   const auth = true;
   let link;
   if (auth) {
@@ -28,15 +43,14 @@ export default function Hero(props) {
       </Head>
 
       <div className="container">
-        {" "}
         {/* Use className for CSS */}
         <div className="background-shapes"></div>
         <div className="background-shape"></div>
         <div className="background-shap"></div>
         <div className="emoji">
-          <h1 className="emo">😅</h1>
+          {/* <h1 className="emo">😅</h1>
           <h1 className="emo">😊</h1>
-          <h1 className="emo">😀</h1>
+          <h1 className="emo">😀</h1> */}
         </div>
         <div className="content">
           <div className="text-wrapper">
@@ -47,22 +61,61 @@ export default function Hero(props) {
           </div>
           {link}
           <div className="visual-wrapper">
-            <div className="circular-element"></div>
+            <div className="circular-element">
+              <h1 className="selectedemoji">{selectemoji}</h1>
+            </div>
             <div className="floating-emojis"></div>
             <div className="graph-lines">
-              <div className="graph-dot" style={{ left: "10%" }}></div>
-              <div className="graph-dot" style={{ left: "30%" }}></div>
-              <div className="graph-dot" style={{ left: "50%" }}></div>
-              <div className="graph-dot" style={{ left: "70%" }}></div>
-              <div className="graph-dot" style={{ left: "90%" }}></div>
+              <div
+                className="graph-dot"
+                style={{ left: "10%" }}
+                onClick={() => emojihandle("🥰")}
+              >
+                🥰
+              </div>
+              <div
+                className="graph-dot"
+                style={{ left: "30%" }}
+                onClick={() => emojihandle("😭")}
+              >
+                😭
+              </div>
+              <div
+                className="graph-dot"
+                style={{ left: "50%" }}
+                onClick={() => emojihandle("😀")}
+              >
+                😀
+              </div>
+              <div
+                className="graph-dot"
+                style={{ left: "70%" }}
+                onClick={() => emojihandle("😡")}
+              >
+                😡
+              </div>
+              <div
+                className="graph-dot"
+                style={{ left: "90%" }}
+                onClick={() => emojihandle("😪")}
+              >
+                😪
+              </div>
             </div>
           </div>
         </div>
-        <div className="emoj">
+
+        <MoodRecommendations
+          selectedEmoji={selectemoji}
+          showCard={showCard}
+          onClose={handleClose}
+        />
+
+        {/* <div className="emoj">
           <h1 className="emk">🥰</h1>
           <h1 className="emk">🥹</h1>
           <h1 className="emk">😎</h1>
-        </div>
+        </div> */}
       </div>
     </>
   );

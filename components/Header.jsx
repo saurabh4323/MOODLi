@@ -25,6 +25,9 @@ const Header = () => {
       <div className="header-content">
         <Image src="/logo.svg" alt="Logo" width={500} height={500} />
         <nav className="nav">
+          <Link href="/main" className="nav-item">
+            Home
+          </Link>
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
@@ -42,13 +45,17 @@ const Header = () => {
               <Link href="/profile" className="nav-item">
                 Profile
               </Link>
-              <button onClick={handleLogout} className="nav-item">
-                Log Out
+              <button
+                onClick={handleLogout}
+                className="nav-item"
+                style={{ color: "f5f590" }}
+              >
+                Logout
               </button>
             </>
           ) : (
             <Link href="/register" className="nav-item">
-              Log In
+              Login
             </Link>
           )}
         </nav>

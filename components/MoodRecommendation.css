@@ -1,0 +1,92 @@
+
+.recommendation-card {
+  position: absolute;
+  top: 50%;
+right: -5%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+  animation: slide-in 0.5s forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mood-title {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+
+.songs-section,
+.books-section {
+  margin-top: 10px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+li {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+
+li:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Backdrop when the card is active */
+.container::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 5;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+.container .recommendation-card ~ .container::after {
+  opacity: 1;
+  visibility: visible;
+}

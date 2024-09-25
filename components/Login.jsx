@@ -16,24 +16,23 @@ const Login = () => {
   });
 
   const handleonchangee = (event) => {
-    setLogin({ ...login, [event.target.name]: event.target.value }); // Corrected here
+    setLogin({ ...login, [event.target.name]: event.target.value });
   };
   const handlesubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post("/api/users/login", login, {
         headers: {
-          "Content-Type": "application/json", // Explicitly set content type
+          "Content-Type": "application/json",
         },
       });
 
-      // Set localStorage on successful login
       localStorage.setItem("isAuthenticated", "true");
       console.log("local");
-      // Set the authentication status
+
       console.log(response.data);
       router.refresh();
-      router.push("/dashboard"); // Navigate after setting localStorage
+      window.location.href = "/dashboard";
     } catch (error) {
       if (error.response) {
         console.error("Error data:", error.response.data);
