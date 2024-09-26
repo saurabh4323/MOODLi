@@ -9,16 +9,18 @@ const Header = () => {
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
-    console.log("Auth Status:", authStatus); // Debug log
+    console.log("Auth Status:", authStatus);
     setIsAuthenticated(authStatus);
   }, []);
-
+  const userId = localStorage.getItem("userId");
+  console.log("user id", userId);
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("userId");
     setIsAuthenticated(false);
   };
 
-  console.log("Rendering Header, isAuthenticated:", isAuthenticated); // Debug log
+  console.log("Rendering Header, isAuthenticated:", isAuthenticated);
 
   return (
     <header className="header-container">
@@ -31,14 +33,14 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/mood" className="nav-item">
-            Mood
+          <Link href="/track" className="nav-item">
+            VibeTrack
           </Link>
           <Link href="/community" className="nav-item">
-            Community
+            FeelTalks
           </Link>
           <Link href="/create" className="nav-item">
-            Create
+            MoodMojis
           </Link>
           {isAuthenticated ? (
             <>

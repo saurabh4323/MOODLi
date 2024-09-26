@@ -28,6 +28,7 @@ const Login = () => {
       });
 
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userId", response.data.userId);
       console.log("local");
 
       console.log(response.data);

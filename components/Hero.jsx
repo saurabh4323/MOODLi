@@ -4,12 +4,19 @@ import Button from "./Button";
 import "./hero.css"; // Ensure your CSS file path is correct
 import Head from "next/head";
 import "./MoodRecommendation.css";
-import { useState } from "react";
-import MoodRecommendations from "./MoodRexommendation";
+import { useState, useEffect } from "react";
+import MoodRecommendations from "./MoodRecommendations";
 
 export default function Hero(props) {
   const [showCard, setShowCard] = useState(false);
   const [selectemoji, setselectemoji] = useState("😀");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const authStatus = localStorage.getItem("isAuthenticated") === "true";
+    console.log("Auth Status:", authStatus); // Debug log
+    setIsAuthenticated(authStatus);
+  }, []);
 
   const emojihandle = (emoji) => {
     setselectemoji(emoji);
@@ -20,9 +27,8 @@ export default function Hero(props) {
     setShowCard(false);
   };
 
-  const auth = true;
   let link;
-  if (auth) {
+  if (isAuthenticated) {
     link = (
       <Link href={"/dashboard"}>
         <Button className="button">Get Started</Button>
@@ -30,7 +36,7 @@ export default function Hero(props) {
     );
   } else {
     link = (
-      <Link href={"/profile"}>
+      <Link href={"/register"}>
         <Button className="button">Get Started</Button>
       </Link>
     );

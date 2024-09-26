@@ -31,7 +31,10 @@ export async function POST(req) {
       );
     }
 
-    return NextResponse.json({ message: "Login successful" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Login successful", success: true, userId: user._id },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Login error:", error);
     return NextResponse.json(

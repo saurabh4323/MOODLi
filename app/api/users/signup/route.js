@@ -36,6 +36,7 @@ export async function POST(req) {
     return NextResponse.json({
       message: "You registered successfully",
       success: true,
+      userId: savedUser._id,
     });
   } catch (error) {
     console.error("Error in user creation:", error);

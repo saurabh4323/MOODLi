@@ -5,7 +5,7 @@
 right: -5%;
   transform: translate(-50%, -50%);
   width: 300px;
-  background-color: #fff;
+  background-color: #afccea44;
   border-radius: 12px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -40,7 +40,7 @@ right: -5%;
 
 .mood-title {
   font-size: 22px;
-  color: #333;
+  color: #008cffe4;
   font-weight: bold;
 }
 
@@ -50,7 +50,10 @@ right: -5%;
 }
 
 h3 {
+ 
+  color: #4306fde4;
   font-size: 18px;
+  font-weight: 500;
   margin-bottom: 5px;
 }
 
@@ -60,9 +63,10 @@ ul {
 }
 
 li {
+  font-weight: 600;
   font-size: 14px;
-  color: #555;
-  margin: 5px 0;
+  color: #000000;
+  margin: 8px 4px;
 }
 
 

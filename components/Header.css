@@ -1,6 +1,6 @@
 .header-container {
   /* overflow: hidden; */
-  margin-left: 15%;
+  margin-left: 12%;
   margin-top: 8px;
   
   border-radius: 100px;
@@ -35,7 +35,7 @@
 
 .nav {
   display: flex;
- margin-left: 31%;
+ margin-left: 26%;
   gap: 50px;
 }
 

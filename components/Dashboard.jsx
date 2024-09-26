@@ -4,6 +4,8 @@ import "./Dashboard.css";
 import Calendar from "./Calander";
 
 export default function Dashboard() {
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const status = {
     Days: 0,
     Time: new Date().toLocaleTimeString(),

@@ -1,0 +1,76 @@
+/* MoodRecommendation.css (for SpotifyRecommendations) */
+
+.recommendation-card {
+  margin-left: -40%;
+  background-color: #fff; /* White background for the card */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 20px; /* Padding inside the card */
+  max-width: 400px; /* Max width of the card */
+   /* Center the card horizontally */
+  animation: fadeIn 0.3s ease; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-header {
+  display: flex; /* Flex for header layout */
+  justify-content: space-between; /* Space between title and close button */
+  align-items: center; /* Center align items */
+  margin-bottom: 15px; /* Bottom margin */
+}
+
+.mood-title {
+  font-size: 24px; /* Title font size */
+  color: #333; /* Dark color for text */
+}
+
+.close-btn {
+  background: none; /* No background */
+  border: none; /* No border */
+  font-size: 20px; /* Font size */
+  cursor: pointer; /* Pointer cursor */
+  color: #999; /* Light gray color */
+}
+
+.close-btn:hover {
+  color: #000; /* Dark color on hover */
+}
+
+.songs-section {
+  border-top: 1px solid #e0e0e0; /* Top border */
+  padding-top: 15px; /* Top padding */
+}
+
+.songs-section h3 {
+  font-size: 20px; /* Subtitle font size */
+  color: #555; /* Gray color */
+}
+
+.songs-section ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* No padding */
+}
+
+.songs-section li {
+  margin: 10px 0; /* Margin between items */
+}
+
+.songs-section a {
+  text-decoration: none; /* No underline */
+  color: #1db954; /* Spotify green color */
+  font-weight: 500; /* Slightly bold */
+}
+
+.songs-section a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

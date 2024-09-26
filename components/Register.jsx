@@ -36,17 +36,18 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(
-        "/api/users/signup",
-
-        signup
-      );
+      const response = await axios.post("/api/users/signup", signup);
       console.log(response.data);
-      localStorage.setItem("isAuthenticated", "true");
-      toast.success(
-        "You registered successfully. Check your email for verification!"
-      );
-      router.push("/dashboard"); // navigate to login page
+
+      // Save userId only if it's returned in the response
+      if (response.data.success) {
+        localStorage.setItem("isAuthenticated", "true"); // Set isAuthenticated flag
+        localStorage.setItem("userId", response.data.userId); // Save userId
+        toast.success(
+          "You registered successfully. Check your email for verification!"
+        );
+        router.push("/dashboard"); // navigate to dashboard
+      }
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 400) {
