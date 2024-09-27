@@ -46,7 +46,7 @@ export default function Track() {
             </li>
           ))
         ) : (
-          <h1 className="erro">You haven't selected any emoji for track </h1>
+          <h1 className="erro">You have not selected any emoji for track </h1>
         )}
       </ul>
     </div>
