@@ -33,7 +33,6 @@ export default function Track() {
       <div className="background-shape"></div>
       <div className="background-shap"></div>
       <ul className="cards">
-       
         {Array.isArray(track) && track.length > 0 ? (
           track.map((entry) => (
             <li className="cards_item" key={entry._id}>
