@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export async function connect() {
   try {
-    const mongoUri = process.env.MongoUrl;
+    const mongoUri = process.env.mongourl;
     if (!mongoUri) {
       throw new Error("MongoDB URI is not defined in environment variables.");
     }
