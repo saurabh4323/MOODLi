@@ -8,18 +8,23 @@ export default function Track() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTrack = async () => {
-      const userId = localStorage.getItem("userId");
-      if (userId) {
-        try {
-          const response = await axios.get(`/api/users/track/${userId}`);
-          setTrack(response.data);
-        } catch (error) {
-          setError(error.response?.data?.message || "An error occurred");
+    if (typeof window !== "undefined") {
+      const fetchTrack = async () => {
+        const userId = localStorage.getItem("userId");
+        if (userId) {
+          try {
+            const response = await axios.get(`/api/users/track/${userId}`);
+            setTrack(response.data);
+          } catch (error) {
+            setError(error.response?.data?.message || "An error occurred");
+          }
+        } else {
+          setError("User ID not found. Please log in.");
         }
-      }
-    };
-    fetchTrack();
+      };
+
+      fetchTrack();
+    }
   }, []);
 
   return (

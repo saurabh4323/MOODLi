@@ -6,22 +6,32 @@ import "./Header.css";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated") === "true";
-    console.log("Auth Status:", authStatus);
-    setIsAuthenticated(authStatus);
+    // Ensure that localStorage is only accessed in the client-side environment
+    if (typeof window !== "undefined") {
+      const authStatus = localStorage.getItem("isAuthenticated") === "true";
+      console.log("Auth Status:", authStatus);
+      setIsAuthenticated(authStatus);
+
+      const storedUserId = localStorage.getItem("userId");
+      console.log("User ID:", storedUserId);
+      setUserId(storedUserId);
+    }
   }, []);
-  const userId = localStorage.getItem("userId");
-  console.log("user id", userId);
+
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("userId");
-    setIsAuthenticated(false);
+    // Ensure localStorage operations are performed client-side
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("isAuthenticated");
+      localStorage.removeItem("userId");
+      setIsAuthenticated(false);
+      setUserId(null); // Clear the user ID state
+    }
   };
 
   console.log("Rendering Header, isAuthenticated:", isAuthenticated);
-
   return (
     <header className="header-container">
       <div className="header-content">

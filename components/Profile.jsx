@@ -13,9 +13,12 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      fetchProfile(userId);
+    // Check if the code is running in the browser
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        fetchProfile(userId);
+      }
     }
   }, []);
 
@@ -32,36 +35,39 @@ export default function Profile() {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
 
-    const userId = localStorage.getItem("userId");
-    if (userId) {
-      // Log the data being sent for debugging
-      console.log("Updating profile with data:", {
-        userId,
-        name: profile.name,
-        favoriteEmoji: profile.favoriteEmoji,
-        bio: profile.bio,
-      });
-
-      // Ensure name and emoji are not empty before updating
-      if (!profile.name || !profile.favoriteEmoji) {
-        alert("Name and Favorite Emoji are required.");
-        return;
-      }
-
-      try {
-        const res = await axios.post("/api/users/sau", {
+    // Ensure we're in the browser environment to access localStorage
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        // Log the data being sent for debugging
+        console.log("Updating profile with data:", {
           userId,
           name: profile.name,
           favoriteEmoji: profile.favoriteEmoji,
           bio: profile.bio,
         });
-        console.log("Profile updated:", res.data);
 
-        // Fetch the updated profile
-        fetchProfile(userId);
-        alert("Profile updated successfully!");
-      } catch (error) {
-        console.error("Error updating profile:", error);
+        // Ensure name and emoji are not empty before updating
+        if (!profile.name || !profile.favoriteEmoji) {
+          alert("Name and Favorite Emoji are required.");
+          return;
+        }
+
+        try {
+          const res = await axios.post("/api/users/sau", {
+            userId,
+            name: profile.name,
+            favoriteEmoji: profile.favoriteEmoji,
+            bio: profile.bio,
+          });
+          console.log("Profile updated:", res.data);
+
+          // Fetch the updated profile
+          fetchProfile(userId);
+          alert("Profile updated successfully!");
+        } catch (error) {
+          console.error("Error updating profile:", error);
+        }
       }
     }
   };

@@ -1,29 +1,56 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import "./Dashboard.css";
-import Calendar from "./Calander";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "./Button";
+import Calendar from "./Calander";
+import "./Dashboard.css";
 
 export default function Dashboard() {
+  const [track, setTrack] = useState([]);
+  const [error, setError] = useState(null);
   const [clicked, setClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
-  const [days, setDays] = useState(0); // Move Days to state
-  const userId = localStorage.getItem("userId");
+  const [days, setDays] = useState(0); // Initialize with 0
 
   const [emojidata, setEmojidata] = useState({
     emoji: "",
-    days: 1, // Default value for days
+    days: 1,
     reason: "",
   });
 
   useEffect(() => {
-    const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
-    const today = new Date().toLocaleDateString();
+    if (typeof window !== "undefined") {
+      // Accessing localStorage client-side
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        const fetchTrack = async () => {
+          try {
+            const response = await axios.get(`/api/users/track/${userId}`);
+            setTrack(response.data);
+          } catch (error) {
+            setError(error.response?.data?.message || "An error occurred");
+          }
+        };
+        fetchTrack();
+      }
 
-    if (lastSubmissionDate === today) {
-      setHasSubmittedToday(true);
+      // Retrieve days count from localStorage if available
+      const storedDays = localStorage.getItem("days");
+      if (storedDays) {
+        setDays(parseInt(storedDays, 10)); // Convert string to integer
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Check for last submission date only client-side
+      const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
+      const today = new Date().toLocaleDateString();
+
+      if (lastSubmissionDate === today) {
+        setHasSubmittedToday(true);
+      }
     }
   }, []);
 
@@ -56,32 +83,45 @@ export default function Dashboard() {
       return;
     }
 
-    try {
-      const response = await axios.post(`/api/users/tracker/${userId}`, {
-        userId,
-        days: emojidata.days || 1,
-        emoji: selectedEmoji,
-        reason: emojidata.reason,
-      });
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        alert("You are not registered. Please try again.");
+        return;
+      }
 
-      const today = new Date().toLocaleDateString();
-      localStorage.setItem("lastSubmissionDate", today);
+      try {
+        await axios.post(`/api/users/tracker/${userId}`, {
+          userId,
+          days: emojidata.days || 1,
+          emoji: selectedEmoji,
+          reason: emojidata.reason,
+        });
 
-      // Update state after submission
-      setDays((prevDays) => prevDays + 1);
+        const today = new Date().toLocaleDateString();
+        localStorage.setItem("lastSubmissionDate", today);
 
-      setEmojidata({
-        emoji: "",
-        days: 1,
-        reason: "",
-      });
-      setHasSubmittedToday(true);
-      setClicked(false);
+        // Update the day count after submission
+        const newDays = days + 1;
+        setDays(newDays);
 
-      alert("Submission successful!");
-    } catch (error) {
-      console.error("Error submitting emoji report:", error);
-      alert("You are not registered. Please try again.");
+        // Save updated days count to localStorage
+        localStorage.setItem("days", newDays);
+
+        // Reset state after submission
+        setEmojidata({
+          emoji: "",
+          days: 1,
+          reason: "",
+        });
+        setHasSubmittedToday(true);
+        setClicked(false);
+
+        alert("Submission successful!");
+      } catch (error) {
+        console.error("Error submitting emoji report:", error);
+        alert("You are not registered. Please try again.");
+      }
     }
   };
 

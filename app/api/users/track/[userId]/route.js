@@ -37,7 +37,7 @@ export async function GET(req, { params }) {
       .sort({ selectedAt: -1 })
       .limit(20);
 
-    console.log("Fetched emojis for user:", emojis);
+    // console.log("Fetched emojis for user:", emojis);
 
     if (emojis.length === 0) {
       console.log("Error: No emojis found for this user");
