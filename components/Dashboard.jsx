@@ -134,6 +134,22 @@ export default function Dashboard() {
     Cool: "😎",
     Worried: "😟",
     Confused: "😕",
+    Hungry: "🍔",
+    Excited: "🤩",
+    Bored: "😐",
+    Relaxed: "😌",
+    Romantic: "💖",
+    Love: "😍",
+    Scared: "😨",
+
+    Crying: "😭",
+
+    Sleepy: "😪",
+
+    Neutral: "😶",
+    Party: "🥳",
+
+    Flirty: "😏",
   };
 
   return (

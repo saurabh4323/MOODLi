@@ -47,21 +47,21 @@ export default function Calendar({ highlightDays }) {
   const numRows = Math.floor(daysToDisplay / 7) + (daysToDisplay % 7 ? 1 : 0);
 
   return (
-    <div className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-white mt-[40px]">
+    <div className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border border-white">
       {/* Navigation and Month Display */}
       <div className="flex justify-between items-center">
         <button
           onClick={() => handleIncrementMonth(-1)}
-          className="text-indigo-600 text-2xl hover:text-indigo-400 transition duration-200"
+          className="text-white-600 text-2xl hover:text-white-400 transition duration-200"
         >
           <i className="fa-solid fa-circle-chevron-left"></i>
         </button>
-        <p className="text-red-800 text-center text-xl font-semibold">
+        <p className="text-red-600 text-center text-xl font-semibold">
           {selectedMonth} {selectedYear}
         </p>
         <button
           onClick={() => handleIncrementMonth(1)}
-          className="text-indigo-600 text-2xl hover:text-indigo-400 transition duration-200"
+          className="text-white-600 text-2xl hover:text-white-400 transition duration-200"
         >
           <i className="fa-solid fa-circle-chevron-right"></i>
         </button>
@@ -70,7 +70,7 @@ export default function Calendar({ highlightDays }) {
       {/* Days of the Month */}
       <div className="grid grid-cols-7 gap-2">
         {dayList.map((day) => (
-          <div key={day} className="font-bold text-center text-gray-800">
+          <div key={day} className="font-bold text-center text-white">
             {day}
           </div>
         ))}

@@ -6,18 +6,21 @@ import Head from "next/head";
 import "./MoodRecommendation.css";
 import { useState, useEffect } from "react";
 import MoodRecommendations from "./MoodRecommendations";
+import Script from "next/script"; // Use next/script for external scripts
 
 export default function Hero(props) {
   const [showCard, setShowCard] = useState(false);
   const [selectemoji, setselectemoji] = useState("😀");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Authentication check
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
     console.log("Auth Status:", authStatus); // Debug log
     setIsAuthenticated(authStatus);
   }, []);
 
+  // Handle emoji selection
   const emojihandle = (emoji) => {
     setselectemoji(emoji);
     setShowCard(true);
@@ -27,16 +30,17 @@ export default function Hero(props) {
     setShowCard(false);
   };
 
+  // Conditional link based on authentication
   let link;
   if (isAuthenticated) {
     link = (
-      <Link href={"/dashboard"}>
+      <Link href="/dashboard">
         <Button className="button">Get Started</Button>
       </Link>
     );
   } else {
     link = (
-      <Link href={"/register"}>
+      <Link href="/register">
         <Button className="button">Get Started</Button>
       </Link>
     );
@@ -48,29 +52,35 @@ export default function Hero(props) {
         <title>Track Your Mood</title>
       </Head>
 
+      {/* External Chatbot script */}
+      <Script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="deZwZMHfpb9Us_5_rOqh6"
+        domain="www.chatbase.co"
+        strategy="lazyOnload" // Loads after the main content
+      ></Script>
+
       <div className="container">
         {/* Use className for CSS */}
         <div className="background-shapes"></div>
         <div className="background-shape"></div>
         <div className="background-shap"></div>
-        <div className="emoji">
-          {/* <h1 className="emo">😅</h1>
-          <h1 className="emo">😊</h1>
-          <h1 className="emo">😀</h1> */}
-        </div>
+
         <div className="content">
           <div className="text-wrapper">
             <h1 className="title">
-              Track Your <span className="spn">Mood</span>
+              what&apos;s Your <span className="spn">Mood NOW</span>
             </h1>
             <p className="subtitle">Understand and manage your emotions</p>
           </div>
+
           {link}
+
           <div className="visual-wrapper">
             <div className="circular-element">
               <h1 className="selectedemoji">{selectemoji}</h1>
             </div>
-            <div className="floating-emojis"></div>
+
             <div className="graph-lines">
               <div
                 className="graph-dot"
@@ -111,17 +121,20 @@ export default function Hero(props) {
           </div>
         </div>
 
+        {/* Mood recommendation cards */}
         <MoodRecommendations
           selectedEmoji={selectemoji}
           showCard={showCard}
           onClose={handleClose}
         />
 
-        {/* <div className="emoj">
-          <h1 className="emk">🥰</h1>
-          <h1 className="emk">🥹</h1>
-          <h1 className="emk">😎</h1>
-        </div> */}
+        {/* Chatbot Iframe */}
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/deZwZMHfpb9Us_5_rOqh6"
+          width="80%"
+          style={{ display: "none" }} // Fix inline styles
+          frameBorder="0"
+        ></iframe>
       </div>
     </>
   );
