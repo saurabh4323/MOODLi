@@ -40,7 +40,7 @@ right: -5%;
 
 .mood-title {
   font-size: 22px;
-  color: #008cffe4;
+  color: #a1d200e4;
   font-weight: bold;
 }
 
@@ -51,7 +51,7 @@ right: -5%;
 
 h3 {
  
-  color: #4306fde4;
+  color: #ff0000e4;
   font-size: 18px;
   font-weight: 500;
   margin-bottom: 5px;
@@ -65,7 +65,7 @@ ul {
 li {
   font-weight: 600;
   font-size: 14px;
-  color: #000000;
+  color: #fff;
   margin: 8px 4px;
 }
 

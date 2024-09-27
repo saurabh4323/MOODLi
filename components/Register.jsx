@@ -25,13 +25,13 @@ const Register = () => {
     event.preventDefault();
 
     if (!signup.name || !signup.email || !signup.password) {
-      toast.error("All fields are required."); // Error message
+      toast.error("All fields are required.");
       return;
     }
 
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(signup.email)) {
-      toast.error("Please enter a valid email address."); // Validate email
+      toast.error("Please enter a valid email address.");
       return;
     }
 
@@ -39,14 +39,13 @@ const Register = () => {
       const response = await axios.post("/api/users/signup", signup);
       console.log(response.data);
 
-      // Save userId only if it's returned in the response
       if (response.data.success) {
-        localStorage.setItem("isAuthenticated", "true"); // Set isAuthenticated flag
-        localStorage.setItem("userId", response.data.userId); // Save userId
+        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("userId", response.data.userId);
         toast.success(
           "You registered successfully. Check your email for verification!"
         );
-        router.push("/dashboard"); // navigate to dashboard
+        window.location.href = "/dashboard";
       }
     } catch (error) {
       console.error(error);

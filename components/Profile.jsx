@@ -15,7 +15,7 @@ export default function Profile() {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
-      fetchProfile(userId); // Fetch the profile for this user
+      fetchProfile(userId);
     }
   }, []);
 
@@ -23,7 +23,7 @@ export default function Profile() {
     try {
       const res = await axios.post("/api/users/sau", { userId });
       console.log("Fetched profile data:", res.data);
-      setProfile(res.data); // Set the fetched user data
+      setProfile(res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
     }
@@ -37,13 +37,21 @@ export default function Profile() {
       // Log the data being sent for debugging
       console.log("Updating profile with data:", {
         userId,
+        name: profile.name,
         favoriteEmoji: profile.favoriteEmoji,
         bio: profile.bio,
       });
 
+      // Ensure name and emoji are not empty before updating
+      if (!profile.name || !profile.favoriteEmoji) {
+        alert("Name and Favorite Emoji are required.");
+        return;
+      }
+
       try {
         const res = await axios.post("/api/users/sau", {
           userId,
+          name: profile.name,
           favoriteEmoji: profile.favoriteEmoji,
           bio: profile.bio,
         });
@@ -73,6 +81,7 @@ export default function Profile() {
             value={profile.name}
             onChange={(e) => setProfile({ ...profile, name: e.target.value })}
             autoComplete="name"
+            required
           />
         </div>
 
@@ -82,7 +91,7 @@ export default function Profile() {
             className="profile-input"
             type="email"
             value={profile.email}
-            onChange={(e) => setProfile({ ...profile, email: e.target.value })}
+            // readOnly
             autoComplete="email"
           />
         </div>
@@ -97,6 +106,7 @@ export default function Profile() {
               setProfile({ ...profile, favoriteEmoji: e.target.value })
             }
             autoComplete="off"
+            required
           />
         </div>
 

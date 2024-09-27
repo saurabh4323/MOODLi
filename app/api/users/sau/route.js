@@ -8,8 +8,8 @@ connect();
 
 export async function POST(req) {
   try {
-    const { userId, favoriteEmoji, bio } = await req.json();
-    console.log("Received data:", { userId, favoriteEmoji, bio });
+    const { userId, name, favoriteEmoji, bio } = await req.json();
+    console.log("Received data:", { userId, name, favoriteEmoji, bio });
 
     // Validate input
     if (!userId) {
@@ -28,9 +28,10 @@ export async function POST(req) {
     let profile = await Profile.findOne({ userId });
     if (!profile) {
       // If no profile exists, create a new one
-      profile = new Profile({ userId, favoriteEmoji, bio });
+      profile = new Profile({ userId, name, favoriteEmoji, bio });
     } else {
       // Update the existing profile, only if the new values are provided
+      if (name !== undefined) profile.name = name; // Allow updating the name
       if (favoriteEmoji !== undefined) profile.favoriteEmoji = favoriteEmoji;
       if (bio !== undefined) profile.bio = bio;
     }
@@ -38,7 +39,7 @@ export async function POST(req) {
     await profile.save(); // Save the profile to the database
 
     const responseData = {
-      name: user.name,
+      name: profile.name || user.name, // Prefer profile name, fallback to user name
       email: user.email,
       favoriteEmoji: profile.favoriteEmoji,
       bio: profile.bio,

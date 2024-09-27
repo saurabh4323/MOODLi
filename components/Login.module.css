@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(145deg, #e6e9f0, #eef1f5);
+  /* background: linear-gradient(145deg, #e6e9f0, #eef1f5); */
 }
 
 .form {

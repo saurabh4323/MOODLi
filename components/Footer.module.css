@@ -1,9 +1,9 @@
 .footer {
-  background-color: rgb(234, 237, 243);
-  color: #0460bc;
+  background-color: #2b1c4f;
+  color: #d3d8dd;
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid #c4e0fc;
+  /* border-top: 1px solid #c4e0fc; */
 }
 
 .footerContent {
@@ -43,6 +43,7 @@
 
 .name {
   font-weight: bold;
+  margin-bottom: 4px;
 }
 
 .heart {

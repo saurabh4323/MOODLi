@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"; // Ensure mongoose is imported
 
 // Regular expression to match a single emoji character
 const emojiRegex = /^[\p{Emoji}]{1}$/u;
@@ -8,6 +8,10 @@ const profileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
     required: true,
+  },
+  name: {
+    type: String,
+    required: true, // Add required to ensure name is always provided
   },
   favoriteEmoji: {
     type: String,

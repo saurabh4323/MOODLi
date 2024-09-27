@@ -7,7 +7,7 @@
   height: 103vh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(145deg, #e6e9f0, #eef1f5);
+  /* background: linear-gradient(145deg, #e6e9f0, #eef1f5); */
 }
 
 .background-shapes::before {
@@ -98,7 +98,7 @@
   align-items: center;
   padding: 10px;
   border-radius: 20px;
-  background: #ffffff;
+  background: #fffffff7;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   width: 400px;
   height: 85vh;
