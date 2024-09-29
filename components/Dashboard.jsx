@@ -5,12 +5,10 @@ import Calendar from "./Calander";
 import "./Dashboard.css";
 
 export default function Dashboard() {
-  const [track, setTrack] = useState([]);
-  const [error, setError] = useState(null);
   const [clicked, setClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
-  const [days, setDays] = useState(0); // Initialize with 0
+  const [days, setDays] = useState(0);
 
   const [emojidata, setEmojidata] = useState({
     emoji: "",
@@ -19,39 +17,24 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Accessing localStorage client-side
+    const fetchTrack = async () => {
       const userId = localStorage.getItem("userId");
       if (userId) {
-        const fetchTrack = async () => {
-          try {
-            const response = await axios.get(`/api/users/track/${userId}`);
-            setTrack(response.data);
-          } catch (error) {
-            setError(error.response?.data?.message || "An error occurred");
-          }
-        };
-        fetchTrack();
+        try {
+          const response = await axios.get(`/api/users/days/${userId}`);
+          setDays(response.data.days);
+        } catch (error) {
+          console.error("Error fetching days:", error);
+        }
       }
-
-      // Retrieve days count from localStorage if available
-      const storedDays = localStorage.getItem("days");
-      if (storedDays) {
-        setDays(parseInt(storedDays, 10)); // Convert string to integer
-      }
-    }
+    };
+    fetchTrack();
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Check for last submission date only client-side
-      const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
-      const today = new Date().toLocaleDateString();
-
-      if (lastSubmissionDate === today) {
-        setHasSubmittedToday(true);
-      }
-    }
+    const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
+    const today = new Date().toLocaleDateString();
+    setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
   const emojiselect = (emoji) => {
@@ -83,45 +66,34 @@ export default function Dashboard() {
       return;
     }
 
-    if (typeof window !== "undefined") {
-      const userId = localStorage.getItem("userId");
-      if (!userId) {
-        alert("You are not registered. Please try again.");
-        return;
-      }
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      alert("You are not registered. Please try again.");
+      return;
+    }
 
-      try {
-        await axios.post(`/api/users/tracker/${userId}`, {
-          userId,
-          days: emojidata.days || 1,
-          emoji: selectedEmoji,
-          reason: emojidata.reason,
-        });
+    try {
+      await axios.post(`/api/users/tracker/${userId}`, {
+        userId,
+        days: emojidata.days || 1,
+        emoji: selectedEmoji,
+        reason: emojidata.reason,
+      });
 
-        const today = new Date().toLocaleDateString();
-        localStorage.setItem("lastSubmissionDate", today);
+      const newDays = days + 1;
+      await axios.post(`/api/users/days/${userId}`, { days: 1 });
+      setDays(newDays);
+      localStorage.setItem(
+        "lastSubmissionDate",
+        new Date().toLocaleDateString()
+      );
+      setHasSubmittedToday(true);
+      setClicked(false);
 
-        // Update the day count after submission
-        const newDays = days + 1;
-        setDays(newDays);
-
-        // Save updated days count to localStorage
-        localStorage.setItem("days", newDays);
-
-        // Reset state after submission
-        setEmojidata({
-          emoji: "",
-          days: 1,
-          reason: "",
-        });
-        setHasSubmittedToday(true);
-        setClicked(false);
-
-        alert("Submission successful!");
-      } catch (error) {
-        console.error("Error submitting emoji report:", error);
-        alert("You are not registered. Please try again.");
-      }
+      alert("Submission successful!");
+    } catch (error) {
+      console.error("Error submitting emoji report:", error);
+      alert("You are not registered. Please try again.");
     }
   };
 
@@ -141,14 +113,10 @@ export default function Dashboard() {
     Romantic: "💖",
     Love: "😍",
     Scared: "😨",
-
     Crying: "😭",
-
     Sleepy: "😪",
-
     Neutral: "😶",
     Party: "🥳",
-
     Flirty: "😏",
   };
 
