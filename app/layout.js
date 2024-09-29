@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "MoodylMine",
+  title: "Moodli",
   description: "Mood Tracker and chat online",
   icons: {
     icon: "/favicon.ico", // Path to favicon
