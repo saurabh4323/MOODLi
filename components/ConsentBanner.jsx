@@ -26,12 +26,12 @@ const ConsentBanner = () => {
 
   return (
     <div style={bannerStyles}>
-      <p>
+      <p style={paragraphStyles}>
         We use cookies and similar technologies to show personalized ads and
         analyze our traffic. By clicking “Accept,” you consent to our use of
         cookies.
       </p>
-      <div>
+      <div style={buttonContainerStyles}>
         <button onClick={handleAccept} style={buttonStyles}>
           Accept
         </button>
@@ -53,16 +53,31 @@ const bannerStyles = {
   padding: "15px",
   textAlign: "center",
   zIndex: 1000,
+  boxShadow: "0 -2px 5px rgba(0, 0, 0, 0.5)",
+};
+
+const paragraphStyles = {
+  margin: "0 0 10px 0",
+  fontSize: "1rem",
+  lineHeight: "1.5",
+  padding: "0 10px",
+};
+
+const buttonContainerStyles = {
+  display: "flex",
+  justifyContent: "center",
+  gap: "10px",
 };
 
 const buttonStyles = {
-  margin: "0 10px",
   padding: "10px 20px",
   backgroundColor: "#0070f3",
   color: "#fff",
   border: "none",
   borderRadius: "5px",
   cursor: "pointer",
+  fontSize: "1rem",
+  transition: "background-color 0.3s",
 };
 
 export default ConsentBanner;

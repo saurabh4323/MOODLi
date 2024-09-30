@@ -127,7 +127,7 @@ export default function Dashboard() {
 
       <div className="status-section">
         <div className="status-item">
-          <h1 className="status-text">Days: {days}</h1>
+          <h1 className="status-text">Days: {days} 🌟</h1>
         </div>
         <div className="status-item">
           <h1 className="status-text">

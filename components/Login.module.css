@@ -96,3 +96,54 @@
   filter: blur(60px);
 }
 
+
+@media (max-width: 768px) {
+  .container{
+    margin-left: 10%;
+    width: 80%;
+  }
+  .form {
+    width:70%;
+    padding: 25px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .input {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .submitButton {
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    width: 95%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+  }
+
+  .input {
+    padding: 6px;
+    margin-bottom: 8px;
+  }
+
+  .submitButton {
+    padding: 6px 15px;
+  }
+}

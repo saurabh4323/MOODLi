@@ -1,9 +1,11 @@
 .footer {
+  
+ 
   background-color: #2b1c4f;
   color: #d3d8dd;
   text-align: center;
   padding: 20px 0;
-  /* border-top: 1px solid #c4e0fc; */
+  border-top: 1px solid #c4e0fc;
 }
 
 .footerContent {
@@ -49,4 +51,33 @@
 .heart {
   width: 30px;
   color: gold;
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 15px;
+  }
+
+  .footerContent {
+    padding: 10px;
+  }
+
+  .name {
+    font-size: 1.2rem; /* Adjust name font size */
+  }
+
+  .heart {
+    font-size: 1.2rem; /* Adjust heart font size */
+  }
+
+  .contactInfo {
+    font-size: 0.9rem; /* Adjust contact info font size */
+  }
+
+  .socialLinks {
+    gap: 10px; /* Adjust gap for mobile */
+  }
+
+  .icon {
+    font-size: 20px; /* Smaller icon size for mobile */
+  }
 }

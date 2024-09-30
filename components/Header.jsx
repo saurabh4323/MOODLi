@@ -35,7 +35,13 @@ const Header = () => {
   return (
     <header className="header-container">
       <div className="header-content">
-        <Image src="/logo.svg" alt="Logo" width={500} height={500} />
+        <Image
+          className="logo"
+          src="/logo.svg"
+          alt="Logo"
+          width={500}
+          height={500}
+        />
         <nav className="nav">
           <Link href="/main" className="nav-item">
             Home

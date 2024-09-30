@@ -191,3 +191,70 @@
 .button.submit-button:hover {
   background-color: #3e8e41;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 20px;
+    margin-top: 5%;
+  }
+
+  .status-section {
+    flex-direction: column;
+    
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .status-item {
+    width: 80%;
+    height: 60px;
+  
+    margin-bottom: 10px;
+  }
+  .status-text{
+    font-size: 18px;
+  }
+
+  .mood-heading h1 {
+    font-size: 2rem;
+  }
+
+  .emoji-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .emoji-card {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .emoji-text {
+    font-size: 1.2rem;
+  }
+
+  .animated-cardclick {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .reason-input {
+    font-size: 10px;
+    font-family: sans-serif;
+    color: #000;
+  }
+
+  .button-containerclick {
+    flex-direction: row;
+    width: 40%;
+    
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 12px;
+  }
+}

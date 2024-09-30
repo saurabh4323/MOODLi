@@ -54,3 +54,32 @@
   transform:scale(1.02);
   color:bisque;
 }
+@media (max-width: 768px) {
+  .header-container {
+    margin-left: 0;
+    width: 100%;
+    height: 60px;
+    border-radius: 50px;
+    padding: 0 10px;
+  }
+
+  .header-content {
+    width: 100%;
+    padding: 5px 5px;
+  }
+
+  .logo {
+    width: 1.2em;
+    margin-left: 3px;
+    margin-right: 5px;
+  }
+
+  .nav {
+    margin-left: 10px;
+    gap: 20px;
+  }
+
+  .nav-item {
+    font-size: 0.5rem;
+  }
+}
