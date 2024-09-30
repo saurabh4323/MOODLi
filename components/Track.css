@@ -3,12 +3,13 @@
 .main {
   margin-top: 40px;
   display: flex;
+  height: 96vh;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  min-height: 96vh;
-  background-color: #2b1c4f;
-  /* height: 100vh; */
+ 
+  
+  
 }
 
 .cards {
@@ -30,7 +31,7 @@
 .card {
   border-left: 1px solid #ffffff;
   /* background: linear-gradient(135deg, #f78ca0, #f9748f); */
-  background-color: rgb(93, 6, 253);
+  background-color: #6c4d9f;
   border-radius: 25px;
   padding: 20px;
    width: 250px;

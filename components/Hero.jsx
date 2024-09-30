@@ -1,4 +1,5 @@
-"use client";
+// Hero.js
+"use client"; // Ensure your component is a client component
 import Link from "next/link";
 import Button from "./Button";
 import "./hero.css"; // Ensure your CSS file path is correct
@@ -8,17 +9,18 @@ import { useState, useEffect } from "react";
 import MoodRecommendations from "./MoodRecommendations";
 import Script from "next/script"; // Use next/script for external scripts
 import useAds from "./UseAdhs";
+import useDarkMode from "./useDarkMode"; // Import the custom hook
 
 export default function Hero(props) {
   useAds();
   const [showCard, setShowCard] = useState(false);
   const [selectemoji, setselectemoji] = useState("😀");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode(); // Use the hook
 
   // Authentication check
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
-    console.log("Auth Status:", authStatus); // Debug log
     setIsAuthenticated(authStatus);
   }, []);
 
@@ -54,21 +56,17 @@ export default function Hero(props) {
         <title>Track Your Mood</title>
       </Head>
 
-      {/* External Chatbot script */}
-      {/* <Script
-        src="https://www.chatbase.co/embed.min.js"
-        chatbotId="deZwZMHfpb9Us_5_rOqh6"
-        domain="www.chatbase.co"
-        strategy="lazyOnload" // Loads after the main content
-      ></Script> */}
-
       <div className="container">
-        {/* Use className for CSS */}
         <div className="background-shapes"></div>
         <div className="background-shape"></div>
         <div className="background-shap"></div>
 
-        <div className="content">
+        <div
+          className="content"
+          style={{
+            backgroundColor: isDarkMode ? "#1837c1" : "#fff",
+          }}
+        >
           <div className="text-wrapper">
             <h1 className="title">
               what&apos;s Your <span className="spn">Mood NOW</span>
