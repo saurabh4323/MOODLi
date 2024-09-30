@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
-
+import Script from "next/script";
 // Load custom fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
