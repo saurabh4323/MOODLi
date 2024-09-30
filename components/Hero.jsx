@@ -55,12 +55,12 @@ export default function Hero(props) {
       </Head>
 
       {/* External Chatbot script */}
-      <Script
+      {/* <Script
         src="https://www.chatbase.co/embed.min.js"
         chatbotId="deZwZMHfpb9Us_5_rOqh6"
         domain="www.chatbase.co"
         strategy="lazyOnload" // Loads after the main content
-      ></Script>
+      ></Script> */}
 
       <div className="container">
         {/* Use className for CSS */}

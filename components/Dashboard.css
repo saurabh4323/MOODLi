@@ -5,7 +5,8 @@
   
   /* background-color: #; */
   margin-top: 3%;
- height: 220vh;
+  height: auto;
+ /* height: 220vh; */
   padding: 30px;
   font-family:  'Fugaz One';
 

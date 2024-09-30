@@ -3,8 +3,23 @@
 @tailwind utilities;
 
 body{
+  margin: 0;
+  padding: 0;
+  
+  box-sizing: border-box;
   color: rgb(254, 2, 2);
   /* font-family:  'Fugaz One , cursive'; */
   /* background-color: #e9ecf1; */
   background-color:#2b1c4f ;
+}
+
+
+@media (max-width: 768px) {
+  body{
+    box-sizing: border-box;
+    
+    margin: 0;
+    padding: 0;
+    
+  }
 }
