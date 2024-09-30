@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { baseRating, gradients } from "@/utils"; // Adjust the import based on your file structure
 
 const months = {
   January: "Jan",
@@ -21,12 +20,11 @@ const monthsArr = Object.keys(months);
 const now = new Date();
 const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export default function Calendar({ highlightDays }) {
+export default function Calendar() {
   const [selectedMonth, setSelectMonth] = useState(monthsArr[now.getMonth()]);
   const [selectedYear, setSelectedYear] = useState(now.getFullYear());
 
   const numericMonth = monthsArr.indexOf(selectedMonth);
-  const data = {}; // Replace this with your actual data logic
 
   function handleIncrementMonth(val) {
     if (numericMonth + val < 0) {
@@ -67,7 +65,7 @@ export default function Calendar({ highlightDays }) {
         </button>
       </div>
 
-      {/* Days of the Month */}
+      {/* Days of the Week */}
       <div className="grid grid-cols-7 gap-2">
         {dayList.map((day) => (
           <div key={day} className="font-bold text-center text-white">
@@ -76,32 +74,29 @@ export default function Calendar({ highlightDays }) {
         ))}
       </div>
 
+      {/* Days of the Month */}
       <div className="grid grid-cols-7 gap-2">
         {[...Array(numRows).keys()].map((rowIndex) => (
           <React.Fragment key={rowIndex}>
             {Array.from({ length: 7 }, (_, dayOfWeekIndex) => {
-              let dayIndex =
+              const dayIndex =
                 rowIndex * 7 + dayOfWeekIndex - (firstDayOfMonth - 1);
-              let dayDisplay = dayIndex > daysInMonth || dayIndex < 1;
-
-              let isToday = dayIndex === now.getDate();
-              let isHighlighted = dayIndex <= highlightDays;
-
-              let color = dayDisplay ? "transparent" : "white";
+              const dayDisplay = dayIndex > daysInMonth || dayIndex < 1;
+              const isToday =
+                dayIndex === now.getDate() &&
+                numericMonth === now.getMonth() &&
+                selectedYear === now.getFullYear();
 
               return (
                 <div
                   key={dayOfWeekIndex}
                   className={`p-3 flex items-center justify-center rounded-lg border transition-all duration-300 ${
-                    isToday ? "border-indigo-600" : "border-gray-200"
+                    isToday ? "bg-yellow-400" : "bg-white"
                   } ${
                     dayDisplay
                       ? "bg-transparent text-transparent"
-                      : `text-black hover:scale-105 hover:shadow-lg ${
-                          isHighlighted ? "bg-yellow-400" : ""
-                        }`
+                      : "border-gray-200 text-black hover:scale-105 hover:shadow-lg"
                   }`}
-                  style={{ backgroundColor: isHighlighted ? "yellow" : color }}
                 >
                   {!dayDisplay && <p>{dayIndex}</p>}
                 </div>

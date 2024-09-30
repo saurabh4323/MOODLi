@@ -169,7 +169,7 @@
   background-color: #a0afe9;
   box-shadow: 0 0 10px rgba(72, 177, 255, 0.6);
   position: absolute;
-  /* bottom: 0; */
+  
   transition: background-color 0.3s;
 }
 
@@ -275,7 +275,8 @@ width: 30%;
   }
 
   .graph-lines {
-    margin-top: 26px;
+   
+    /* margin-top: 26px; */
     height: 50px;
   }
 
@@ -286,17 +287,19 @@ width: 30%;
   }
 
   .emoji {
-    margin-top: 27px;
+   
     gap: 10px;
     margin-left: -20%;
     width: 50%;
   }
 
   .emo, .emk {
+    
     font-size: 40px;
   }
 
   .emoj {
+    /* margin-top: 10px; */
     margin-left: 40%;
   }
 

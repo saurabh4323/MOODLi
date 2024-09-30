@@ -31,6 +31,7 @@ right: -5%;
 .close-btn {
   position: absolute;
   top: 10px;
+  color: #000;
   right: 15px;
   background-color: transparent;
   border: none;
@@ -93,4 +94,16 @@ li:hover {
 .container .recommendation-card ~ .container::after {
   opacity: 1;
   visibility: visible;
+}
+
+@media (max-width: 768px) {
+
+.recommendation-card{
+  margin-right: -15%;
+  background-color: #007bff;
+  
+}
+.close-btn{
+  color: black;
+}
 }
