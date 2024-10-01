@@ -10,10 +10,12 @@ import "./globals.css"; // Import your global styles
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
 import Image from "next/image"; // Import the Image component from Next.js
+import { generateToken } from "./firebase";
+import { getMessaging, onMessage } from "firebase/messaging"; // Import getMessaging and onMessage
 
 export default function RootLayout({ children }) {
   const router = useRouter();
-  const [theme, setTheme] = useState("dark"); // Default to light mode
+  const [theme, setTheme] = useState("dark"); // Default to dark mode
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [heroopen, setheroopen] = useState(false);
 
@@ -40,6 +42,19 @@ export default function RootLayout({ children }) {
     toggleDarkMode(); // Call the hook's toggle function
   };
 
+  useEffect(() => {
+    // Initialize Firebase Messaging
+    const messaging = getMessaging();
+
+    // Generate Firebase token
+    generateToken();
+
+    // Handle incoming messages
+    onMessage(messaging, (payload) => {
+      console.log("Message received. ", payload);
+    });
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -54,7 +69,7 @@ export default function RootLayout({ children }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8925928685447144"
           crossOrigin="anonymous"
         ></Script>
-        <Header />{" "}
+        <Header />
         <div style={{ textAlign: "center", marginTop: "10px" }}>
           <button
             onClick={handleToggleTheme}
@@ -70,14 +85,13 @@ export default function RootLayout({ children }) {
             }}
             className="toggle-button" // Add a class for media query styling
           >
-            {" "}
             <Image
               alt="Theme Toggle Icon"
               width={30} // Adjust width/height as necessary
               style={{ marginTop: "-6px" }}
               height={20}
               src={"/lm.png"}
-            ></Image>
+            />
             {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>

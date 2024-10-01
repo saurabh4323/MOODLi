@@ -141,6 +141,7 @@
 /* Style for the input */
 .reason-input {
   border: 1px solid #d1e3ff;
+  color: #ff8b8b;
   border-radius: 8px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   padding: 10px;

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Calendar from "./Calander";
 import "./Dashboard.css";
@@ -9,12 +9,15 @@ export default function Dashboard() {
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
   const [days, setDays] = useState(0);
-
   const [emojidata, setEmojidata] = useState({
     emoji: "",
     days: 1,
     reason: "",
   });
+  const [showCamera, setShowCamera] = useState(false);
+  const [photo, setPhoto] = useState(null);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     const fetchTrack = async () => {
@@ -55,6 +58,28 @@ export default function Dashboard() {
     setClicked(false);
   };
 
+  const startCamera = () => {
+    setShowCamera(true);
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play();
+      })
+      .catch((err) => {
+        console.error("Error accessing the camera: ", err);
+      });
+  };
+
+  const takePhoto = () => {
+    const context = canvasRef.current.getContext("2d");
+    context.drawImage(videoRef.current, 0, 0, 320, 240);
+    const imageData = canvasRef.current.toDataURL("image/png");
+    setPhoto(imageData);
+    videoRef.current.srcObject.getTracks().forEach((track) => track.stop()); // Stop camera
+    setShowCamera(false); // Hide camera after taking a photo
+  };
+
   const handlesubmit = async () => {
     if (hasSubmittedToday) {
       alert("You have already submitted your mood for today.");
@@ -78,6 +103,7 @@ export default function Dashboard() {
         days: emojidata.days || 1,
         emoji: selectedEmoji,
         reason: emojidata.reason,
+        photo: photo, // Send photo data with the submission
       });
 
       const newDays = days + 1;
@@ -122,9 +148,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <div className="backgroun-shapes"></div>
-      <div className="backgroun-shape"></div>
-
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
@@ -140,7 +163,7 @@ export default function Dashboard() {
       </div>
 
       <div className="mood-heading">
-        <h1>How&apos;s your mood shaping up today?</h1>
+        <h1>How's your mood shaping up today?</h1>
       </div>
 
       {clicked && (
@@ -153,6 +176,24 @@ export default function Dashboard() {
             onChange={handleInputChange}
             className="reason-input"
           />
+
+          {showCamera ? (
+            <>
+              <video ref={videoRef} width="320" height="240"></video>
+              <button className="button" onClick={takePhoto}>
+                Capture Selfie
+              </button>
+            </>
+          ) : (
+            <>
+              {photo && (
+                <img style={{ transform: "none" }} src={photo} alt="Captured" />
+              )}
+              <button className="button" onClick={startCamera}>
+                Take a Selfie
+              </button>
+            </>
+          )}
 
           <div className="button-containerclick">
             <button className="button" onClick={closeclicked}>
@@ -180,6 +221,14 @@ export default function Dashboard() {
       </div>
 
       <Calendar />
+
+      {/* Hidden canvas for capturing the photo */}
+      <canvas
+        ref={canvasRef}
+        width="320"
+        height="240"
+        style={{ display: "none" }}
+      ></canvas>
     </div>
   );
 }

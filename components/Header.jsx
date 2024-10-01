@@ -3,10 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import "./Header.css";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
+  const route = useRouter();
 
   useEffect(() => {
     // Ensure that localStorage is only accessed in the client-side environment
@@ -30,7 +32,9 @@ const Header = () => {
       setUserId(null); // Clear the user ID state
     }
   };
-
+  const track = () => {
+    window.location.href("/track");
+  };
   console.log("Rendering Header, isAuthenticated:", isAuthenticated);
   return (
     <header className="header-container">
@@ -49,7 +53,7 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item">
+          <Link href="/track" className="nav-item" onClick={track}>
             VibeTrack
           </Link>
           <Link href="/community" className="nav-item">

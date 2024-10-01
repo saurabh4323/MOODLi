@@ -29,6 +29,7 @@ export default function Track() {
           try {
             setLoading(true); // Start loading
             const response = await axios.get(`/api/users/track/${userId}`);
+            console.log("API Response: ", response.data); // Log the API response
             setTrack(response.data);
             setLoading(false); // Stop loading
           } catch (error) {
@@ -54,6 +55,10 @@ export default function Track() {
     );
   }
 
+  if (error) {
+    return <div className="error-message">{error}</div>; // Display error if any
+  }
+
   return (
     <div className="main">
       <div className="background-shapes"></div>
@@ -68,19 +73,27 @@ export default function Track() {
                 style={{ backgroundColor: colors[index % colors.length] }}
               >
                 <div className="card_image">
-                  <span className="emoji">{entry.emoji}</span>
+                  {/* Display emoji or fallback if missing */}
+                  <span className="emoji">
+                    {entry.emoji ? entry.emoji : "😊"}
+                  </span>
                 </div>
                 <div className="card_content">
-                  <h2 className="card_title">
-                    {new Date(entry.selectedAt).toLocaleDateString()}
-                  </h2>
-                  <p className="card_reason">{entry.reason}</p>
+                  {/* Ensure the date and reason are displayed properly */}
+                  {entry.selectedAt && (
+                    <h2 className="card_title">
+                      {new Date(entry.selectedAt).toLocaleDateString()}
+                    </h2>
+                  )}
+                  {entry.reason && (
+                    <p className="card_reason">{entry.reason}</p>
+                  )}
                 </div>
               </div>
             </li>
           ))
         ) : (
-          <h1 className="erro">You have not selected any emoji for track </h1>
+          <h1 className="erro">You have not selected any emoji for track</h1>
         )}
       </ul>
     </div>
