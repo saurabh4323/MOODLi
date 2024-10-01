@@ -3,12 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import "./Header.css";
-import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
-  const route = useRouter();
 
   useEffect(() => {
     // Ensure that localStorage is only accessed in the client-side environment
