@@ -9,12 +9,12 @@ export default function Dashboard() {
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
   const [days, setDays] = useState(0);
+
   const [emojidata, setEmojidata] = useState({
     emoji: "",
     days: 1,
     reason: "",
   });
-  const [photo, setPhoto] = useState(null);
 
   useEffect(() => {
     const fetchTrack = async () => {
@@ -53,18 +53,6 @@ export default function Dashboard() {
 
   const closeclicked = () => {
     setClicked(false);
-    setPhoto(null); // Reset photo on close
-  };
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhoto(reader.result); // Set the base64 image data
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   const handlesubmit = async () => {
@@ -90,7 +78,6 @@ export default function Dashboard() {
         days: emojidata.days || 1,
         emoji: selectedEmoji,
         reason: emojidata.reason,
-        photo: photo, // Send photo data with the submission
       });
 
       const newDays = days + 1;
@@ -102,6 +89,7 @@ export default function Dashboard() {
       );
       setHasSubmittedToday(true);
       setClicked(false);
+
       alert("Submission successful!");
     } catch (error) {
       console.error("Error submitting emoji report:", error);
@@ -134,6 +122,9 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      <div className="backgroun-shapes"></div>
+      <div className="backgroun-shape"></div>
+
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
@@ -162,24 +153,6 @@ export default function Dashboard() {
             onChange={handleInputChange}
             className="reason-input"
           />
-
-          <label
-            className="custom-file-upload"
-            style={{ color: "blue", fontSize: "12px" }}
-          >
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
-            Send Selfie
-          </label>
-
-          {photo && (
-            <img
-              src={photo}
-              alt="Uploaded"
-              width="320"
-              height="240"
-              style={{ border: "1px solid #000" }}
-            />
-          )}
 
           <div className="button-containerclick">
             <button className="button" onClick={closeclicked}>
