@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Calendar from "./Calander";
 import "./Dashboard.css";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [clicked, setClicked] = useState(false);
@@ -187,7 +188,11 @@ export default function Dashboard() {
           ) : (
             <>
               {photo && (
-                <img style={{ transform: "none" }} src={photo} alt="Captured" />
+                <Image
+                  style={{ transform: "none" }}
+                  src={photo}
+                  alt="Captured"
+                />
               )}
               <button className="button" onClick={startCamera}>
                 Take a Selfie
