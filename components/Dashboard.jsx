@@ -163,7 +163,7 @@ export default function Dashboard() {
       </div>
 
       <div className="mood-heading">
-        <h1>How's your mood shaping up today?</h1>
+        <h1>How&apos;s your mood shaping up today?</h1>
       </div>
 
       {clicked && (
