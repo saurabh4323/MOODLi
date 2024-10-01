@@ -1,9 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Calendar from "./Calander";
 import "./Dashboard.css";
-import Image from "next/image";
 
 export default function Dashboard() {
   const [clicked, setClicked] = useState(false);
@@ -15,12 +14,8 @@ export default function Dashboard() {
     days: 1,
     reason: "",
   });
-  const [showCamera, setShowCamera] = useState(false);
   const [photo, setPhoto] = useState(null);
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
 
-  // Fetch days and submission info
   useEffect(() => {
     const fetchTrack = async () => {
       const userId = localStorage.getItem("userId");
@@ -36,14 +31,12 @@ export default function Dashboard() {
     fetchTrack();
   }, []);
 
-  // Check last submission date
   useEffect(() => {
     const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
     const today = new Date().toLocaleDateString();
     setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
-  // Function to handle emoji selection
   const emojiselect = (emoji) => {
     setSelectedEmoji(emoji);
     setClicked(true);
@@ -60,33 +53,18 @@ export default function Dashboard() {
 
   const closeclicked = () => {
     setClicked(false);
+    setPhoto(null); // Reset photo on close
   };
 
-  // Ensure camera access is only in the client
-  const startCamera = () => {
-    if (typeof window !== "undefined" && navigator.mediaDevices) {
-      setShowCamera(true);
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          videoRef.current.srcObject = stream;
-          videoRef.current.play();
-        })
-        .catch((err) => {
-          console.error("Error accessing the camera: ", err);
-        });
-    } else {
-      console.error("Camera not supported or running on server-side");
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPhoto(reader.result); // Set the base64 image data
+      };
+      reader.readAsDataURL(file);
     }
-  };
-
-  const takePhoto = () => {
-    const context = canvasRef.current.getContext("2d");
-    context.drawImage(videoRef.current, 0, 0, 320, 240);
-    const imageData = canvasRef.current.toDataURL("image/png");
-    setPhoto(imageData);
-    videoRef.current.srcObject.getTracks().forEach((track) => track.stop()); // Stop camera
-    setShowCamera(false); // Hide camera after taking a photo
   };
 
   const handlesubmit = async () => {
@@ -124,7 +102,6 @@ export default function Dashboard() {
       );
       setHasSubmittedToday(true);
       setClicked(false);
-
       alert("Submission successful!");
     } catch (error) {
       console.error("Error submitting emoji report:", error);
@@ -186,26 +163,22 @@ export default function Dashboard() {
             className="reason-input"
           />
 
-          {showCamera ? (
-            <>
-              <video ref={videoRef} width="320" height="240"></video>
-              <button className="button" onClick={takePhoto}>
-                Capture Selfie
-              </button>
-            </>
-          ) : (
-            <>
-              {photo && (
-                <Image
-                  style={{ transform: "none" }}
-                  src={photo}
-                  alt="Captured"
-                />
-              )}
-              <button className="button" onClick={startCamera}>
-                Take a Selfie
-              </button>
-            </>
+          <label
+            className="custom-file-upload"
+            style={{ color: "blue", fontSize: "12px" }}
+          >
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
+            Send Selfie
+          </label>
+
+          {photo && (
+            <img
+              src={photo}
+              alt="Uploaded"
+              width="320"
+              height="240"
+              style={{ border: "1px solid #000" }}
+            />
           )}
 
           <div className="button-containerclick">
@@ -234,14 +207,6 @@ export default function Dashboard() {
       </div>
 
       <Calendar />
-
-      {/* Hidden canvas for capturing the photo */}
-      <canvas
-        ref={canvasRef}
-        width="320"
-        height="240"
-        style={{ display: "none" }}
-      ></canvas>
     </div>
   );
 }
