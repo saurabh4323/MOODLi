@@ -20,6 +20,7 @@ export default function Dashboard() {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
+  // Fetch days and submission info
   useEffect(() => {
     const fetchTrack = async () => {
       const userId = localStorage.getItem("userId");
@@ -35,12 +36,14 @@ export default function Dashboard() {
     fetchTrack();
   }, []);
 
+  // Check last submission date
   useEffect(() => {
     const lastSubmissionDate = localStorage.getItem("lastSubmissionDate");
     const today = new Date().toLocaleDateString();
     setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
+  // Function to handle emoji selection
   const emojiselect = (emoji) => {
     setSelectedEmoji(emoji);
     setClicked(true);
@@ -59,17 +62,22 @@ export default function Dashboard() {
     setClicked(false);
   };
 
+  // Ensure camera access is only in the client
   const startCamera = () => {
-    setShowCamera(true);
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-      })
-      .catch((err) => {
-        console.error("Error accessing the camera: ", err);
-      });
+    if (typeof window !== "undefined" && navigator.mediaDevices) {
+      setShowCamera(true);
+      navigator.mediaDevices
+        .getUserMedia({ video: true })
+        .then((stream) => {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play();
+        })
+        .catch((err) => {
+          console.error("Error accessing the camera: ", err);
+        });
+    } else {
+      console.error("Camera not supported or running on server-side");
+    }
   };
 
   const takePhoto = () => {
