@@ -56,6 +56,7 @@ const Login = () => {
         <p className={styles.subtitle}>You&apos;re one step away!</p>
         <input
           type="email"
+          style={{ color: "green" }}
           placeholder="Email"
           value={login.email}
           onChange={handleonchangee}
@@ -64,6 +65,7 @@ const Login = () => {
         />
         <input
           type="password"
+          style={{ color: "green" }}
           placeholder="Password"
           value={login.password}
           onChange={handleonchangee}

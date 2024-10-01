@@ -14,15 +14,33 @@ body{
 }
 /* globals.css */
 
+
 /* Light mode (default) */
 body {
   background-color: #fff;
+  
   color: #000;
 }
 
 /* Dark mode */
 :root.dark body {
   background-color: #000;
+  color: #fff;
+}
+:root.dark .content{
+  border: 1px solid #fff;
+  background-color: #1837c1;
+}
+:root.dark .card{
+  border: 1px solid #fff;
+}
+:root.dark .spn{
+  color: #fff;
+}
+:root.dark .footer{
+  background-color: #000;
+}
+:root.dark .footerContent {
   color: #fff;
 }
 

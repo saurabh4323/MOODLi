@@ -1,6 +1,6 @@
 .header-container {
   /* overflow: hidden; */
-  margin-left: 12%;
+  margin-left: 8%;
   margin-top: 8px;
   
   border-radius: 100px;
@@ -10,7 +10,7 @@
   height: 80px;
   
   
-  width: 78%;
+  width: 85%;
   
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   

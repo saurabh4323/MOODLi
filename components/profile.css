@@ -26,6 +26,40 @@ body {
   color: #2b6cb0; /* Dark blue for the header */
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Full screen height */
+  text-align: center;
+}
+
+.loading-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* Form styles */
 .profile-form {
   display: flex;

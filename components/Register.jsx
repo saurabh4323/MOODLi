@@ -92,12 +92,14 @@ const Register = () => {
         <input
           type="text"
           name="name"
+          style={{ color: "green" }}
           value={signup.name}
           onChange={handleInputChange}
           placeholder="Full Name"
           className={styles.input}
         />
         <input
+          style={{ color: "green" }}
           type="email"
           placeholder="Email"
           name="email"
@@ -106,6 +108,7 @@ const Register = () => {
           className={styles.input}
         />
         <input
+          style={{ color: "green" }}
           type="password"
           placeholder="Password"
           name="password"

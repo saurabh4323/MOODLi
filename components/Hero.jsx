@@ -2,6 +2,7 @@
 "use client"; // Ensure your component is a client component
 import Link from "next/link";
 import Button from "./Button";
+
 import "./hero.css"; // Ensure your CSS file path is correct
 import Head from "next/head";
 import "./MoodRecommendation.css";
@@ -61,12 +62,7 @@ export default function Hero(props) {
         <div className="background-shape"></div>
         <div className="background-shap"></div>
 
-        <div
-          className="content"
-          style={{
-            backgroundColor: isDarkMode ? "#1837c1" : "#fff",
-          }}
-        >
+        <div className="content">
           <div className="text-wrapper">
             <h1 className="title">
               what&apos;s Your <span className="spn">Mood NOW</span>

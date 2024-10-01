@@ -45,7 +45,12 @@ export default function Calendar() {
   const numRows = Math.floor(daysToDisplay / 7) + (daysToDisplay % 7 ? 1 : 0);
 
   return (
-    <div className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border border-white">
+    <div
+      style={{
+        border: "1px solid #1837c1",
+      }}
+      className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border "
+    >
       {/* Navigation and Month Display */}
       <div className="flex justify-between items-center">
         <button
@@ -68,7 +73,7 @@ export default function Calendar() {
       {/* Days of the Week */}
       <div className="grid grid-cols-7 gap-2">
         {dayList.map((day) => (
-          <div key={day} className="font-bold text-center text-white">
+          <div key={day} className="font-bold text-center text-white-800">
             {day}
           </div>
         ))}

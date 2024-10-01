@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./MoodRecommendation.css";
-
+import "../app/globals.css";
 const recommendations = {
   "😀": {
     mood: "Happy",

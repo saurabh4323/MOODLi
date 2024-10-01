@@ -1,5 +1,6 @@
 
 .recommendation-card {
+  
   position: absolute;
   top: 50%;
 right: -5%;
@@ -59,14 +60,16 @@ h3 {
 }
 
 ul {
+  color: #007bff;
   list-style-type: none;
   padding-left: 10px;
 }
 
 li {
+  color: #007bff;
   font-weight: 600;
   font-size: 14px;
-  color: #fff;
+  /* color: #fff; */
   margin: 8px 4px;
 }
 

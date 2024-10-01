@@ -3,92 +3,100 @@
 .main {
   margin-top: 40px;
   display: flex;
-  height: 96vh;
+  min-height: 90vh;
+  height: auto;
+ 
   justify-content: center;
   align-items: center;
   padding: 20px;
- 
-  
-  
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap; 
   width: 90%;
-  /* height: 100%; */
   gap: 20px;
-  justify-content: space-around;
   list-style: none;
   padding: 0;
 }
 
 .cards_item {
-  display: flex;
-  justify-content: center;
+  flex: 1 1 250px; /* Ensures cards take available space */
 }
 
 .card {
-  border-left: 1px solid #ffffff;
-  /* background: linear-gradient(135deg, #f78ca0, #f9748f); */
-  background-color: #6c4d9f;
   border-radius: 25px;
   padding: 20px;
-   width: 250px;
- 
   margin: 10px;
-  
-  border-bottom: 15px solid #fff;
-  border-bottom-right-radius: 50px;
-  border-bottom-left-radius: 50px;
   text-align: center;
+  border: 1px solid #000;
   position: relative;
   overflow: hidden;
   color: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
 }
 
-.card_image {
-  position: relative;
-  top: -39px;
-  border-bottom-left-radius: 40px;
-  background-color: #2b1c4f;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-  border-radius: 50%;
+.card_content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.emoji {
-  font-size: 40px;
+  flex-direction: column;
+  align-items: center; /* Center the content */
 }
 
 .card_title {
-  color:antiquewhite;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #000;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .card_reason {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #000;
   font-size: 16px;
-  color: white;
 }
 
 .card:hover {
   transform: scale(1.05);
-  transition: all 0.3s ease-in-out;
 }
-.erro{
-  font-family:  'Fugaz One';
+
+.error {
+  font-family: 'Fugaz One';
   font-size: 2.5rem;
   color: #fffdfd; /* Text color */
   font-weight: 500;
-  /* -webkit-text-stroke: 1px #0f0f0f;  */
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Full screen height */
+  text-align: center;
+}
 
+.loading-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+.loading-spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
