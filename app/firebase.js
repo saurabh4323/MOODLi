@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
 import { getMessaging, getToken } from "firebase/messaging";
@@ -13,21 +12,26 @@ const firebaseConfig = {
   measurementId: "G-TYZ0FBYNTW",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+let messaging;
 
-const messaging = getMessaging(app);
-// BCA66Q3r-sMFOS5-QBOWqE6DSNHSOJE_KEiTzy6S36vMlmwD8jDP4yuHZf9WG3hlp2mn1D-OidzGeicOxgqLK7I
+if (typeof window !== "undefined") {
+  messaging = getMessaging(app);
+}
 
-export const generateToken = async () => {
-  const permission = await Notification.requestPermission();
-  console.log(permission);
-
-  if (permission === "granted") {
-    const token = await getToken(messaging, {
-      vapidKey:
-        "BCA66Q3r-sMFOS5-QBOWqE6DSNHSOJE_KEiTzy6S36vMlmwD8jDP4yuHZf9WG3hlp2mn1D-OidzGeicOxgqLK7I",
-    });
-    console.log(token);
+export const requestForToken = async () => {
+  if (!messaging) {
+    console.error("Messaging is not available");
+    return;
+  }
+  try {
+    const token = await getToken(messaging, { vapidKey: "YOUR_VAPID_KEY" });
+    if (token) {
+      console.log("Token received: ", token);
+    } else {
+      console.log("No registration token available.");
+    }
+  } catch (error) {
+    console.error("An error occurred while retrieving token.", error);
   }
 };

@@ -141,18 +141,18 @@ export default function RootLayout({ children }) {
     toggleDarkMode(); // Call the hook's toggle function
   };
 
-  useEffect(() => {
-    // Initialize Firebase Messaging
-    const messaging = getMessaging();
+  // useEffect(() => {
+  //   // Initialize Firebase Messaging
+  //   const messaging = getMessaging();
 
-    // Generate Firebase token
-    generateToken();
+  //   // Generate Firebase token
+  //   generateToken();
 
-    // Handle incoming messages
-    onMessage(messaging, (payload) => {
-      console.log("Message received. ", payload);
-    });
-  }, []);
+  //   // Handle incoming messages
+  //   onMessage(messaging, (payload) => {
+  //     console.log("Message received. ", payload);
+  //   });
+  // }, []);
 
   return (
     <html lang="en">
