@@ -5,7 +5,6 @@
   display: flex;
   min-height: 90vh;
   height: auto;
- 
   justify-content: center;
   align-items: center;
   padding: 20px;
@@ -21,7 +20,8 @@
 }
 
 .cards_item {
-  flex: 1 1 250px; /* Ensures cards take available space */
+  flex: 0 0 250px; /* Fixed width for each card item */
+  max-width: 250px; /* Ensure cards do not exceed this width */
 }
 
 .card {
@@ -35,12 +35,15 @@
   color: white;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
+  width: 250px; /* Fixed width */
+  height: 200px; /* Fixed height */
 }
 
 .card_content {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the content */
+  height: 100%; /* Ensure content takes full height */
 }
 
 .card_title {
