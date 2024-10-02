@@ -25,7 +25,10 @@ export const requestForToken = async () => {
     return;
   }
   try {
-    const token = await getToken(messaging, { vapidKey: "YOUR_VAPID_KEY" });
+    const token = await getToken(messaging, {
+      vapidKey:
+        "BCA66Q3r-sMFOS5-QBOWqE6DSNHSOJE_KEiTzy6S36vMlmwD8jDP4yuHZf9WG3hlp2mn1D-OidzGeicOxgqLK7I",
+    });
     if (token) {
       console.log("Token received: ", token);
     } else {

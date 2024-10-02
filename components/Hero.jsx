@@ -16,12 +16,12 @@ import useAds from "./UseAdhs";
 import useDarkMode from "./useDarkMode"; // Import the custom hook
 
 export default function Hero(props) {
-  if (typeof window !== "undefined" && typeof navigator !== "undefined") {
-    useEffect(() => {
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof navigator !== "undefined") {
       // Request for notification token when the component mounts
       requestForToken();
-    }, []);
-  }
+    }
+  }, []);
 
   useAds();
   const [showCard, setShowCard] = useState(false);
