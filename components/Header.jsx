@@ -41,8 +41,8 @@ const Header = () => {
           className="logoo"
           src="/l.png"
           alt="Logo"
-          width={120}
-          height={120}
+          width={90}
+          height={100}
         />
         <nav className="nav">
           <Link href="/main" className="nav-item">
