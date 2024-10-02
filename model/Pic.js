@@ -9,6 +9,9 @@ const pic = new mongoose.Schema({
     type: String,
     required: true,
   },
+  photo: {
+    type: String,
+  },
 });
 
 export default mongoose.models.Pic || mongoose.model("pic", pic);

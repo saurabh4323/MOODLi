@@ -1,0 +1,30 @@
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+.calendar-daynames,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day-name,
+.day {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: 1.5em;
+}

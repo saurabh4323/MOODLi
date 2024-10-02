@@ -5,18 +5,19 @@ import Calendar from "./Calander";
 import "./Dashboard.css";
 
 export default function Dashboard() {
-  const [username, setusername] = useState("");
+  const [username, setUsername] = useState("");
   const [clicked, setClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
   const [days, setDays] = useState(0);
-  const [emojidata, setEmojidata] = useState({
+  const [emojiData, setEmojiData] = useState({
     emoji: "",
     days: 1,
     reason: "",
     image: "",
   });
   const [photo, setPhoto] = useState(null);
+  const [emojiMap, setEmojiMap] = useState({}); // New state to track emojis by date
 
   useEffect(() => {
     const fetchTrack = async () => {
@@ -39,10 +40,10 @@ export default function Dashboard() {
     setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
-  const emojiselect = (emoji) => {
+  const emojiSelect = (emoji) => {
     setSelectedEmoji(emoji);
     setClicked(true);
-    setEmojidata((prevData) => ({
+    setEmojiData((prevData) => ({
       ...prevData,
       emoji,
       days: 1,
@@ -50,10 +51,10 @@ export default function Dashboard() {
   };
 
   const handleInputChange = (event) => {
-    setEmojidata({ ...emojidata, [event.target.name]: event.target.value });
+    setEmojiData({ ...emojiData, [event.target.name]: event.target.value });
   };
 
-  const closeclicked = () => {
+  const closeClicked = () => {
     setClicked(false);
     setPhoto(null); // Reset photo on close
   };
@@ -74,9 +75,8 @@ export default function Dashboard() {
       const userId = localStorage.getItem("userId");
       if (userId) {
         try {
-          const response = await axios.post("/api/users/sau", { userId }); // Changed to POST method
-          setusername(response.data.name); // Set the user's name from the profile
-          console.log(response.data.name);
+          const response = await axios.post("/api/users/sau", { userId });
+          setUsername(response.data.name);
         } catch (error) {
           console.error("Error fetching user profile:", error);
         }
@@ -86,15 +86,14 @@ export default function Dashboard() {
     fetchUserProfile();
   }, []);
 
-  // main part to post on emoji
-  console.log("total days", days);
-  const handlesubmit = async () => {
+  // Main part to post on emoji
+  const handleSubmit = async () => {
     if (hasSubmittedToday) {
       alert("You have already submitted your mood for today.");
       return;
     }
 
-    if (!selectedEmoji || !emojidata.reason) {
+    if (!selectedEmoji || !emojiData.reason) {
       alert("Please select an emoji and provide a reason.");
       return;
     }
@@ -110,18 +109,22 @@ export default function Dashboard() {
         userId,
         days: days,
         emoji: selectedEmoji,
-        reason: emojidata.reason,
+        reason: emojiData.reason,
         name: username,
       });
-      console.log("sening name", username);
 
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
       setDays(newDays);
-      localStorage.setItem(
-        "lastSubmissionDate",
-        new Date().toLocaleDateString()
-      );
+
+      // Update emoji map with the current date and selected emoji
+      const todayDate = new Date().toLocaleDateString();
+      setEmojiMap((prevMap) => ({
+        ...prevMap,
+        [todayDate]: selectedEmoji, // Store the emoji for today's date
+      }));
+
+      localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
       setClicked(false);
       alert("Submission successful!");
@@ -131,7 +134,6 @@ export default function Dashboard() {
     }
   };
 
-  console.log("name", username);
   const mood = {
     Happy: "😊",
     Tired: "😴",
@@ -170,11 +172,9 @@ export default function Dashboard() {
           <h1 className="status-text">Date: {new Date().toDateString()}</h1>
         </div>
       </div>
-
       <div className="mood-heading">
         <h1>How&apos;s your mood shaping up today?</h1>
       </div>
-
       {clicked && (
         <div
           className="animated-cardclick"
@@ -184,7 +184,7 @@ export default function Dashboard() {
             type="text"
             placeholder="Write the reason for mood"
             name="reason"
-            value={emojidata.reason}
+            value={emojiData.reason}
             onChange={handleInputChange}
             className="reason-input"
           />
@@ -213,31 +213,30 @@ export default function Dashboard() {
           )}
 
           <div className="button-containerclick">
-            <button className="button" onClick={closeclicked}>
+            <button className="button" onClick={closeClicked}>
               Close
             </button>
             <button
               className="button submit-button"
               type="submit"
-              onClick={handlesubmit}
+              onClick={handleSubmit}
             >
               Submit
             </button>
           </div>
         </div>
       )}
-
       <div className="emoji-section">
         {Object.keys(mood).map((key, index) => (
           <div key={index} className="emoji-card">
-            <h1 className="emoji-text" onClick={() => emojiselect(mood[key])}>
+            <h1 className="emoji-text" onClick={() => emojiSelect(mood[key])}>
               {key}: {mood[key]}
             </h1>
           </div>
         ))}
       </div>
-
-      <Calendar />
+      <Calendar emojiMap={emojiMap} />{" "}
+      {/* Pass the emoji map to the Calendar */}
     </div>
   );
 }

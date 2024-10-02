@@ -39,10 +39,10 @@ const Header = () => {
       <div className="header-content">
         <Image
           className="logo"
-          src="/logo.svg"
+          src="/l.png"
           alt="Logo"
-          width={500}
-          height={500}
+          width={120}
+          height={120}
         />
         <nav className="nav">
           <Link href="/main" className="nav-item">

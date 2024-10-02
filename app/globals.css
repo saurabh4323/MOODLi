@@ -28,7 +28,7 @@ body {
   color: #fff;
 }
 :root.dark .content{
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   background-color: #1837c1;
 }
 :root.dark .card{
@@ -43,9 +43,13 @@ body {
 :root.dark .footerContent {
   color: #fff;
 }
-
+:root.dark .header-container{
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.379);
+}
 /* Add additional dark/light-specific styles */
-
+:root.dark.nav-item{
+  color: #000;
+}
 
 @media (max-width: 768px) {
   body{

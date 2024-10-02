@@ -35,7 +35,7 @@ export async function GET(req, { params }) {
 
     const emojis = await Emoji.find({ userId: userObjectId })
       .sort({ selectedAt: -1 })
-      .limit(20);
+      .limit(21);
 
     // console.log("Fetched emojis for user:", emojis);
 

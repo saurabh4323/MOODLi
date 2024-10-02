@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const months = {
   January: "Jan",
@@ -20,7 +20,7 @@ const monthsArr = Object.keys(months);
 const now = new Date();
 const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export default function Calendar() {
+export default function Calendar({ emojiMap }) {
   const [selectedMonth, setSelectMonth] = useState(monthsArr[now.getMonth()]);
   const [selectedYear, setSelectedYear] = useState(now.getFullYear());
 
@@ -49,7 +49,7 @@ export default function Calendar() {
       style={{
         border: "1px solid #1837c1",
       }}
-      className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border "
+      className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border"
     >
       {/* Navigation and Month Display */}
       <div className="flex justify-between items-center">
@@ -92,6 +92,11 @@ export default function Calendar() {
                 numericMonth === now.getMonth() &&
                 selectedYear === now.getFullYear();
 
+              // Create the date string in 'YYYY-MM-DD' format for the emoji map
+              const dateKey = `${selectedYear}-${String(
+                numericMonth + 1
+              ).padStart(2, "0")}-${String(dayIndex).padStart(2, "0")}`;
+
               return (
                 <div
                   key={dayOfWeekIndex}
@@ -103,7 +108,15 @@ export default function Calendar() {
                       : "border-gray-200 text-black hover:scale-105 hover:shadow-lg"
                   }`}
                 >
-                  {!dayDisplay && <p>{dayIndex}</p>}
+                  {!dayDisplay && (
+                    <>
+                      <p>{dayIndex}</p>
+                      {/* Display emoji if it exists for the day */}
+                      {emojiMap[dateKey] && (
+                        <span className="ml-2">{emojiMap[dateKey]}</span>
+                      )}
+                    </>
+                  )}
                 </div>
               );
             })}
