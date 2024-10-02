@@ -1,0 +1,17 @@
+# Allow all user agents to crawl the entire site
+User-agent: *
+Disallow:
+
+# Prevent crawling of the private directory
+Disallow: /private/
+
+# Allow specific bots (optional, remove if not needed)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow other bots (optional, remove if not needed)
+User-agent: BadBot
+Disallow: /
