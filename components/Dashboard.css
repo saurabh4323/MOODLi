@@ -174,8 +174,8 @@
 /* Uploaded image styling */
 img {
   border-radius: 10px;
-  border: 2px solid #0288d1; /* Blue border */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+ 
+  /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); */
 }
 
 /* Button container */

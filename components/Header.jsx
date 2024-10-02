@@ -38,7 +38,7 @@ const Header = () => {
     <header className="header-container">
       <div className="header-content">
         <Image
-          className="logo"
+          className="logoo"
           src="/l.png"
           alt="Logo"
           width={120}
