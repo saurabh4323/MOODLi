@@ -1,0 +1,18 @@
+/* EmojiCursor.module.css */
+.emojiContainer {
+  position: fixed; /* Use 'fixed' to keep emojis inside the viewport */
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  font-size: 24px;
+  z-index: 1000;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+.emoji {
+  display: block;
+  transform: translate(-50%, -50%);
+}

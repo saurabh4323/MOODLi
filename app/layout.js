@@ -10,6 +10,7 @@ import "./globals.css"; // Import your global styles
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
 import Image from "next/image"; // Import the Image component from Next.js
+import NeonCursor from "@/components/NeonCursor";
 
 export default function RootLayout({ children }) {
   const router = useRouter();
@@ -87,6 +88,7 @@ export default function RootLayout({ children }) {
         {/* Dark/Light Mode Toggle Buttons */}
         {children}
         <ConsentBanner />
+        <NeonCursor></NeonCursor>
         <Footer />
         <Analytic />
         <style jsx>{`
