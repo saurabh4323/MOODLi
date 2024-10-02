@@ -6,13 +6,23 @@ import Button from "./Button";
 import "./hero.css"; // Ensure your CSS file path is correct
 import Head from "next/head";
 import "./MoodRecommendation.css";
-import { useState, useEffect } from "react";
+import { generateToken } from "@/app/firebase";
+// import { getMessaging } from "firebase/messaging";
+import React, { useEffect, useState } from "react";
+import { getMessaging, onMessage } from "firebase/messaging"; //
 import MoodRecommendations from "./MoodRecommendations";
 import Script from "next/script"; // Use next/script for external scripts
 import useAds from "./UseAdhs";
 import useDarkMode from "./useDarkMode"; // Import the custom hook
 
 export default function Hero(props) {
+  useEffect(() => {
+    const messaging = getMessaging();
+    generateToken();
+    onMessage(messaging, (payload) => {
+      console.log("Message received. ", payload);
+    });
+  });
   useAds();
   const [showCard, setShowCard] = useState(false);
   const [selectemoji, setselectemoji] = useState("😀");
