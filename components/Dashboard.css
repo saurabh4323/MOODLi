@@ -105,71 +105,122 @@
   /* font-weight: 200; */
 }
 
-/* Other styles remain unchanged... */
-/* Container for the animated card */.animated-cardclick {
-  background-color: #f0f9ff; /* Light blue card */
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  width: 320px;
+.animated-cardclick {
+  background-color: #5b0eff; /* Light cyan background */
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
   height: auto;
-  position: fixed; /* Fix it at the center of the screen */
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.9); /* Center it and start slightly smaller for animation */
-  opacity: 0; /* Start with 0 opacity */
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  z-index: 9999;
+  gap: 20px;
+  z-index: 10000;
   justify-content: center;
-  animation: slideIn 0.4s ease-out forwards;
-  transition: all 0.3s ease;
+  animation: slideIn 0.5s ease-out forwards;
+  transition: all 0.4s ease;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9); /* Start slightly smaller */
+    transform: translate(-50%, -50%) scale(0.85);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1); /* Scale back to normal */
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
-/* Style for the input */
+/* Cool input field */
 .reason-input {
-  border: 1px solid #d1e3ff;
-  color: #ff8b8b;
-  border-radius: 8px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  padding: 10px;
+  border: 1px solid #000; /* Cyan border */
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #37474f;
+  transition: border-color 0.4s ease;
   width: 100%;
-  font-size: 12px;
-  outline: none;
-  transition: border-color 0.3s ease;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .reason-input:focus {
-  border-color: #4f83cc;
+  border-color: #0288d1; /* Deep blue focus */
+  outline: none;
 }
 
-/* Button container to align buttons */
+/* File upload label */
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  color: #00796b;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-decoration: underline;
+}
+
+.custom-file-upload:hover {
+  color: #004d40; /* Darker on hover */
+}
+
+/* Uploaded image styling */
+img {
+  border-radius: 10px;
+  border: 2px solid #0288d1; /* Blue border */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Button container */
 .button-containerclick {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 /* General button style */
 .button {
+  padding: 10px 20px;
+  background-color: #00796b; /* Teal background */
+  color: white;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #004d40; /* Darker teal on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Submit button specific styling */
+.submit-button {
+  background-color: #0288d1; /* Blue background */
+}
+
+.submit-button:hover {
+  background-color: #01579b; /* Darker blue on hover */
+}
+
+/* General button style */
+/* .button {
   padding: 10px 16px;
   border: none;
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-}
+} */
 
 .button:hover {
   background-color: #d1e3ff;

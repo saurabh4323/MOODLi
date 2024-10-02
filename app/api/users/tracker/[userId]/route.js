@@ -5,11 +5,11 @@ import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 
 await connect();
-
 export async function POST(req, { params }) {
   try {
     const reqBody = await req.json();
-    const { userId, days, emoji, reason } = reqBody;
+    const { userId, days, emoji, reason, name } = reqBody;
+    console.log("Request Body:", reqBody); // Log the request body to see if name is passed correctly
 
     if (!userId) {
       return NextResponse.json(
@@ -18,7 +18,7 @@ export async function POST(req, { params }) {
       );
     }
 
-    const todayemoji = new Emoji({ userId, days, emoji, reason });
+    const todayemoji = new Emoji({ userId, days, emoji, reason, name });
     const todayemojireport = await todayemoji.save();
 
     return NextResponse.json({

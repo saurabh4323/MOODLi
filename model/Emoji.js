@@ -5,7 +5,6 @@ const emojischema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-
   days: {
     type: Number,
     default: 0,
@@ -21,6 +20,7 @@ const emojischema = new mongoose.Schema({
   reason: {
     type: String,
   },
+  name: { type: String, required: true },
 });
 
 const Emoji = mongoose.models.Emoji || mongoose.model("Emoji", emojischema);

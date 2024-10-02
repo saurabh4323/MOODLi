@@ -9,6 +9,9 @@
   align-items: center;
   padding: 20px;
 }
+.emoji{
+  font-size: 45px;
+}
 
 .cards {
   display: flex;
@@ -36,7 +39,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease-in-out;
   width: 250px; /* Fixed width */
-  height: 200px; /* Fixed height */
+  height: 240px; /* Fixed height */
 }
 
 .card_content {
@@ -48,8 +51,8 @@
 
 .card_title {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #000;
-  font-size: 14px;
+  color: #342222;
+  font-size: 12px;
   margin: 10px 0;
 }
 

@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
             onClick={handleToggleTheme}
             style={{
               padding: "10px 20px",
-              backgroundColor: theme === "dark" ? "#fff" : "#000",
+
               color: theme === "dark" ? "#000" : "#fff",
               border: "none",
               borderRadius: "5px",
@@ -89,9 +89,9 @@ export default function RootLayout({ children }) {
           >
             <Image
               alt="Theme Toggle Icon"
-              width={30} // Adjust width/height as necessary
+              width={40} // Adjust width/height as necessary
               style={{ marginTop: "-6px" }}
-              height={20}
+              height={35}
               src={"/lm.png"}
             />
             {theme === "dark" ? "Light" : "Dark"}

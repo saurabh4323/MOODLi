@@ -5,6 +5,7 @@ import Calendar from "./Calander";
 import "./Dashboard.css";
 
 export default function Dashboard() {
+  const [username, setusername] = useState("");
   const [clicked, setClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
@@ -13,6 +14,7 @@ export default function Dashboard() {
     emoji: "",
     days: 1,
     reason: "",
+    image: "",
   });
   const [photo, setPhoto] = useState(null);
 
@@ -67,6 +69,25 @@ export default function Dashboard() {
     }
   };
 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        try {
+          const response = await axios.post("/api/users/sau", { userId }); // Changed to POST method
+          setusername(response.data.name); // Set the user's name from the profile
+          console.log(response.data.name);
+        } catch (error) {
+          console.error("Error fetching user profile:", error);
+        }
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  // main part to post on emoji
+  console.log("total days", days);
   const handlesubmit = async () => {
     if (hasSubmittedToday) {
       alert("You have already submitted your mood for today.");
@@ -87,11 +108,12 @@ export default function Dashboard() {
     try {
       await axios.post(`/api/users/tracker/${userId}`, {
         userId,
-        days: emojidata.days || 1,
+        days: days,
         emoji: selectedEmoji,
         reason: emojidata.reason,
-        photo: photo, // Send photo data with the submission
+        name: username,
       });
+      console.log("sening name", username);
 
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
@@ -109,6 +131,7 @@ export default function Dashboard() {
     }
   };
 
+  console.log("name", username);
   const mood = {
     Happy: "😊",
     Tired: "😴",
@@ -153,7 +176,10 @@ export default function Dashboard() {
       </div>
 
       {clicked && (
-        <div className="animated-cardclick">
+        <div
+          className="animated-cardclick"
+          style={{ border: "1px solid #000" }}
+        >
           <input
             type="text"
             placeholder="Write the reason for mood"
@@ -163,12 +189,17 @@ export default function Dashboard() {
             className="reason-input"
           />
 
-          <label
-            className="custom-file-upload"
-            style={{ color: "blue", fontSize: "12px" }}
-          >
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
-            Send Selfie
+          <label className="custom-file-upload" style={{ color: "#5b0eff" }}>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              style={{
+                border: "1px solid #fff",
+                width: "95px",
+                fontWeight: "200",
+              }}
+            />
           </label>
 
           {photo && (
