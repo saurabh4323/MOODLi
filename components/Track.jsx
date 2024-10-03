@@ -61,37 +61,42 @@ export default function Track() {
   }
 
   return (
-    <div className="main">
-      <div className="background-shapes"></div>
-      <div className="background-shape"></div>
-      <div className="background-shap"></div>
-      <div className="background-shape1"></div>
-      <div className="background-shape2"></div>
-      <div className="background-shape3"></div>
-      <ul className="cards">
-        {Array.isArray(track) && track.length > 0 ? (
-          track.map((entry, index) => (
-            <li className="cards_item" key={entry._id}>
-              <div
-                className="card"
-                style={{ backgroundColor: colors[index % colors.length] }}
-              >
-                <div className="card_image">
-                  <span className="emoji">{entry.emoji}</span>
+    <>
+      <h1 className="text-4xl font-bold text-center mb-10 text-teal-700 dark:text-teal-300">
+        Track Your mood of Your past 21 days
+      </h1>
+      <div className="main">
+        <div className="background-shapes"></div>
+        <div className="background-shape"></div>
+        <div className="background-shap"></div>
+        <div className="background-shape1"></div>
+        <div className="background-shape2"></div>
+        <div className="background-shape3"></div>
+        <ul className="cards">
+          {Array.isArray(track) && track.length > 0 ? (
+            track.map((entry, index) => (
+              <li className="cards_item" key={entry._id}>
+                <div
+                  className="card"
+                  style={{ backgroundColor: colors[index % colors.length] }}
+                >
+                  <div className="card_image">
+                    <span className="emoji">{entry.emoji}</span>
+                  </div>
+                  <div className="card_content">
+                    <h2 className="card_title">
+                      {new Date(entry.selectedAt).toLocaleDateString()}
+                    </h2>
+                    <p className="card_reason">{entry.reason}</p>
+                  </div>
                 </div>
-                <div className="card_content">
-                  <h2 className="card_title">
-                    {new Date(entry.selectedAt).toLocaleDateString()}
-                  </h2>
-                  <p className="card_reason">{entry.reason}</p>
-                </div>
-              </div>
-            </li>
-          ))
-        ) : (
-          <h1 className="erro">You have not selected any emoji for track </h1>
-        )}
-      </ul>
-    </div>
+              </li>
+            ))
+          ) : (
+            <h1 className="erro">You have not selected any emoji for track </h1>
+          )}
+        </ul>
+      </div>
+    </>
   );
 }

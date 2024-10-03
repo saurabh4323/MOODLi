@@ -7,7 +7,6 @@ import bcrypt from "bcrypt";
 connect();
 
 export async function POST(req) {
-  // Create a response object
   const res = NextResponse.next();
 
   try {
