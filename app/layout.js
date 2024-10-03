@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
 import Script from "next/script";
-import ConsentBanner from "@/components/ConsentBanner";
+
 import "./globals.css"; // Import your global styles
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
@@ -44,28 +44,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-8925928685447144"
-        ></meta>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>MOODLI</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8925928685447144"
-          crossOrigin="anonymous"
-        ></Script>
         <Header />
         <div style={{ textAlign: "center", marginTop: "10px" }}>
           <button
             onClick={handleToggleTheme}
             style={{
               padding: "10px 20px",
-
               color: theme === "dark" ? "#000" : "#fff",
               border: "none",
               borderRadius: "5px",
@@ -85,9 +75,9 @@ export default function RootLayout({ children }) {
             {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>
-        {/* Dark/Light Mode Toggle Buttons */}
+
         {children}
-        <ConsentBanner />
+
         <NeonCursor></NeonCursor>
         <Footer />
         <Analytic />
