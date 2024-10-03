@@ -59,7 +59,7 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 mt-[-10px]">
       <Head>
         <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
         <meta
@@ -68,16 +68,17 @@ export default function Blog() {
         />
       </Head>
 
-      <h1 className="text-4xl font-bold text-center mb-10 text-teal-700 dark:text-teal-300">
+      {/* Moodli Blog Heading */}
+      <h1 className="text-5xl font-bold text-center text-teal-700 dark:text-teal-300 mb-6 hover:text-teal-500 dark:hover:text-teal-400 hover:scale-105 transition-transform duration-300 ease-in-out">
         Moodli Blog
       </h1>
 
       {/* Blog Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
         {blogPosts.map((post) => (
           <div
             key={post.id}
-            className="bg-gray-200 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            className="bg-gray-200 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-2xl hover:scale-105"
           >
             <Image
               src={post.image}
@@ -171,13 +172,13 @@ export default function Blog() {
           </p>
 
           <h2 className="text-2xl font-bold mb-4 mt-6 text-gray-900 dark:text-gray-100">
-            Moodli Community and Support
+            Conclusion
           </h2>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
-            <strong>Connect with Like-Minded Individuals:</strong> Join the
-            Moodli community to connect with others who are also on their mood
-            tracking journey. Share experiences, tips, and support each other in
-            cultivating better mental health practices.
+          <p className="text-gray-700 dark:text-gray-300 leading-7">
+            Mood tracking can be a transformative practice that enhances your
+            emotional well-being. By becoming aware of your moods and patterns,
+            you can make informed decisions that promote a healthier mindset and
+            lifestyle.
           </p>
         </div>
       </div>

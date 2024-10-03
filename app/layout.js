@@ -27,6 +27,11 @@ export default function RootLayout({ children }) {
     } else {
       enableLightMode();
     }
+
+    // Force reflow
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
   }, []);
 
   // Toggle between dark and light mode
@@ -67,10 +72,11 @@ export default function RootLayout({ children }) {
           >
             <Image
               alt="Theme Toggle Icon"
-              width={40} // Adjust width/height as necessary
-              style={{ marginTop: "-6px" }}
+              width={40}
               height={35}
               src={"/lm.png"}
+              style={{ marginTop: "-6px" }}
+              className="transition-transform duration-500 hover:scale-75 hover:rotate-12 hover:opacity-80"
             />
             {theme === "dark" ? "Light" : "Dark"}
           </button>

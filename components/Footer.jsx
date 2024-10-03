@@ -9,6 +9,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
+  const Blog = () => {
+    window.location.href = "/blog";
+  };
   const socialLinks = [
     {
       icon: FaFacebook,
@@ -42,7 +45,7 @@ const Footer = () => {
       title: "Helpful Links",
       links: [
         { href: "/contact", label: "Contact" },
-        { href: "/blog", label: "Blog" },
+        { href: "/blog", label: "Blog", onClick: Blog },
       ],
     },
     {
