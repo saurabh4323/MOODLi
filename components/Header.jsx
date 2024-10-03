@@ -7,9 +7,10 @@ import "./Header.css";
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [menu, setMenu] = useState(false);
+  const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false); // New state for logout confirmation
 
   useEffect(() => {
-    // Ensure that localStorage is only accessed in the client-side environment
     if (typeof window !== "undefined") {
       const authStatus = localStorage.getItem("isAuthenticated") === "true";
       console.log("Auth Status:", authStatus);
@@ -22,18 +23,31 @@ const Header = () => {
   }, []);
 
   const handleLogout = () => {
-    // Ensure localStorage operations are performed client-side
     if (typeof window !== "undefined") {
       localStorage.removeItem("isAuthenticated");
       localStorage.removeItem("userId");
       setIsAuthenticated(false);
       setUserId(null); // Clear the user ID state
+      setShowLogoutConfirmation(false); // Close the confirmation menu
     }
   };
+
   const track = () => {
-    window.location.href("/track");
+    window.location.href = "/track";
   };
-  console.log("Rendering Header, isAuthenticated:", isAuthenticated);
+
+  const toggleMenu = () => {
+    setMenu(true);
+  };
+
+  const handleLogoutClick = () => {
+    setShowLogoutConfirmation(true); // Show confirmation menu
+  };
+
+  const handleCancelLogout = () => {
+    setShowLogoutConfirmation(false); // Hide confirmation menu
+  };
+
   return (
     <header className="header-container">
       <div className="header-content">
@@ -41,7 +55,7 @@ const Header = () => {
           className="logoo"
           src="/l.png"
           alt="Logo"
-          width={90}
+          width={80}
           height={100}
         />
         <nav className="nav">
@@ -65,11 +79,7 @@ const Header = () => {
               <Link href="/profile" className="nav-item">
                 Profile
               </Link>
-              <button
-                onClick={handleLogout}
-                className="nav-item"
-                style={{ color: "f5f590" }}
-              >
+              <button onClick={handleLogoutClick} className="nav-item">
                 Logout
               </button>
             </>
@@ -80,6 +90,33 @@ const Header = () => {
           )}
         </nav>
       </div>
+
+      {/* Confirmation Menu */}
+      {showLogoutConfirmation && (
+        <div className="confirmation-menu">
+          <p style={{ color: "#fff" }}>Are you sure you want to log out?</p>
+          <button
+            style={{
+              backgroundColor: "green",
+              width: "50px",
+              border: "1px solid #fff",
+            }}
+            onClick={handleLogout}
+          >
+            Yes
+          </button>
+          <button
+            style={{
+              backgroundColor: "red",
+              width: "50px",
+              border: "1px solid #fff",
+            }}
+            onClick={handleCancelLogout}
+          >
+            No
+          </button>
+        </div>
+      )}
     </header>
   );
 };
