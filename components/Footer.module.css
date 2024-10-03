@@ -1,44 +1,74 @@
-/* Footer.module.css */
 .footer {
-  background-color: #1f2937; /* bg-gray-900 */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0;
+  background-color: #282c34; /* Dark background for the footer */
+  color: white; /* White text color for better contrast */
+  padding: 20px; /* Padding for space around the content */
 }
 
-.footer-section {
-  max-width: 1280px; /* max-w-screen-xl */
-  padding: 4rem 1rem; /* px-4 py-16 */
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem; /* gap-8 */
+.footerContainer {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  max-width: 1200px; /* Maximum width for large screens */
+  margin: 0 auto; /* Center the footer container */
 }
 
-.footer-logo {
-  color: #14b8a6; /* text-teal-600 */
+.footerLogo {
+  margin-bottom: 10px; /* Space below the logo */
 }
 
-.footer-description {
-  max-width: 20rem; /* max-w-xs */
-  margin-top: 1rem; /* mt-4 */
-  color: #6b7280; /* text-gray-500 */
+.footerDescription {
+  margin: 10px 0; /* Space above and below the description */
+  text-align: center; /* Center the text */
 }
 
-.footer-links {
-  display: flex;
-  gap: 1.5rem; /* gap-6 */
-  margin-top: 2rem; /* mt-8 */
+.socialLinks {
+  list-style: none; /* Remove bullet points from list */
+  display: flex; /* Use flexbox for social links */
+  gap: 15px; /* Space between icons */
+  margin: 10px 0; /* Space above and below the list */
 }
 
-.footer-icon {
-  width: 1.5rem; /* w-6 */
-  height: 1.5rem; /* h-6 */
-  transition: opacity 0.3s;
+.socialIcon {
+  color: white; /* White icons */
+  transition: color 0.3s ease; /* Smooth transition on hover */
 }
 
-.footer-icon:hover {
-  opacity: 0.75; /* hover:opacity-75 */
+.socialIcon:hover {
+  color: #61dafb; /* Change color on hover */
+}
+
+.footerNav {
+  display: flex; /* Use flexbox for navigation links */
+  flex-direction: column; /* Stack links vertically */
+  align-items: flex-start; /* Align links to the left */
+  margin: 10px 0; /* Space above and below the navigation section */
+}
+
+.navLink {
+  color: white; /* White text color */
+  text-decoration: none; /* Remove underline from links */
+  margin: 5px 0; /* Space between links */
+}
+
+.navLink:hover {
+  color: #61dafb; /* Change color on hover */
+}
+
+.contactInfo {
+  text-align: center; /* Center contact info text */
+  margin: 10px 0; /* Space above and below contact info */
+}
+
+
+
+@media (min-width: 768px) {
+  .footerContainer {
+    flex-direction: row; /* Change to row layout on larger screens */
+    justify-content: space-between; /* Space out footer sections */
+  }
+
+  .footerNav,
+  .contactInfo {
+    align-items: center; /* Center the items in these sections */
+  }
 }
