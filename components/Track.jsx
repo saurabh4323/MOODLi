@@ -50,6 +50,12 @@ export default function Track() {
       <div className="loading-container">
         <div className="loading-text">Tracking your data...</div>
         <div className="loading-spinner"></div> {/* Add loading animation */}
+        <div className="background-shapes"></div>
+        <div className="background-shape"></div>
+        <div className="background-shap"></div>
+        <div className="background-shape1"></div>
+        <div className="background-shape2"></div>
+        <div className="background-shape3"></div>
       </div>
     );
   }
@@ -59,6 +65,9 @@ export default function Track() {
       <div className="background-shapes"></div>
       <div className="background-shape"></div>
       <div className="background-shap"></div>
+      <div className="background-shape1"></div>
+      <div className="background-shape2"></div>
+      <div className="background-shape3"></div>
       <ul className="cards">
         {Array.isArray(track) && track.length > 0 ? (
           track.map((entry, index) => (

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Calendar from "./Calander";
 import "./Dashboard.css";
-
+import "./Track.css";
 export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -112,7 +112,7 @@ export default function Dashboard() {
         reason: emojiData.reason,
         name: username,
       });
-
+      setClicked(false);
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
       setDays(newDays);
@@ -126,7 +126,7 @@ export default function Dashboard() {
 
       localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
-      setClicked(false);
+
       alert("Submission successful!");
     } catch (error) {
       console.error("Error submitting emoji report:", error);

@@ -12,6 +12,84 @@
 .emoji{
   font-size: 45px;
 }
+/* Track.css */
+/* Track.css */
+
+.main {
+  position: relative; /* Make sure this container can contain absolute positioned children */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Unique polygon shapes with larger sizes */
+.background-shapes,
+.background-shape,
+.background-shap,
+.background-shape1,
+.background-shape2,
+.background-shape3 {
+  position: absolute;
+  width: 300px; /* Increased size */
+  height: 300px; /* Increased size */
+  opacity: 0.5; /* Semi-transparent */
+  animation: move 15s linear infinite; /* Animation for moving */
+}
+
+.background-shapes {
+  background: #9be6c1; /* Color for the shape */
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 0% 50%); /* Custom polygon shape */
+  top: 10%; /* Adjust positioning */
+  left: 5%;
+  animation-delay: 0s; /* Delay for staggered effect */
+}
+
+.background-shape {
+  background: #ffb1cc; /* Color for the shape */
+  clip-path: polygon(20% 0%, 100% 50%, 20% 100%, 0% 50%); /* Custom polygon shape */
+  top: 30%; /* Adjust positioning */
+  left: 20%;
+  animation-delay: 2s; /* Delay for staggered effect */
+}
+
+.background-shap {
+  background: #9bc9ff; /* Color for the shape */
+  clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%); /* Custom polygon shape */
+  top: 50%; /* Adjust positioning */
+  left: 40%;
+  animation-delay: 4s; /* Delay for staggered effect */
+}
+
+.background-shape1 {
+  background: #ffecb3; /* Color for the shape */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%); /* Custom polygon shape */
+  top: 20%; /* Adjust positioning */
+  left: 60%;
+  animation-delay: 6s; /* Delay for staggered effect */
+}
+
+.background-shape2 {
+  background: #b39ddb; /* Color for the shape */
+  clip-path: polygon(0% 0%, 100% 50%, 50% 100%, 0% 100%); /* Custom polygon shape */
+  top: 70%; /* Adjust positioning */
+  left: 10%;
+  animation-delay: 8s; /* Delay for staggered effect */
+}
+
+.background-shape3 {
+  background: #f2c94c; /* Color for the shape */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%); /* Custom polygon shape */
+  top: 80%; /* Adjust positioning */
+  left: 75%;
+  animation-delay: 10s; /* Delay for staggered effect */
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0); /* Start position */
+  }
+  100% {
+    transform: translate(150px, 150px); /* End position */
+  }
+}
 
 .cards {
   display: flex;

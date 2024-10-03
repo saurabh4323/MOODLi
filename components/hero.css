@@ -10,7 +10,7 @@
   /* background: linear-gradient(145deg, #e6e9f0, #eef1f5); */
 }
 
-.background-shapes::before {
+.background-shapesk::before {
   content: "";
   position: absolute;
   /* position: absolute; */
@@ -22,7 +22,7 @@
   left: -150px;
   filter: blur(60px);
 }
-.background-shape::before {
+.background-shapek::before {
   content: "";
   position: absolute;
   width: 300px;
@@ -34,7 +34,7 @@
   filter: blur(60px);
 }
 
-.background-shapes::before {
+.background-shapesk::before {
   content: "";
   position: absolute;
   width: 300px;
@@ -45,7 +45,7 @@
   left: -150px;
   filter: blur(60px);
 }
-.background-shap::before {
+.background-shapk::before {
   content: "";
   position: absolute;
   width: 300px;
@@ -59,7 +59,7 @@
 
 
 
-.background-shape::after {
+.background-shapek::after {
   content: "";
   position: absolute;
   width: 250px;
@@ -70,7 +70,7 @@
   right: -80px;
   filter: blur(80px);
 }
-.background-shapes::after {
+.background-shapesk::after {
   content: "";
   position: absolute;
   width: 250px;
@@ -81,7 +81,7 @@
   right: -80px;
   filter: blur(80px);
 }
-.background-shap::after {
+.background-shapk::after {
   content: "";
   position: absolute;
   width: 250px;
@@ -248,9 +248,10 @@ width: 30%;
   }
 
   .content {
-    width: 90%;
-    min-height: 55vh;
-    height: auto;
+    margin-bottom: 10%;
+    width: 88%;
+    min-height: 50vh;
+    /* height: auto; */
     margin-top: 0;
   }
 

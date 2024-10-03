@@ -59,9 +59,9 @@ export default function Hero(props) {
       </Head>
 
       <div className="container">
-        <div className="background-shapes"></div>
-        <div className="background-shape"></div>
-        <div className="background-shap"></div>
+        <div className="background-shapesk"></div>
+        <div className="background-shapek"></div>
+        <div className="background-shapk"></div>
 
         <div className="content">
           <div className="text-wrapper">

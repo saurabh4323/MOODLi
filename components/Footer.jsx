@@ -48,7 +48,10 @@ const Footer = () => {
     {
       title: "Legal",
       links: [
-        { href: "/privacy-policy", label: "Privacy Policy" },
+        {
+          href: "https://www.freeprivacypolicy.com/live/7f98d65c-0a4f-473c-a7df-d04f99b5df56",
+          label: "Privacy Policy",
+        },
         { href: "/terms", label: "Terms and conditions" },
       ],
     },
