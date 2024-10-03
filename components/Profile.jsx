@@ -5,7 +5,6 @@ import "./profile.css";
 import "./Dashboard.css";
 
 export default function Profile() {
-  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState({
     name: "",
     email: "",
@@ -25,11 +24,11 @@ export default function Profile() {
 
   const fetchProfile = async (userId) => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const res = await axios.post("/api/users/sau", { userId });
       console.log("Fetched profile data:", res.data);
       setProfile(res.data);
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.error("Error fetching profile", error);
     }
@@ -74,14 +73,6 @@ export default function Profile() {
       }
     }
   };
-  if (loading) {
-    return (
-      <div className="loading-container">
-        <div className="loading-text">Tracking your data...</div>
-        <div className="loading-spinner"></div> {/* Add loading animation */}
-      </div>
-    );
-  }
 
   return (
     <div className="profile-container">
