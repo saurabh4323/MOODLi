@@ -16,3 +16,11 @@
   display: block;
   transform: translate(-50%, -50%);
 }
+@media (max-width: 768px) {
+
+
+  /* Hide the emojiContainer (custom cursor) on mobile */
+  .emojiContainer {
+    display: none;
+  }
+}

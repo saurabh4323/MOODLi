@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./NeonCursor.module.css";
 
 // Customize with 5 different emojis for the tail
-const TAIL_EMOJIS = ["😀", "😂", "😎", "☝️", "😡", "🔥"]; // 5 unique emojis
+const TAIL_EMOJIS = ["😀", "😎", "😡", "🔥"]; // 5 unique emojis
 
 export default function NeonCursor() {
   const [positions, setPositions] = useState(

@@ -1,84 +1,44 @@
+/* Footer.module.css */
 .footer {
-  
-
- 
-  color: #000000;
-  text-align: center;
-  padding: 20px 0;
-  border-top: 1px solid #c4e0fc;
-}
-
-.footerContent {
-  color: #1837c1;
-  max-width: 800px;
-  margin: 0 auto;
+  background-color: #1f2937; /* bg-gray-900 */
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 0;
 }
 
-.contactInfo {
+.footer-section {
+  max-width: 1280px; /* max-w-screen-xl */
+  padding: 4rem 1rem; /* px-4 py-16 */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem; /* gap-8 */
+}
+
+.footer-logo {
+  color: #14b8a6; /* text-teal-600 */
+}
+
+.footer-description {
+  max-width: 20rem; /* max-w-xs */
+  margin-top: 1rem; /* mt-4 */
+  color: #6b7280; /* text-gray-500 */
+}
+
+.footer-links {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px; 
-  margin: 10px 0;
+  gap: 1.5rem; /* gap-6 */
+  margin-top: 2rem; /* mt-8 */
 }
 
-.socialLinks {
-  display: flex;
-  justify-content: center;
-  gap: 20px; 
-  margin-top: 10px;
+.footer-icon {
+  width: 1.5rem; /* w-6 */
+  height: 1.5rem; /* h-6 */
+  transition: opacity 0.3s;
 }
 
-.socialLinks a {
-  color: #003366;
-  text-decoration: none;
-  transition: color 0.3s;
-  font-size: 24px; /* Adjust icon size */
-}
-
-.socialLinks a:hover {
-  color: #007acc;
-  text-decoration: underline;
-}
-
-.name {
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.heart {
-  width: 30px;
-  color: gold;
-}
-@media (max-width: 768px) {
-  .footer {
-    padding: 15px;
-  }
-
-  .footerContent {
-    padding: 10px;
-  }
-
-  .name {
-    font-size: 1.2rem; /* Adjust name font size */
-  }
-
-  .heart {
-    font-size: 1.2rem; /* Adjust heart font size */
-  }
-
-  .contactInfo {
-    font-size: 0.9rem; /* Adjust contact info font size */
-  }
-
-  .socialLinks {
-    gap: 10px; /* Adjust gap for mobile */
-  }
-
-  .icon {
-    font-size: 20px; /* Smaller icon size for mobile */
-  }
+.footer-icon:hover {
+  opacity: 0.75; /* hover:opacity-75 */
 }
