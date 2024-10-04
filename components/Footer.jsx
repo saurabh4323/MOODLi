@@ -15,7 +15,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FaFacebook,
-      href: "https://www.facebook.com/profile.php?id=100090952518947",
+      href: "https://www.facebook.com/",
       label: "Facebook",
     },
     {
@@ -75,7 +75,9 @@ const Footer = () => {
               />
             </div>
             <p className="mt-4 max-w-xs mx-auto lg:mx-0 text-sm text-gray-500">
-              Get started with your Moodli right away.
+              Get started with your Moodli right away. Track your mood with
+              emoji chat with people analyse your mood and join the community.
+              Get started now!
             </p>
             <ul className="mt-4 flex justify-center lg:justify-start gap-4">
               {socialLinks.map((social, index) => (

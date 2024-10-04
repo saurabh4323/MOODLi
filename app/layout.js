@@ -57,9 +57,22 @@ export default function RootLayout({ children }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
-        <title>MOODLI</title>
-        <link rel="icon" href="/favicon.ico" />
+        <head>
+          <meta
+            name="description"
+            content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community. Get started now!"
+          />
+        </head>
+
+        <title>Moodli</title>
+        <link rel="icon" href="./favicon.ico" />
       </head>
+      <Head>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
+      </Head>
 
       <Head>
         <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
