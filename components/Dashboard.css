@@ -84,14 +84,13 @@
   animation: upDownkk 5s ease-in-out infinite;
   margin-top: 20px;
   border: 1px solid #efeeeeaf;
-  background-color: #0f38f0; /* Light blue */
+  background-color: #5100fff1; /* Light blue */
   border-radius: 15px;
   padding: 25px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   width: calc(25% - 20px); /* Adjust width for 4 cards per row */
   text-align: center;
-  
 }
 
 .emoji-card:hover {
@@ -281,10 +280,10 @@ img {
     align-items: center;
   }
 
-
-
-
-  
+  .emoji-card {
+    width: 80%;
+    padding: 15px;
+  }
 
   .emoji-text {
     font-size: 1.2rem;
