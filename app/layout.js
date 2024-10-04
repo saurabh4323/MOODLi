@@ -54,6 +54,12 @@ export default function RootLayout({ children }) {
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
         <title>MOODLI</title>
         <link rel="icon" href="/favicon.ico" />
+        <Script
+          src="https://alwingulla.com/88/tag.min.js"
+          data-zone="105650"
+          async
+          data-cfasync="false"
+        ></Script>
       </head>
 
       <Head>
@@ -64,15 +70,11 @@ export default function RootLayout({ children }) {
         />
       </Head>
       <Script
-        src="https://psulrushe.net/401/8191049"
-        strategy="lazyOnload" // Load the script after the page has loaded
-        onLoad={() => {
-          console.log("Script loaded successfully.");
-        }}
-        onError={(e) => {
-          console.error("Failed to load script:", e);
-        }}
-      />
+        src="https://alwingulla.com/88/tag.min.js"
+        data-zone="105650"
+        async
+        data-cfasync="false"
+      ></Script>
 
       <body>
         <Header />
