@@ -100,7 +100,7 @@ export default function Dashboard() {
 
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      alert("You are not registered. Please try again.");
+      alert("You are not registered / not created profile . Please try again.");
       return;
     }
 

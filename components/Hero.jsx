@@ -1,34 +1,27 @@
 // Hero.js
-"use client"; // Ensure your component is a client component
+"use client";
 import Link from "next/link";
 import Button from "./Button";
-
-import "./hero.css"; // Ensure your CSS file path is correct
+import "./hero.css";
 import Head from "next/head";
-import "./MoodRecommendation.css";
-
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
-
 import MoodRecommendations from "./MoodRecommendations";
-import Script from "next/script"; // Use next/script for external scripts
-
-import useDarkMode from "./useDarkMode"; // Import the custom hook
+import useDarkMode from "./useDarkMode";
 
 export default function Hero(props) {
   const [showCard, setShowCard] = useState(false);
-  const [selectemoji, setselectemoji] = useState("😀");
+  const [selectemoji, setSelectEmoji] = useState("😀");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const { isDarkMode, toggleDarkMode } = useDarkMode(); // Use the hook
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
-  // Authentication check
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
     setIsAuthenticated(authStatus);
   }, []);
 
-  // Handle emoji selection
   const emojihandle = (emoji) => {
-    setselectemoji(emoji);
+    setSelectEmoji(emoji);
     setShowCard(true);
   };
 
@@ -36,7 +29,23 @@ export default function Hero(props) {
     setShowCard(false);
   };
 
-  // Conditional link based on authentication
+  const handleMouseMove = (e) => {
+    const emojis = document.querySelectorAll(".object");
+    emojis.forEach((emoji, index) => {
+      const offset = (index + 1) * 5;
+      const x = (e.clientX / window.innerWidth) * offset;
+      const y = (e.clientY / window.innerHeight) * offset;
+      emoji.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   let link;
   if (isAuthenticated) {
     link = (
@@ -59,6 +68,50 @@ export default function Hero(props) {
       </Head>
 
       <div className="container">
+        <div className="bgshow">
+          <Image
+            src="/images/emoji1.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+          <Image
+            src="/images/emoji2.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+          <Image
+            src="/images/emoji3.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+          <Image
+            src="/images/emoji4.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+          <Image
+            src="/images/emoji5.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+          <Image
+            src="/images/emoji6.png"
+            className="object"
+            width={100}
+            height={100}
+            alt="emoji"
+          ></Image>
+        </div>
         <div className="background-shapesk"></div>
         <div className="background-shapek"></div>
         <div className="background-shapk"></div>
