@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
 import Script from "next/script";
-
+import Head from "next/head";
 import "./globals.css"; // Import your global styles
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
@@ -51,9 +51,17 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
         <title>MOODLI</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
+      <Head>
+        <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
+        <meta
+          name="description"
+          content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
+        />
+      </Head>
       <body>
         <Header />
         <div style={{ textAlign: "center", marginTop: "10px" }}>

@@ -68,7 +68,7 @@ export default function Hero(props) {
       </Head>
 
       <div className="container">
-        <div className="bgshow">
+        {/* <div className="bgshow">
           <Image
             src="/images/emoji1.png"
             className="object"
@@ -111,7 +111,7 @@ export default function Hero(props) {
             height={100}
             alt="emoji"
           ></Image>
-        </div>
+        </div> */}
         <div className="background-shapesk"></div>
         <div className="background-shapek"></div>
         <div className="background-shapk"></div>
