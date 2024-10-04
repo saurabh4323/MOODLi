@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image"; // Import the Image component from Next.js
 import NeonCursor from "@/components/NeonCursor";
 import Script from "next/script";
+import ConsentBanner from "@/components/ConsentBanner";
 export default function RootLayout({ children }) {
   const router = useRouter();
   const [theme, setTheme] = useState("dark"); // Default to dark mode
@@ -101,7 +102,7 @@ export default function RootLayout({ children }) {
         </div>
 
         {children}
-
+        <ConsentBanner></ConsentBanner>
         <NeonCursor></NeonCursor>
         <Footer />
         <Analytic />
