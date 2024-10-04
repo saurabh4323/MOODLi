@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Track.css"; // Custom styling for the card
 import "./Login.module.css";
+import Head from "next/head";
 
 export default function Track() {
   const [track, setTrack] = useState([]);
@@ -62,6 +63,13 @@ export default function Track() {
 
   return (
     <>
+      <Head>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
+      </Head>
       <h1 className="text-4xl font-bold text-center mb-10 text-teal-700 dark:text-teal-300">
         Track Your mood of Your past 21 days
       </h1>

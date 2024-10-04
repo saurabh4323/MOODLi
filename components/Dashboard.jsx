@@ -105,6 +105,7 @@ export default function Dashboard() {
     }
 
     try {
+      setClicked(false);
       await axios.post(`/api/users/tracker/${userId}`, {
         userId,
         days: days,
@@ -112,7 +113,7 @@ export default function Dashboard() {
         reason: emojiData.reason,
         name: username,
       });
-      setClicked(false);
+
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
       setDays(newDays);

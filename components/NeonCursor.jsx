@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./NeonCursor.module.css";
+import Head from "next/head";
 
 // Customize with 5 different emojis for the tail
 const TAIL_EMOJIS = ["😀", "😎", "😡", "🔥"]; // 5 unique emojis
@@ -35,6 +36,14 @@ export default function NeonCursor() {
 
   return (
     <>
+      {" "}
+      <Head>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
+      </Head>
       {positions.map((position, index) => (
         <div
           key={index}

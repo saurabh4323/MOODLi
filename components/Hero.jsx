@@ -64,9 +64,12 @@ export default function Hero(props) {
   return (
     <>
       <Head>
-        <title>Track Your Mood</title>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
       </Head>
-
       <div className="container">
         {/* <div className="bgshow">
           <Image

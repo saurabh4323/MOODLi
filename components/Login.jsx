@@ -47,7 +47,11 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Log In</title>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
       </Head>
       <form className={styles.form} onSubmit={handlesubmit}>
         {" "}

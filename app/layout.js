@@ -68,6 +68,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="./favicon.ico" />
       </head>
       <Head>
+        <title>Moodli</title>
         <meta
           name="description"
           content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"

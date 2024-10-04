@@ -59,6 +59,13 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
+      </Head>
       <div className="backgroun-shapes"></div>
       <div className="backgroun-shape"></div>
       <div className="backgroun-shap"></div>

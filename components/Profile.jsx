@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./profile.css";
 import "./Dashboard.css";
+import Head from "next/head";
 
 export default function Profile() {
   const [profile, setProfile] = useState({
@@ -76,6 +77,13 @@ export default function Profile() {
 
   return (
     <div className="profile-container">
+      <Head>
+        <title>Moodli</title>
+        <meta
+          name="description"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+        />
+      </Head>
       <div className="background-shapes"></div>
       <div className="background-shape"></div>
       <div className="background-shap"></div>
