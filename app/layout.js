@@ -89,10 +89,11 @@ export default function RootLayout({ children }) {
       ></Script>
       <body>
         <Header />
-        <div style={{ textAlign: "center", marginTop: "10px" }}>
+        <div style={{ textAlign: "center" }}>
           <button
             onClick={handleToggleTheme}
             style={{
+              marginTop: "20px",
               padding: "10px 20px",
               color: theme === "dark" ? "#000" : "#fff",
               border: "none",
@@ -108,7 +109,7 @@ export default function RootLayout({ children }) {
               width={40}
               height={35}
               src={"/lm.png"}
-              style={{ marginTop: "-6px" }}
+              style={{ position: "absolute" }}
               className="transition-transform duration-500 hover:scale-75 hover:rotate-12 hover:opacity-80"
             />
             {theme === "dark" ? "Light" : "Dark"}

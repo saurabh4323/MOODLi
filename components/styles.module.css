@@ -1,0 +1,196 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.profileTextarea {
+  background-color: transparent;
+}
+
+.card {
+  border: 1px solid #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 50%;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profilePicture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #4299e1;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.profilePicture:hover {
+  transform: scale(1.05);
+}
+
+.username {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d3748;
+  margin-top: 10px;
+}
+
+.imageInput {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.profileInfo {
+  margin-top: 20px;
+}
+
+.infoItem {
+  padding: 5px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  color: #637696;
+  margin: 8px 0;
+}
+
+.moodSection {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.moodSection h3 {
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.moodEmojis {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.socialSection,
+.accountSection {
+  margin-top: 20px;
+}
+
+.socialButtons,
+.accountButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+.socialButton,
+.accountButton {
+  background-color: #4299e1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 16px;
+  width: 150px;
+}
+
+.genderSelect {
+  color: #3182ce;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.socialButton:hover,
+.accountButton:hover {
+  background-color: #3182ce;
+  transform: scale(1.05);
+}
+
+.deleteButton {
+  background-color: #e53e3e;
+}
+
+.deleteButton:hover {
+  background-color: #c53030;
+}
+
+.ctaSection {
+  margin-top: 30px;
+}
+
+.ctaButton {
+  width: 100%;
+  background-color: #4299e1;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.ctaButton:hover {
+  background-color: #3182ce;
+  transform: scale(1.05);
+}
+
+.profileInput {
+  background-color: transparent;
+  border: none;
+  color: #3182ce;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  height: 40px;
+}
+
+@media (max-width: 600px) {
+  .card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .profilePicture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .username {
+    font-size: 22px;
+  }
+
+  .socialButton,
+  .accountButton {
+    width: 120px;
+    font-size: 14px;
+  }
+
+  .ctaButton {
+    font-size: 16px;
+  }
+
+  .moodEmojis {
+    font-size: 24px;
+  }
+}
