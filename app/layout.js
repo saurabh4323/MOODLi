@@ -66,13 +66,12 @@ export default function RootLayout({ children }) {
           name="description"
           content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
         />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
-          crossorigin="anonymous"
-        ></Script>
       </Head>
-
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
+        crossorigin="anonymous"
+      ></Script>
       <body>
         <Header />
         <div style={{ textAlign: "center", marginTop: "10px" }}>
