@@ -11,7 +11,7 @@ import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
 import Image from "next/image"; // Import the Image component from Next.js
 import NeonCursor from "@/components/NeonCursor";
-
+import Script from "next/script";
 export default function RootLayout({ children }) {
   const router = useRouter();
   const [theme, setTheme] = useState("dark"); // Default to dark mode
@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
         <title>MOODLI</title>
         <link rel="icon" href="/favicon.ico" />
       </head>
+
       <Head>
         <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
         <meta
@@ -62,6 +63,17 @@ export default function RootLayout({ children }) {
           content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
         />
       </Head>
+      <Script
+        src="https://psulrushe.net/401/8191049"
+        strategy="lazyOnload" // Load the script after the page has loaded
+        onLoad={() => {
+          console.log("Script loaded successfully.");
+        }}
+        onError={(e) => {
+          console.error("Failed to load script:", e);
+        }}
+      />
+
       <body>
         <Header />
         <div style={{ textAlign: "center", marginTop: "10px" }}>
