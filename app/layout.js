@@ -54,12 +54,6 @@ export default function RootLayout({ children }) {
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
         <title>MOODLI</title>
         <link rel="icon" href="/favicon.ico" />
-        <Script
-          src="https://alwingulla.com/88/tag.min.js"
-          data-zone="105650"
-          async
-          data-cfasync="false"
-        ></Script>
       </head>
 
       <Head>
@@ -69,12 +63,6 @@ export default function RootLayout({ children }) {
           content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
         />
       </Head>
-      <Script
-        src="https://alwingulla.com/88/tag.min.js"
-        data-zone="105650"
-        async
-        data-cfasync="false"
-      ></Script>
 
       <body>
         <Header />
@@ -117,6 +105,10 @@ export default function RootLayout({ children }) {
           }
         `}</style>
       </body>
+      <Script
+        type="text/javascript"
+        src="//pl24588272.cpmrevenuegate.com/dc/a4/bc/dca4bc5b15b06fb63cae5aff070cfb37.js"
+      ></Script>
     </html>
   );
 }
