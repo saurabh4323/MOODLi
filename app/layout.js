@@ -4,7 +4,7 @@ import { enableDarkMode, enableLightMode, getInitialTheme } from "./theme";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
-import Script from "next/script";
+
 import Head from "next/head";
 import "./globals.css"; // Import your global styles
 import useDarkMode from "@/components/useDarkMode";
