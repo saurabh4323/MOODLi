@@ -49,6 +49,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-3455923870560500"
+        ></meta>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
@@ -62,6 +66,11 @@ export default function RootLayout({ children }) {
           name="description"
           content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
         />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
+          crossorigin="anonymous"
+        ></Script>
       </Head>
 
       <body>
@@ -105,10 +114,6 @@ export default function RootLayout({ children }) {
           }
         `}</style>
       </body>
-      <Script
-        type="text/javascript"
-        src="//pl24588272.cpmrevenuegate.com/dc/a4/bc/dca4bc5b15b06fb63cae5aff070cfb37.js"
-      ></Script>
     </html>
   );
 }
