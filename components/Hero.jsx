@@ -67,7 +67,7 @@ export default function Hero(props) {
         <title>Moodli</title>
         <meta
           name="description"
-          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+          content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect and chat with a community, and gain valuable insights into your mental health!"
         />
       </Head>
       <div className="container">
