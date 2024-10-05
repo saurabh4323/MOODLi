@@ -2,7 +2,7 @@
 import React from "react";
 import "./globals.css";
 import { enableDarkMode, enableLightMode, getInitialTheme } from "./theme";
-
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import useDarkMode from "@/components/useDarkMode";
 export default function Dark() {
