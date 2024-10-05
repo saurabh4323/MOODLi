@@ -70,7 +70,7 @@ export default function Track() {
           content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
         />
       </Head>
-      <h1 className="text-4xl font-bold text-center mb-10 text-teal-700 dark:text-teal-300">
+      <h1 className="text-4xl font-bold text-center mt-20 text-teal-700 dark:text-teal-300 ">
         Track Your mood of Your past 21 days
       </h1>
       <div className="main">

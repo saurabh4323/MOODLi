@@ -71,50 +71,6 @@ export default function Hero(props) {
         />
       </Head>
       <div className="container">
-        {/* <div className="bgshow">
-          <Image
-            src="/images/emoji1.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-          <Image
-            src="/images/emoji2.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-          <Image
-            src="/images/emoji3.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-          <Image
-            src="/images/emoji4.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-          <Image
-            src="/images/emoji5.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-          <Image
-            src="/images/emoji6.png"
-            className="object"
-            width={100}
-            height={100}
-            alt="emoji"
-          ></Image>
-        </div> */}
         <div className="background1"></div>
         <div className="background2"></div>
         <div className="background3"></div>

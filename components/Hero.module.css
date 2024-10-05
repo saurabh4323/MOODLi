@@ -1,0 +1,115 @@
+/* Hero Section Styling */
+.heroSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.textSection {
+  flex: 1;
+  padding: 20px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.ctaButton {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #ff4c4c;
+}
+
+.moodSelector {
+  margin-top: 30px;
+}
+
+.moodTitle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.moodButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.moodButton {
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 0.2s;
+}
+
+.moodButton:hover {
+  transform: scale(1.2);
+}
+
+.selectedMood {
+  transform: scale(1.5);
+  color: #ff6b6b;
+}
+
+.feedbackMessage {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #333;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.imageSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -37,6 +37,7 @@ const profileSchema = new mongoose.Schema({
       },
       message: "Invalid phone number format. It should be 10 digits.",
     },
+    unique: true,
     required: false,
   },
   gender: {

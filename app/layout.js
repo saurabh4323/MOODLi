@@ -127,36 +127,11 @@ export default function RootLayout({ children }) {
 
       <body>
         <Header />
-        <div style={{ textAlign: "center" }}>
-          <button
-            onClick={handleToggleTheme}
-            style={{
-              marginTop: "20px",
-              padding: "10px 20px",
-              color: theme === "dark" ? "#000" : "#fff",
-              border: "none",
-              borderRadius: "5px",
-              height: "40px",
-              marginLeft: "85%",
-              cursor: "pointer",
-            }}
-            className="toggle-button"
-          >
-            <Image
-              alt="Theme Toggle Icon"
-              width={40}
-              height={35}
-              src={"/lm.png"}
-              style={{ position: "absolute" }}
-              className="transition-transform duration-500 hover:scale-75 hover:rotate-12 hover:opacity-80"
-            />
-            {theme === "dark" ? "Light" : "Dark"}
-          </button>
-        </div>
+
         <Toaster />
         {children}
         <ConsentBanner></ConsentBanner>
-        <NeonCursor></NeonCursor>
+        {/* <NeonCursor></NeonCursor> */}
         <Footer />
         <Analytic />
         <style jsx>{`

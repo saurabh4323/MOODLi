@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
+import Heros from "@/components/Heros";
 
 import React from "react";
 
 export default function page() {
   return (
     <div>
-      <Hero></Hero>
+      <Heros></Heros>
     </div>
   );
 }

@@ -3,7 +3,6 @@ import Profile from "@/model/Profile"; // Import the Profile model
 import { connect } from "@/config/Dbconfig"; // Import database connection
 import { NextResponse } from "next/server";
 
-// Connect to the database
 connect();
 
 export async function POST(req) {

@@ -1,0 +1,93 @@
+.heroSection {
+  height: 175vh;
+ 
+  margin-top: 24px;
+  /* position: relative; */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  text-align: center;
+  /* overflow: hidden; */
+}
+.mainhero{
+  position: relative;
+  height: 208vh;
+}
+.backgroundImage {
+  
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 40;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: white;
+  color: #6b46c1; /* Tailwind purple-600 equivalent */
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  margin-top: 2rem;
+}
+
+.emotionsSection {
+  display: flex;
+  justify-content:space-between;
+  margin-top: 3rem;
+  gap: 1rem;
+}
+
+.emotionGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.groupText {
+  margin-top: 0.5rem;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .heroSection {
+    height: 119vh; /* Reduce height for mobile */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .mainhero {
+    height: 130vh; /* Adjust height for mobile */
+  }
+
+  .title {
+    font-size: 2rem; /* Decrease font size */
+  }
+
+  .subtitle {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .button {
+    padding: 0.5rem 1rem; /* Smaller button padding */
+    margin-top: 1.5rem;
+  }
+
+}

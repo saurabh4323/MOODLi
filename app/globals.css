@@ -5,7 +5,7 @@
 body{
   margin: 0;
   padding: 0;
-  cursor: none;
+  /* cursor: none; */
   /* box-sizing: border-box; */
   
   /* font-family:  'Fugaz One , cursive'; */
@@ -28,8 +28,8 @@ body {
   color: #fff;
 }
 :root.dark .content{
-  /* border: 1px solid #fff; */
-  background-color: #1837c1;
+  border: 1px solid #1708bf;
+  background-color: #000000;
 }
 :root.dark .card{
   border: 1px solid #fff;
@@ -43,9 +43,9 @@ body {
 :root.dark .footerContent {
   color: #fff;
 }
-:root.dark .header-container{
+/* :root.dark .header-container{
   box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.379);
-}
+} */
 /* Add additional dark/light-specific styles */
 :root.dark.nav-item{
   color: #000;

@@ -1,15 +1,44 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { enableDarkMode, enableLightMode, getInitialTheme } from "../app/theme";
+
+import useDarkMode from "./useDarkMode";
 import { useEffect, useState } from "react";
 import "./Header.css";
+import Dark from "@/app/Dark";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
   const [menu, setMenu] = useState(false);
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false); // New state for logout confirmation
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [theme, setTheme] = useState("dark");
+  useEffect(() => {
+    const initialTheme = getInitialTheme();
+    setTheme(initialTheme);
+    if (initialTheme === "dark") {
+      enableDarkMode();
+    } else {
+      enableLightMode();
+    }
 
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 0);
+  }, []);
+
+  const handleToggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+      enableDarkMode();
+    } else {
+      setTheme("light");
+      enableLightMode();
+    }
+    toggleDarkMode();
+  };
   useEffect(() => {
     if (typeof window !== "undefined") {
       const authStatus = localStorage.getItem("isAuthenticated") === "true";
@@ -58,6 +87,7 @@ const Header = () => {
           width={80}
           height={100}
         />
+
         <nav className="nav">
           <Link href="/main" className="nav-item">
             Home
@@ -89,6 +119,34 @@ const Header = () => {
             </Link>
           )}
         </nav>
+        <div style={{ textAlign: "center" }}>
+          <button
+            onClick={handleToggleTheme}
+            style={{
+              marginBottom: "10px",
+              marginLeft: "20px",
+              // padding: "10px 20px",
+
+              color: theme === "dark" ? "#000" : "#fff",
+              border: "none",
+              borderRadius: "5px",
+              height: "40px",
+              marginLeft: "85%",
+              cursor: "pointer",
+            }}
+            className="toggle-button"
+          >
+            <Image
+              alt="Theme Toggle Icon"
+              width={25}
+              height={30}
+              src={"/lm.png"}
+              style={{ position: "absolute" }}
+              className="transition-transform duration-500 hover:scale-75 hover:rotate-12 hover:opacity-80"
+            />
+            {theme === "dark" ? "Light" : "Dark"}
+          </button>
+        </div>
       </div>
 
       {/* Confirmation Menu */}

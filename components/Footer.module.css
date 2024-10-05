@@ -60,7 +60,6 @@
 }
 
 
-
 @media (min-width: 768px) {
   .footerContainer {
     flex-direction: row; /* Change to row layout on larger screens */

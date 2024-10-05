@@ -7,6 +7,7 @@ import "./design.css";
 import axios from "axios";
 import Button from "./Button";
 import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Login = () => {
   const handleonchangee = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
   };
+
   const handlesubmit = async (event) => {
     event.preventDefault();
     try {
@@ -29,17 +31,25 @@ const Login = () => {
 
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("userId", response.data.userId);
-      console.log("local");
+      // console.log("local");
 
-      console.log(response.data);
+      toast.success("Login successful! Redirecting...");
+
+      // console.log(response.data);
       router.refresh();
       window.location.href = "/dashboard";
     } catch (error) {
       if (error.response) {
-        console.error("Error data:", error.response.data);
-        console.error("Error status:", error.response.status);
+        // Display error notifications using toast
+        if (error.response.status === 404) {
+          toast.error("User not found. Please check your email.");
+        } else if (error.response.status === 401) {
+          toast.error("Incorrect password. Please try again.");
+        } else {
+          toast.error("User not found with this email and password");
+        }
       } else {
-        console.error("Error message:", error.message);
+        toast.error("Network error. Please check your connection.");
       }
     }
   };
@@ -50,12 +60,12 @@ const Login = () => {
         <title>Moodli</title>
         <meta
           name="description"
-          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people. Get started now!"
         />
       </Head>
+      {/* Toaster to display notifications */}
+      <Toaster position="top-center" />
       <form className={styles.form} onSubmit={handlesubmit}>
-        {" "}
-        {/* Use onSubmit here */}
         <h1 className={styles.title}>Log In / Register</h1>
         <p className={styles.subtitle}>You&apos;re one step away!</p>
         <input

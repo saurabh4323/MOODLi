@@ -12,6 +12,7 @@ const Footer = () => {
   const Blog = () => {
     window.location.href = "/blog";
   };
+
   const socialLinks = [
     {
       icon: FaFacebook,
@@ -45,7 +46,8 @@ const Footer = () => {
       title: "Helpful Links",
       links: [
         { href: "/contact", label: "Contact" },
-        { href: "/blog", label: "Blog", onClick: Blog },
+        // Attach the onClick event to the "Blog" link
+        { label: "Blog", onClick: Blog },
       ],
     },
     {
@@ -102,15 +104,25 @@ const Footer = () => {
                 <div key={index} className="text-center sm:text-left">
                   <p className="font-medium text-base">{section.title}</p>
                   <nav className="mt-4 flex flex-col space-y-2">
-                    {section.links.map((link, linkIndex) => (
-                      <Link
-                        key={linkIndex}
-                        href={link.href}
-                        className="text-sm text-gray-300 transition hover:opacity-75"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                    {section.links.map((link, linkIndex) =>
+                      link.onClick ? (
+                        <button
+                          key={linkIndex}
+                          onClick={link.onClick}
+                          className="text-sm text-gray-300 transition hover:opacity-75 text-left"
+                        >
+                          {link.label}
+                        </button>
+                      ) : (
+                        <Link
+                          key={linkIndex}
+                          href={link.href}
+                          className="text-sm text-gray-300 transition hover:opacity-75"
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    )}
                   </nav>
                 </div>
               ))}

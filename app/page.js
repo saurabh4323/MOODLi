@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
+import Heros from "@/components/Heros";
 import Image from "next/image";
 import Head from "next/head";
 
 export default function Home() {
   return (
     <div>
-      <Hero></Hero>
+      <Heros></Heros>
     </div>
   );
 }
