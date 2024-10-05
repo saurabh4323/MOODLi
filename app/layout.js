@@ -13,6 +13,7 @@ import Image from "next/image";
 import NeonCursor from "@/components/NeonCursor";
 import Script from "next/script";
 import ConsentBanner from "@/components/ConsentBanner";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({ children }) {
   const router = useRouter();
@@ -152,7 +153,7 @@ export default function RootLayout({ children }) {
             {theme === "dark" ? "Light" : "Dark"}
           </button>
         </div>
-
+        <Toaster />
         {children}
         <ConsentBanner></ConsentBanner>
         <NeonCursor></NeonCursor>

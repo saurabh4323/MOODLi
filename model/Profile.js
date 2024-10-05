@@ -9,14 +9,17 @@ const profileSchema = new mongoose.Schema({
     ref: "users",
     required: true,
   },
+  email: {
+    type: String,
+  },
   name: {
     type: String,
-    required: true, // Add required to ensure name is always provided
+    required: true,
   },
   favoriteEmoji: {
     type: String,
     validate: {
-      validator: (value) => emojiRegex.test(value), // Validate using regex
+      validator: (value) => emojiRegex.test(value),
       message: "favoriteEmoji must be a single emoji character.",
     },
     default: "😊",
@@ -24,6 +27,22 @@ const profileSchema = new mongoose.Schema({
   bio: {
     type: String,
     default: "",
+  },
+  phoneNumber: {
+    type: String,
+    validate: {
+      validator: (value) => {
+        const phoneRegex = /^[0-9]{10}$/;
+        return phoneRegex.test(value);
+      },
+      message: "Invalid phone number format. It should be 10 digits.",
+    },
+    required: false,
+  },
+  gender: {
+    type: String,
+    enum: ["Male", "Female", "Other"],
+    default: "Other",
   },
 });
 

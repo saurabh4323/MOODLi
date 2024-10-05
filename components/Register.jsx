@@ -45,7 +45,7 @@ const Register = () => {
         toast.success(
           "You registered successfully. Check your email for verification!"
         );
-        window.location.href = "/dashboard";
+        window.location.href = "/profile";
       }
     } catch (error) {
       console.error(error);

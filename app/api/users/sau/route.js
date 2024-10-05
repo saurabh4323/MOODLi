@@ -8,8 +8,17 @@ connect();
 
 export async function POST(req) {
   try {
-    const { userId, name, favoriteEmoji, bio } = await req.json();
-    console.log("Received data:", { userId, name, favoriteEmoji, bio });
+    const { userId, email, name, favoriteEmoji, bio, phoneNumber, gender } =
+      await req.json();
+    console.log("Received data:", {
+      userId,
+      name,
+      email,
+      favoriteEmoji,
+      bio,
+      phoneNumber,
+      gender,
+    });
 
     // Validate input
     if (!userId) {
@@ -24,30 +33,42 @@ export async function POST(req) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // Check if the profile already exists
     let profile = await Profile.findOne({ userId });
     if (!profile) {
-      // If no profile exists, create a new one
-      profile = new Profile({ userId, name, favoriteEmoji, bio });
+      profile = new Profile({
+        userId,
+        name,
+        email,
+        favoriteEmoji,
+        bio,
+        phoneNumber,
+        gender,
+      });
     } else {
-      // Update the existing profile, only if the new values are provided
-      if (name !== undefined) profile.name = name; // Allow updating the name
+      // Update existing profile fields only if provided
+      if (name !== undefined) profile.name = name;
       if (favoriteEmoji !== undefined) profile.favoriteEmoji = favoriteEmoji;
+      if (email !== undefined) profile.email = user.email;
       if (bio !== undefined) profile.bio = bio;
+      if (phoneNumber !== undefined) profile.phoneNumber = phoneNumber;
+      if (gender !== undefined) profile.gender = gender;
     }
 
     await profile.save(); // Save the profile to the database
+    console.log("Profile saved:", profile);
 
     const responseData = {
-      name: profile.name || user.name, // Prefer profile name, fallback to user name
+      name: profile.name || user.name,
       email: user.email,
       favoriteEmoji: profile.favoriteEmoji,
       bio: profile.bio,
+      phoneNumber: profile.phoneNumber,
+      gender: profile.gender,
     };
 
     return NextResponse.json(responseData, { status: 200 });
   } catch (error) {
-    console.error("Error fetching user profile:", error);
+    console.error("Error updating user profile:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

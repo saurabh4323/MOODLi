@@ -4,6 +4,9 @@ import axios from "axios";
 import Calendar from "./Calander";
 import "./Dashboard.css";
 import "./Track.css";
+import { ToastContainer, toast } from "react-toastify"; // Import toast components
+import "react-toastify/dist/ReactToastify.css"; // Import CSS for the toasts
+
 export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -89,18 +92,20 @@ export default function Dashboard() {
   // Main part to post on emoji
   const handleSubmit = async () => {
     if (hasSubmittedToday) {
-      alert("You have already submitted your mood for today.");
+      toast.error("You have already submitted your mood for today."); // Replace alert with toast
       return;
     }
 
     if (!selectedEmoji || !emojiData.reason) {
-      alert("Please select an emoji and provide a reason.");
+      toast.error("Please select an emoji and provide a reason."); // Replace alert with toast
       return;
     }
 
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      alert("You are not registered / not created profile . Please try again.");
+      toast.error(
+        "You are not registered / not created profile. Please try again."
+      ); // Replace alert with toast
       return;
     }
 
@@ -128,10 +133,10 @@ export default function Dashboard() {
       localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
 
-      alert("Submission successful!");
+      toast.success("Submission successful!"); // Replace alert with toast
     } catch (error) {
       console.error("Error submitting emoji report:", error);
-      alert("You are not registered. Please try again.");
+      toast.error("You are not registered. Please try again."); // Replace alert with toast
     }
   };
 
@@ -160,6 +165,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
+      <ToastContainer /> {/* Add the ToastContainer component */}
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
@@ -237,7 +243,6 @@ export default function Dashboard() {
         ))}
       </div>
       <Calendar emojiMap={emojiMap} />{" "}
-      {/* Pass the emoji map to the Calendar */}
     </div>
   );
 }

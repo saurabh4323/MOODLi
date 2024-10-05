@@ -2,10 +2,11 @@
 
 .container {
   display: flex;
+  margin: auto;
   justify-content: center;
   align-items: center;
   height: 103vh;
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   /* background: linear-gradient(145deg, #e6e9f0, #eef1f5); */
 }
@@ -22,7 +23,7 @@
   left: -150px;
   filter: blur(60px);
 }
-.background-shapek::before {
+.background3::before {
   content: "";
   position: absolute;
   width: 300px;
@@ -34,7 +35,7 @@
   filter: blur(60px);
 }
 
-.background-shapesk::before {
+.background2::before {
   content: "";
   position: absolute;
   width: 300px;
@@ -45,7 +46,7 @@
   left: -150px;
   filter: blur(60px);
 }
-.background-shapk::before {
+.background1::before {
   content: "";
   position: absolute;
   width: 300px;

@@ -115,9 +115,9 @@ export default function Hero(props) {
             alt="emoji"
           ></Image>
         </div> */}
-        <div className="background-shapesk"></div>
-        <div className="background-shapek"></div>
-        <div className="background-shapk"></div>
+        <div className="background1"></div>
+        <div className="background2"></div>
+        <div className="background3"></div>
 
         <div className="content">
           <div className="text-wrapper">
