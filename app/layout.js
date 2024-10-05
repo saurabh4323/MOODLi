@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
         <head>
           <meta
             name="description"
-            content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community. Get started now!"
+            content="Track your mood with emojis, connect with others, and chat with like-minded people. Use AI to monitor your emotions and get personalized insights. Join the Moodli community and start your journey today"
           />
         </head>
 
