@@ -6,20 +6,20 @@ import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
 
 import Head from "next/head";
-import "./globals.css"; // Import your global styles
+import "./globals.css";
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
-import Image from "next/image"; // Import the Image component from Next.js
+import Image from "next/image";
 import NeonCursor from "@/components/NeonCursor";
 import Script from "next/script";
 import ConsentBanner from "@/components/ConsentBanner";
+
 export default function RootLayout({ children }) {
   const router = useRouter();
-  const [theme, setTheme] = useState("dark"); // Default to dark mode
+  const [theme, setTheme] = useState("dark");
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [heroopen, setheroopen] = useState(false);
 
-  // On component mount, check for the initial theme
   useEffect(() => {
     const initialTheme = getInitialTheme();
     setTheme(initialTheme);
@@ -29,13 +29,11 @@ export default function RootLayout({ children }) {
       enableLightMode();
     }
 
-    // Force reflow
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
     }, 0);
   }, []);
 
-  // Toggle between dark and light mode
   const handleToggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -44,49 +42,88 @@ export default function RootLayout({ children }) {
       setTheme("light");
       enableLightMode();
     }
-    toggleDarkMode(); // Call the hook's toggle function
+    toggleDarkMode();
   };
 
   return (
     <html lang="en">
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="google-adsense-account"
           content="ca-pub-3455923870560500"
         ></meta>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
-        <head>
-          <meta
-            name="description"
-            content="Track your mood with emojis, connect with others, and chat with like-minded people. Use AI to monitor your emotions and get personalized insights. Join the Moodli community and start your journey today"
-          />
-        </head>
 
-        <title>Moodli</title>
-        <link rel="icon" href="./favicon.ico" />
+        {/* SEO Meta Tags */}
+        <meta
+          name="description"
+          content="Track your mood, emotions, and mental health with Moodli. Get AI-powered insights, chat with the community, and use emojis to track your mood. Join today for free!"
+        />
+        <meta
+          name="keywords"
+          content="mood tracker, emotion tracking, mental health, AI mood tracking, mood analysis, emotion monitoring, mood chart, AI emotion, mood swings, mental wellness, daily mood check ,chat"
+        />
+        <meta name="author" content="Moodli" />
+
+        {/* Open Graph Meta Tags for Social Sharing */}
+        <meta property="og:url" content="https://moodli.site" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Moodli - Track Your Mood with AI & Emoji"
+        />
+        <meta
+          property="og:description"
+          content="Track your mood with emojis, get AI-powered insights, and connect with others in the Moodli community. Start tracking your emotions today!"
+        />
+        <meta property="og:image" content="/path-to-social-image.jpg" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Moodli - Mood Tracking Community" />
+        <meta
+          name="twitter:description"
+          content="Track your mood with emojis and use AI insights to improve mental health. Join the Moodli community today!"
+        />
+        <meta name="twitter:image" content="/path-to-twitter-image.jpg" />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        ></link>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        ></link>
+        <link rel="manifest" href="/site.webmanifest"></link>
+        <title>Moodli - Mood Tracker & Community</title>
       </head>
       <Head>
-        <title>Moodli</title>
+        <title>Moodli - Track Your Mood</title>
         <meta
           name="description"
-          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+          content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect with a community, and gain valuable insights into your mental health!"
         />
       </Head>
 
-      <Head>
-        <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
-        <meta
-          name="description"
-          content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
-        />
-      </Head>
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
         crossorigin="anonymous"
       ></Script>
+
       <body>
         <Header />
         <div style={{ textAlign: "center" }}>
@@ -99,10 +136,10 @@ export default function RootLayout({ children }) {
               border: "none",
               borderRadius: "5px",
               height: "40px",
-              marginLeft: "85%", // Default margin
+              marginLeft: "85%",
               cursor: "pointer",
             }}
-            className="toggle-button" // Add a class for media query styling
+            className="toggle-button"
           >
             <Image
               alt="Theme Toggle Icon"

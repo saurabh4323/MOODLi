@@ -17,7 +17,7 @@ const Header = () => {
       setIsAuthenticated(authStatus);
 
       const storedUserId = localStorage.getItem("userId");
-      console.log("User ID:", storedUserId);
+      console.log("User IDd:", storedUserId);
       setUserId(storedUserId);
     }
   }, []);
