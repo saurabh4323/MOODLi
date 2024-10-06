@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Calendar from "./Calander";
-
+// import getRandomColor from "./getRandomColor.js";
 import "./Dashboard.css";
 import "./Track.css";
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
@@ -23,7 +23,42 @@ export default function Dashboard() {
   });
   const [photo, setPhoto] = useState(null);
   const [emojiMap, setEmojiMap] = useState({}); // New state to track emojis by date
+  const colors = [
+    "#F87171",
+    "#FBBF24",
+    "#34D399",
+    "#60A5FA",
+    "#A78BFA",
+    "#F472B6",
+    "#F9A8D4",
+    "#FDBA74",
+    "#6EE7B7",
+    "#93C5FD",
+    "#D8B4FE",
+    "#E879F9",
+    "#FCD34D",
+    "#38BDF8",
+    "#FB7185",
+    "#A3E635",
+    "#FACC15",
+    "#86EFAC",
+    "#C084FC",
+    "#FECACA",
+    "#FF9AA2",
+    "#FFB3E6",
+    "#FF6666",
+    "#FFB347",
+    "#D3C0FB",
+    "#FFC3A0",
+    "#FF677D",
+    "#D4A5A5",
+    "#392F5A",
+    "#D9BF77",
+  ];
 
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
   useEffect(() => {
     const fetchTrack = async () => {
       const userId = localStorage.getItem("userId");
@@ -237,10 +272,29 @@ export default function Dashboard() {
       )}
       <div className="emoji-section">
         {Object.keys(mood).map((key, index) => (
-          <div key={index} className="emoji-card">
-            <h1 className="emoji-text" onClick={() => emojiSelect(mood[key])}>
-              {key}: {mood[key]}
-            </h1>
+          <div
+            key={index}
+            className="emoji-card"
+            style={{
+              backgroundColor: getRandomColor(),
+              borderRadius: "20px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "200px", // Square size
+              height: "180px",
+              margin: "15px",
+            }}
+            onClick={() => emojiSelect(mood[key])}
+          >
+            <span style={{ fontSize: "55px" }}>{mood[key]}</span> {/* Emoji */}
+            <span
+              style={{ fontSize: "20px", color: "#f5f5f5", fontWeight: "bold" }}
+            >
+              {key}
+            </span>{" "}
+            {/* Emoji Name */}
           </div>
         ))}
       </div>

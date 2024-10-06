@@ -1,186 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap');
-
 .main {
-  margin-top: 140px;
   display: flex;
-  min-height: 90vh;
-  height: auto;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-}
-.emoji{
-  font-size: 45px;
-}
-/* Track.css */
-/* Track.css */
-
-.main {
-  position: relative; /* Make sure this container can contain absolute positioned children */
-  overflow: hidden; /* Hide overflow */
-}
-
-/* Unique polygon shapes with larger sizes */
-.background-shapes,
-.background-shape,
-.background-shap,
-.background-shape1,
-.background-shape2,
-.background-shape3 {
-  position: absolute;
-  width: 300px; /* Increased size */
-  height: 300px; /* Increased size */
-  opacity: 0.5; /* Semi-transparent */
-  animation: move 15s linear infinite; /* Animation for moving */
-}
-
-.background-shapes {
-  background: #9be6c1; /* Color for the shape */
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%, 0% 50%); /* Custom polygon shape */
-  top: 10%; /* Adjust positioning */
-  left: 5%;
-  animation-delay: 0s; /* Delay for staggered effect */
-}
-
-.background-shape {
-  background: #ffb1cc; /* Color for the shape */
-  clip-path: polygon(20% 0%, 100% 50%, 20% 100%, 0% 50%); /* Custom polygon shape */
-  top: 30%; /* Adjust positioning */
-  left: 20%;
-  animation-delay: 2s; /* Delay for staggered effect */
-}
-
-.background-shap {
-  background: #9bc9ff; /* Color for the shape */
-  clip-path: polygon(0% 20%, 100% 0%, 100% 80%, 0% 100%); /* Custom polygon shape */
-  top: 50%; /* Adjust positioning */
-  left: 40%;
-  animation-delay: 4s; /* Delay for staggered effect */
-}
-
-.background-shape1 {
-  background: #ffecb3; /* Color for the shape */
-  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%); /* Custom polygon shape */
-  top: 20%; /* Adjust positioning */
-  left: 60%;
-  animation-delay: 6s; /* Delay for staggered effect */
-}
-
-.background-shape2 {
-  background: #b39ddb; /* Color for the shape */
-  clip-path: polygon(0% 0%, 100% 50%, 50% 100%, 0% 100%); /* Custom polygon shape */
-  top: 70%; /* Adjust positioning */
-  left: 10%;
-  animation-delay: 8s; /* Delay for staggered effect */
-}
-
-.background-shape3 {
-  background: #f2c94c; /* Color for the shape */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%); /* Custom polygon shape */
-  top: 80%; /* Adjust positioning */
-  left: 75%;
-  animation-delay: 10s; /* Delay for staggered effect */
-}
-
-@keyframes move {
-  0% {
-    transform: translate(0, 0); /* Start position */
-  }
-  100% {
-    transform: translate(150px, 150px); /* End position */
-  }
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .cards {
-  display: flex;
-  flex-wrap: wrap; 
-  width: 90%;
-  gap: 20px;
   list-style: none;
-  padding: 0;
+  padding: 7px;
+  margin: 10;
+  gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cards_item {
-  flex: 0 0 250px; /* Fixed width for each card item */
-  max-width: 250px; /* Ensure cards do not exceed this width */
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
 .card {
-  border-radius: 25px;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  border: 1px solid #000;
-  position: relative;
-  overflow: hidden;
-  color: white;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
-  width: 250px; /* Fixed width */
-  height: 240px; /* Fixed height */
-}
-
-.card_content {
+  width: 250px;
+  height: 300px;
+  gap: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content */
-  height: 100%; /* Ensure content takes full height */
-}
-
-.card_title {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #342222;
-  font-size: 12px;
-  margin: 10px 0;
-}
-
-.card_reason {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  color: #000;
-  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Adds a slight zoom on hover */
 }
 
-.error {
-  font-family: 'Fugaz One';
-  font-size: 2.5rem;
-  color: #fffdfd; /* Text color */
-  font-weight: 500;
+.card_image {
+  margin-top: -50px;
+  font-size: 80px; /* Emoji size */
+  /* margin-bottom: 20px; */
+}
+
+.card_content {
+  text-align: center;
+}
+
+.card_title {
+  font-size: 18px;
+  
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card_reason {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
+
+.erro {
+  font-size: 20px;
+  color: red;
+  text-align: center;
 }
 
 .loading-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  height: 100vh; /* Full screen height */
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .loading-text {
   font-size: 24px;
   margin-bottom: 20px;
-  font-weight: bold;
-  color: #555;
 }
 
 .loading-spinner {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid teal;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

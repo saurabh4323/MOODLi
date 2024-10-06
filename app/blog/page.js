@@ -58,7 +58,7 @@ const blogPosts = [
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 mt-[-10px]">
+    <div className="container mx-auto px-4 mt-10">
       <Head>
         <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
         <meta
@@ -68,7 +68,7 @@ export default function Page() {
       </Head>
 
       {/* Moodli Blog Heading */}
-      <h1 className="text-5xl font-bold text-center text-teal-700 dark:text-teal-300 mb-6 hover:text-teal-500 dark:hover:text-teal-400 hover:scale-105 transition-transform duration-300 ease-in-out">
+      <h1 className=" text-5xl font-bold text-center text-teal-700 dark:text-teal-300 mb-6 hover:text-teal-500 dark:hover:text-teal-400 hover:scale-105 transition-transform duration-300 ease-in-out">
         Moodli Blog
       </h1>
 

@@ -1,112 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 
 .recommendation-card {
-  
-  position: absolute;
-  top: 50%;
-right: -5%;
-  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  background: #30154b;
   width: 300px;
-  background-color: #afccea44;
-  border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 10;
-  animation: slide-in 0.5s forwards;
-}
-
-@keyframes slide-in {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%);
-  }
-}
-
-
-.close-btn {
   position: absolute;
-  top: 10px;
-  color: #000;
-  right: 15px;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
+  /* top: 50%; */
+right: 5%;
+  /* margin: 0 auto; */
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  /* font-family: 'Arial', sans-serif; */
+}
+/* position: absolute;
+top: 50%;
+right: -5%;
+transform: translate(-50%, -50%);
+width: 300px;
+background-color: #afccea44;
+border-radius: 12px;
+box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+padding: 20px;
+opacity: 0;
+visibility: hidden;
+z-index: 10;
+animation: slide-in 0.5s forwards; */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .mood-title {
-  font-size: 22px;
-  color: #a1d200e4;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
+  color: pink;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.emoji-circle {
+  background: linear-gradient(145deg, #b3e5fc, #4fc3f7);
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
 }
 
 .songs-section,
 .books-section {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-h3 {
- 
-  color: #ff0000e4;
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 5px;
+.songs-section h3,
+.books-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #e6b515;
 }
 
-ul {
-  color: #007bff;
-  list-style-type: none;
-  padding-left: 10px;
+.songs-section ul,
+.books-section ul {
+  list-style: none;
+  padding: 0;
 }
 
-li {
-  color: #007bff;
-  font-weight: 600;
+.songs-section li,
+.books-section li {
+  margin-bottom: 10px;
   font-size: 14px;
-  /* color: #fff; */
-  margin: 8px 4px;
+  color: #ffffff;
 }
 
-
-li:hover {
-  color: #007bff;
-  cursor: pointer;
+iframe {
+  margin-left: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Backdrop when the card is active */
-.container::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  visibility: hidden;
-  z-index: 5;
-  transition: visibility 0s, opacity 0.5s ease;
-}
-
-.container .recommendation-card ~ .container::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-@media (max-width: 768px) {
-
-.recommendation-card{
-  margin-right: -15%;
-  background-color: #007bff;
-  
-}
-.close-btn{
-  color: black;
-}
+ul li iframe {
+  margin-top: 5px;
 }

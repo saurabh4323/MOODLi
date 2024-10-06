@@ -20,6 +20,18 @@ export default function Track() {
     "#f2c94c",
     "#ffa726",
     "#81d4fa",
+    "#F87171",
+    "#FBBF24",
+    "#34D399",
+    "#60A5FA",
+    "#A78BFA",
+    "#F472B6",
+    "#F9A8D4",
+    "#FDBA74",
+    "#6EE7B7",
+    "#93C5FD",
+    "#D8B4FE",
+    "#E879F9",
   ];
 
   useEffect(() => {
@@ -51,12 +63,6 @@ export default function Track() {
       <div className="loading-container">
         <div className="loading-text">Tracking your data...</div>
         <div className="loading-spinner"></div> {/* Add loading animation */}
-        <div className="background-shapes"></div>
-        <div className="background-shape"></div>
-        <div className="background-shap"></div>
-        <div className="background-shape1"></div>
-        <div className="background-shape2"></div>
-        <div className="background-shape3"></div>
       </div>
     );
   }
@@ -67,19 +73,13 @@ export default function Track() {
         <title>Moodli</title>
         <meta
           name="description"
-          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
+          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people. Get started now!"
         />
       </Head>
-      <h1 className="text-4xl font-bold text-center mt-20 text-teal-700 dark:text-teal-300 ">
-        Track Your mood of Your past 21 days
+      <h1 className="text-4xl font-bold text-center mt-20 text-teal-700 dark:text-teal-300">
+        Track Your Mood Over the Past 21 Days
       </h1>
       <div className="main">
-        <div className="background-shapes"></div>
-        <div className="background-shape"></div>
-        <div className="background-shap"></div>
-        <div className="background-shape1"></div>
-        <div className="background-shape2"></div>
-        <div className="background-shape3"></div>
         <ul className="cards">
           {Array.isArray(track) && track.length > 0 ? (
             track.map((entry, index) => (
@@ -101,7 +101,9 @@ export default function Track() {
               </li>
             ))
           ) : (
-            <h1 className="erro">You have not selected any emoji for track </h1>
+            <h1 className="erro">
+              You have not selected any emoji for tracking
+            </h1>
           )}
         </ul>
       </div>

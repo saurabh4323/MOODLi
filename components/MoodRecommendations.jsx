@@ -3,7 +3,7 @@ import "./MoodRecommendation.css";
 import "../app/globals.css";
 const recommendations = {
   "😀": {
-    mood: "Happy",
+    mood: "😀",
     songs: [
       {
         title: "Happy - Pharrell Williams",
@@ -17,7 +17,7 @@ const recommendations = {
     books: ["The Happiness Project", "Guide - R.K. Narayan"],
   },
   "😭": {
-    mood: "Sad",
+    mood: "😭",
     songs: [
       {
         title: "We don't talk anymore - Charlie",
@@ -31,7 +31,7 @@ const recommendations = {
     books: ["The Fault in Our Stars", "Aansu - Anuradha Karnik"],
   },
   "🥰": {
-    mood: "Loved",
+    mood: "🥰",
     songs: [
       {
         title: "Perfect - Ed Sheeran",
@@ -45,7 +45,7 @@ const recommendations = {
     books: ["Pride and Prejudice", "When I Read - A.S. Byatt"],
   },
   "😡": {
-    mood: "Angry",
+    mood: "😡",
     songs: [
       {
         title: "Coldplay - Fix You",
@@ -62,7 +62,7 @@ const recommendations = {
     ],
   },
   "😪": {
-    mood: "Tired",
+    mood: "😪",
     songs: [
       {
         title: "Ed Sheeran - Shape Of You",

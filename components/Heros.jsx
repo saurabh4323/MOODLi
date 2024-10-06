@@ -25,10 +25,7 @@ const Heros = () => {
         </div>
 
         <div className={styles.content}>
-          <h1 className={styles.title}>
-            Elevate Your Emotion
-            <br /> with our Moodli
-          </h1>
+          <h1 className={styles.title}>Elevate Your Emotion with our Moodli</h1>
           <p className={styles.subtitle}>
             Empower Yourself with Self-awareness, Track Your Emotions, <br />
             chat with community and Unleash a Happier You
