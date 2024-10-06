@@ -41,11 +41,11 @@ const Footer = () => {
         { href: "/create", label: "Custom" },
       ],
     },
-    { title: "Company", links: [{ href: "/about", label: "About" }] },
+    { title: "Company", links: [{ href: "/", label: "About" }] },
     {
       title: "Helpful Links",
       links: [
-        { href: "/contact", label: "Contact" },
+        { href: "/", label: "Contact" },
         // Attach the onClick event to the "Blog" link
         { label: "Blog", onClick: Blog },
       ],
@@ -57,7 +57,7 @@ const Footer = () => {
           href: "https://www.freeprivacypolicy.com/live/7f98d65c-0a4f-473c-a7df-d04f99b5df56",
           label: "Privacy Policy",
         },
-        { href: "/terms", label: "Terms and conditions" },
+        { href: "/", label: "Terms and conditions" },
       ],
     },
   ];
