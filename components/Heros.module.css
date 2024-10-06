@@ -95,6 +95,9 @@
     left: 0; /* Ensures vector stays centered on mobile */
     width: 100%; /* Makes sure the background scales properly */
   }
-
+  .emotionsSection {
+    display: none;
+    
+  }
   
 }
