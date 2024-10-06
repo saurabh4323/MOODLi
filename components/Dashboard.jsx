@@ -220,51 +220,28 @@ export default function Dashboard() {
         <h1>How&apos;s your mood shaping up today?</h1>
       </div>
       {clicked && (
-        <div
-          className="animated-cardclick"
-          style={{ border: "1px solid #000" }}
-        >
+        <div className="animated-cardclick">
+          <h2 className="name-display">
+            Hey {username}, today you are feeling
+          </h2>{" "}
+          <div className="emoji-display">{selectedEmoji}</div>{" "}
           <input
             type="text"
-            placeholder="Write the reason for mood"
+            placeholder="Reason for your mood"
             name="reason"
             value={emojiData.reason}
             onChange={handleInputChange}
             className="reason-input"
           />
-
-          <label className="custom-file-upload" style={{ color: "#5b0eff" }}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              style={{
-                border: "1px solid #fff",
-                width: "95px",
-                fontWeight: "200",
-              }}
-            />
-          </label>
-
-          {photo && (
-            <img
-              src={photo}
-              alt="Uploaded"
-              width="320"
-              height="240"
-              style={{ border: "1px solid #000" }}
-            />
-          )}
-
-          <div className="button-containerclick">
-            <button className="button" onClick={closeClicked}>
+          <div className="button-container">
+            <button
+              className="button close-button"
+              onClick={closeClicked}
+              style={{ marginRight: "10px" }}
+            >
               Close
             </button>
-            <button
-              className="button submit-button"
-              type="submit"
-              onClick={handleSubmit}
-            >
+            <button className="button submit-button" onClick={handleSubmit}>
               Submit
             </button>
           </div>

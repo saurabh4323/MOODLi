@@ -81,6 +81,7 @@ const Header = () => {
     <header className="header-container">
       <div className="header-content">
         <Image
+          style={{ marginTop: "20px" }}
           className="logoo"
           src="/l.png"
           alt="Logo"
@@ -141,8 +142,8 @@ const Header = () => {
               src={"/lm.png"}
               style={{
                 position: "absolute",
-                marginLeft: "-15px",
-                // marginTop: "3px",
+                marginLeft: "2px",
+                marginTop: "3px",
               }}
               className="transition-transform duration-500 hover:scale-75 hover:rotate-12 hover:opacity-80"
             />

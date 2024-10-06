@@ -137,26 +137,123 @@
 transform: scale(0.8);
 }
 
+/* Animated Card */
 .animated-cardclick {
-  background-color: #5b0eff; /* Light cyan background */
-  border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-  width: 350px;
-  height: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.85);
-  opacity: 0;
+  background-color: #1730f0;
+  position: absolute;
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 10%;
+  margin-left: 45%;
+  max-width: 420px;
+  height: 45vh;
+  width: 100%;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
+  /* margin: 20px auto; */
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  z-index: 10000;
+  align-items: center;
   justify-content: center;
-  animation: slideIn 0.5s ease-out forwards;
-  transition: all 0.4s ease;
+  animation: slideIn 0.5s ease forwards;
 }
+.name-display{
+  font-size: 1.5em;
+}
+.emoji-display{
+  font-size: 60px;
+}
+/* Slide in animation */
+@keyframes slideIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.emoji-display{
+
+}
+/* Input for the reason */
+.reason-input {
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  font-size: 16px;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.reason-input:focus {
+  border-color: #34d399; /* Green focus color */
+}
+
+/* File upload button */
+.custom-file-upload {
+  margin: 15px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #f9a8d4; /* Light pink */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #f472b6; /* Darker pink on hover */
+}
+
+/* Button container for submit and close */
+.button-containerclick {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #60a5fa; /* Blue color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #3b82f6; /* Darker blue on hover */
+}
+
+.submit-button {
+  background-color: #34d399; /* Green submit button */
+}
+
+.submit-button:hover {
+  background-color: #10b981; /* Darker green on hover */
+}
+
+/* Image Preview */
+img {
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* Toast notification customization */
+.toast-container {
+  z-index: 10000;
+}
+
 
 @keyframes slideIn {
   from {

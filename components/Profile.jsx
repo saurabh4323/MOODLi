@@ -14,6 +14,18 @@ export default function Profile() {
     bio: "",
     phoneNumber: "",
   });
+  const shareOnWhatsApp = () => {
+    const message = encodeURIComponent(
+      "Hey! Check out this awesome mood-tracking website: Moodli! 😄\n" +
+        "Track your mood, join the community, and chat with me! 💬\n" +
+        "Use my referral code: moodli@130 to get started.\n" +
+        " https://moodlie.site"
+    );
+    const whatsappURL = `https://api.whatsapp.com/send?text=${message}`;
+
+    // Open WhatsApp with the pre-filled message
+    window.open(whatsappURL, "_blank");
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -164,7 +176,20 @@ export default function Profile() {
           </h3>
           <div className={styles.socialButtons}>
             <button className="button">Friends</button>
-            <button className="button">Invite Friends</button>
+            <button
+              className="button"
+              onClick={shareOnWhatsApp}
+              style={{
+                padding: "10px 20px",
+                backgroundColor: "#25D366", // WhatsApp color
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Invite Friends
+            </button>
           </div>
         </div>
 
