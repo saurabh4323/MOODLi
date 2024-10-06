@@ -40,6 +40,7 @@ const Heros = () => {
                 alt="Group 1 Emotion"
                 width={150}
                 height={100}
+                unoptimized
               />
             </div>
 
@@ -50,6 +51,7 @@ const Heros = () => {
                 alt="Group 2 Emotion"
                 width={175}
                 height={100}
+                unoptimized
               />
             </div>
 
@@ -59,6 +61,7 @@ const Heros = () => {
                 src={"/groups.png"}
                 alt="Group 3 Emotion"
                 width={175}
+                unoptimized
                 height={100}
               />
             </div>
@@ -69,6 +72,7 @@ const Heros = () => {
                 src={"/groupd.png"}
                 alt="Group 4 Emotion"
                 width={175}
+                unoptimized
                 height={100}
               />
             </div>
@@ -76,9 +80,10 @@ const Heros = () => {
             {/* Group 5 */}
             <div className={styles.emotionGroup}>
               <Image
-                src={"/lm.png"}
+                src={"/groupc.png"}
                 alt="Group 5 Emotion"
                 width={150}
+                unoptimized
                 height={100}
               />
             </div>
