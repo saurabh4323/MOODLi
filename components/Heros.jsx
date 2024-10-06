@@ -6,7 +6,6 @@ const Heros = () => {
   return (
     <div className="mainhero">
       <div className={styles.heroSection}>
-        {/* Background image */}
         <div
           className={styles.backgroundImage}
           style={{ borderTopRightRadius: "40px" }}
@@ -20,7 +19,6 @@ const Heros = () => {
           />
         </div>
 
-        {/* Content overlaying the background */}
         <div className={styles.content}>
           <h1 className={styles.title}>
             Elevate Your Emotional Well-being <br /> with our Mood Tracker App

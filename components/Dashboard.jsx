@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
 import Calendar from "./Calander";
+import groupc from "./images/groupc.png";
 import "./Dashboard.css";
 import "./Track.css";
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
@@ -243,6 +245,7 @@ export default function Dashboard() {
         ))}
       </div>
       <Calendar emojiMap={emojiMap} />{" "}
+      <Image src={groupc} alt="Group A" width={150} height={100} />
     </div>
   );
 }
