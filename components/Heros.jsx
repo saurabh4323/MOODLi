@@ -33,59 +33,24 @@ const Heros = () => {
           <Hero></Hero>
 
           <div className={styles.emotionsSection}>
-            {/* Group 1 */}
             <div className={styles.emotionGroup}>
-              <Image
-                src={"/groupb.png"}
-                alt="Group 1 Emotion"
-                width={150}
-                height={100}
-                unoptimized
-              />
+              <Image src={"/groupb.png"} width={150} height={100} unoptimized />
             </div>
 
-            {/* Group 2 */}
             <div className={styles.emotionGroup}>
-              <Image
-                src={"/groupa.png"}
-                alt="Group 2 Emotion"
-                width={175}
-                height={100}
-                unoptimized
-              />
+              <Image src={"/groupa.png"} width={175} height={100} unoptimized />
             </div>
 
-            {/* Group 3 */}
             <div className={styles.emotionGroup}>
-              <Image
-                src={"/groups.png"}
-                alt="Group 3 Emotion"
-                width={190}
-                unoptimized
-                height={100}
-              />
+              <Image src={"/groups.png"} width={190} unoptimized height={100} />
             </div>
 
-            {/* Group 4 */}
             <div className={styles.emotionGroup}>
-              <Image
-                src={"/groupd.png"}
-                alt="Group 4 Emotion"
-                width={175}
-                unoptimized
-                height={100}
-              />
+              <Image src={"/groupd.png"} width={175} unoptimized height={100} />
             </div>
 
-            {/* Group 5 */}
             <div className={styles.emotionGroup}>
-              <Image
-                src={"/groupc.png"}
-                alt="Group 5 Emotion"
-                width={150}
-                unoptimized
-                height={100}
-              />
+              <Image src={"/groupc.png"} width={150} unoptimized height={100} />
             </div>
           </div>
         </div>
