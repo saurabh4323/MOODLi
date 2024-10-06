@@ -14,6 +14,7 @@ import NeonCursor from "@/components/NeonCursor";
 import Script from "next/script";
 import ConsentBanner from "@/components/ConsentBanner";
 import { Toaster } from "react-hot-toast";
+import Feedback from "@/components/Feedback";
 
 export default function RootLayout({ children }) {
   const router = useRouter();

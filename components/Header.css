@@ -60,7 +60,7 @@
 @media (max-width: 768px) {
   .header-container {
     margin-left: 1px;
-    width: 109%;
+    width: 100%;
     height: 60px;
     border-radius: 50px;
     padding: 0 8px;
@@ -98,5 +98,103 @@
 }
 
 .confirmation-menu button {
-  margin: 5px; /* Space between buttons */
+  margin: 5px; 
+}
+
+
+.hamburger-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.mobile-dropdown .nav-item {
+  margin: 5px 0;
+  color: white;
+  text-decoration: none;
+}
+
+.mobile-logout {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-default{
+  display: none;
+}
+@media (max-width: 768px) {
+  /* Show only some links on mobile */
+  .nav {
+    display: none; /* Hide normal nav on mobile */
+  }
+  .mobile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust this value if needed */
+    right: 10px; /* Adjust this value if needed */
+    background-color: #5c3ff3; /* Purple background */
+    padding: 10px;
+    border-radius: 5px; /* You can adjust or remove this for sharp corners */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px; /* Optional: adds shadow for depth */
+    z-index: 1000;
+  }
+  
+  .mobile-dropdown .nav-item {
+    border-bottom: 1px solid #000;
+    text-align: center;
+    margin: 5px 0; /* Vertical spacing between items */
+    color: white; /* Text color for visibility */
+    text-decoration: none;
+    font-weight: 600; /* Optional: makes text bold */
+  }
+  
+  .hamburger-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Moves the hamburger icon to the right */
+  }
+  
+  .mobile-default {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .mobile-default .nav-item {
+    font-size: 0.8rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .mobile-dropdown {
+    display: flex;
+  }
+
+  .hamburger-icon {
+    margin-left: auto;
+  }
+
+  .header-container {
+    padding: 0 16px;
+  }
 }

@@ -8,6 +8,7 @@ import "./Dashboard.css";
 import "./Track.css";
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for the toasts
+import Feedback from "./Feedback";
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -207,6 +208,7 @@ export default function Dashboard() {
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
         </div>
+        {/* <Feedback></Feedback> */}
         <div className="status-item">
           <h1 className="status-text">
             Time: {new Date().toLocaleTimeString()}
