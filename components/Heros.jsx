@@ -76,7 +76,7 @@ const Heros = () => {
             {/* Group 5 */}
             <div className={styles.emotionGroup}>
               <Image
-                src={"/groupc.png"}
+                src={"/lm.png"}
                 alt="Group 5 Emotion"
                 width={150}
                 height={100}
