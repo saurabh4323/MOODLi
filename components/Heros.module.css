@@ -1,5 +1,5 @@
 .heroSection {
-  height: 175vh;
+  height: 176vh;
   margin-top: 24px;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -67,7 +67,7 @@
 
 @media screen and (max-width: 768px) {
   .heroSection {
-    height: 120vh; /* Reduced height for mobile */
+    height: 111vh; /* Reduced height for mobile */
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
@@ -90,6 +90,7 @@
   }
 
   .backgroundImage {
+    background-size: contain;
     top: 0;
     left: 0; /* Ensures vector stays centered on mobile */
     width: 100%; /* Makes sure the background scales properly */
