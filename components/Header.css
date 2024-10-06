@@ -85,15 +85,16 @@
   }
 }
 .confirmation-menu {
+  cursor: pointer;
   position: absolute; /* Position it relative to the header */
   top: 16%; /* Adjust this based on your header height */
   right: 20%; /* Align to the right */
-  background-color: rgb(16, 66, 215); /* Background color */
+  background-color: rgb(0, 64, 255); /* Background color */
   border: 1px solid #f1e4e4; /* Border for the menu */
   padding: 15px; /* Padding around the content */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for a nice effect */
-  z-index: 10; /* Ensure it appears above other elements */
+  z-index: 999; /* Ensure it appears above other elements */
 }
 
 .confirmation-menu button {
