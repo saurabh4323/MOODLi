@@ -31,28 +31,6 @@ const Heros = () => {
           </p>
           <button className={styles.button}>Join with us</button>
           <Hero></Hero>
-
-          <div className={styles.emotionsSection}>
-            <div className={styles.emotionGroup}>
-              <Image src={"/groupb.png"} width={150} height={100} unoptimized />
-            </div>
-
-            <div className={styles.emotionGroup}>
-              <Image src={"/groupa.png"} width={175} height={100} unoptimized />
-            </div>
-
-            <div className={styles.emotionGroup}>
-              <Image src={"/groups.png"} width={190} unoptimized height={100} />
-            </div>
-
-            <div className={styles.emotionGroup}>
-              <Image src={"/groupd.png"} width={175} unoptimized height={100} />
-            </div>
-
-            <div className={styles.emotionGroup}>
-              <Image src={"/groupc.png"} width={150} unoptimized height={100} />
-            </div>
-          </div>
         </div>
       </div>
     </div>
