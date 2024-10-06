@@ -38,7 +38,7 @@ const Heros = () => {
               <Image
                 src={"/groupb.png"}
                 alt="Group 1 Emotion"
-                width={170}
+                width={150}
                 height={100}
                 unoptimized
               />
@@ -49,7 +49,7 @@ const Heros = () => {
               <Image
                 src={"/groupa.png"}
                 alt="Group 2 Emotion"
-                width={165}
+                width={175}
                 height={100}
                 unoptimized
               />
@@ -60,7 +60,7 @@ const Heros = () => {
               <Image
                 src={"/groups.png"}
                 alt="Group 3 Emotion"
-                width={175}
+                width={190}
                 unoptimized
                 height={100}
               />
