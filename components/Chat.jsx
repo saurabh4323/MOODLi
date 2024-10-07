@@ -1,4 +1,6 @@
 // components/Chat.js
+"use client"; // This line indicates that this component is client-side
+
 import { useEffect, useState } from "react";
 import styles from "./Chat.module.css"; // Import styles from a CSS module
 
@@ -7,11 +9,12 @@ const Chat = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null); // Track selected user
   const [newMessage, setNewMessage] = useState("");
-
-  // Get userId from localStorage
-  const userId = localStorage.getItem("userId");
+  const [userId, setUserId] = useState(null); // State to hold userId
 
   useEffect(() => {
+    // Get userId from localStorage on the client side
+    const id = localStorage.getItem("userId");
+    setUserId(id);
     fetchUsers(); // Fetch users on component mount
   }, []);
 
@@ -24,7 +27,7 @@ const Chat = () => {
   }, [selectedUser]);
 
   const fetchMessages = async () => {
-    if (!selectedUser) return; // No user selected
+    if (!selectedUser || !userId) return; // No user selected or no userId
     const response = await fetch(
       `/api/users/message?senderId=${userId}&receiverId=${selectedUser._id}`
     );
