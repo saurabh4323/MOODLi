@@ -25,7 +25,9 @@ const Header = () => {
       enableLightMode();
     }
   }, []);
-
+  const track = () => {
+    window.location.href = "/track";
+  };
   const handleToggleTheme = () => {
     setIsChecked(!isChecked);
     document.body.classList.toggle("dark", !isChecked);
@@ -91,7 +93,7 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item">
+          <Link href="/track" className="nav-item" onClick={track}>
             VibeTrack
           </Link>
           <Link href="/community" className="nav-item">
@@ -161,7 +163,7 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item">
+          <Link href="/track" className="nav-item" onClick={track}>
             VibeTrack
           </Link>
           {isAuthenticated && (

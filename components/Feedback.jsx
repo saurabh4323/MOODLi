@@ -1,10 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 const Feedback = () => {
   const [feedback, setFeedback] = useState("");
   const [rating, setRating] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [feeddata, setfeeddata] = useState({
+    name: "saurabh",
+    feedback: "",
+  });
 
   useEffect(() => {
     // Check localStorage to see if feedback has already been submitted
@@ -23,10 +27,13 @@ const Feedback = () => {
   };
 
   const handleSubmit = () => {
-    // Submit the feedback and rating to your API or backend
     console.log("Feedback Submitted: ", feedback, "Rating: ", rating);
+    const res = axios.post("api/users/feedback", {
+      name: "saurabh",
+      feedback: feedback,
+    });
+    console.log("sending", res);
 
-    // Save to localStorage to mark feedback as submitted
     localStorage.setItem("hasSubmittedFeedback", "true");
 
     setIsSubmitted(true);
@@ -44,7 +51,7 @@ const Feedback = () => {
   return (
     <div className="feedback-card">
       {isSubmitted ? (
-        <></>
+        <div style={{ display: "none" }}>hddd</div>
       ) : (
         <>
           <h2>We value your feedback!</h2>
