@@ -92,14 +92,7 @@ const Chat = () => {
     "#F87171",
     "#FBBF24",
     "#34D399",
-    "#60A5FA",
-    "#A78BFA",
-    "#F472B6",
-    "#F9A8D4",
-    "#FDBA74",
-    "#6EE7B7",
-    "#93C5FD",
-    "#D8B4FE",
+   
   ];
 
   function getRandomColor() {
