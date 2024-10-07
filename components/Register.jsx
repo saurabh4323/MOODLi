@@ -101,10 +101,11 @@ const Register = () => {
           name="name"
           style={{ color: "green" }}
           value={signup.name}
-          onChange={handleInputChange}
+          onChange={handleInputChange} // Ensure the handler is correctly updating the state
           placeholder="Full Name"
           className={styles.input}
         />
+
         <input
           style={{ color: "green" }}
           type="email"

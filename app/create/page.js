@@ -1,8 +1,13 @@
 "use client";
-import Create from "@/components/Create";
+import Chat from "@/components/Chat";
 
 import React from "react";
 
 export default function page() {
-  return <div>h{/* <PeopleImages></PeopleImages> */}</div>;
+  return (
+    <div>
+      {" "}
+      <Chat></Chat>
+    </div>
+  );
 }
