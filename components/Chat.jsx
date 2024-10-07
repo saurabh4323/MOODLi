@@ -1,18 +1,20 @@
-// components/Chat.js
-"use client"; // This line indicates that this component is client-side
+"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Chat.module.css"; // Import styles from a CSS module
 
 const Chat = () => {
+  const messagesEndRef = useRef(null);
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null); // Track selected user
+  const [selectedUser, setSelectedUser] = useState(null);
   const [newMessage, setNewMessage] = useState("");
-  const [userId, setUserId] = useState(null); // State to hold userId
+  const [userId, setUserId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(""); // New state for search input
+
+  const messagesContainerRef = useRef(null); // Reference to messages container
 
   useEffect(() => {
-    // Get userId from localStorage on the client side
     const id = localStorage.getItem("userId");
     setUserId(id);
     fetchUsers(); // Fetch users on component mount
@@ -20,14 +22,18 @@ const Chat = () => {
 
   useEffect(() => {
     if (selectedUser) {
-      fetchMessages(); // Fetch messages when a user is selected
-      const interval = setInterval(fetchMessages, 2000); // Poll for new messages every 2 seconds
-      return () => clearInterval(interval); // Cleanup interval on unmount
+      fetchMessages();
+      const interval = setInterval(fetchMessages, 2000);
+      return () => clearInterval(interval);
     }
   }, [selectedUser]);
 
+  useEffect(() => {
+    scrollToBottom(); // Scroll to bottom whenever messages change
+  }, [messages]);
+
   const fetchMessages = async () => {
-    if (!selectedUser || !userId) return; // No user selected or no userId
+    if (!selectedUser || !userId) return;
     const response = await fetch(
       `/api/users/message?senderId=${userId}&receiverId=${selectedUser._id}`
     );
@@ -46,7 +52,13 @@ const Chat = () => {
       return;
     }
     const data = await response.json();
-    setUsers(data);
+    // Sort users so that users with new messages are at the top
+    const sortedUsers = data.sort((a, b) => {
+      if (a.hasNewMessage && !b.hasNewMessage) return -1;
+      if (!a.hasNewMessage && b.hasNewMessage) return 1;
+      return 0;
+    });
+    setUsers(sortedUsers);
   };
 
   const sendMessage = async () => {
@@ -62,64 +74,122 @@ const Chat = () => {
           message: newMessage,
         }),
       });
-      setNewMessage(""); // Clear input field after sending
-      fetchMessages(); // Refresh messages after sending
+      setNewMessage("");
+      fetchMessages(); // Fetch messages after sending
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filter users based on the search term
+  const filteredUsers = users.filter((user) =>
+    user.name?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const colors = [
+    "#F87171",
+    "#FBBF24",
+    "#34D399",
+    "#60A5FA",
+    "#A78BFA",
+    "#F472B6",
+    "#F9A8D4",
+    "#FDBA74",
+    "#6EE7B7",
+    "#93C5FD",
+    "#D8B4FE",
+  ];
+
+  function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  const scrollToBottom = () => {
+    const container = messagesContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight; // Scroll to the bottom
     }
   };
 
   return (
     <div className={styles.chatContainer}>
-      <div className={styles.userList}>
-        <h3>Users</h3>
-        {users.length === 0 ? (
-          <div>No users available.</div>
-        ) : (
-          users.map((user) => (
-            <div
-              key={user._id}
-              className={styles.user}
-              onClick={() => setSelectedUser(user)}
-            >
-              <span>
-                {user.favoriteEmoji} {user.name}
-              </span>
-            </div>
-          ))
-        )}
+      {/* Sidebar for users */}
+      <div className={styles.sidebar}>
+        <div className={styles.searchBar}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+        <div className={styles.userList}>
+          {filteredUsers.length === 0 ? (
+            <div>No users available.</div>
+          ) : (
+            filteredUsers.map((user) => (
+              <div
+                key={user._id}
+                style={{ backgroundColor: getRandomColor() }}
+                className={`${styles.userCard} ${
+                  user._id === selectedUser?._id ? styles.activeUser : ""
+                }`}
+                onClick={() => setSelectedUser(user)}
+              >
+                <div className={styles.userName}>
+                  {user.name}
+                  {user.hasNewMessage && (
+                    <span className={styles.newMessageIndicator}>•</span>
+                  )}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-      <div className={styles.chatArea}>
+
+      {/* Chat area */}
+      <div ref={messagesContainerRef} className={styles.chatBox}>
         {selectedUser ? (
           <>
+            <div className={styles.chatHeader}>
+              <div className={styles.chatDetails}>
+                <h3>{selectedUser.name}</h3>
+                <span>{messages.length} Messages</span>
+              </div>
+            </div>
             <div className={styles.messages}>
               {messages.map((msg) => (
-                <div key={msg._id} className={styles.message}>
-                  <span>
-                    {msg.senderId === userId
-                      ? users.find((u) => u._id === userId)?.favoriteEmoji
-                      : users.find((u) => u._id === selectedUser._id)
-                          ?.favoriteEmoji}{" "}
-                    {msg.senderId === userId
-                      ? users.find((u) => u._id === userId)?.name
-                      : users.find((u) => u._id === selectedUser._id)?.name}
-                    : {msg.message}
-                  </span>
+                <div
+                  key={msg._id}
+                  className={`${styles.message} ${
+                    msg.senderId === userId ? styles.sent : styles.received
+                  }`}
+                >
+                  <span className={styles.messageText}>{msg.message}</span>
                 </div>
               ))}
+              {/* Dummy div to scroll to the last message */}
+              <div ref={messagesEndRef}></div>
             </div>
-            <input
-              type="text"
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-              placeholder="Type your message..."
-              className={styles.input}
-            />
-            <button onClick={sendMessage} className={styles.sendButton}>
-              Send
-            </button>
+            <div className={styles.messageInputBox}>
+              <input
+                type="text"
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+                placeholder="Type your message..."
+                className={styles.input}
+              />
+              <button onClick={sendMessage} className={styles.sendButton}>
+                &#9658;
+              </button>
+            </div>
           </>
         ) : (
-          <div>Please select a user to start chatting.</div>
+          <div className={styles.selectUserMessage}>Select a user to chat</div>
         )}
       </div>
     </div>

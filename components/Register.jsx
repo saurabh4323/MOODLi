@@ -45,7 +45,7 @@ const Register = () => {
         toast.success(
           "You registered successfully. Check your email for verification!"
         );
-        window.location.href = "/profile";
+        window.location.href = "/dashboard";
       }
     } catch (error) {
       console.error(error);
@@ -59,13 +59,6 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Moodli</title>
-        <meta
-          name="description"
-          content="Welcome to Moodli, your mood-tracking community. Track your mood with emoji and join the community and chat with people . Get started now!"
-        />
-      </Head>
       <div className="backgroun-shapes"></div>
       <div className="backgroun-shape"></div>
       <div className="backgroun-shap"></div>
@@ -99,15 +92,12 @@ const Register = () => {
         <input
           type="text"
           name="name"
-          style={{ color: "green" }}
           value={signup.name}
-          onChange={handleInputChange} // Ensure the handler is correctly updating the state
+          onChange={handleInputChange}
           placeholder="Full Name"
           className={styles.input}
         />
-
         <input
-          style={{ color: "green" }}
           type="email"
           placeholder="Email"
           name="email"
@@ -116,7 +106,6 @@ const Register = () => {
           className={styles.input}
         />
         <input
-          style={{ color: "green" }}
           type="password"
           placeholder="Password"
           name="password"

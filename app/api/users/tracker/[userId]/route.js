@@ -33,3 +33,31 @@ export async function POST(req, { params }) {
     );
   }
 }
+export async function GET(req) {
+  try {
+    // Fetch all users
+    const users = await User.find();
+
+    // For each user, fetch the last emoji submitted
+    const userEmojis = await Promise.all(
+      users.map(async (user) => {
+        const lastEmoji = await Emoji.findOne({ userId: user._id }).sort({
+          createdAt: -1,
+        }); // Assuming createdAt is a timestamp field
+        return {
+          _id: user._id,
+          name: user.name,
+          favoriteEmoji: lastEmoji ? lastEmoji.emoji : "😊", // Default emoji if none found
+        };
+      })
+    );
+
+    return NextResponse.json(userEmojis);
+  } catch (error) {
+    console.error("Error fetching users and their emojis:", error);
+    return NextResponse.json(
+      { error: "Failed to fetch users" },
+      { status: 500 }
+    );
+  }
+}

@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "PLEASE WRITE PASSWORD"],
   },
+
   VerifyToken: String,
   VerifyTokenExpire: Date,
   ForgotPasswordToken: String,

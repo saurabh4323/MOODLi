@@ -1,145 +1,304 @@
-/* Chat.module.css */
-
+/* Chat Container: Flex layout with two main sections */
 .chatContainer {
+  position: static;
   display: flex;
   height: 100vh;
+  
+  padding: 30px;
+ 
+}
+
+/* Sidebar for users */
+.sidebar {
+  width: 250px;
+  border: 1px solid #fff;
+  /* background-color: #ffffff; */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-right: 25px;
+}
+
+.searchBar {
+ 
+  color: #000;
+  padding: 10px;
+}
+
+.searchBar input {
   width: 100%;
-  background-color: #f0f4f8;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* User List Panel */
-.userList {
-  width: 25%;
-  background-color: #2c3e50;
-  padding: 1rem;
-  overflow-y: auto;
-  color: #ecf0f1;
-}
-
-.userList h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ecf0f1;
-  margin-bottom: 1rem;
-}
-
-.user {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem;
-  border-radius: 5px;
-  margin-bottom: 0.8rem;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  outline: none;
+}.userCard {
+  padding-left: 5px;
+  padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: #34495e;
 }
 
-.user:hover {
-  background-color: #1abc9c;
+.userCard:hover {
+  background-color: #f0f0f0;
 }
 
-.user span {
-  font-size: 1rem;
-  margin-left: 0.5rem;
-  color: #ecf0f1;
+.userName {
+  font-size: 16px;
 }
 
-/* Chat Area Panel */
-.chatArea {
-  width: 75%;
+.newMessageIndicator {
+  color: green;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Green font for users with new messages */
+.hasNewMessage {
+  color: green;
+  font-weight: bold;
+}
+
+.activeUser {
+  background-color: #e0e0e0;
+}
+
+
+/* User List Styling */
+.userList {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.userCard {
+  border: 1px solid #004d40;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.userCard:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.userName {
+  color: #000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.userStatus {
+  font-size: 12px;
+  color: #f0f0f0;
+}
+
+/* Active user styling */
+.activeUser {
+  background-color: #e1f5fe;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Box Styling */
+.chatBox {
+  border: 1px solid #fff;
+  flex-grow: 1;
+  /* background-color: #ffffff; */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: #ecf0f1;
-  padding: 1rem;
-  box-shadow: -3px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
-.chatArea h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
+/* Chat Header */
+.chatHeader {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
 }
 
+.chatAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.chatDetails h3 {
+  color: #9f8efa;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chatDetails span {
+  color: #000;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Messages Section */
 .messages {
+  color: #000;
   flex-grow: 1;
   overflow-y: auto;
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 1rem;
+  padding: 10px;
 }
 
 .message {
+  color: #000;
+  margin-bottom: 10px;
   display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
 }
 
-.message span {
-  background-color: #3498db;
-  color: white;
-  padding: 0.5rem 1rem;
+.sent {
+  justify-content: flex-end;
+}
+
+.received {
+  justify-content: flex-start;
+}
+
+.messageText {
+  max-width: 60%;
+  background-color: #e1f5fe;
+  padding: 10px;
   border-radius: 20px;
-  max-width: 70%;
+  font-size: 14px;
+  color: #000;
+  line-height: 1.4;
   word-wrap: break-word;
-  font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.message span.userMessage {
-  background-color: #2ecc71;
+.sent .messageText {
+  background-color: #00796b;
+  color: #fff;
 }
 
-/* Input Field and Button */
-.input {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #bdc3c7;
+/* Message Input Box */
+.messageInputBox {
+  display: flex;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  /* background-color: #ffffff; */
+}
+
+
+.messageInputBox input {
+  color: #000;
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
   outline: none;
-  margin-bottom: 0.5rem;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.3s ease;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
-.input:focus {
-  border-color: #3498db;
+.messageInputBox input:focus {
+  border-color: #00796b;
 }
 
 .sendButton {
-  padding: 0.75rem 1.5rem;
-  background-color: #3498db;
-  color: white;
+  background-color: #00796b;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .sendButton:hover {
-  background-color: #2980b9;
+  background-color: #004d40;
 }
 
-/* Mobile Responsiveness */
+/* Select a user to chat message */
+.selectUserMessage {
+  color: #000;
+  font-size: 18px;
+  color: #888;
+  text-align: center;
+  margin-top: 50px;
+}
+.chatContainer {
+  display: flex;
+  height: 100vh;
+  padding: 30px;
+ 
+}
+
 @media (max-width: 768px) {
+  /* Reduce the chat container padding and make sidebar collapse on mobile */
   .chatContainer {
-    flex-direction: column;
+    margin-top: 20px;
+    /* flex-direction: column; */
+    padding: 15px;
   }
 
-  .userList {
-    width: 100%;
-    height: 30%;
+  /* Sidebar becomes full width and collapses to the top */
+  .sidebar {
+    width: 90%;
+    margin-bottom: 20px;
   }
 
-  .chatArea {
+  /* Adjust the chat box to take full width on mobile */
+  .chatBox {
     width: 100%;
-    height: 70%;
+    flex-grow: 1;
   }
+
+  /* Reduce padding and font sizes for mobile view */
+  .searchBar input, .messageInputBox input {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Make user cards more compact */
+  .userCard {
+    padding: 5px;
+  }
+
+  
+
+  .userName {
+    font-size: 10px;
+  }
+
+  .chatDetails h3 {
+    font-size: 18px;
+  }
+
+  .chatDetails span {
+    font-size: 12px;
+  }
+
+  /* Adjust message sizes on mobile */
+  .messageText {
+    max-width: 80%;
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+.notificationDot {
+  color: red;
+  margin-left: 5px;
+  font-size: 18px;
 }
