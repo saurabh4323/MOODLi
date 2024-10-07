@@ -208,7 +208,7 @@ export default function Dashboard() {
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
         </div>
-        <Feedback></Feedback>
+        {/* <Feedback></Feedback> */}
         <div className="status-item">
           <h1 className="status-text">
             Time: {new Date().toLocaleTimeString()}
