@@ -7,7 +7,7 @@ connect(); // Establish a database connection
 
 export async function GET(req) {
   try {
-    const users = await User.find({}, "name favoriteEmoji"); // Fetch only name and favoriteEmoji fields
+    const users = await User.find({}, "name favoriteEmoji");
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);

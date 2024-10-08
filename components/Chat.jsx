@@ -10,9 +10,9 @@ const Chat = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [newMessage, setNewMessage] = useState("");
   const [userId, setUserId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(""); // New state for search input
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const messagesContainerRef = useRef(null); // Reference to messages container
+  const messagesContainerRef = useRef(null);
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
@@ -88,12 +88,7 @@ const Chat = () => {
     user.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const colors = [
-    "#F87171",
-    "#FBBF24",
-    "#34D399",
-   
-  ];
+  const colors = ["#F87171", "#FBBF24", "#34D399"];
 
   function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
