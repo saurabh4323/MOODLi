@@ -9,6 +9,7 @@ import "./Track.css";
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for the toasts
 import Feedback from "./Feedback";
+import Quots from "./Quots";
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -197,13 +198,14 @@ export default function Dashboard() {
     Crying: "😭",
     Sleepy: "😪",
     Neutral: "😶",
-    Depresses: "😔",
+    Depressed: "😔",
     Flirty: "😏",
   };
 
   return (
     <div className="dashboard-container">
       <ToastContainer /> {/* Add the ToastContainer component */}
+      <Quots></Quots>
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
