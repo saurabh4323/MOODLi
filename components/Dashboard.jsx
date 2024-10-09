@@ -197,7 +197,7 @@ export default function Dashboard() {
     Crying: "😭",
     Sleepy: "😪",
     Neutral: "😶",
-    Party: "🥳",
+    Depresses: "😔",
     Flirty: "😏",
   };
 
