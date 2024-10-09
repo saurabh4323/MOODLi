@@ -27,20 +27,21 @@ const Quots = () => {
     fetchQuote();
   }, []);
 
+  // Check if loading or there was an error
   if (loading) {
-    return <div style={styles.loading}>Loading...</div>;
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div style={styles.error}>Error: {error}</div>;
+    return <div>Error: {error}</div>;
   }
 
   // Check if the quote is not null before rendering
   return (
     <div style={styles.quoteContainer}>
-      <>
-        <blockquote style={styles.quoteText}>"{quote.quote}"</blockquote>
-      </>
+      <blockquote style={styles.quoteText}>
+        &ldquo;{quote.quote}&rdquo;
+      </blockquote>
     </div>
   );
 };
