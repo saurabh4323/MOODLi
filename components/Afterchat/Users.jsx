@@ -8,8 +8,8 @@ const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [friendList, setFriendList] = useState([]); // To store the friend's list
-  const [showFriendList, setShowFriendList] = useState(false); // State to toggle friend list visibility
+  const [friendList, setFriendList] = useState([]);
+  const [showFriendList, setShowFriendList] = useState(false);
 
   const colors = [
     "#F87171",
@@ -37,13 +37,13 @@ const Users = () => {
   ];
 
   useEffect(() => {
-    fetchUsers(); // Fetch users when the component mounts
+    fetchUsers();
   }, []);
 
   const fetchUsers = async () => {
     try {
       const response = await axios.get("api/users/sau");
-      console.log("Fetched users data:", response.data); // Log the response data
+      console.log("Fetched users data:", response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -57,9 +57,8 @@ const Users = () => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  const truncateBio = (bio) => {
-    return bio.length > 25 ? bio.substring(0, 25) + "..." : bio;
-  };
+  const truncateBio = (bio) =>
+    bio.length > 25 ? `${bio.substring(0, 25)}...` : bio;
 
   const handleAddFriendClick = (user) => {
     setSelectedUser(user);
@@ -72,14 +71,14 @@ const Users = () => {
   };
 
   const handleConfirmAddFriend = async () => {
-    const userId = localStorage.getItem("userId"); // Get logged-in user's ID
-    const friendId = selectedUser._id; // ID of the selected user
+    const userId = localStorage.getItem("userId");
+    const friendId = selectedUser._id;
 
     try {
       await axios.post("/api/users/friend", { userId, friendId });
       alert(`${selectedUser.name} has been added as a friend!`);
-      handleCloseMenu(); // Close the menu after adding
-      fetchFriends(); // Optional: Refresh the friend list if needed
+      handleCloseMenu();
+      fetchFriends();
     } catch (error) {
       console.error("Error adding friend:", error);
     }
@@ -90,15 +89,15 @@ const Users = () => {
 
     try {
       const response = await axios.get(`/api/users/friend?userId=${userId}`);
-      setFriendList(response.data ? response.data.friends : []); // Set friends list
+      setFriendList(response.data ? response.data.friends : []);
     } catch (error) {
       console.error("Error fetching friends:", error);
     }
   };
 
   const toggleFriendList = () => {
-    setShowFriendList((prev) => !prev); // Toggle visibility of friend list
-    if (!showFriendList) fetchFriends(); // Fetch friends only if we're opening the list
+    setShowFriendList((prev) => !prev);
+    if (!showFriendList) fetchFriends();
   };
 
   const updateProfile = async (profileData) => {
@@ -106,7 +105,7 @@ const Users = () => {
       const response = await axios.post("/api/profile", profileData);
       if (response.status === 200) {
         console.log("Profile updated successfully:", response.data);
-        fetchUsers(); // Fetch updated users after profile update
+        fetchUsers();
       } else {
         console.error("Failed to update profile:", response.data);
       }
@@ -129,14 +128,17 @@ const Users = () => {
           onChange={handleSearch}
           className="search-input"
         />
+        <button
+          style={{ marginRight: "70px", marginTop: "-20px" }}
+          className="show-friend-list-btn"
+          onClick={toggleFriendList}
+        >
+          {showFriendList ? "Hide Friend List" : "Show Friend List"}
+        </button>
       </div>
 
-      <button className="show-friend-list-btn" onClick={toggleFriendList}>
-        {showFriendList ? "Hide Friend List" : "Show Friend List"}
-      </button>
-
       {showFriendList && (
-        <div className="friend-list-container">
+        <div className="friend-list-container" style={{ marginTop: "-40px" }}>
           <h2>Your Friends:</h2>
           {friendList.length === 0 ? (
             <p>No friends added yet.</p>
@@ -145,8 +147,11 @@ const Users = () => {
               {friendList.map((friendId) => {
                 const friend = users.find((user) => user._id === friendId);
                 return friend ? (
-                  <li key={friendId}>
-                    {friend.name} <span>{friend.favoriteEmoji}</span>
+                  <li key={friendId} className="friend-item">
+                    <div className="friend-card">
+                      <span>{friend.name}</span>{" "}
+                      <span>{friend.favoriteEmoji}</span>
+                    </div>
                   </li>
                 ) : null;
               })}
