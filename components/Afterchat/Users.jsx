@@ -134,7 +134,7 @@ const Users = () => {
           className="show-friend-list-btn"
           onClick={toggleFriendList}
         >
-          {showFriendList ? "Hide Friend " : "show Friend "}
+          {showFriendList ? "Hide Friend " : "Friends "}
         </button>
       </div>
 
