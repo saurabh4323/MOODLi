@@ -37,13 +37,13 @@ const Users = () => {
   ];
 
   useEffect(() => {
-    fetchUsers();
+    fetchUsers(); // Fetch users when the component mounts
   }, []);
 
   const fetchUsers = async () => {
     try {
       const response = await axios.get("api/users/picture");
-      console.log(response.data);
+      console.log("Fetched users data:", response.data); // Log the response data
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -99,6 +99,20 @@ const Users = () => {
   const toggleFriendList = () => {
     setShowFriendList((prev) => !prev); // Toggle visibility of friend list
     if (!showFriendList) fetchFriends(); // Fetch friends only if we're opening the list
+  };
+
+  const updateProfile = async (profileData) => {
+    try {
+      const response = await axios.post("/api/profile", profileData);
+      if (response.status === 200) {
+        console.log("Profile updated successfully:", response.data);
+        fetchUsers(); // Fetch updated users after profile update
+      } else {
+        console.error("Failed to update profile:", response.data);
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   return (
