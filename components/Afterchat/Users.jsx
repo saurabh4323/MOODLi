@@ -43,6 +43,7 @@ const Users = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get("api/users/picture");
+      console.log(response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
