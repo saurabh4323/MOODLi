@@ -74,3 +74,16 @@ export async function POST(req) {
     );
   }
 }
+export async function GET() {
+  connect();
+  try {
+    const users = await Profile.find({}, "name bio favoriteEmoji");
+    return NextResponse.json(users, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}

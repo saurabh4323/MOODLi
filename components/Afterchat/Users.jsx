@@ -42,7 +42,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("api/users/picture");
+      const response = await axios.get("api/users/sau");
       console.log("Fetched users data:", response.data); // Log the response data
       setUsers(response.data);
     } catch (error) {
