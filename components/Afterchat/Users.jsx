@@ -122,6 +122,7 @@ const Users = () => {
 
       <div className="search-bar">
         <input
+          style={{ height: "50px" }}
           type="text"
           placeholder="Search by name or emoji..."
           value={searchTerm}
@@ -129,11 +130,11 @@ const Users = () => {
           className="search-input"
         />
         <button
-          style={{ marginRight: "70px", marginTop: "-20px" }}
+          style={{}}
           className="show-friend-list-btn"
           onClick={toggleFriendList}
         >
-          {showFriendList ? "Hide Friend List" : "Show Friend List"}
+          {showFriendList ? "Hide Friend " : "show Friend "}
         </button>
       </div>
 
