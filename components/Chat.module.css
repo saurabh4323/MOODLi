@@ -3,7 +3,7 @@
   position: static;
   display: flex;
   height: 100vh;
-  
+  margin-top: 3%;
   padding: 30px;
  
 }
@@ -11,7 +11,7 @@
 /* Sidebar for users */
 .sidebar {
   width: 250px;
-  border: 1px solid #fff;
+  border: 1px solid #3b82f6;
   /* background-color: #ffffff; */
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -113,7 +113,7 @@
 
 /* Chat Box Styling */
 .chatBox {
-  border: 1px solid #fff;
+  border: 1px solid #3b82f6;
   flex-grow: 1;
   /* background-color: #ffffff; */
   border-radius: 8px;

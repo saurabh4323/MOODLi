@@ -1,6 +1,6 @@
-import User from "@/model/Login"; // Import the User model
-import Profile from "@/model/Profile"; // Import the Profile model
-import { connect } from "@/config/Dbconfig"; // Import database connection
+import User from "@/model/Login";
+import Profile from "@/model/Profile";
+import { connect } from "@/config/Dbconfig";
 import { NextResponse } from "next/server";
 
 connect();
@@ -77,7 +77,7 @@ export async function POST(req) {
 export async function GET() {
   connect();
   try {
-    const users = await Profile.find({}, "name bio favoriteEmoji");
+    const users = await Profile.find({}, "name bio favoriteEmoji userId");
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);

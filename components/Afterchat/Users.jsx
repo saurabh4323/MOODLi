@@ -8,7 +8,7 @@ const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [friendList, setFriendList] = useState([]);
+  const [friendList, setFriendList] = useState([]); // Initialize as an empty array
   const [showFriendList, setShowFriendList] = useState(false);
 
   const colors = [
@@ -38,6 +38,7 @@ const Users = () => {
 
   useEffect(() => {
     fetchUsers();
+    fetchFriends();
   }, []);
 
   const fetchUsers = async () => {
@@ -71,8 +72,11 @@ const Users = () => {
   };
 
   const handleConfirmAddFriend = async () => {
-    const userId = localStorage.getItem("userId");
-    const friendId = selectedUser._id;
+    const userId = localStorage.getItem("userId"); // Current user ID from local storage
+    const friendId = selectedUser.userId; // Use the correct property for friendId
+
+    console.log("Current User ID:", userId); // Log current user ID
+    console.log("Selected User ID:", friendId); // Log selected user ID
 
     try {
       await axios.post("/api/users/friend", { userId, friendId });
@@ -88,10 +92,17 @@ const Users = () => {
     const userId = localStorage.getItem("userId");
 
     try {
-      const response = await axios.get(`/api/users/friend?userId=${userId}`);
-      setFriendList(response.data ? response.data.friends : []);
+      const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
+      console.log("Friend profiles received:", response.data);
+
+      const friends = Array.isArray(response.data?.friends)
+        ? response.data.friends
+        : [];
+
+      setFriendList(friends); // Now friends contain profile info
     } catch (error) {
       console.error("Error fetching friends:", error);
+      setFriendList([]); // Fallback to empty array on error
     }
   };
 
@@ -129,11 +140,7 @@ const Users = () => {
           onChange={handleSearch}
           className="search-input"
         />
-        <button
-          style={{}}
-          className="show-friend-list-btn"
-          onClick={toggleFriendList}
-        >
+        <button className="show-friend-list-btn" onClick={toggleFriendList}>
           {showFriendList ? "Hide Friend " : "Friends "}
         </button>
       </div>
@@ -141,21 +148,18 @@ const Users = () => {
       {showFriendList && (
         <div className="friend-list-container" style={{ marginTop: "-40px" }}>
           <h2>Your Friends:</h2>
-          {friendList.length === 0 ? (
+          {Array.isArray(friendList) && friendList.length === 0 ? (
             <p>No friends added yet.</p>
           ) : (
             <ul>
-              {friendList.map((friendId) => {
-                const friend = users.find((user) => user._id === friendId);
-                return friend ? (
-                  <li key={friendId} className="friend-item">
-                    <div className="friend-card">
-                      <span>{friend.name}</span>{" "}
-                      <span>{friend.favoriteEmoji}</span>
-                    </div>
-                  </li>
-                ) : null;
-              })}
+              {friendList.map((friend) => (
+                <li key={friend.userId} className="friend-item">
+                  <div className="friend-card">
+                    <span>{friend.name}</span>{" "}
+                    <span>{friend.favoriteEmoji}</span>
+                  </div>
+                </li>
+              ))}
             </ul>
           )}
         </div>

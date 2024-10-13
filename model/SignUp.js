@@ -1,5 +1,4 @@
-// for login
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -13,5 +12,8 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// Create or get the User model
 const User = mongoose.models.users || mongoose.model("users", userSchema);
-export default User;
+
+// Export the User model
+module.exports = User;

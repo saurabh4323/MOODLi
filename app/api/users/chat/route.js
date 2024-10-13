@@ -1,5 +1,5 @@
 // api/users/sau/route.js
-import User from "@/model/SignUp"; // Import your User model
+import User from "@/model/Login"; // Import your User model
 import { connect } from "@/config/Dbconfig"; // Import your database connection
 import { NextResponse } from "next/server";
 
