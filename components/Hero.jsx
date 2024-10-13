@@ -5,11 +5,7 @@ import Button from "./Button";
 import "./hero.css";
 import Head from "next/head";
 import Image from "next/image";
-import a from "./images/a.png";
-import b from "./images/b.png";
-import c from "./images/c.png";
-import d from "./images/d.png";
-import s from "./images/e.png";
+
 import React, { useEffect, useState } from "react";
 import MoodRecommendations from "./MoodRecommendations";
 import useDarkMode from "./useDarkMode";
