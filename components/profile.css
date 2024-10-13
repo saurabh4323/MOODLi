@@ -1,0 +1,105 @@
+.profile-container {
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  height: 100vh;
+}
+
+.sidebar {
+
+  align-items: center;
+  height: 90vh;
+  width: 25%;
+  display: flex;
+ border-radius: 20px;
+  gap: 15px;
+  flex-direction: column;
+  background-color: #3a5adb;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  border: 1px solid #28a745;
+  height: 90vh;
+  width: 50%;
+  padding: 20px;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profilePicture {
+  font-size: 50px;
+  margin-right: 10px;
+}
+
+.username {
+  font-size: 24px;
+}
+
+.infoItem {
+  margin-bottom: 15px;
+}
+
+.profileInput, .genderSelect, .profileTextarea {
+  width: 47%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttonk {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Optional: make buttons full width of their container */
+
+ border-bottom: 1px solid #050505;
+}
+.pname{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: aliceblue;
+border-bottom: 1px solid #fff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttonk:hover {
+  background-color: #3a5adb46;
+  transform: scale(1.05);
+}
+
+
+
+.deleteButton {
+  color: #fff;
+  width: 80%;
+ 
+ 
+  
+}
+
+
+
+.inviteButton {
+  background-color: #28a745;
+}
+
+.inviteButton:hover {
+  background-color: #218838;
+}

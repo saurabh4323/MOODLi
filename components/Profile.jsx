@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "./hero.css";
 import axios from "axios";
-import styles from "./styles.module.css"; // Importing the CSS module
 import toast from "react-hot-toast"; // Importing toast
 import Link from "next/link";
-
+import "./profile.css"; // Importing the CSS file
+import { Handshake, SunMoon } from "lucide-react";
+import { Share2, Headset, Lock, LogOut } from "lucide-react";
 export default function Profile() {
   const [gender, setGender] = useState("Other"); // State to manage selected gender
   const [profile, setProfile] = useState({
@@ -15,6 +15,7 @@ export default function Profile() {
     bio: "",
     phoneNumber: "",
   });
+
   const shareOnWhatsApp = () => {
     const message = encodeURIComponent(
       "Hey! Check out this awesome mood-tracking website: Moodli! 😄\n" +
@@ -23,8 +24,6 @@ export default function Profile() {
         " https://moodlie.site"
     );
     const whatsappURL = `https://api.whatsapp.com/send?text=${message}`;
-
-    // Open WhatsApp with the pre-filled message
     window.open(whatsappURL, "_blank");
   };
 
@@ -40,10 +39,8 @@ export default function Profile() {
   const fetchProfile = async (userId) => {
     try {
       const res = await axios.post("/api/users/sau", { userId });
-      // console.log("Fetched profile data:", res.data);
       setProfile(res.data);
       setGender(res.data.gender || "Other"); // Fetch gender
-      // console.log(res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
     }
@@ -60,62 +57,86 @@ export default function Profile() {
         }
 
         try {
-          const res = await axios.post("/api/users/sau", {
+          await axios.post("/api/users/sau", {
             userId,
             email: profile.email,
             name: profile.name,
             favoriteEmoji: profile.favoriteEmoji,
             bio: profile.bio,
-            phoneNumber: profile.phoneNumber, // Send phone number
-            gender: gender, // Send gender
+            phoneNumber: profile.phoneNumber,
+            gender: gender,
           });
-          // console.log("Profile updated:", res.data);
           fetchProfile(userId); // Refresh profile after update
-          toast.success("Profile updated successfully!"); // Use toast for success
+          toast.success("Profile updated successfully!");
         } catch (error) {
           console.error("Error updating profile:", error);
-          toast.error("Error updating profile."); // Show error toast
+          toast.error("Error updating profile.");
         }
       }
     }
   };
-
+  const handleclick = () => {
+    window.location.href = "/changepassword";
+  };
   return (
-    <div className={styles.container}>
-      <div className="background1"></div>
-      <div className="background2"></div>
-      <div className="background3"></div>
-      <div className={styles.card}>
-        {/* Profile Header */}
-        <div className={styles.profileHeader}>
-          <div className={styles.profilePicture}>
-            <span style={{ fontSize: "70px", marginTop: "-10px" }}>
-              {profile.favoriteEmoji || "😊"} {/* Fallback emoji */}
-            </span>
-          </div>
-          <h2 className={styles.username}>Profile</h2>
+    <div className="profile-container">
+      <div className="sidebar">
+        <div className="profilePicture">
+          <span className="emoji">{profile.favoriteEmoji || "😊"}</span>
         </div>
+        <p className="pname">Welcome! {profile.name}</p>
+        <button className="buttonk">
+          <Handshake /> Friends
+        </button>
+        <button className="buttonk" onClick={shareOnWhatsApp}>
+          <Share2 color="#ffffff" />
+          Invite Friends
+        </button>
+        <button className="buttonk" onClick={handleclick}>
+          <SunMoon color="#ffffff" /> Theme
+        </button>
+
+        <button className="buttonk">
+          {" "}
+          <Headset color="#ffffff" />
+          Contact us
+        </button>
+        {/* <Link href={"/changepassword"}> */}
+        <button className="buttonk" onClick={handleclick}>
+          <Lock color="#ffffff" /> Change Password
+        </button>
+
+        {/* </Link> */}
+        <button className="buttonk">
+          {" "}
+          <LogOut color="#ffffff" />
+          Delete Account
+        </button>
+      </div>
+
+      <div className="main-content">
+        {/* Profile Header */}
 
         {/* Profile Info */}
-        <form className={styles.profileInfo} onSubmit={handleUpdateProfile}>
-          <div className={styles.infoItem}>
+        <form className="profileInfo" onSubmit={handleUpdateProfile}>
+          <div className="infoItem">
             <label>Name:</label>
             <input
               placeholder="Write Your Name"
               type="text"
-              className={styles.profileInput}
+              className="profileInput"
               value={profile.name}
               onChange={(e) => setProfile({ ...profile, name: e.target.value })}
               required
             />
           </div>
 
-          <div className={styles.infoItem}>
+          <div className="infoItem">
             <label>Favorite Emoji:</label>
             <input
               placeholder="use WIN+. for emoji"
               type="text"
-              className={styles.profileInput}
+              className="profileInput"
               value={profile.favoriteEmoji}
               onChange={(e) =>
                 setProfile({ ...profile, favoriteEmoji: e.target.value })
@@ -124,12 +145,12 @@ export default function Profile() {
             />
           </div>
 
-          <div className={styles.infoItem}>
+          <div className="infoItem">
             <label>Gender:</label>
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className={styles.genderSelect}
+              className="genderSelect"
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -137,12 +158,12 @@ export default function Profile() {
             </select>
           </div>
 
-          <div className={styles.infoItem}>
+          <div className="infoItem">
             <label>Phone Number:</label>
             <input
               placeholder="Enter Your Number"
               type="text"
-              className={styles.profileInput}
+              className="profileInput"
               value={profile.phoneNumber}
               onChange={(e) =>
                 setProfile({ ...profile, phoneNumber: e.target.value })
@@ -150,11 +171,11 @@ export default function Profile() {
             />
           </div>
 
-          <div className={styles.infoItem}>
+          <div className="infoItem">
             <label>Bio:</label>
             <textarea
               placeholder="Describe yourself"
-              className={styles.profileTextarea}
+              className="profileTextarea"
               value={profile.bio}
               onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
             />
@@ -164,59 +185,6 @@ export default function Profile() {
             Update Profile
           </button>
         </form>
-
-        <div className={styles.socialSection}>
-          <h3
-            style={{
-              color: "#637696",
-              fontWeight: "500",
-              marginBottom: "10px",
-            }}
-          >
-            Social
-          </h3>
-          <div className={styles.socialButtons}>
-            <button className="button">Friends</button>
-            <button
-              className="button"
-              onClick={shareOnWhatsApp}
-              style={{
-                padding: "10px 20px",
-                backgroundColor: "#25D366", // WhatsApp color
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Invite Friends
-            </button>
-          </div>
-        </div>
-
-        {/* Account Section */}
-        <div className={styles.accountSection}>
-          <h3
-            style={{
-              color: "#637696",
-              fontWeight: "500",
-              marginBottom: "10px",
-            }}
-          >
-            Account
-          </h3>
-          <div className={styles.accountButtons}>
-            <button className="button">Edit Profile</button>
-            <Link href={"/changepassword"}>
-              <button className="button">Change Password</button>
-            </Link>
-            <button
-              className={`${styles.accountButton} ${styles.deleteButton}`}
-            >
-              Delete Account
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
