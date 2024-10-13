@@ -112,7 +112,6 @@ const Chat = () => {
     <div className={styles.chatContainer}>
       {/* Sidebar for friend list */}
       <div className={styles.sidebar}>
-        <h3>Chats</h3>
         <input
           type="text"
           placeholder="Search chats..."

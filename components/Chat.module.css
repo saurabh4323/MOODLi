@@ -1,18 +1,23 @@
 /* Chat.module.css */
 .chatContainer {
+  border: 1px solid #5d40f4;
   margin-top: 5%;
   display: flex;
   height: 100vh;
-  background-color: #f7f9fc; /* Background similar to your design */
+  /* background-color: #f7f9fc; Background similar to your design */
 }
 
 .sidebar {
+  display: flex;
+  flex-flow: column;
   width: 280px;
-  background-color: #fff;
   padding: 20px;
-  border-right: 1px solid #ddd; /* Separator */
+  border-right: 1px solid #ddd; 
+  
+  
+  overflow-y: auto;
+  max-height: 100vh; /* Ensures it stays within the viewport */
 }
-
 .searchInput {
   width: 100%;
   padding: 10px;
@@ -24,13 +29,16 @@
 .friendItem {
   display: flex;
   align-items: center;
+  gap: 4px;
+  border: 1px solid #5d40f4;
   padding: 10px;
   cursor: pointer;
+  margin-top: 10px;
   transition: background-color 0.2s;
 }
 
 .friendItem:hover {
-  background-color: #f0f0f0; /* Hover effect */
+  background-color:#17009c; /* Hover effect */
 }
 
 .friendAvatar {
@@ -53,7 +61,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff; /* Chat area background */
+  /* background-color: #ffffff; Chat area background */
 }
 
 .messages {
