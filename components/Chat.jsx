@@ -141,7 +141,10 @@ const Chat = () => {
       <div className={styles.chatArea}>
         {selectedFriend ? (
           <>
-            <h3>Chat with {selectedFriend.name}</h3>
+            <div className={styles.sd}>
+              <h3 className={styles.int}>Chat with {selectedFriend.name}</h3>
+            </div>
+
             <div className={styles.messages}>
               {messages.map((message, index) => (
                 <div

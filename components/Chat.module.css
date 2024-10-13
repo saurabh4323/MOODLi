@@ -2,12 +2,26 @@
 .chatContainer {
   border: 1px solid #5d40f4;
   margin-top: 5%;
+  width: 98%;
   display: flex;
   height: 100vh;
   /* background-color: #f7f9fc; Background similar to your design */
 }
-
+.sd{
+  background-color: rgb(102, 99, 94);
+  overflow: hidden;
+  
+  height: 5%;
+  
+}
+.int{
+  margin-top: 3px;
+  text-align: center;
+  
+  font-size:15px;
+}
 .sidebar {
+  
   display: flex;
   flex-flow: column;
   width: 280px;
@@ -19,9 +33,11 @@
   max-height: 100vh; /* Ensures it stays within the viewport */
 }
 .searchInput {
+  
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
+  color: #000;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -74,7 +90,7 @@
 }
 
 .messageSender {
-  background-color: #d4edda; /* Color for sent messages */
+  background-color: #00ff6abd; /* Color for sent messages */
   border-radius: 10px;
   padding: 10px;
   align-self: flex-end; /* Align sent messages to the right */
@@ -83,7 +99,7 @@
 }
 
 .messageReceiver {
-  background-color: #f8d7da; /* Color for received messages */
+  background-color: #05b0ff; /* Color for received messages */
   border-radius: 10px;
   padding: 10px;
   align-self: flex-start; /* Align received messages to the left */
