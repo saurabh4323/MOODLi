@@ -4,6 +4,7 @@ import "./hero.css";
 import axios from "axios";
 import styles from "./styles.module.css"; // Importing the CSS module
 import toast from "react-hot-toast"; // Importing toast
+import Link from "next/link";
 
 export default function Profile() {
   const [gender, setGender] = useState("Other"); // State to manage selected gender
@@ -39,10 +40,10 @@ export default function Profile() {
   const fetchProfile = async (userId) => {
     try {
       const res = await axios.post("/api/users/sau", { userId });
-      console.log("Fetched profile data:", res.data);
+      // console.log("Fetched profile data:", res.data);
       setProfile(res.data);
       setGender(res.data.gender || "Other"); // Fetch gender
-      console.log(res.data);
+      // console.log(res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
     }
@@ -68,7 +69,7 @@ export default function Profile() {
             phoneNumber: profile.phoneNumber, // Send phone number
             gender: gender, // Send gender
           });
-          console.log("Profile updated:", res.data);
+          // console.log("Profile updated:", res.data);
           fetchProfile(userId); // Refresh profile after update
           toast.success("Profile updated successfully!"); // Use toast for success
         } catch (error) {
@@ -206,7 +207,9 @@ export default function Profile() {
           </h3>
           <div className={styles.accountButtons}>
             <button className="button">Edit Profile</button>
-            <button className="button">Change Password</button>
+            <Link href={"/changepassword"}>
+              <button className="button">Change Password</button>
+            </Link>
             <button
               className={`${styles.accountButton} ${styles.deleteButton}`}
             >
