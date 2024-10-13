@@ -5,14 +5,25 @@ import axios from "axios";
 import styles from "./Chat.module.css";
 
 const Chat = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [userIdMapping, setUserIdMapping] = useState({}); // Mapping of _id to userId
+  const [currentUserId, setCurrentUserId] = useState(null); // Store current userId from localStorage
 
-  const currentUserId = localStorage.getItem("userId"); // Get current userId from localStorage
-  console.log("Current User ID:", currentUserId); // Debugging line
+  // Fetch currentUserId from localStorage on the client-side
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("userId");
+      setCurrentUserId(userId);
+    }
+  }, []);
+
+  const filteredFriends = friends.filter((friend) =>
+    friend.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Fetch friends from the API
   useEffect(() => {
@@ -21,7 +32,6 @@ const Chat = () => {
         const response = await axios.get(
           `/api/feeltalk/friend?userId=${currentUserId}`
         );
-        console.log("Fetched Friends:", response.data.friends); // Debugging line
 
         // Create mapping of _id to userId
         const mapping = {};
@@ -41,8 +51,10 @@ const Chat = () => {
     }
   }, [currentUserId]);
 
-  // Fetch messages when a friend is selected
+  // Fetch messages when a friend is selected or periodically (every 10 seconds)
   useEffect(() => {
+    let pollingInterval;
+
     const fetchMessages = async () => {
       if (selectedFriend) {
         try {
@@ -52,12 +64,6 @@ const Chat = () => {
               receiverId: userIdMapping[selectedFriend._id], // Use userId from mapping
             },
           });
-          console.log(
-            "Fetched Messages for",
-            selectedFriend.name,
-            ":",
-            response.data.messages
-          ); // Debugging line
           setMessages(response.data.messages);
         } catch (error) {
           console.error("Error fetching messages:", error);
@@ -65,7 +71,17 @@ const Chat = () => {
       }
     };
 
-    fetchMessages();
+    if (selectedFriend) {
+      fetchMessages(); // Fetch messages on friend selection
+
+      // Start polling every 10 seconds
+      pollingInterval = setInterval(fetchMessages, 10000);
+    }
+
+    // Clean up the polling interval when the component unmounts or friend changes
+    return () => {
+      if (pollingInterval) clearInterval(pollingInterval);
+    };
   }, [selectedFriend, currentUserId, userIdMapping]);
 
   // Handle sending a message
@@ -78,7 +94,6 @@ const Chat = () => {
         receiverId: userIdMapping[selectedFriend._id], // Use userId from mapping
         content: newMessage,
       });
-      console.log("Message Sent:", response.data.message); // Debugging line
       setMessages([...messages, response.data.message]);
       setNewMessage(""); // Clear input field after sending
     } catch (error) {
@@ -86,24 +101,38 @@ const Chat = () => {
     }
   };
 
+  // Handle key press for sending message with Enter key
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  };
+
   return (
     <div className={styles.chatContainer}>
       {/* Sidebar for friend list */}
       <div className={styles.sidebar}>
-        <h3>Friends</h3>
+        <h3>Chats</h3>
+        <input
+          type="text"
+          placeholder="Search chats..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.searchInput}
+        />
         <ul>
-          {friends.map((friend) => (
+          {filteredFriends.map((friend) => (
             <li
               key={friend._id}
-              onClick={() => {
-                console.log("Selected Friend:", friend); // Debugging line
-                setSelectedFriend(friend);
-              }}
-              className={
-                selectedFriend?._id === friend._id ? styles.active : ""
-              }
+              onClick={() => setSelectedFriend(friend)}
+              className={styles.friendItem}
             >
-              {friend.name} ({friend.favoriteEmoji})
+              <div className={styles.friendAvatar}>
+                <span role="img" aria-label={friend.name}>
+                  {friend.favoriteEmoji}
+                </span>
+              </div>
+              <span className={styles.friendName}>{friend.name}</span>
             </li>
           ))}
         </ul>
@@ -135,6 +164,7 @@ const Chat = () => {
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Type your message..."
+                onKeyPress={handleKeyPress}
               />
               <button onClick={sendMessage}>Send</button>
             </div>

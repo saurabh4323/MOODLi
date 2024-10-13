@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import "../comm.css";
 import axios from "axios";
@@ -8,7 +7,7 @@ const Users = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [friendList, setFriendList] = useState([]); // Initialize as an empty array
+  const [friendList, setFriendList] = useState([]);
   const [showFriendList, setShowFriendList] = useState(false);
 
   const colors = [
@@ -37,8 +36,18 @@ const Users = () => {
   ];
 
   useEffect(() => {
-    fetchUsers();
-    fetchFriends();
+    if (typeof window !== "undefined") {
+      fetchUsers();
+      fetchFriends();
+
+      // Example: accessing window width safely
+      const handleResize = () => {
+        console.log("Window width:", window.innerWidth);
+      };
+      window.addEventListener("resize", handleResize);
+
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   const fetchUsers = async () => {
@@ -72,57 +81,47 @@ const Users = () => {
   };
 
   const handleConfirmAddFriend = async () => {
-    const userId = localStorage.getItem("userId"); // Current user ID from local storage
-    const friendId = selectedUser.userId; // Use the correct property for friendId
+    if (typeof window !== "undefined") {
+      const userId = window.localStorage.getItem("userId"); // Access userId safely
 
-    console.log("Current User ID:", userId); // Log current user ID
-    console.log("Selected User ID:", friendId); // Log selected user ID
+      const friendId = selectedUser.userId; // Use the correct property for friendId
 
-    try {
-      await axios.post("/api/users/friend", { userId, friendId });
-      alert(`${selectedUser.name} has been added as a friend!`);
-      handleCloseMenu();
-      fetchFriends();
-    } catch (error) {
-      console.error("Error adding friend:", error);
+      try {
+        await axios.post("/api/users/friend", { userId, friendId });
+        alert(`${selectedUser.name} has been added as a friend!`);
+        handleCloseMenu();
+        fetchFriends();
+      } catch (error) {
+        console.error("Error adding friend:", error);
+      }
     }
   };
 
   const fetchFriends = async () => {
-    const userId = localStorage.getItem("userId");
+    if (typeof window !== "undefined") {
+      const userId = window.localStorage.getItem("userId");
 
-    try {
-      const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
-      console.log("Friend profiles received:", response.data);
+      try {
+        const response = await axios.get(
+          `/api/feeltalk/friend?userId=${userId}`
+        );
+        console.log("Friend profiles received:", response.data);
 
-      const friends = Array.isArray(response.data?.friends)
-        ? response.data.friends
-        : [];
+        const friends = Array.isArray(response.data?.friends)
+          ? response.data.friends
+          : [];
 
-      setFriendList(friends); // Now friends contain profile info
-    } catch (error) {
-      console.error("Error fetching friends:", error);
-      setFriendList([]); // Fallback to empty array on error
+        setFriendList(friends); // Now friends contain profile info
+      } catch (error) {
+        console.error("Error fetching friends:", error);
+        setFriendList([]); // Fallback to empty array on error
+      }
     }
   };
 
   const toggleFriendList = () => {
     setShowFriendList((prev) => !prev);
     if (!showFriendList) fetchFriends();
-  };
-
-  const updateProfile = async (profileData) => {
-    try {
-      const response = await axios.post("/api/profile", profileData);
-      if (response.status === 200) {
-        console.log("Profile updated successfully:", response.data);
-        fetchUsers();
-      } else {
-        console.error("Failed to update profile:", response.data);
-      }
-    } catch (error) {
-      console.error("Error updating profile:", error);
-    }
   };
 
   return (

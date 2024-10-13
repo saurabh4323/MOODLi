@@ -1,304 +1,110 @@
-/* Chat Container: Flex layout with two main sections */
+/* Chat.module.css */
 .chatContainer {
-  position: static;
+  margin-top: 5%;
   display: flex;
   height: 100vh;
-  margin-top: 3%;
-  padding: 30px;
- 
+  background-color: #f7f9fc; /* Background similar to your design */
 }
 
-/* Sidebar for users */
 .sidebar {
-  width: 250px;
-  border: 1px solid #3b82f6;
-  /* background-color: #ffffff; */
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-right: 25px;
+  width: 280px;
+  background-color: #fff;
+  padding: 20px;
+  border-right: 1px solid #ddd; /* Separator */
 }
 
-.searchBar {
- 
-  color: #000;
-  padding: 10px;
-}
-
-.searchBar input {
+.searchInput {
   width: 100%;
-  padding: 8px;
-  border-radius: 20px;
-  border: 1px solid #000;
-  outline: none;
-}.userCard {
-  padding-left: 5px;
   padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
-.userCard:hover {
-  background-color: #f0f0f0;
-}
-
-.userName {
-  font-size: 16px;
-}
-
-.newMessageIndicator {
-  color: green;
-  font-weight: bold;
-  margin-left: 5px;
-}
-
-/* Green font for users with new messages */
-.hasNewMessage {
-  color: green;
-  font-weight: bold;
-}
-
-.activeUser {
-  background-color: #e0e0e0;
-}
-
-
-/* User List Styling */
-.userList {
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.userCard {
-  border: 1px solid #004d40;
+.friendItem {
   display: flex;
   align-items: center;
   padding: 10px;
-  
-  border-radius: 8px;
-  margin-bottom: 8px;
-  transition: background-color 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.userCard:hover {
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.friendItem:hover {
+  background-color: #f0f0f0; /* Hover effect */
 }
 
-.userAvatar {
+.friendAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
-  object-fit: cover;
-}
-
-.userName {
-  color: #000;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.userStatus {
-  font-size: 12px;
-  color: #f0f0f0;
-}
-
-/* Active user styling */
-.activeUser {
-  background-color: #e1f5fe;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Chat Box Styling */
-.chatBox {
-  border: 1px solid #3b82f6;
-  flex-grow: 1;
-  /* background-color: #ffffff; */
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-/* Chat Header */
-.chatHeader {
+  border: 2px solid #4a90e2; /* Circular border */
   display: flex;
   align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 10px;
-}
-
-.chatAvatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  justify-content: center;
   margin-right: 10px;
-  object-fit: cover;
 }
 
-.chatDetails h3 {
-  color: #9f8efa;
-  font-size: 20px;
+.friendName {
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
-.chatDetails span {
-  color: #000;
-  font-size: 14px;
-  color: #888;
+.chatArea {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff; /* Chat area background */
 }
 
-/* Messages Section */
 .messages {
-  color: #000;
-  flex-grow: 1;
-  overflow-y: auto;
+  flex: 1;
+  overflow-y: auto; /* Allow scrolling */
   padding: 10px;
-}
-
-.message {
-  color: #000;
-  margin-bottom: 10px;
   display: flex;
+  flex-direction: column; /* Stack messages vertically */
+  gap: 10px; /* Space between messages */
 }
 
-.sent {
-  justify-content: flex-end;
-}
-
-.received {
-  justify-content: flex-start;
-}
-
-.messageText {
-  max-width: 60%;
-  background-color: #e1f5fe;
+.messageSender {
+  background-color: #d4edda; /* Color for sent messages */
+  border-radius: 10px;
   padding: 10px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: #000;
-  line-height: 1.4;
-  word-wrap: break-word;
+  align-self: flex-end; /* Align sent messages to the right */
+  max-width: 70%; /* Restrict width to 70% */
+  position: relative;
 }
 
-.sent .messageText {
-  background-color: #00796b;
-  color: #fff;
+.messageReceiver {
+  background-color: #f8d7da; /* Color for received messages */
+  border-radius: 10px;
+  padding: 10px;
+  align-self: flex-start; /* Align received messages to the left */
+  max-width: 70%; /* Restrict width to 70% */
+  position: relative;
 }
 
-/* Message Input Box */
-.messageInputBox {
+.inputArea {
   display: flex;
-  border-top: 1px solid #ddd;
-  padding: 10px;
-  /* background-color: #ffffff; */
+  margin-top: 10px;
 }
 
-
-.messageInputBox input {
-  color: #000;
-  flex-grow: 1;
+.inputArea input {
+  flex: 1;
   padding: 10px;
-  border-radius: 20px;
   border: 1px solid #ddd;
-  outline: none;
-  font-size: 14px;
-  margin-right: 10px;
+  border-radius: 5px;
 }
 
-.messageInputBox input:focus {
-  border-color: #00796b;
-}
-
-.sendButton {
-  background-color: #00796b;
+.inputArea button {
+  margin-left: 10px;
+  padding: 10px;
   border: none;
+  background-color: #4a90e2; /* Button color */
   color: white;
-  padding: 10px 15px;
-  border-radius: 50%;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.sendButton:hover {
-  background-color: #004d40;
-}
-
-/* Select a user to chat message */
-.selectUserMessage {
-  color: #000;
-  font-size: 18px;
-  color: #888;
-  text-align: center;
-  margin-top: 50px;
-}
-.chatContainer {
-  display: flex;
-  height: 100vh;
-  padding: 30px;
- 
-}
-
-@media (max-width: 768px) {
-  /* Reduce the chat container padding and make sidebar collapse on mobile */
-  .chatContainer {
-    margin-top: 20px;
-    /* flex-direction: column; */
-    padding: 15px;
-  }
-
-  /* Sidebar becomes full width and collapses to the top */
-  .sidebar {
-    width: 90%;
-    margin-bottom: 20px;
-  }
-
-  /* Adjust the chat box to take full width on mobile */
-  .chatBox {
-    width: 100%;
-    flex-grow: 1;
-  }
-
-  /* Reduce padding and font sizes for mobile view */
-  .searchBar input, .messageInputBox input {
-    padding: 8px;
-    font-size: 12px;
-  }
-
-  /* Make user cards more compact */
-  .userCard {
-    padding: 5px;
-  }
-
-  
-
-  .userName {
-    font-size: 10px;
-  }
-
-  .chatDetails h3 {
-    font-size: 18px;
-  }
-
-  .chatDetails span {
-    font-size: 12px;
-  }
-
-  /* Adjust message sizes on mobile */
-  .messageText {
-    max-width: 80%;
-    font-size: 12px;
-    padding: 8px;
-  }
-}
-
-.notificationDot {
-  color: red;
-  margin-left: 5px;
-  font-size: 18px;
+.inputArea button:hover {
+  background-color: #357ab8; /* Button hover color */
 }
