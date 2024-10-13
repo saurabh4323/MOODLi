@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import "../comm.css";
 import axios from "axios";
@@ -42,7 +43,7 @@ const Users = () => {
 
       // Example: accessing window width safely
       const handleResize = () => {
-        console.log("Window width:", window.innerWidth);
+        // console.log("Window width:", window.innerWidth);
       };
       window.addEventListener("resize", handleResize);
 
@@ -53,7 +54,7 @@ const Users = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get("api/users/sau");
-      console.log("Fetched users data:", response.data);
+      // console.log("Fetched users data:", response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -105,7 +106,7 @@ const Users = () => {
         const response = await axios.get(
           `/api/feeltalk/friend?userId=${userId}`
         );
-        console.log("Friend profiles received:", response.data);
+        // console.log("Friend profiles received:", response.data);
 
         const friends = Array.isArray(response.data?.friends)
           ? response.data.friends
