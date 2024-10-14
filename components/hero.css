@@ -255,8 +255,8 @@ width: 30%;
   .content {
     margin-bottom: 10%;
     width: 88%;
-    min-height: 45vh;
-    /* height: auto; */
+    /* min-height: 45vh; */
+    height: auto;
     margin-top: 0;
   }
 

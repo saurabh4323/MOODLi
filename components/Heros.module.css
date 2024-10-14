@@ -110,6 +110,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .backgroundImage {
+    /* margin-top: -40px; */
+    width: 100%;
+    /* position: absolute; */
+    top: 0;
+    left: 0; /* Adjusted to 0 to center the vector properly */
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
   .heroSection {
     height: 111vh; /* Reduced height for mobile */
     padding-top: 2rem;
@@ -121,6 +131,7 @@
   }
 
   .title {
+    color: bisque;
     font-size: 1.8rem; /* Decreased font size */
   }
 
