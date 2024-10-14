@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "../comm.css";
 import axios from "axios";
+import "../profile.css";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -146,22 +147,34 @@ const Users = () => {
       </div>
 
       {showFriendList && (
-        <div className="friend-list-container" style={{ marginTop: "-40px" }}>
-          <h2>Your Friends:</h2>
-          {Array.isArray(friendList) && friendList.length === 0 ? (
-            <p>No friends added yet.</p>
-          ) : (
-            <ul>
-              {friendList.map((friend) => (
-                <li key={friend.userId} className="friend-item">
-                  <div className="friend-card">
-                    <span>{friend.name}</span>{" "}
-                    <span>{friend.favoriteEmoji}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+        <div className="modal-overlays">
+          <div className="modal-contents">
+            <h2 className="modal-titles" style={{ color: "#000" }}>
+              Friend List
+            </h2>
+            {friendList.length > 0 ? (
+              <ul className="friend-lists">
+                {friendList.map((friend, index) => (
+                  <li key={index} className="friend-items">
+                    <span className="friend-names">
+                      {friend.name || "Anonymous"}
+                    </span>
+                    <span className="friend-emojis">
+                      {friend.favoriteEmoji || "N/A"}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No friends found.</p>
+            )}
+            <button
+              className="modal-close-button"
+              onClick={() => setShowFriendList(false)}
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
 
