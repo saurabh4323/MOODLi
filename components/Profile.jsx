@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import toast from "react-hot-toast"; // Importing toast
-import Link from "next/link";
-import "./profile.css"; // Importing the CSS file
+import toast from "react-hot-toast";
+import "./profile.css";
 import { Handshake, SunMoon } from "lucide-react";
 import { Share2, Headset, Lock, LogOut } from "lucide-react";
+
 export default function Profile() {
-  const [gender, setGender] = useState("Other"); // State to manage selected gender
+  const [gender, setGender] = useState("Other");
   const [profile, setProfile] = useState({
     name: "",
     email: "",
@@ -15,6 +15,7 @@ export default function Profile() {
     bio: "",
     phoneNumber: "",
   });
+  const [loading, setLoading] = useState(true); // Loading state
 
   const shareOnWhatsApp = () => {
     const message = encodeURIComponent(
@@ -40,9 +41,11 @@ export default function Profile() {
     try {
       const res = await axios.post("/api/users/sau", { userId });
       setProfile(res.data);
-      setGender(res.data.gender || "Other"); // Fetch gender
+      setGender(res.data.gender || "Other");
     } catch (error) {
       console.error("Error fetching profile", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched
     }
   };
 
@@ -66,7 +69,7 @@ export default function Profile() {
             phoneNumber: profile.phoneNumber,
             gender: gender,
           });
-          fetchProfile(userId); // Refresh profile after update
+          fetchProfile(userId);
           toast.success("Profile updated successfully!");
         } catch (error) {
           console.error("Error updating profile:", error);
@@ -75,16 +78,23 @@ export default function Profile() {
       }
     }
   };
-  const handleclick = () => {
+
+  const handleClick = () => {
     window.location.href = "/changepassword";
   };
+
   return (
     <div className="profile-container">
       <div className="sidebar">
         <div className="profilePicture">
-          <span className="emoji">{profile.favoriteEmoji || "😊"}</span>
+          {/* Show default emoji while loading */}
+          <span className="emoji">
+            {loading ? "😊" : profile.favoriteEmoji || "😊"}
+          </span>
         </div>
-        <p className="pname">Welcome! {profile.name}</p>
+        <p className="pname">
+          Welcome! {loading ? "Loading..." : profile.name}
+        </p>
         <button className="buttonk">
           <Handshake /> Friends
         </button>
@@ -92,32 +102,23 @@ export default function Profile() {
           <Share2 color="#ffffff" />
           Invite Friends
         </button>
-        <button className="buttonk" onClick={handleclick}>
+        <button className="buttonk" onClick={handleClick}>
           <SunMoon color="#ffffff" /> Theme
         </button>
-
         <button className="buttonk">
-          {" "}
           <Headset color="#ffffff" />
           Contact us
         </button>
-        {/* <Link href={"/changepassword"}> */}
-        <button className="buttonk" onClick={handleclick}>
+        <button className="buttonk" onClick={handleClick}>
           <Lock color="#ffffff" /> Change Password
         </button>
-
-        {/* </Link> */}
         <button className="buttonk">
-          {" "}
           <LogOut color="#ffffff" />
           Delete Account
         </button>
       </div>
 
       <div className="main-content">
-        {/* Profile Header */}
-
-        {/* Profile Info */}
         <form className="profileInfo" onSubmit={handleUpdateProfile}>
           <div className="infoItem">
             <label>Name:</label>
@@ -128,6 +129,7 @@ export default function Profile() {
               value={profile.name}
               onChange={(e) => setProfile({ ...profile, name: e.target.value })}
               required
+              disabled={loading} // Disable input while loading
             />
           </div>
 
@@ -142,6 +144,7 @@ export default function Profile() {
                 setProfile({ ...profile, favoriteEmoji: e.target.value })
               }
               required
+              disabled={loading} // Disable input while loading
             />
           </div>
 
@@ -151,6 +154,7 @@ export default function Profile() {
               value={gender}
               onChange={(e) => setGender(e.target.value)}
               className="genderSelect"
+              disabled={loading}
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -168,6 +172,7 @@ export default function Profile() {
               onChange={(e) =>
                 setProfile({ ...profile, phoneNumber: e.target.value })
               }
+              disabled={loading} // Disable input while loading
             />
           </div>
 
@@ -178,11 +183,12 @@ export default function Profile() {
               className="profileTextarea"
               value={profile.bio}
               onChange={(e) => setProfile({ ...profile, bio: e.target.value })}
+              disabled={loading} // Disable textarea while loading
             />
           </div>
 
-          <button className="button" type="submit">
-            Update Profile
+          <button className="button" type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Update Profile"}
           </button>
         </form>
       </div>

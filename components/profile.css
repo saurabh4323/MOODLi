@@ -1,19 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
 .profile-container {
   margin-top: 3%;
   display: flex;
   align-items: center;
   justify-content: center;
- 
   height: 100vh;
 }
 
 .sidebar {
-
   align-items: center;
   height: 90vh;
   width: 25%;
   display: flex;
- border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
   gap: 15px;
   flex-direction: column;
   background-color: #3a5adb;
@@ -22,10 +23,18 @@
 }
 
 .main-content {
-  border: 1px solid #28a745;
+  font-family: 'Roboto', sans-serif;
+  /* background-color: #fff; */
+  
+  border: 1px solid #3a5adb;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
   height: 90vh;
   width: 50%;
   padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .profileHeader {
@@ -43,17 +52,76 @@
   font-size: 24px;
 }
 
-.infoItem {
-  margin-bottom: 15px;
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: 17px;
+  margin-top: 20px;
+  gap: 15px;
 }
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+label {
+  color: #3a5adb;
+  font-weight: 500;
+  width: 30%; /* Adjust to control label width */
+  text-align: left;
+  margin-right: 20px;
+}
+
 
 .profileInput, .genderSelect, .profileTextarea {
-  width: 47%;
+  width: 65%;
+  background-color: transparent;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+  /* color: darkblue; */
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
+.profileInput:focus, .genderSelect:focus, .profileTextarea:focus {
+  border-color: #28a745;
+}
+
+.profileTextarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 12px 20px;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 40%;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #218838;
+  transform: scale(1.03);
+}
+
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Sidebar button styles */
 .buttonk {
   display: flex;
   flex-direction: row;
@@ -66,15 +134,15 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  text-align: left; /* Align text to the left */
-  width: 100%; /* Optional: make buttons full width of their container */
-
- border-bottom: 1px solid #050505;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid #050505;
 }
-.pname{
+
+.pname {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: aliceblue;
-border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   font-size: 14px;
   text-align: center;
 }
@@ -84,17 +152,10 @@ border-bottom: 1px solid #fff;
   transform: scale(1.05);
 }
 
-
-
 .deleteButton {
   color: #fff;
   width: 80%;
- 
- 
-  
 }
-
-
 
 .inviteButton {
   background-color: #28a745;
