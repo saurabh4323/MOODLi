@@ -15,13 +15,7 @@ const Heros = () => {
           className={styles.backgroundImage}
           style={{ borderTopRightRadius: "40px" }}
         >
-          <Image
-            src={"/vector.png"}
-            alt="Background vector"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
+          <Image src={"/vector.png"} alt="Background vector" layout="fill" />
         </div>
 
         <div className={styles.content}>

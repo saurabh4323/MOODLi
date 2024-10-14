@@ -4,7 +4,7 @@
 .dashboard-container {
   font-family: "fugaz" , sans-serif;
   /* background-color: #; */
-  margin-top: 3%;
+  margin-top: -3%;
   height: auto;
  /* height: 220vh; */
   padding: 30px;
@@ -214,7 +214,7 @@ transform: scale(0.8);
 /* Button container for submit and close */
 .button-containerclick {
   display: flex;
-  gap: 10px;
+  
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;

@@ -14,11 +14,10 @@ const Header = () => {
   const [menu, setMenu] = useState(false); // Toggle for the mobile menu
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
-  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const initialTheme = getInitialTheme();
-    setTheme(initialTheme);
+
     if (initialTheme === "dark") {
       enableDarkMode();
     } else {
@@ -27,18 +26,6 @@ const Header = () => {
   }, []);
   const track = () => {
     window.location.href = "/track";
-  };
-  const handleToggleTheme = () => {
-    setIsChecked(!isChecked);
-    document.body.classList.toggle("dark", !isChecked);
-    if (theme === "light") {
-      setTheme("dark");
-      enableDarkMode();
-    } else {
-      setTheme("light");
-      enableLightMode();
-    }
-    toggleDarkMode();
   };
 
   useEffect(() => {
@@ -107,52 +94,12 @@ const Header = () => {
               <Link href="/profile" className="nav-item">
                 Profile
               </Link>
-              <button onClick={handleLogoutClick} className="nav-item">
-                Logout
-              </button>
             </>
           ) : (
             <Link href="/register" className="nav-item">
               Login
             </Link>
           )}
-          <div style={{ textAlign: "center" }}>
-            <div
-              onClick={handleToggleTheme}
-              style={{
-                // border: "1px solid #000",
-                background:
-                  "linear-gradient(to right, #ffffff 50%, #000000 50%)",
-                border: "1px solid #fff",
-                width: "50px",
-                height: "26px",
-                borderRadius: "50px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "5px",
-                cursor: "pointer",
-                position: "relative",
-              }}
-              className="checkbox-label"
-            >
-              <i className="fas fa-moon" style={{ color: "#f1c40f" }}></i>
-              <i className="fas fa-sun" style={{ color: "#f39c12" }}></i>
-              <span
-                style={{
-                  backgroundColor: "#f97243",
-                  width: "22px",
-                  height: "22px",
-                  position: "absolute",
-                  borderRadius: "50%",
-                  top: "2px",
-                  left: isChecked ? "26px" : "2px", // Moves the ball when clicked
-                  transition: "transform 0.2s linear",
-                }}
-                className="ball"
-              />
-            </div>
-          </div>
         </nav>
 
         {/* Mobile Navigation */}
@@ -200,44 +147,6 @@ const Header = () => {
                   Login
                 </Link>
               )}
-              <div style={{ textAlign: "center" }}>
-                <div
-                  onClick={handleToggleTheme}
-                  style={{
-                    border: "1px solid #000",
-                    background:
-                      "linear-gradient(to right, #ffffff 50%, #000000 50%)",
-
-                    marginLeft: "16px",
-                    width: "50px",
-                    height: "26px",
-                    borderRadius: "50px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "5px",
-                    cursor: "pointer",
-                    position: "relative",
-                  }}
-                  className="checkbox-label"
-                >
-                  <i className="fas fa-moon" style={{ color: "#f1c40f" }}></i>
-                  <i className="fas fa-sun" style={{ color: "#f39c12" }}></i>
-                  <span
-                    style={{
-                      backgroundColor: "#f97243",
-                      width: "22px",
-                      height: "22px",
-                      position: "absolute",
-                      borderRadius: "50%",
-                      top: "2px",
-                      left: isChecked ? "26px" : "2px", // Moves the ball when clicked
-                      transition: "transform 0.2s linear",
-                    }}
-                    className="ball"
-                  />
-                </div>
-              </div>
             </div>
           )}
         </div>

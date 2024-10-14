@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 .chatContainer {
   border: 1px solid #5d40f4;
-  margin-top: 5%;
+  margin-top: 2%;
   width: 98%;
   display: flex;
   height: 100vh;
@@ -55,7 +55,7 @@
 }
 
 .friendItem:hover {
-  background-color:#17009c; /* Hover effect */
+  background-color:#17009c60; /* Hover effect */
 }
 
 .friendAvatar {

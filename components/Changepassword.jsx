@@ -33,7 +33,7 @@ const Changepassword = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred while changing the password");
+      toast.error("Wrong password entered");
     }
   };
 
@@ -41,7 +41,7 @@ const Changepassword = () => {
     <div
       style={{
         marginTop: "80px",
-        height: "96vh",
+        height: "56vh",
         display: "flex",
         justifyContent: "center",
         position: "relative",

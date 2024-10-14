@@ -1,6 +1,16 @@
+.backgroundImage {
+  margin-top: -40px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; /* Adjusted to 0 to center the vector properly */
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
 .heroSection {
   height: 166vh;
-  margin-top: 24px;
+  /* margin-top: 24px; */
   padding-top: 3rem;
   padding-bottom: 3rem;
   text-align: center;
@@ -11,15 +21,7 @@
   height: 208vh;
 }
 
-.backgroundImage {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0; /* Adjusted to 0 to center the vector properly */
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-}
+
 
 .content {
   position: relative;

@@ -1,24 +1,28 @@
 .header-container {
-  /* overflow: hidden; */
-  margin-left: 8%;
- 
-  margin-top: 12px;
-  /* border: 1px solid  #fff; */
-  /* border: 1px solid #020202; */
-  border-radius: 100px;
-  
-  border: 1px solid #fff;
   display: flex;
-  height: 70px;
+  align-items: center;
+  justify-content: space-between; /* Space items equally between */
   
-  margin-bottom: -50px;
-  width: 85%;
-  
+  border-radius: 100px;
+  border: 1px solid #fff;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(16, 15, 15, 0.477) 0px 6px 6px;
+
+  height: 70px;
+  width: 70%;
+  margin: 10px auto; /* Centers the header horizontally */
+  padding: 0 20px; /* Add padding for spacing inside the container */
   
- 
+  box-sizing: border-box;
   z-index: 10;
 }
+
+.header-container .item {
+  flex: 1; /* Make sure all items take equal space */
+  text-align: center; /* Ensure items stay centered inside their space */
+}
+
+
+
 
 .header-content {
   display: flex;
