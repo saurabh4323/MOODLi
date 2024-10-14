@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Image from "next/image";
 import Calendar from "./Calander";
-// import getRandomColor from "./getRandomColor.js";
-import "./Dashboard.css";
-import "./Track.css";
+import "./Dashboard.css"; // Existing styles
+// Import new background styles
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
 import "react-toastify/dist/ReactToastify.css"; // Import CSS for the toasts
 import Feedback from "./Feedback";
@@ -25,6 +24,8 @@ export default function Dashboard() {
   });
   const [photo, setPhoto] = useState(null);
   const [emojiMap, setEmojiMap] = useState({}); // New state to track emojis by date
+  const particleContainerRef = useRef(null); // Ref for the particle container
+
   const colors = [
     "#F87171",
     "#FBBF24",
@@ -61,6 +62,7 @@ export default function Dashboard() {
   function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
   }
+
   useEffect(() => {
     const fetchTrack = async () => {
       const userId = localStorage.getItem("userId");
@@ -82,36 +84,39 @@ export default function Dashboard() {
     setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
-  const emojiSelect = (emoji) => {
-    setSelectedEmoji(emoji);
-    setClicked(true);
-    setEmojiData((prevData) => ({
-      ...prevData,
-      emoji,
-      days: 1,
-    }));
-  };
+  // Function to create particles
+  const createParticles = () => {
+    const numParticles = 100; // Number of particles
+    const particleContainer = document.createElement("div");
+    particleContainer.className = "particle-containers"; // Use this class for styling
+    particleContainerRef.current = particleContainer; // Set ref to the particle container
+    document.body.appendChild(particleContainer); // Append to body
 
-  const handleInputChange = (event) => {
-    setEmojiData({ ...emojiData, [event.target.name]: event.target.value });
-  };
-
-  const closeClicked = () => {
-    setClicked(false);
-    setPhoto(null); // Reset photo on close
-  };
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhoto(reader.result); // Set the base64 image data
-      };
-      reader.readAsDataURL(file);
+    for (let i = 0; i < numParticles; i++) {
+      const square = document.createElement("div");
+      square.className = "square";
+      square.style.backgroundColor = getRandomColor(); // Set random color
+      square.style.width = `${Math.random() * 15 + 10}px`; // Random width
+      square.style.height = square.style.width; // Keep it square
+      square.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+      square.style.top = `${Math.random() * 100}vh`; // Random vertical position
+      square.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random animation duration
+      particleContainer.appendChild(square);
     }
   };
 
+  useEffect(() => {
+    createParticles(); // Call to create particles on component mount
+
+    // Cleanup function to remove particles on unmount
+    return () => {
+      if (particleContainerRef.current) {
+        particleContainerRef.current.remove(); // Remove the particle container
+      }
+    };
+  }, []);
+
+  // Fetch user profile
   useEffect(() => {
     const fetchUserProfile = async () => {
       const userId = localStorage.getItem("userId");
@@ -205,12 +210,10 @@ export default function Dashboard() {
   return (
     <div className="dashboard-container">
       <ToastContainer /> {/* Add the ToastContainer component */}
-      <Quots></Quots>
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
         </div>
-        {/* <Feedback></Feedback> */}
         <div className="status-item">
           <h1 className="status-text">
             Time: {new Date().toLocaleTimeString()}
@@ -227,8 +230,8 @@ export default function Dashboard() {
         <div className="animated-cardclick">
           <h2 className="name-display">
             Hey {username}, today you are feeling
-          </h2>{" "}
-          <div className="emoji-display">{selectedEmoji}</div>{" "}
+          </h2>
+          <div className="emoji-display">{selectedEmoji}</div>
           <input
             type="text"
             placeholder="Reason for your mood"
@@ -269,17 +272,16 @@ export default function Dashboard() {
             }}
             onClick={() => emojiSelect(mood[key])}
           >
-            <span style={{ fontSize: "55px" }}>{mood[key]}</span> {/* Emoji */}
+            <span style={{ fontSize: "55px" }}>{mood[key]}</span>
             <span
               style={{ fontSize: "20px", color: "#f5f5f5", fontWeight: "bold" }}
             >
               {key}
-            </span>{" "}
-            {/* Emoji Name */}
+            </span>
           </div>
         ))}
       </div>
-      <Calendar emojiMap={emojiMap} />{" "}
+      <Calendar emojiMap={emojiMap} />
     </div>
   );
 }

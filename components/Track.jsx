@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./Track.css"; // Custom styling for the card
 import "./Login.module.css";
@@ -9,30 +9,10 @@ export default function Track() {
   const [track, setTrack] = useState([]);
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null);
+  const particleContainerRef = useRef(null); // Ref to manage the particle container
 
   // Array of predefined background colors
-  const colors = [
-    "#9be6c1",
-    "#ffb1cc",
-    "#9bc9ff",
-    "#ffecb3",
-    "#b39ddb",
-    "#f2c94c",
-    "#ffa726",
-    "#81d4fa",
-    "#F87171",
-    "#FBBF24",
-    "#34D399",
-    "#60A5FA",
-    "#A78BFA",
-    "#F472B6",
-    "#F9A8D4",
-    "#FDBA74",
-    "#6EE7B7",
-    "#93C5FD",
-    "#D8B4FE",
-    "#E879F9",
-  ];
+  const colors = ["#4267b2", "#262d33"];
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -55,8 +35,37 @@ export default function Track() {
       };
 
       fetchTrack();
+      createParticles(); // Call the particle creation function
+
+      // Cleanup function to remove particles on unmount
+      return () => {
+        if (particleContainerRef.current) {
+          particleContainerRef.current.remove(); // Remove the particle container
+        }
+      };
     }
   }, []);
+
+  // Function to create particles
+  const createParticles = () => {
+    const numParticles = 100; // Number of particles
+    const particleContainer = document.createElement("div");
+    particleContainer.className = "particle-container"; // Use this class for styling
+    particleContainerRef.current = particleContainer; // Set ref to the particle container
+    document.body.appendChild(particleContainer); // Append to body
+
+    for (let i = 0; i < numParticles; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.width = `${Math.random() * 10 + 5}px`;
+      particle.style.height = particle.style.width; // Keep it circular
+      particle.style.backgroundColor = `rgba(0, 255, 255, ${Math.random()})`; // Random color with some transparency
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100}vh`;
+      particle.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random animation duration
+      particleContainer.appendChild(particle);
+    }
+  };
 
   if (loading) {
     return (
@@ -88,13 +97,13 @@ export default function Track() {
                   className="card"
                   style={{ backgroundColor: colors[index % colors.length] }}
                 >
+                  <h2 className="card_title">
+                    {new Date(entry.selectedAt).toLocaleDateString()}
+                  </h2>
                   <div className="card_image">
                     <span className="emoji">{entry.emoji}</span>
                   </div>
                   <div className="card_content">
-                    <h2 className="card_title">
-                      {new Date(entry.selectedAt).toLocaleDateString()}
-                    </h2>
                     <p className="card_reason">{entry.reason}</p>
                   </div>
                 </div>

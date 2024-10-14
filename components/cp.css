@@ -76,6 +76,7 @@
 @media (max-width: 600px) {
   .form-container {
     padding: 20px;
+    width: 90%;
   }
 }
 
