@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./calander.css"; // Import the new CSS file
 
 const months = {
   January: "Jan",
@@ -78,42 +79,31 @@ export default function Calendar() {
   const numRows = Math.floor(daysToDisplay / 7) + (daysToDisplay % 7 ? 1 : 0);
 
   return (
-    <div
-      style={{
-        border: "1px solid #1837c1",
-      }}
-      className="flex flex-col gap-4 p-4 rounded-lg shadow-lg bg-#2b1c4f mt-[40px] border"
-    >
+    <div className="calendar-container">
       {/* Navigation and Month Display */}
-      <div className="flex justify-between items-center">
-        <button
-          onClick={() => handleIncrementMonth(-1)}
-          className="text-white-600 text-2xl hover:text-white-400 transition duration-200"
-        >
+      <div className="calendar-header">
+        <button onClick={() => handleIncrementMonth(-1)} className="nav-btn">
           <i className="fa-solid fa-circle-chevron-left"></i>
         </button>
-        <p className="text-red-600 text-center text-xl font-semibold">
+        <p className="calendar-title">
           {selectedMonth} {selectedYear}
         </p>
-        <button
-          onClick={() => handleIncrementMonth(1)}
-          className="text-white-600 text-2xl hover:text-white-400 transition duration-200"
-        >
+        <button onClick={() => handleIncrementMonth(1)} className="nav-btn">
           <i className="fa-solid fa-circle-chevron-right"></i>
         </button>
       </div>
 
       {/* Days of the Week */}
-      <div className="grid grid-cols-7 gap-2">
+      <div className="calendar-days">
         {dayList.map((day) => (
-          <div key={day} className="font-bold text-center text-white-800">
+          <div key={day} className="day-name">
             {day}
           </div>
         ))}
       </div>
 
       {/* Days of the Month */}
-      <div className="grid grid-cols-7 gap-2">
+      <div className="calendar-grid">
         {[...Array(numRows).keys()].map((rowIndex) => (
           <React.Fragment key={rowIndex}>
             {Array.from({ length: 7 }, (_, dayOfWeekIndex) => {
@@ -133,20 +123,16 @@ export default function Calendar() {
               return (
                 <div
                   key={dayOfWeekIndex}
-                  className={`p-3 flex items-center justify-center rounded-lg border transition-all duration-300 ${
-                    isToday ? "bg-yellow-400" : "bg-white"
-                  } ${
-                    dayDisplay
-                      ? "bg-transparent text-transparent"
-                      : "border-gray-200 text-black hover:scale-105 hover:shadow-lg"
+                  className={`calendar-day ${isToday ? "today" : ""} ${
+                    dayDisplay ? "invisible-day" : ""
                   }`}
                 >
+                  {/* Show date and emoji on desktop, only emoji on mobile */}
                   {!dayDisplay && (
                     <>
-                      <p>{dayIndex}</p>
-                      {/* Display emoji if it exists for the day */}
+                      <p className="desktop-only">{dayIndex}</p>
                       {emojiMap[dateKey] && (
-                        <span className="ml-2">{emojiMap[dateKey]}</span>
+                        <span className="emojikkk">{emojiMap[dateKey]}</span>
                       )}
                     </>
                   )}

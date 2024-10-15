@@ -1,30 +1,129 @@
-.calendar {
+.calendar-container {
+  border: 1px solid #1837c1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
+  margin-top: 40px;
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 10px;
+  align-items: center;
 }
 
-.calendar-daynames,
+.nav-btn {
+  color: #ffffff;
+  font-size: 2rem;
+  transition: color 0.2s;
+}
+
+.nav-btn:hover {
+  color: #cccccc;
+}
+
+.calendar-title {
+  color: #ff0000;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 .calendar-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
 }
 
-.day-name,
-.day {
-  border: 1px solid #ccc;
-  padding: 10px;
+.day-name {
+  font-weight: bold;
   text-align: center;
+  color: #1837c1;;
 }
 
-.emoji {
-  font-size: 1.5em;
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-day {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 2px solid #1837c1;
+  transition: transform 0.3s, box-shadow 0.3s;
+  
+}
+
+.calendar-day:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.today {
+  background-color: #ffc107;
+}
+
+.invisible-day {
+  background-color: transparent;
+  color: transparent;
+}
+
+.emojikk {
+  margin-left: 0.5rem;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .calendar-container {
+    border: none;
+    margin-left: -20px;
+    /* width:  105%; */
+    padding: 0.2rem;
+    
+  }
+
+  .nav-btn {
+    font-size: 1rem; /* Reduce icon size on mobile */
+  }
+
+  .calendar-title {
+    font-size: 1.2rem; /* Slightly smaller title for mobile */
+  }
+
+  .calendar-day {
+    padding: 0.55rem; /* Reduce padding for mobile */
+    font-size: 0.85rem; /* Smaller text size for days */
+  }
+
+  .calendar-grid {
+    gap: 0.25rem; /* Smaller gap between days */
+  }
+
+  .emojikk {
+    margin-left: 0.01rem;
+    /* margin-left: 0.25rem; Adjust emoji spacing */
+  }
+}
+
+/* For even smaller devices */
+@media (max-width: 480px) {
+  .nav-btn {
+    font-size: 1.2rem; /* Further reduce icon size */
+  }
+
+  .calendar-title {
+    font-size: 1rem; /* Smaller title for small screens */
+  }
+
+  .calendar-day {
+    padding: 0.5rem; /* More compact day elements */
+  }
 }
