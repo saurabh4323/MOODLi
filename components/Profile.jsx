@@ -8,12 +8,14 @@ import { Share2, Headset, Lock, LogOut } from "lucide-react";
 import { enableDarkMode, enableLightMode } from "../app/theme"; // Import theme functions
 import Changepassword from "./Changepassword";
 import Button from "./Button";
+import ContactUs from "./ContactUs";
 
 export default function Profile() {
   const [gender, setGender] = useState("Other");
   const [showchangepass, setshowchangepass] = useState(false);
   const [friendList, setFriendList] = useState([]);
   const [showFriendList, setShowFriendList] = useState(false);
+  const [showcontact, setshowcontact] = useState(false);
 
   const [profile, setProfile] = useState({
     name: "",
@@ -123,7 +125,9 @@ export default function Profile() {
   const handleCancelLogout = () => {
     setShowLogoutConfirmation(false); // Hide confirmation modal
   };
-
+  const contact = () => {
+    setshowcontact(true);
+  };
   const fetchFriends = async () => {
     if (typeof window !== "undefined") {
       const userId = window.localStorage.getItem("userId");
@@ -164,7 +168,7 @@ export default function Profile() {
         <button className="buttonk" onClick={toggleThemeModal}>
           <SunMoon color="#ffffff" /> Theme
         </button>
-        <button className="buttonk">
+        <button className="buttonk" onClick={contact}>
           <Headset color="#ffffff" /> Contact us
         </button>
         <button className="buttonk" onClick={() => setshowchangepass(true)}>
@@ -321,7 +325,19 @@ export default function Profile() {
           <Changepassword />
         </div>
       )}
-
+      {showcontact && (
+        <div className="modal-overlayss">
+          <div className="can" style={{ marginTop: "50px" }}>
+            <button
+              className="modal-close-button"
+              onClick={() => setshowcontact(false)}
+            >
+              Close
+            </button>
+            <ContactUs></ContactUs>
+          </div>
+        </div>
+      )}
       {/* Theme Modal */}
       {showThemeModal && (
         <div className="modal-overlay">
