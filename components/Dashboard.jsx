@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify"; // Import toast components
-// Import CSS for the toasts
-import Calendar from "./Calander"; // Assuming the Calendar component is correct
-import "./Dashboard.css"; // Existing styles
+import { ToastContainer, toast } from "react-toastify";
+import Calendar from "./Calander";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -18,8 +17,8 @@ export default function Dashboard() {
     reason: "",
     image: "",
   });
-  const [emojiMap, setEmojiMap] = useState({}); // State to track emojis by date
-  const particleContainerRef = useRef(null); // Ref for the particle container
+  const [emojiMap, setEmojiMap] = useState({});
+  const particleContainerRef = useRef(null);
 
   const colors = [
     "#F87171",
@@ -79,34 +78,32 @@ export default function Dashboard() {
     setHasSubmittedToday(lastSubmissionDate === today);
   }, []);
 
-  // Function to create particles
   const createParticles = () => {
-    const numParticles = 100; // Number of particles
+    const numParticles = 100;
     const particleContainer = document.createElement("div");
-    particleContainer.className = "particle-containers"; // Use this class for styling
-    particleContainerRef.current = particleContainer; // Set ref to the particle container
-    document.body.appendChild(particleContainer); // Append to body
+    particleContainer.className = "particle-containers";
+    particleContainerRef.current = particleContainer;
+    document.body.appendChild(particleContainer);
 
     for (let i = 0; i < numParticles; i++) {
       const square = document.createElement("div");
       square.className = "square";
-      square.style.backgroundColor = getRandomColor(); // Set random color
-      square.style.width = `${Math.random() * 15 + 10}px`; // Random width
-      square.style.height = square.style.width; // Keep it square
-      square.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-      square.style.top = `${Math.random() * 100}vh`; // Random vertical position
-      square.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random animation duration
+      square.style.backgroundColor = getRandomColor();
+      square.style.width = `${Math.random() * 15 + 10}px`;
+      square.style.height = square.style.width;
+      square.style.left = `${Math.random() * 100}vw`;
+      square.style.top = `${Math.random() * 100}vh`;
+      square.style.animationDuration = `${Math.random() * 3 + 2}s`;
       particleContainer.appendChild(square);
     }
   };
 
   useEffect(() => {
-    createParticles(); // Call to create particles on component mount
+    createParticles();
 
-    // Cleanup function to remove particles on unmount
     return () => {
       if (particleContainerRef.current) {
-        particleContainerRef.current.remove(); // Remove the particle container
+        particleContainerRef.current.remove();
       }
     };
   }, []);
@@ -160,7 +157,6 @@ export default function Dashboard() {
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
       setDays(newDays);
 
-      // Update emoji map with the current date and selected emoji
       const todayDate = new Date().toLocaleDateString();
       setEmojiMap((prevMap) => ({
         ...prevMap,
@@ -177,13 +173,11 @@ export default function Dashboard() {
     }
   };
 
-  // Function to handle emoji selection
   const emojiSelect = (emoji) => {
     setSelectedEmoji(emoji);
-    setClicked(true); // Show the reason input form when an emoji is clicked
+    setClicked(true);
   };
 
-  // Function to handle input field changes
   const handleInputChange = (e) => {
     setEmojiData((prevData) => ({
       ...prevData,
@@ -191,9 +185,8 @@ export default function Dashboard() {
     }));
   };
 
-  // Close the emoji card
   const closeClicked = () => {
-    setClicked(false); // Close the form
+    setClicked(false);
   };
 
   const mood = {
@@ -236,7 +229,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mood-heading">
-        <h1>How's your mood shaping up today?</h1>
+        <h1>How&apos;s your mood shaping up today?</h1>
       </div>
       {clicked && (
         <div className="animated-cardclick">
@@ -278,7 +271,7 @@ export default function Dashboard() {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              width: "200px", // Square size
+              width: "200px",
               height: "180px",
               margin: "15px",
             }}
