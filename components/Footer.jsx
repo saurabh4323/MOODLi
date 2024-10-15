@@ -45,7 +45,7 @@ const Footer = () => {
     {
       title: "Helpful Links",
       links: [
-        { href: "/", label: "Contact" },
+        { href: "/contact", label: "Contact" },
         // Attach the onClick event to the "Blog" link
         { label: "Blog", onClick: Blog },
       ],

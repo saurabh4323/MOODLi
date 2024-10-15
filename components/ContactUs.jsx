@@ -79,7 +79,7 @@ const ContactUs = () => {
 
       <style jsx>{`
         .container {
-          background-color: #000;
+          background-color: #583de8;
           color: #fff;
           max-width: 600px;
           margin: 50px auto;
@@ -88,8 +88,9 @@ const ContactUs = () => {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         h1 {
+          font-weight: 800;
           text-align: center;
-          color: #00aaff;
+          color: #fff;
         }
         .input-field {
           margin-bottom: 20px;
