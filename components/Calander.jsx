@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const months = {
   January: "Jan",
@@ -20,9 +21,41 @@ const monthsArr = Object.keys(months);
 const now = new Date();
 const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export default function Calendar({ emojiMap }) {
+export default function Calendar() {
   const [selectedMonth, setSelectMonth] = useState(monthsArr[now.getMonth()]);
   const [selectedYear, setSelectedYear] = useState(now.getFullYear());
+  const [emojiMap, setEmojiMap] = useState({});
+
+  // Fetch user track data
+  useEffect(() => {
+    const fetchTrack = async () => {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        try {
+          const response = await axios.get(`/api/users/track/${userId}`);
+          const trackData = response.data;
+          const newEmojiMap = {};
+
+          // Loop through the track data to map emojis to dates
+          trackData.forEach((entry) => {
+            const date = new Date(entry.selectedAt);
+            const formattedDate = `${date.getFullYear()}-${String(
+              date.getMonth() + 1
+            ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+
+            // Add the emoji for that specific date
+            newEmojiMap[formattedDate] = entry.emoji;
+          });
+
+          setEmojiMap(newEmojiMap); // Set the emojiMap state with the new data
+        } catch (error) {
+          console.error("Error fetching track data:", error);
+        }
+      }
+    };
+
+    fetchTrack(); // Fetch emoji data when the component mounts
+  }, []);
 
   const numericMonth = monthsArr.indexOf(selectedMonth);
 
