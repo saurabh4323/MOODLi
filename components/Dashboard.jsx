@@ -1,14 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import Image from "next/image";
-import Calendar from "./Calander";
-import "./Dashboard.css"; // Existing styles
-// Import new background styles
 import { ToastContainer, toast } from "react-toastify"; // Import toast components
-import "react-toastify/dist/ReactToastify.css"; // Import CSS for the toasts
-import Feedback from "./Feedback";
-import Quots from "./Quots";
+// Import CSS for the toasts
+import Calendar from "./Calander"; // Assuming the Calendar component is correct
+import "./Dashboard.css"; // Existing styles
 
 export default function Dashboard() {
   const [username, setUsername] = useState("");
@@ -22,8 +18,7 @@ export default function Dashboard() {
     reason: "",
     image: "",
   });
-  const [photo, setPhoto] = useState(null);
-  const [emojiMap, setEmojiMap] = useState({}); // New state to track emojis by date
+  const [emojiMap, setEmojiMap] = useState({}); // State to track emojis by date
   const particleContainerRef = useRef(null); // Ref for the particle container
 
   const colors = [
@@ -136,20 +131,18 @@ export default function Dashboard() {
   // Main part to post on emoji
   const handleSubmit = async () => {
     if (hasSubmittedToday) {
-      toast.error("You have already submitted your mood for today."); // Replace alert with toast
+      toast.error("You have already submitted your mood for today.");
       return;
     }
 
     if (!selectedEmoji || !emojiData.reason) {
-      toast.error("Please select an emoji and provide a reason."); // Replace alert with toast
+      toast.error("Please select an emoji and provide a reason.");
       return;
     }
 
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      toast.error(
-        "You are not registered / not created profile. Please try again."
-      ); // Replace alert with toast
+      toast.error("You are not registered. Please try again.");
       return;
     }
 
@@ -171,17 +164,36 @@ export default function Dashboard() {
       const todayDate = new Date().toLocaleDateString();
       setEmojiMap((prevMap) => ({
         ...prevMap,
-        [todayDate]: selectedEmoji, // Store the emoji for today's date
+        [todayDate]: selectedEmoji,
       }));
 
       localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
 
-      toast.success("Submission successful!"); // Replace alert with toast
+      toast.success("Submission successful!");
     } catch (error) {
       console.error("Error submitting emoji report:", error);
-      toast.error("You are not registered. Please try again."); // Replace alert with toast
+      toast.error("There was an issue. Please try again.");
     }
+  };
+
+  // Function to handle emoji selection
+  const emojiSelect = (emoji) => {
+    setSelectedEmoji(emoji);
+    setClicked(true); // Show the reason input form when an emoji is clicked
+  };
+
+  // Function to handle input field changes
+  const handleInputChange = (e) => {
+    setEmojiData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // Close the emoji card
+  const closeClicked = () => {
+    setClicked(false); // Close the form
   };
 
   const mood = {
@@ -209,7 +221,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <ToastContainer /> {/* Add the ToastContainer component */}
+      <ToastContainer />
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
@@ -224,7 +236,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mood-heading">
-        <h1>How&apos;s your mood shaping up today?</h1>
+        <h1>How's your mood shaping up today?</h1>
       </div>
       {clicked && (
         <div className="animated-cardclick">
