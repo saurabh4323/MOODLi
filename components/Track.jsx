@@ -12,7 +12,7 @@ export default function Track() {
   const particleContainerRef = useRef(null); // Ref to manage the particle container
 
   // Array of predefined background colors
-  const colors = ["#4267b2", "#262d33"];
+  const colors = ["#4267b2", "#ff4f52"];
 
   useEffect(() => {
     if (typeof window !== "undefined") {

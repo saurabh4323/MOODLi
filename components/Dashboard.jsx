@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, Toaster } from "react-hot-toast"; // Import toast and Toaster
 import Calendar from "./Calander";
 import "./Dashboard.css";
 
@@ -128,18 +128,18 @@ export default function Dashboard() {
   // Main part to post on emoji
   const handleSubmit = async () => {
     if (hasSubmittedToday) {
-      toast.error("You have already submitted your mood for today.");
+      toast.error("You have already submitted your mood for today."); // Use toast.error
       return;
     }
 
     if (!selectedEmoji || !emojiData.reason) {
-      toast.error("Please select an emoji and provide a reason.");
+      toast.error("Please select an emoji and provide a reason."); // Use toast.error
       return;
     }
 
     const userId = localStorage.getItem("userId");
     if (!userId) {
-      toast.error("You are not registered. Please try again.");
+      toast.error("You are not registered. Please try again."); // Use toast.error
       return;
     }
 
@@ -166,10 +166,10 @@ export default function Dashboard() {
       localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
 
-      toast.success("Submission successful!");
+      toast.success("Submission successful!"); // Use toast.success
     } catch (error) {
       console.error("Error submitting emoji report:", error);
-      toast.error("There was an issue. Please try again.");
+      toast.error("There was an issue. Please try again."); // Use toast.error
     }
   };
 
@@ -214,7 +214,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <ToastContainer />
+      <Toaster /> {/* Ensure the Toaster component is rendered */}
       <div className="status-section">
         <div className="status-item">
           <h1 className="status-text">Days: {days} 🌟</h1>
