@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { toast, Toaster } from "react-hot-toast"; // Import toast and Toaster
+import { toast, Toaster } from "react-hot-toast";
 import Calendar from "./Calander";
 import "./Dashboard.css";
-
 export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -169,7 +168,9 @@ export default function Dashboard() {
       toast.success("Submission successful!"); // Use toast.success
     } catch (error) {
       console.error("Error submitting emoji report:", error);
-      toast.error("There was an issue. Please try again."); // Use toast.error
+      toast.error(
+        "You have not created profile or not registered. Please try again."
+      ); // Use toast.error
     }
   };
 

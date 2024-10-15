@@ -21,10 +21,6 @@ const Chat = () => {
     }
   }, []);
 
-  const filteredFriends = friends.filter((friend) =>
-    friend.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   // Fetch friends from the API
   useEffect(() => {
     const fetchFriends = async () => {
@@ -33,14 +29,24 @@ const Chat = () => {
           `/api/feeltalk/friend?userId=${currentUserId}`
         );
 
-        // Create mapping of _id to userId
+        // Create mapping of _id to userId and add lastMessageTime
+        const friendsWithTimestamp = response.data.friends.map((friend) => ({
+          ...friend,
+          lastMessageTime: friend.lastMessageTime || 0, // Assuming API returns lastMessageTime
+        }));
+
+        // Sort friends based on lastMessageTime
+        friendsWithTimestamp.sort(
+          (a, b) => b.lastMessageTime - a.lastMessageTime
+        );
+
         const mapping = {};
-        response.data.friends.forEach((friend) => {
+        friendsWithTimestamp.forEach((friend) => {
           mapping[friend._id] = friend.userId; // Assuming userId is part of the friend data
         });
 
         setUserIdMapping(mapping);
-        setFriends(response.data.friends);
+        setFriends(friendsWithTimestamp);
       } catch (error) {
         console.error("Error fetching friends:", error);
       }
@@ -96,6 +102,20 @@ const Chat = () => {
       });
       setMessages([...messages, response.data.message]);
       setNewMessage(""); // Clear input field after sending
+
+      // Update lastMessageTime for the selected friend
+      setFriends((prevFriends) =>
+        prevFriends.map((friend) =>
+          friend._id === selectedFriend._id
+            ? { ...friend, lastMessageTime: Date.now() } // Update the time of the last message sent
+            : friend
+        )
+      );
+
+      // Sort friends again after sending the message
+      setFriends((prevFriends) =>
+        [...prevFriends].sort((a, b) => b.lastMessageTime - a.lastMessageTime)
+      );
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -107,6 +127,11 @@ const Chat = () => {
       sendMessage();
     }
   };
+
+  // Filter friends based on search term
+  const filteredFriends = friends.filter((friend) =>
+    friend.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className={styles.chatContainer}>
@@ -132,6 +157,11 @@ const Chat = () => {
                 </span>
               </div>
               <span className={styles.friendName}>{friend.name}</span>
+              <div className={styles.lastMessagePreview}>
+                {messages.find(
+                  (msg) => msg.senderId === userIdMapping[friend._id]
+                )?.content || "No messages yet"}
+              </div>
             </li>
           ))}
         </ul>
