@@ -2,12 +2,24 @@
 import Image from "next/image";
 import styles from "./Heros.module.css"; // Import the CSS file
 import Hero from "./Hero";
+// import "./profile.css";
+// import "./Afterchat/ky.css";
 import a from "./images/a.png";
 import b from "./images/b.png";
 import c from "./images/c.png";
 import d from "./images/d.png";
 import s from "./images/e.png";
+import { useState } from "react";
+import Knowyourself from "./Afterchat/Knowyourself";
+import Button from "./Button";
+
 const Heros = () => {
+  const [showky, setshowky] = useState(false);
+
+  const clo = () => {
+    setshowky(false);
+  };
+
   return (
     <div className="mainhero">
       <div className={styles.heroSection}>
@@ -24,15 +36,34 @@ const Heros = () => {
             Empower Yourself with Self-awareness, Track Your Emotions, <br />
             chat with community and Unleash a Happier You
           </p>
-          <button
-            className={styles.button}
-            onClick={() => {
-              window.location.href = "/login";
-            }}
-          >
-            Join with us
+
+          <button className={styles.button} onClick={() => setshowky(true)}>
+            Open Know Yourself
           </button>
-          <Hero></Hero>
+
+          {showky && (
+            <div
+              className="mood-overlay"
+              style={{
+                position: "absolute", // Fixed to cover the entire viewport
+                top: "0",
+                left: "0",
+                right: "0",
+                bottom: "0",
+                width: "100%",
+                flexDirection: "column",
+                gap: "20px",
+                justifyContent: "center",
+                alignItems: "center",
+                zIndex: 1000,
+                // backgroundColor: "rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <Knowyourself />
+            </div>
+          )}
+
+          <Hero />
         </div>
         <div className={styles.emotionsSection}>
           {/* Group 1 */}

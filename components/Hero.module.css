@@ -1,115 +1,132 @@
-/* Hero Section Styling */
-.heroSection {
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Global Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f3f7fa;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Quiz Container */
+.quiz-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  background-color: #f3f7fa;
+}
+
+/* Quiz Box */
+.quiz-box {
   padding: 20px;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  width: 100%;
+.quiz-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.textSection {
-  flex: 1;
-  padding: 20px;
-}
-
-.heroTitle {
-  font-size: 3rem;
-  font-weight: bold;
+/* Question Title */
+.question-title {
+  font-size: 1.4rem;
+  font-weight: 500;
   color: #333;
-  margin: 0;
-  animation: fadeIn 1s ease-in-out;
+  margin-bottom: 15px;
 }
 
-.heroSubtitle {
+/* Option Group */
+.option-group {
+  margin-bottom: 20px;
+}
+
+/* Option Style */
+.MuiFormControlLabel-label {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.MuiFormControlLabel-root {
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.MuiFormControlLabel-root:hover {
+  background-color: #e8f5ff;
+  transform: translateY(-2px);
+}
+
+/* Button Styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.next-button, .prev-button {
+  font-size: 1rem;
+  color: white;
+  background-color: #5c84f1;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.next-button:hover, .prev-button:hover {
+  background-color: #3f6de4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.next-button:active, .prev-button:active {
+  transform: translateY(2px);
+}
+
+/* Results Styling */
+.results-container {
+  font-family: 'Alata', sans-serif;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.results-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.results-item {
   font-size: 1.2rem;
   color: #555;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
-.ctaButton {
-  background-color: #ff6b6b;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
+.results-value {
+  font-weight: 700;
+  color: #1976d2;
 }
 
-.ctaButton:hover {
-  background-color: #ff4c4c;
+/* Small Shadow and Smooth Animation */
+.quiz-box,
+.results-container {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.moodSelector {
-  margin-top: 30px;
+.quiz-box:hover,
+.results-container:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-.moodTitle {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.moodButtons {
-  display: flex;
-  justify-content: center;
-}
-
-.moodButton {
-  font-size: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin: 0 10px;
-  transition: transform 0.2s;
-}
-
-.moodButton:hover {
-  transform: scale(1.2);
-}
-
-.selectedMood {
-  transform: scale(1.5);
-  color: #ff6b6b;
-}
-
-.feedbackMessage {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  color: #333;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.imageSection {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroImage {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}

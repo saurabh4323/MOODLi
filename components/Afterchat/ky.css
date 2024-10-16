@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+
+
+/* Quiz Container */
+.quiz-container {
+  /* background-color: #2a065d80; */
+  display: flex;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  height: 100vh; /* Full height */
+}
+
+/* Quiz Box */
+.quiz-box {
+  padding: 20px;
+  border: 1px solid #000;
+  font-family: 'Roboto', sans-serif;
+  background-color: #720ef6;
+  /* background: linear-gradient(135deg, #7004e4, #450eea); */
+  max-width: 600px;
+  /* background-color: rgba(255, 255, 255, 0.1); Semi-transparent white */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+/* Question Title */
+.question-title {
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+/* Option Group */
+.option-group {
+ 
+  margin-bottom: 20px;
+}
+
+.option-label {
+  border: 1px solid #fff;
+  background-color: #3d0b81;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.option-label input {
+  margin-right: 10px;
+}
+
+.option-label:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* Button Styles */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.next-button, .prev-button {
+  font-size: 1rem;
+  color: white;
+  border: 1px solid #000;
+  background-color: #5d40f4;
+  padding: 10px 20px;
+  border-radius: 8px;
+  /* border: none; */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.next-button:hover, .prev-button:hover {
+  background-color: #3f6de4;
+}
+
+.next-button:active, .prev-button:active {
+  transform: translateY(2px);
+}
+/* Results Styling */
+/* Results Styling */
+.results-container {
+  width: 500px;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: left; /* Align text to the left */
+}
+
+.results-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.results-item {
+  display: flex; /* Enable flexbox */
+  justify-content: space-between; /* Space between title and value */
+  font-size: 1.3rem;
+  margin: 15px 0;
+}
+
+.results-value {
+  text-align: right; /* Align the value to the right */
+  font-family: 'Roboto', sans-serif; /* Change to desired font */
+  font-weight: 400;
+  color: #ffeb3b; /* Highlight color */
+}
+@media (max-width: 768px) {
+  .results-container{
+    width:350px;
+    /* width: 100%; */
+  }
+}

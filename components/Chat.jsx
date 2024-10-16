@@ -157,11 +157,7 @@ const Chat = () => {
                 </span>
               </div>
               <span className={styles.friendName}>{friend.name}</span>
-              <div className={styles.lastMessagePreview}>
-                {messages.find(
-                  (msg) => msg.senderId === userIdMapping[friend._id]
-                )?.content || "No messages yet"}
-              </div>
+              <div className={styles.lastMessagePreview}></div>
             </li>
           ))}
         </ul>
