@@ -19,6 +19,8 @@
   padding: 0;
 }
 
+
+
 .friends-list li {
   cursor: pointer;
   padding: 10px;
@@ -37,6 +39,7 @@
 
 .messages {
   height: 70%;
+  color: #000;
   overflow-y: auto;
   border: 1px solid #ddd;
   padding: 10px;
@@ -61,6 +64,7 @@
 
 .message-input {
   display: flex;
+  color: #000;
 }
 
 .message-input input {

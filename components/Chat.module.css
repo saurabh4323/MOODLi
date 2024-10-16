@@ -83,6 +83,7 @@
 
 .messages {
   flex: 1;
+  color: #000;
   overflow-y: auto; /* Allow scrolling */
   padding: 10px;
   display: flex;
@@ -109,6 +110,7 @@
 }
 
 .inputArea {
+  color: #000;
   display: flex;
   margin-top: 10px;
 }
