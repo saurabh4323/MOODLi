@@ -120,7 +120,9 @@ const Users = () => {
       }
     }
   };
-
+  const chat = () => {
+    window.location.href = "/chat";
+  };
   const toggleFriendList = () => {
     setShowFriendList((prev) => !prev);
     if (!showFriendList) fetchFriends();
@@ -143,6 +145,13 @@ const Users = () => {
         />
         <button className="show-friend-list-btn" onClick={toggleFriendList}>
           {showFriendList ? "Hide Friend " : "Friends "}
+        </button>
+        <button
+          onClick={chat}
+          style={{ backgroundColor: "green" }}
+          className="show-friend-list-btn"
+        >
+          Chat{" "}
         </button>
       </div>
 

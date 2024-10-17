@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Button from "./Button";
 import "./hero.css";
+import styles from "./Heros.module.css";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -51,13 +52,23 @@ export default function Hero(props) {
   if (isAuthenticated) {
     link = (
       <Link href="/dashboard">
-        <Button className="button">Get Started</Button>
+        <button
+          style={{ border: "3px solid #5d40f4" }}
+          className={styles.button}
+        >
+          Get Started
+        </button>
       </Link>
     );
   } else {
     link = (
       <Link href="/register">
-        <Button className="button">Get Started</Button>
+        <button
+          style={{ border: "3px solid #5d40f4" }}
+          className={styles.button}
+        >
+          Get Started
+        </button>
       </Link>
     );
   }

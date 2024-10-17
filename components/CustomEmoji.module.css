@@ -1,0 +1,89 @@
+/* CustomEmoji.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 30px;
+
+  border-radius: 12px;
+  border:  1px solid #0056b3;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  max-width: 500px;
+  margin: auto;
+}
+
+.h1s {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.inputField {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.uploadBtn {
+  margin-bottom: 20px;
+}
+
+.optionsContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  background-color:#007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.first{
+  display: flex;
+}
+
+.buttons:hover {
+  background-color: #45a049;
+}
+
+.canvas {
+  margin: 20px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+.controlButtons button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.controlButtons button:hover {
+  background-color: #0056b3;
+}
+
+.controlButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
