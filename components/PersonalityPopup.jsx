@@ -6,10 +6,10 @@ import Button from "./Button";
 const PersonalityPopup = ({ personality, onClose }) => {
   return (
     <div className="popup-overlay">
-      <div className="popup-content">
+      <div className="popup-content" style={{ backgroundColor: "#fc46aa" }}>
         <h2
           style={{
-            color: "#f35f65",
+            color: "#000",
             fontFamily: "sans serif",
             marginBottom: "10px",
             fontWeight: "Italic",
@@ -19,7 +19,7 @@ const PersonalityPopup = ({ personality, onClose }) => {
         </h2>
         <p
           style={{
-            color: "#720ef6",
+            color: "aliceblue",
             fontWeight: "bold",
             fontFamily: "sans serif",
             marginBottom: "20px",
@@ -55,9 +55,10 @@ const PersonalityPopup = ({ personality, onClose }) => {
         button {
           margin-top: 10px;
           padding: 10px 20px;
-          background-color: #0070f3;
+          border: "1px solid #000";
+          background-color: #fc4c4e;
           color: white;
-          border: none;
+
           border-radius: 5px;
           cursor: pointer;
           font-weight: bold; /* Make the button text bold */

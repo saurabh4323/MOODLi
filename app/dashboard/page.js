@@ -10,26 +10,29 @@ export default function Page() {
   const [showQuestion, setShowQuestion] = useState(true);
 
   const handleAnswer = (answer) => {
+    let message = "";
     switch (answer) {
       case "A":
-        setPersonality("You believe most people genuinely want to do good.");
+        message =
+          "You value empathy and connection with others. Fostering these relationships can bring you happiness and fulfillment. Consider finding ways to deepen your connections.";
         break;
       case "B":
-        setPersonality(
-          "You think kindness creates a ripple effect of positivity."
-        );
+        message =
+          "Your belief in the power of kindness suggests that you might thrive in environments where positivity and support are prevalent. Seek out communities that uplift you.";
         break;
       case "C":
-        setPersonality("You believe everyone has a story worth understanding.");
+        message =
+          "You have a deep understanding of people's stories and struggles, which can be a source of strength. Engage with others to share experiences and learn more.";
         break;
       case "D":
-        setPersonality(
-          "You think the goodness in people can lead to real change."
-        );
+        message =
+          "You believe in the potential for good in humanity. This perspective can inspire you to create positive change. Explore avenues where you can contribute to a better world.";
         break;
       default:
-        setPersonality("");
+        message =
+          "Your insights matter, and reflecting on them is the first step toward personal growth.";
     }
+    setPersonality(message);
     setShowPopup(true);
   };
 
@@ -57,7 +60,8 @@ export default function Page() {
       {showQuestion && (
         <div style={styles.questionContainer}>
           <h3 style={styles.question}>
-            When reflecting on the world, you believe that:
+            Reflecting on your interactions with others, how would you describe
+            your belief about human nature?
           </h3>
           <div style={styles.buttonContainer}>
             <button style={styles.button} onClick={() => handleAnswer("A")}>
@@ -123,7 +127,6 @@ const styles = {
     border: "1px solid #fff",
     backgroundColor: "#3d0b81",
     color: "white",
-
     borderRadius: "5px",
     cursor: "pointer",
     fontSize: "1em",
