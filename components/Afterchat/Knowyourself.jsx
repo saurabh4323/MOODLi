@@ -201,9 +201,9 @@ const KnowYourself = () => {
               <span className="results-value">{result.overallType}</span>
             </div>
             <div className="btn" onClick={cl}>
-              <Button className="button" onClick={cl}>
+              <button className="button" onClick={cl}>
                 Close
-              </Button>
+              </button>
             </div>
           </div>
         )}
