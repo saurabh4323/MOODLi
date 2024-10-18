@@ -1,40 +1,35 @@
 .header-container {
-  display: flex;
-  /* align-items: center; */
-  justify-content:center; 
-  
+  /* overflow: hidden; */
+  margin-left: 8%;
+ 
+  margin-top: 12px;
+  /* border: 1px solid  #fff; */
+  /* border: 1px solid #020202; */
   border-radius: 100px;
-  border: 1px solid #fff;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(16, 15, 15, 0.477) 0px 6px 6px;
-
-  height: 70px;
-  width: 80%;
-  margin: 10px auto;
-  padding: 0 20px; 
   
-  box-sizing: border-box;
+  border: 1px solid #fff;
+  display: flex;
+  height: 70px;
+  
+  /* margin-bottom: -50px; */
+  width: 85%;
+  
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(16, 15, 15, 0.477) 0px 6px 6px;
+  
+ 
   z-index: 10;
 }
 
-.header-container .item {
- 
-  text-align: center; /* Ensure items stay centered inside their space */
-}
-
-
-
-
 .header-content {
-  margin-left: -20px;
   display: flex;
-  justify-content: center;
+  
   align-items: center;
-  width: 100%; 
+  width: 58%; 
   padding: 20px 20px;
 }
 
 .logoo {
-  margin-top: -15px;
+  margin-top: 1px;
   margin-left: -20px;
   /* margin-right: 20px; */
   font-size: 1.5rem;
@@ -152,22 +147,19 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    height: 15vh;
-    gap: 10px;
     top: 60px; /* Adjust this value if needed */
     right: 10px; /* Adjust this value if needed */
     background-color: #5c3ff3; /* Purple background */
     padding: 10px;
-     border-radius: 5px; 
-     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px; 
+    border-radius: 5px; /* You can adjust or remove this for sharp corners */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px; /* Optional: adds shadow for depth */
     z-index: 1000;
   }
   
   .mobile-dropdown .nav-item {
     border-bottom: 1px solid #000;
-    border-radius: 0px;
     text-align: center;
-    /* margin: 5px 0; Vertical spacing between items */
+    margin: 5px 0; /* Vertical spacing between items */
     color: white; /* Text color for visibility */
     text-decoration: none;
     font-weight: 600; /* Optional: makes text bold */

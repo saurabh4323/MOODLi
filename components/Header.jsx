@@ -14,10 +14,11 @@ const Header = () => {
   const [menu, setMenu] = useState(false); // Toggle for the mobile menu
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const initialTheme = getInitialTheme();
-
+    setTheme(initialTheme);
     if (initialTheme === "dark") {
       enableDarkMode();
     } else {
@@ -26,6 +27,18 @@ const Header = () => {
   }, []);
   const track = () => {
     window.location.href = "/track";
+  };
+  const handleToggleTheme = () => {
+    setIsChecked(!isChecked);
+    document.body.classList.toggle("dark", !isChecked);
+    if (theme === "light") {
+      setTheme("dark");
+      enableDarkMode();
+    } else {
+      setTheme("light");
+      enableLightMode();
+    }
+    toggleDarkMode();
   };
 
   useEffect(() => {
@@ -64,12 +77,12 @@ const Header = () => {
     <header className="header-container">
       <div className="header-content">
         <Image
-          // style={{ marginTop: "-20px" }}
+          style={{ marginTop: "20px" }}
           className="logoo"
-          src="/new.png"
+          src="/l.png"
           alt="Logo"
-          width={180}
-          height={120}
+          width={80}
+          height={100}
         />
 
         {/* Desktop Navigation */}
@@ -77,7 +90,6 @@ const Header = () => {
           <Link href="/main" className="nav-item">
             Home
           </Link>
-
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
@@ -111,9 +123,8 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-
-          <Link href="/community" className="nav-item" onClick={toggleMenu}>
-            FeelTalks
+          <Link href="/track" className="nav-item" onClick={track}>
+            VibeTrack
           </Link>
           {isAuthenticated && (
             <Link href="/profile" className="nav-item">
@@ -127,29 +138,12 @@ const Header = () => {
 
           {menu && (
             <div className="mobile-dropdown">
-              <Link href="/track" className="nav-item" onClick={track}>
-                VibeTrack
+              <Link href="/community" className="nav-item" onClick={toggleMenu}>
+                FeelTalks
               </Link>
-
               <Link href="/create" className="nav-item" onClick={toggleMenu}>
                 MoodMojis
               </Link>
-              {isAuthenticated ? (
-                <button
-                  onClick={handleLogoutClick}
-                  className="nav-item mobile-logout"
-                >
-                  Logout
-                </button>
-              ) : (
-                <Link
-                  href="/register"
-                  className="nav-item"
-                  onClick={toggleMenu}
-                >
-                  Login
-                </Link>
-              )}
             </div>
           )}
         </div>
