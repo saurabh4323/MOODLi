@@ -14,14 +14,14 @@ export default function CustomEmoji() {
   const canvasRef = useRef(null);
 
   const accessoryOptions = ["eye", "nose", "ear", "cap", "glasses", "beard"];
-  const shapeOptions = ["circle", "square", "star", "triangle", "hexagon"];
+  const shapeOptions = ["circle", "square", "triangle", "hexagon"];
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
     reader.onload = function (event) {
-      const img = new window.Image(); // Use native JavaScript Image constructor for canvas
+      const img = new window.Image();
       img.src = event.target.result;
       setUploadedImage(event.target.result);
 
@@ -36,30 +36,24 @@ export default function CustomEmoji() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    // Clear canvas before drawing
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Set background color
     ctx.fillStyle = bgColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw background shape if any
     if (activeShape) {
       drawShape(ctx, activeShape, canvas.width, canvas.height);
     }
 
-    // Draw uploaded image
     if (uploadedImage) {
-      const img = new window.Image(); // Use native Image constructor for canvas
+      const img = new window.Image();
       img.src = uploadedImage;
       img.onload = () => {
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       };
     }
 
-    // Draw accessories
     accessories.forEach((accessory) => {
-      const img = new window.Image(); // Use native Image constructor for canvas
+      const img = new window.Image();
       img.src = `/${accessory.type}.png`;
       img.onload = () => {
         ctx.drawImage(img, accessory.x, accessory.y, 30, 30);
@@ -109,10 +103,18 @@ export default function CustomEmoji() {
   };
 
   const handleMouseDown = (e) => {
+    handleStart(e);
+  };
+
+  const handleTouchStart = (e) => {
+    handleStart(e.touches[0]); // Use the first touch point
+  };
+
+  const handleStart = (e) => {
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX ? e.clientX - rect.left : e.pageX - rect.left;
+    const y = e.clientY ? e.clientY - rect.top : e.pageY - rect.top;
 
     for (let i = 0; i < accessories.length; i++) {
       const accessory = accessories[i];
@@ -129,12 +131,20 @@ export default function CustomEmoji() {
   };
 
   const handleMouseMove = (e) => {
+    handleDrag(e);
+  };
+
+  const handleTouchMove = (e) => {
+    handleDrag(e.touches[0]); // Use the first touch point
+  };
+
+  const handleDrag = (e) => {
     if (draggingAccessory === null) return;
 
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX ? e.clientX - rect.left : e.pageX - rect.left;
+    const y = e.clientY ? e.clientY - rect.top : e.pageY - rect.top;
 
     setAccessories((prevAccessories) =>
       prevAccessories.map((accessory, index) =>
@@ -146,6 +156,10 @@ export default function CustomEmoji() {
   };
 
   const handleMouseUp = () => {
+    setDraggingAccessory(null);
+  };
+
+  const handleTouchEnd = () => {
     setDraggingAccessory(null);
   };
 
@@ -250,6 +264,9 @@ export default function CustomEmoji() {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       ></canvas>
 
       <div className={styles.savedEmojis}>
