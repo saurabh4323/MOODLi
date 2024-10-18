@@ -64,12 +64,12 @@ const Header = () => {
     <header className="header-container">
       <div className="header-content">
         <Image
-          style={{ marginTop: "20px" }}
+          // style={{ marginTop: "-20px" }}
           className="logoo"
-          src="/l.png"
+          src="/new.png"
           alt="Logo"
-          width={80}
-          height={100}
+          width={180}
+          height={120}
         />
 
         {/* Desktop Navigation */}
@@ -77,6 +77,7 @@ const Header = () => {
           <Link href="/main" className="nav-item">
             Home
           </Link>
+
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
@@ -110,8 +111,9 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item" onClick={track}>
-            VibeTrack
+
+          <Link href="/community" className="nav-item" onClick={toggleMenu}>
+            FeelTalks
           </Link>
           {isAuthenticated && (
             <Link href="/profile" className="nav-item">
@@ -125,9 +127,10 @@ const Header = () => {
 
           {menu && (
             <div className="mobile-dropdown">
-              <Link href="/community" className="nav-item" onClick={toggleMenu}>
-                FeelTalks
+              <Link href="/track" className="nav-item" onClick={track}>
+                VibeTrack
               </Link>
+
               <Link href="/create" className="nav-item" onClick={toggleMenu}>
                 MoodMojis
               </Link>

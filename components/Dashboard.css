@@ -276,7 +276,7 @@ transform: scale(0.8);
 /* Image Preview */
 img {
   border-radius: 10px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
 }
 
 /* Toast notification customization */

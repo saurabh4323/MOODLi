@@ -1,22 +1,20 @@
-/* CustomEmoji.module.css */
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   margin-bottom: 30px;
-
   border-radius: 12px;
-  border:  1px solid #0056b3;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  border: 1px solid #0056b3;
   max-width: 500px;
   margin: auto;
+  /* background-color: #f9f9f9; */
 }
 
-.h1s {
+.h1 {
   font-family: "Poppins", sans-serif;
   color: #333;
+  margin-bottom: 20px;
 }
 
 .inputField {
@@ -25,7 +23,7 @@
   border: 2px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
-  width: 100%;
+  width: 30%;
 }
 
 .uploadBtn {
@@ -41,10 +39,8 @@
 
 .buttons {
   padding: 10px;
-  display: flex;
-  flex-direction: row;
   margin: 5px;
-  background-color:#007bff;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -52,7 +48,8 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
 }
-.first{
+
+.first {
   display: flex;
 }
 
@@ -86,4 +83,25 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.savedEmojis {
+  margin-top: 20px;
+}
+
+.emojiList {
+  display: flex;
+  gap: 10px;
+}
+
+.emojiItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emojiImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
 }

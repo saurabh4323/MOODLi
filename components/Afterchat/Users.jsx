@@ -42,7 +42,6 @@ const Users = () => {
       fetchUsers();
       fetchFriends();
 
-      // Example: accessing window width safely
       const handleResize = () => {
         // console.log("Window width:", window.innerWidth);
       };
@@ -55,7 +54,6 @@ const Users = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get("api/users/sau");
-      // console.log("Fetched users data:", response.data);
       setUsers(response.data);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -84,9 +82,8 @@ const Users = () => {
 
   const handleConfirmAddFriend = async () => {
     if (typeof window !== "undefined") {
-      const userId = window.localStorage.getItem("userId"); // Access userId safely
-
-      const friendId = selectedUser.userId; // Use the correct property for friendId
+      const userId = window.localStorage.getItem("userId");
+      const friendId = selectedUser.userId;
 
       try {
         await axios.post("/api/users/friend", { userId, friendId });
@@ -107,22 +104,23 @@ const Users = () => {
         const response = await axios.get(
           `/api/feeltalk/friend?userId=${userId}`
         );
-        // console.log("Friend profiles received:", response.data);
 
         const friends = Array.isArray(response.data?.friends)
           ? response.data.friends
           : [];
 
-        setFriendList(friends); // Now friends contain profile info
+        setFriendList(friends);
       } catch (error) {
         console.error("Error fetching friends:", error);
-        setFriendList([]); // Fallback to empty array on error
+        setFriendList([]);
       }
     }
   };
+
   const chat = () => {
     window.location.href = "/chat";
   };
+
   const toggleFriendList = () => {
     setShowFriendList((prev) => !prev);
     if (!showFriendList) fetchFriends();
@@ -194,7 +192,9 @@ const Users = () => {
           users
             .filter(
               (user) =>
-                user.name && user.name.toLowerCase().includes(searchTerm)
+                (user.name && user.name.toLowerCase().includes(searchTerm)) ||
+                (user.favoriteEmoji &&
+                  user.favoriteEmoji.toLowerCase().includes(searchTerm))
             )
             .map((user) => (
               <div
