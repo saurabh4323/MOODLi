@@ -14,19 +14,19 @@ export default function Page() {
     switch (answer) {
       case "A":
         message =
-          "You value empathy and connection with others. Fostering these relationships can bring you happiness and fulfillment. Consider finding ways to deepen your connections.";
+          "You approach challenges with optimism, always believing that things will work out. This can help you overcome obstacles and inspire others to stay positive.";
         break;
       case "B":
         message =
-          "Your belief in the power of kindness suggests that you might thrive in environments where positivity and support are prevalent. Seek out communities that uplift you.";
+          "You're a practical thinker who prefers to weigh pros and cons before making decisions. This level-headedness can help you navigate complex situations with clarity.";
         break;
       case "C":
         message =
-          "You have a deep understanding of people's stories and struggles, which can be a source of strength. Engage with others to share experiences and learn more.";
+          "You trust your intuition and rely on your gut feelings when faced with uncertainty. Your ability to tune into your inner voice helps guide you in the right direction.";
         break;
       case "D":
         message =
-          "You believe in the potential for good in humanity. This perspective can inspire you to create positive change. Explore avenues where you can contribute to a better world.";
+          "You thrive in structured environments where plans and details are laid out. This helps you stay organized and accomplish your goals effectively.";
         break;
       default:
         message =
@@ -39,7 +39,7 @@ export default function Page() {
   const handleClosePopup = () => {
     if (typeof window !== "undefined") {
       localStorage.setItem("quiz", "done");
-      localStorage.setItem("quizDate", new Date().toISOString().split("T")[0]); // Store current date
+      localStorage.setItem("quizDate", new Date().toISOString().split("T")[0]);
     }
     setShowPopup(false);
     setShowQuestion(false);
@@ -50,7 +50,7 @@ export default function Page() {
       const lastQuizDate = localStorage.getItem("quizDate");
       const todayDate = new Date().toISOString().split("T")[0];
       if (lastQuizDate === todayDate) {
-        setShowQuestion(false); // Hide the question if the quiz has already been taken today
+        setShowQuestion(false);
       }
     }
   }, []);
@@ -60,21 +60,20 @@ export default function Page() {
       {showQuestion && (
         <div style={styles.questionContainer}>
           <h3 style={styles.question}>
-            Reflecting on your interactions with others, how would you describe
-            your belief about human nature?
+            When faced with an unexpected challenge, how do you usually respond?
           </h3>
           <div style={styles.buttonContainer}>
             <button style={styles.button} onClick={() => handleAnswer("A")}>
-              A) Most people genuinely want to do good.
+              A) I stay positive and believe things will work out.
             </button>
             <button style={styles.button} onClick={() => handleAnswer("B")}>
-              B) Kindness creates a ripple effect of positivity.
+              B) I analyze the situation and make a plan.
             </button>
             <button style={styles.button} onClick={() => handleAnswer("C")}>
-              C) Everyone has a story worth understanding.
+              C) I trust my instincts and follow my gut feelings.
             </button>
             <button style={styles.button} onClick={() => handleAnswer("D")}>
-              D) The goodness in people can lead to real change.
+              D) I organize my thoughts and create a step-by-step solution.
             </button>
           </div>
         </div>
