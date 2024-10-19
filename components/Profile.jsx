@@ -26,7 +26,7 @@ export default function Profile() {
   });
   const [loading, setLoading] = useState(true); // Loading state
   const [showThemeModal, setShowThemeModal] = useState(false); // Modal state
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false); // Logout confirmation modal state
 
   const shareOnWhatsApp = () => {

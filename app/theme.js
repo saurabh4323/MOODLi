@@ -14,6 +14,6 @@ export const getInitialTheme = () => {
     if (savedTheme) return savedTheme;
   }
 
-  // Otherwise, default to light mode
+ 
   return "light";
 };

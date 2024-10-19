@@ -7,8 +7,8 @@ export default function page() {
   return (
     <div>
       {" "}
-      <Chat></Chat>
-      {/* <CustomEmoji></CustomEmoji> */}
+      {/* <Chat></Chat> */}
+      <CustomEmoji></CustomEmoji>
     </div>
   );
 }

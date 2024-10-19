@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap');
+.containerk{
+  width: 100%;
+  height: 103vh;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+
+}
+.coleft{
+  /* background-color: #fd562a; */
+  margin-left: 5%;
+  width:100%;
+  /* color: white; */
+display: flex;
+flex-direction: column;
+gap: 20px;
+  height: 100vh;
+  /* background-color: rgb(0, 0, 0); */
+  /* margin-left: 102px; */
+}
+.nft{
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "fugaz" , sans-serif;
+
+}
+.dash{
+  margin-left: 10px;
+  width: 30px;
+  height: 5px;
+
+  background-color:#fd562a;
+  /* margin-top: -20px; */
+}
+.hhhk {
+
+font-size: 42px;
+font-weight: bold;
+  
+  
+ 
+}
+
+.ppp{
+  /* margin-top: 70px; */
+  font-size: 1rem;
+  /* color: #7150ea; */
+  font-weight: 600;
+  width: 96%;
+  font-family: "fugaz" , sans-serif;
+  /* margin-top: -60px; */
+}
+.kbutton{
+  border: 1px solid #fff;
+  width:200px;
+  height: 60px;
+  background-color: #fd562a;
+  border-radius: 50px;
+  color: #fff;
+  /* border: none; */
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+}
+.kbutton:hover{
+  background-color: white;
+  color: #fd562a;
+}
+
+@media (max-width: 768px) {
+  
+  .containerk{
+    display: flex;
+    flex-direction: column;
+  }
+  .coleft{
+    height: 120vh;
+  }
+}

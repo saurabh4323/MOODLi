@@ -72,6 +72,7 @@ export default function RootLayout({ children }) {
         {/* Open Graph Meta Tags for Social Sharing */}
         <meta property="og:url" content="https://moodli.site" />
         <meta property="og:type" content="website" />
+        <meta property="og:moodli" content="https://moodli.site"></meta>
         <meta
           property="og:title"
           content="Moodli - Track Your Mood with AI & Emoji"

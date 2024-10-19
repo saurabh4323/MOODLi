@@ -1,0 +1,79 @@
+.coright {
+  width: 90%;
+  margin-left: 30px;
+  /* background-color: #cf8a77; */
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.ima {
+  display: flex;
+}
+
+/* Styling for Images */
+.ima img {
+  
+  border: 1px solid #4526b1;
+  border-radius: 20px;
+  margin-right: 30px;
+  margin-top: 20px;
+  display: block;
+  height: 150px;
+}
+
+/* First Column Animation */
+.first {
+  animation: infiniteScroll1 5s linear infinite;
+}
+
+/* Second Column Animation */
+.second {
+  animation: infiniteScrollDown 5s linear infinite;
+}
+
+/* Third Column Animation */
+.third {
+  animation: infiniteScroll3 5s linear infinite;
+}
+
+/* Keyframes for Seamless Infinite Upward Scrolling */
+@keyframes infiniteScroll1 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); /* Adjusted to scroll half of the duplicated content */
+  }
+}
+
+@keyframes infiniteScrollDown {
+  0% {
+    transform: translateY(-50%); /* Start halfway to ensure the loop looks continuous */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes infiniteScroll3 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  
+ .ima{
+  /* width: 250px; */
+  
+  gap: 20px;
+ }
+ .second{
+  display: none;
+ }
+ 
+}

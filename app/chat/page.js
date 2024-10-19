@@ -5,8 +5,8 @@ import React from "react";
 export default function page() {
   return (
     <div>
-      {/* <Chat></Chat> */}
-      <EmojiPieChart></EmojiPieChart>
+      <Chat></Chat>
+      {/* <EmojiPieChart></EmojiPieChart> */}
     </div>
   );
 }

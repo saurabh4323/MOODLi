@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../comm.css";
 import axios from "axios";
 import "../profile.css";
+import { useRouter } from "next/navigation";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -117,8 +118,9 @@ const Users = () => {
     }
   };
 
+  const rou = useRouter();
   const chat = () => {
-    window.location.href = "/chat";
+    rou.push("/chat");
   };
 
   const toggleFriendList = () => {

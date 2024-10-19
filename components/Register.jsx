@@ -37,7 +37,8 @@ const Register = () => {
 
     try {
       const response = await axios.post("/api/users/signup", signup);
-      console.log(response.data);
+     
+      // console.log(response.data);
 
       if (response.data.success) {
         localStorage.setItem("isAuthenticated", "true");
