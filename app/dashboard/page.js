@@ -57,7 +57,7 @@ export default function Page() {
 
   return (
     <div style={styles.container}>
-      {showQuestion && (
+      {/* {showQuestion && (
         <div style={styles.questionContainer}>
           <h3 style={styles.question}>
             When faced with an unexpected challenge, how do you usually respond?
@@ -77,16 +77,17 @@ export default function Page() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
-      {showPopup && (
+      {/* {showPopup && (
         <PersonalityPopup
           personality={personality}
           onClose={handleClosePopup}
         />
-      )}
+      )} */}
 
-      {!showPopup && !showQuestion && <Dashboard />}
+      {/* {!showPopup && !showQuestion && <Dashboard />} */}
+      <Dashboard></Dashboard>
     </div>
   );
 }

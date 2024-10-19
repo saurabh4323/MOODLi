@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import Calendar from "./Calander";
 import "./Dashboard.css";
+import styles from "./Heros.module.css";
+import { useRouter } from "next/navigation";
 export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [clicked, setClicked] = useState(false);
@@ -212,6 +214,10 @@ export default function Dashboard() {
     Depressed: "😔",
     Flirty: "😏",
   };
+  const route = useRouter();
+  const chrt = () => {
+    route.push("/chart");
+  };
 
   return (
     <div className="dashboard-container">
@@ -231,6 +237,9 @@ export default function Dashboard() {
       </div>
       <div className="mood-heading">
         <h1>How&apos;s your mood shaping up today?</h1>
+        <button className={styles.button} onClick={chrt}>
+          Analyse Yourself
+        </button>
       </div>
       {clicked && (
         <div className="animated-cardclick">

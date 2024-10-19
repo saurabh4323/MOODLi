@@ -150,7 +150,7 @@
     top: 60px; /* Adjust this value if needed */
     right: 10px; /* Adjust this value if needed */
     background-color: #5c3ff3; /* Purple background */
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 5px; /* You can adjust or remove this for sharp corners */
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 8px; /* Optional: adds shadow for depth */
     z-index: 1000;
@@ -159,7 +159,7 @@
   .mobile-dropdown .nav-item {
     border-bottom: 1px solid #000;
     text-align: center;
-    margin: 5px 0; /* Vertical spacing between items */
+    /* margin: 5px 0; Vertical spacing between items */
     color: white; /* Text color for visibility */
     text-decoration: none;
     font-weight: 600; /* Optional: makes text bold */

@@ -130,6 +130,13 @@ const Users = () => {
     <div className="comm-main">
       <div className="topmain">
         <h1>Connect with people, make them friends</h1>
+        <button
+          onClick={chat}
+          style={{ backgroundColor: "green" }}
+          className="show-friend-list-btn"
+        >
+          Chat{" "}
+        </button>
       </div>
 
       <div className="search-bar">
@@ -143,13 +150,6 @@ const Users = () => {
         />
         <button className="show-friend-list-btn" onClick={toggleFriendList}>
           {showFriendList ? "Hide Friend " : "Friends "}
-        </button>
-        <button
-          onClick={chat}
-          style={{ backgroundColor: "green" }}
-          className="show-friend-list-btn"
-        >
-          Chat{" "}
         </button>
       </div>
 

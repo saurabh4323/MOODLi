@@ -23,6 +23,8 @@ export default function Track() {
             setLoading(true); // Start loading
             const response = await axios.get(`/api/users/track/${userId}`);
             setTrack(response.data);
+            console.log(response.data);
+
             setLoading(false); // Stop loading
           } catch (error) {
             setError(error.response?.data?.message || "An error occurred");
@@ -35,7 +37,8 @@ export default function Track() {
       };
 
       fetchTrack();
-      createParticles(); // Call the particle creation function
+      createParticles();
+      // Call the particle creation function
 
       // Cleanup function to remove particles on unmount
       return () => {

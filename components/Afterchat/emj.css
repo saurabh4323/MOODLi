@@ -1,0 +1,165 @@
+/* Basic Reset */
+.si {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container styling */
+.emoji-container {
+  /* background: linear-gradient(120deg, #f6d365 0%, #fda085 100%); */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.emoji-content {
+  max-width: 1200px;
+  width: 100%;
+  /* background: rgba(255, 255, 255, 0.9); */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.emoji-content:hover {
+  transform: translateY(-10px);
+}
+
+.emoji-title, .emoji-subtitle {
+  /* color: #333; */
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.emoji-title {
+  font-size: 2rem;
+}
+
+.emoji-subtitle {
+  font-size: 1.5rem;
+}
+
+/* Chart containers */
+.chart-container {
+  margin: 40px auto;
+  /* background: #fff; */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.chart-container:hover {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
+}
+
+/* Recommendation section */
+.recommendation-box {
+  /* background: linear-gradient(135deg, #36a2eb, #4bc0c0); */
+  border: 3px solid #5d40f4;
+border-radius: 20px;
+  color: #fff;
+  padding: 20px;
+  /* border-radius: 15px; */
+  text-align: center;
+  margin-top: 40px;
+  transition: background 0.5s ease, transform 0.3s ease-in-out;
+}
+
+.recommendation-box:hover {
+  /* background: linear-gradient(135deg, #4bc0c0, #36a2eb); */
+  transform: translateY(-10px);
+}
+
+.recommendation-box p {
+    /* border: 3px solid #5d40f4; */
+
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Media Query for responsiveness */
+@media (max-width: 768px) {
+  .emoji-content {
+    padding: 20px;
+  }
+
+  .emoji-title {
+    font-size: 1.5rem;
+  }
+
+  .emoji-subtitle {
+    font-size: 1.2rem;
+  }
+}
+.emoji-mood-tracker {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  /* background-color: #f7f9fc; */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-title {
+  text-align: center;
+  margin-top: 40px;
+  font-family: fantasy;
+  font-size: 2.5rem;
+ /* Text color */
+  font-weight: bld;
+  -webkit-text-stroke: 1px #0f0f0f; 
+}
+
+.chart-container {
+  
+  margin-bottom: 30px;
+  border: 3px solid #5d40f4;
+}
+.line-chart{
+  margin-bottom: 20px;
+}
+ .line-chart, .bar-chart {
+  align-items: center;
+  max-width: 600px;
+  gap: 20px;
+  /* margin: auto; */
+}
+.pie-chart{
+  max-width: 400px;
+}
+
+.emoji-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.recommendation-box, .remedies-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 3px solid #5d40f4;
+margin-top: 20px;
+border-radius: 20px;
+  /* background-color: #e6f7ff; */
+  border-left: 5px solid #36a2eb;
+  /* border-radius: 8px; */
+}
+
+.reminder-item {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.recommendation-box p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}

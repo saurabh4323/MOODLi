@@ -38,7 +38,7 @@ const Heros = () => {
           </p>
 
           <button className={styles.button} onClick={() => setshowky(true)}>
-            Open Know Yourself
+            Know Yourself
           </button>
 
           {showky && (
