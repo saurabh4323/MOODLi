@@ -1,0 +1,80 @@
+.moodlii-container {
+  position: relative;
+  /* background-color: black; */
+  color: white;
+  width: 90%; /* Adjusted width for better mobile support */
+  max-width: 800px; /* Optional: Set a maximum width */
+  padding: 2.5rem;
+  /* margin: auto; Center the container */
+}
+
+.moodlii-header {
+  margin-bottom: 2rem;
+}
+
+.moodlii-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.moodlii-subtitle {
+  font-size: 1.125rem;
+  margin-top: 1rem;
+}
+
+.moodlii-features {
+  margin-bottom: 2.5rem;
+}
+
+.moodlii-feature-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.moodlii-feature-card {
+  background-color: #4526b1;
+  padding: 1.5rem;
+  width: 100%; /* Make card take full width in mobile */
+  max-width: 300px; /* Optional: Limit card width on larger screens */
+  height: 260px;
+  border-radius: 0.5rem;
+  flex: 1 1 45%;
+  margin: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moodlii-feature-card:hover {
+  transform: rotateY(10deg) scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.moodlii-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .moodlii-feature-card {
+    width: 100%; /* Full width on mobile */
+    max-width: none; 
+  }
+  .mainn{
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .moodlii-flex-container {
+    
+    justify-content: center; /* Center items on mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  .moodlii-feature-card {
+    flex: 1 1 45%; /* Two cards per row for larger screens */
+  }
+}
