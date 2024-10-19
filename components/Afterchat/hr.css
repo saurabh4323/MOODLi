@@ -75,5 +75,12 @@
  .second{
   display: none;
  }
- 
+ .coright {
+  width: 90%;
+  margin-left: 30px;
+  /* background-color: #cf8a77; */
+  height: 56vh;
+  overflow: hidden;
+  position: relative;
+}
 }
