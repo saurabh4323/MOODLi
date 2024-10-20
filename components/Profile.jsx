@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "./profile.css";
-import { Handshake, SunMoon } from "lucide-react";
+import { Handshake, SunMoon, ImageUp } from "lucide-react";
 import { Share2, Headset, Lock, LogOut } from "lucide-react";
 import { enableDarkMode, enableLightMode } from "../app/theme"; // Import theme functions
 import Changepassword from "./Changepassword";
@@ -159,6 +159,9 @@ export default function Profile() {
         <p className="pname">
           Welcome! {loading ? "Loading..." : profile.name}
         </p>
+        <button className="buttonk" onClick={fetchFriends}>
+          <ImageUp /> My Pulse
+        </button>
         <button className="buttonk" onClick={fetchFriends}>
           <Handshake /> Friends
         </button>

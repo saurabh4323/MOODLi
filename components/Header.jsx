@@ -97,7 +97,7 @@ const Header = () => {
             VibeTrack
           </Link>
           <Link href="/community" className="nav-item">
-            FeelTalks
+            Pulse
           </Link>
           <Link href="/create" className="nav-item">
             MoodMojis
@@ -139,7 +139,7 @@ const Header = () => {
           {menu && (
             <div className="mobile-dropdown">
               <Link href="/community" className="nav-item" onClick={toggleMenu}>
-                FeelTalks
+                Pulse
               </Link>
               <Link href="/create" className="nav-item" onClick={toggleMenu}>
                 MoodMojis
