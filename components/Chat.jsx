@@ -201,7 +201,7 @@ const Chat = () => {
               >
                 <div className={styles.friendAvatar}>
                   <span role="img" aria-label={friend.name}>
-                    {friend.favoriteEmoji}
+                    {/* {friend.favoriteEmoji} */}
                   </span>
                 </div>
                 <span className={styles.friendName}>{friend.name}</span>
