@@ -219,7 +219,7 @@
   }
   .chatContainer{
   
-    height: 85vh;
+    height: 96vh;
     border-radius: 20px;
     margin-top: 10px;
   }
@@ -229,10 +229,13 @@
   }
 
   .chatArea.show {
-    /* margin-top: 20px; */
+    
    
 padding-top: 10px;
     margin-left: -100%;
     display: block; /* Show chat area when needed */
+  }
+  .messages{
+    height: 66vh;
   }
 }
