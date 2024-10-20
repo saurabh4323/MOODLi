@@ -1,3 +1,4 @@
+import Faq from "@/components/Afterchat/Faq";
 import Newhero from "@/components/Afterchat/Newhero";
 import NewsLetter from "@/components/Afterchat/NewsLetter";
 import Heros from "@/components/Heros";
@@ -9,6 +10,8 @@ export default function page() {
     <div>
       {/* <Heros></Heros> */}
       <Newhero></Newhero>
+
+      <Faq></Faq>
       <NewsLetter></NewsLetter>
     </div>
   );
