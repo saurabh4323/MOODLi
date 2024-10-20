@@ -201,7 +201,7 @@ const Chat = () => {
               >
                 <div className={styles.friendAvatar}>
                   <span role="img" aria-label={friend.name}>
-                    {/* {friend.favoriteEmoji} */}
+                    {friend.favoriteEmoji}
                   </span>
                 </div>
                 <span className={styles.friendName}>{friend.name}</span>
@@ -214,15 +214,15 @@ const Chat = () => {
       <div
         className={`${styles.chatArea} ${isSidebarVisible ? "" : styles.show}`}
       >
-        <div className={styles.chatHeader}>
-          <span className={styles.intro}>
-            {selectedFriend?.name} {selectedFriend.favoriteEmoji}
-          </span>
-          <div className={styles.icons}>{/* Call and video icons */}</div>
-        </div>
-
         {selectedFriend ? (
           <>
+            <div className={styles.chatHeader}>
+              <span className={styles.intro}>
+                {selectedFriend.name} {selectedFriend.favoriteEmoji}
+              </span>
+              <div className={styles.icons}>{/* Call and video icons */}</div>
+            </div>
+
             <div className={styles.messages}>
               {messages.map((message, index) => (
                 <div
@@ -254,7 +254,9 @@ const Chat = () => {
             </div>
           </>
         ) : (
-          <p>Please select a friend to start chatting!</p>
+          <div className={styles.chatHeader}>
+            <span className={styles.intro}>Select a friend to chat</span>
+          </div>
         )}
       </div>
     </div>
