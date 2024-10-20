@@ -1,6 +1,6 @@
 .newsletter-container {
   background-color: #4526b1;
-  color: #ff4f3a;
+  color: #fff;
   border-radius: 8px;
   display: flex;
   padding: 2rem;
@@ -45,8 +45,9 @@
 
 .newsletter-button {
   padding: 0.5rem 1rem;
-  background-color: #ff6f61;
-  border: none;
+  background-color:#4526b1;
+  border:1px solid #fff;
+  /* border: none; */
   border-radius: 0 5px 5px 0;
   color: #fff;;
   font-size: 1rem;

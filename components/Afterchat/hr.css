@@ -22,34 +22,34 @@
   height: 150px;
 }
 
-/* First Column Animation */
+
 .first {
   animation: infiniteScroll1 5s linear infinite;
 }
 
-/* Second Column Animation */
+
 .second {
   animation: infiniteScrollDown 5s linear infinite;
 }
 
-/* Third Column Animation */
+
 .third {
   animation: infiniteScroll3 5s linear infinite;
 }
 
-/* Keyframes for Seamless Infinite Upward Scrolling */
+
 @keyframes infiniteScroll1 {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-50%); /* Adjusted to scroll half of the duplicated content */
+    transform: translateY(-50%);
   }
 }
 
 @keyframes infiniteScrollDown {
   0% {
-    transform: translateY(-50%); /* Start halfway to ensure the loop looks continuous */
+    transform: translateY(-50%);
   }
   100% {
     transform: translateY(0);
@@ -68,7 +68,7 @@
 @media (max-width: 768px) {
   
  .ima{
-  /* width: 250px; */
+
   
   gap: 20px;
  }
@@ -78,7 +78,7 @@
  .coright {
   width: 90%;
   margin-left: 30px;
-  /* background-color: #cf8a77; */
+
   height: 56vh;
   overflow: hidden;
   position: relative;

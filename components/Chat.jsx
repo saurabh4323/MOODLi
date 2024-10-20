@@ -1,19 +1,19 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Chat.module.css";
+import Image from "next/image";
 
 const Chat = () => {
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [friends, setFriends] = useState([]);
   const [selectedFriend, setSelectedFriend] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [userIdMapping, setUserIdMapping] = useState({}); // Mapping of _id to userId
-  const [currentUserId, setCurrentUserId] = useState(null); // Store current userId from localStorage
+  const [userIdMapping, setUserIdMapping] = useState({});
+  const [currentUserId, setCurrentUserId] = useState(null);
 
-  // Fetch currentUserId from localStorage on the client-side
   useEffect(() => {
     if (typeof window !== "undefined") {
       const userId = localStorage.getItem("userId");
@@ -21,7 +21,6 @@ const Chat = () => {
     }
   }, []);
 
-  // Fetch friends from the API
   useEffect(() => {
     const fetchFriends = async () => {
       try {
@@ -29,20 +28,18 @@ const Chat = () => {
           `/api/feeltalk/friend?userId=${currentUserId}`
         );
 
-        // Create mapping of _id to userId and add lastMessageTime
         const friendsWithTimestamp = response.data.friends.map((friend) => ({
           ...friend,
-          lastMessageTime: friend.lastMessageTime || 0, // Assuming API returns lastMessageTime
+          lastMessageTime: friend.lastMessageTime || 0,
         }));
 
-        // Sort friends based on lastMessageTime
         friendsWithTimestamp.sort(
           (a, b) => b.lastMessageTime - a.lastMessageTime
         );
 
         const mapping = {};
         friendsWithTimestamp.forEach((friend) => {
-          mapping[friend._id] = friend.userId; // Assuming userId is part of the friend data
+          mapping[friend._id] = friend.userId;
         });
 
         setUserIdMapping(mapping);
@@ -57,7 +54,6 @@ const Chat = () => {
     }
   }, [currentUserId]);
 
-  // Fetch messages when a friend is selected or periodically (every 10 seconds)
   useEffect(() => {
     let pollingInterval;
 
@@ -67,10 +63,24 @@ const Chat = () => {
           const response = await axios.get(`/api/users/message`, {
             params: {
               senderId: currentUserId,
-              receiverId: userIdMapping[selectedFriend._id], // Use userId from mapping
+              receiverId: userIdMapping[selectedFriend._id],
             },
           });
-          setMessages(response.data.messages);
+
+          const messagesWithTimestamp = response.data.messages.map(
+            (message) => {
+              const formattedTimestamp = message.timestamp
+                ? new Date(message.timestamp).toLocaleTimeString()
+                : "";
+
+              return {
+                ...message,
+                timestamp: formattedTimestamp,
+              };
+            }
+          );
+
+          setMessages(messagesWithTimestamp);
         } catch (error) {
           console.error("Error fetching messages:", error);
         }
@@ -78,41 +88,43 @@ const Chat = () => {
     };
 
     if (selectedFriend) {
-      fetchMessages(); // Fetch messages on friend selection
-
-      // Start polling every 10 seconds
+      fetchMessages();
       pollingInterval = setInterval(fetchMessages, 10000);
     }
 
-    // Clean up the polling interval when the component unmounts or friend changes
     return () => {
       if (pollingInterval) clearInterval(pollingInterval);
     };
   }, [selectedFriend, currentUserId, userIdMapping]);
 
-  // Handle sending a message
   const sendMessage = async () => {
     if (newMessage.trim() === "") return;
 
     try {
       const response = await axios.post("/api/users/message", {
         senderId: currentUserId,
-        receiverId: userIdMapping[selectedFriend._id], // Use userId from mapping
+        receiverId: userIdMapping[selectedFriend._id],
         content: newMessage,
       });
-      setMessages([...messages, response.data.message]);
-      setNewMessage(""); // Clear input field after sending
 
-      // Update lastMessageTime for the selected friend
+      const messageWithTimestamp = {
+        ...response.data.message,
+        timestamp: response.data.message.timestamp
+          ? new Date(response.data.message.timestamp).toLocaleTimeString()
+          : new Date().toLocaleTimeString(),
+      };
+
+      setMessages([...messages, messageWithTimestamp]);
+      setNewMessage("");
+
       setFriends((prevFriends) =>
         prevFriends.map((friend) =>
           friend._id === selectedFriend._id
-            ? { ...friend, lastMessageTime: Date.now() } // Update the time of the last message sent
+            ? { ...friend, lastMessageTime: Date.now() }
             : friend
         )
       );
 
-      // Sort friends again after sending the message
       setFriends((prevFriends) =>
         [...prevFriends].sort((a, b) => b.lastMessageTime - a.lastMessageTime)
       );
@@ -121,56 +133,96 @@ const Chat = () => {
     }
   };
 
-  // Handle key press for sending message with Enter key
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       sendMessage();
     }
   };
 
-  // Filter friends based on search term
   const filteredFriends = friends.filter((friend) =>
     friend.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleFriendSelect = (friend) => {
+    setSelectedFriend(friend);
+    setIsSidebarVisible(false); // Hide sidebar when a friend is selected
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarVisible((prev) => !prev);
+  };
+
   return (
     <div className={styles.chatContainer}>
-      {/* Sidebar for friend list */}
-      <div className={styles.sidebar}>
-        <input
-          type="text"
-          placeholder="Search chats..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className={styles.searchInput}
-        />
-        <ul>
-          {filteredFriends.map((friend) => (
-            <li
-              key={friend._id}
-              onClick={() => setSelectedFriend(friend)}
-              className={styles.friendItem}
-            >
-              <div className={styles.friendAvatar}>
-                <span role="img" aria-label={friend.name}>
-                  {friend.favoriteEmoji}
-                </span>
-              </div>
-              <span className={styles.friendName}>{friend.name}</span>
-              <div className={styles.lastMessagePreview}></div>
-            </li>
-          ))}
-        </ul>
+      <div
+        className={`${styles.sidebar} ${isSidebarVisible ? styles.show : ""}`}
+      >
+        <div className={styles.firstslide}>
+          <Image
+            style={{ marginTop: "20px" }}
+            src="https://img.icons8.com/?size=100&id=38977&format=png&color=0a80ff"
+            width={45}
+            height={40}
+            alt="Icon Description"
+          />
+          <Image
+            src="https://img.icons8.com/?size=100&id=85411&format=png&color=ffffff"
+            width={30}
+            height={40}
+            alt="Icon Description"
+          />
+          <Image
+            src="https://img.icons8.com/?size=100&id=qDNClnB7Z4Ky&format=png&color=ffffff"
+            width={25}
+            height={40}
+            alt="Icon Description"
+          />
+          <Image
+            src="https://img.icons8.com/?size=100&id=13725&format=png&color=000000"
+            width={40}
+            height={40}
+            alt="Icon Description"
+          />
+        </div>
+        <div className={styles.secondslide}>
+          <input
+            type="text"
+            placeholder="Search chats..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+          <ul>
+            {filteredFriends.map((friend) => (
+              <li
+                key={friend._id}
+                onClick={() => handleFriendSelect(friend)}
+                className={styles.friendItem}
+              >
+                <div className={styles.friendAvatar}>
+                  <span role="img" aria-label={friend.name}>
+                    {friend.favoriteEmoji}
+                  </span>
+                </div>
+                <span className={styles.friendName}>{friend.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      {/* Chat area */}
-      <div className={styles.chatArea}>
+      <div
+        className={`${styles.chatArea} ${isSidebarVisible ? "" : styles.show}`}
+      >
+        <div className={styles.chatHeader}>
+          <span className={styles.intro}>
+            {selectedFriend?.name} {selectedFriend.favoriteEmoji}
+          </span>
+          <div className={styles.icons}>{/* Call and video icons */}</div>
+        </div>
+
         {selectedFriend ? (
           <>
-            <div className={styles.sd}>
-              <h3 className={styles.int}>Chat with {selectedFriend.name}</h3>
-            </div>
-
             <div className={styles.messages}>
               {messages.map((message, index) => (
                 <div
@@ -181,11 +233,15 @@ const Chat = () => {
                       : styles.messageReceiver
                   }
                 >
-                  {message.content}
+                  <div className={styles.messageContent}>
+                    {message.content}
+                    <span className={styles.timestamp}>
+                      {message.timestamp}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
-
             <div className={styles.inputArea}>
               <input
                 type="text"
@@ -198,7 +254,7 @@ const Chat = () => {
             </div>
           </>
         ) : (
-          <p>Select a friend to start chatting</p>
+          <p>Please select a friend to start chatting!</p>
         )}
       </div>
     </div>

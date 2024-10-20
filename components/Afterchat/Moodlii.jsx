@@ -39,10 +39,10 @@ const Moodlii = () => {
                   key={index}
                   className="moodlii-feature-card"
                   whileHover={{
-                    rotateX: [-10, 10, 10],
-                    rotateY: [10, 10, -10],
+                    rotateX: [-10, 0, 10],
+                    rotateY: [10, 0, -10],
                     scale: 1.05,
-                    transition: { duration: 0.3 },
+                    transition: { duration: 2 },
                   }}
                 >
                   <h4 className="moodlii-feature-title">{feature.title}</h4>
