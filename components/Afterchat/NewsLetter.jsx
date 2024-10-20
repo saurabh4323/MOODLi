@@ -1,5 +1,5 @@
 import React from "react";
-import "./Newsletter.css"; // Ensure you create this CSS file.
+import "./newsletter.css"; // Ensure you create this CSS file.
 
 const NewsLetter = () => {
   return (
