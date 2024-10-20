@@ -6,16 +6,13 @@ import NewsLetter from "./NewsLetter";
 const Moodlii = () => {
   return (
     <>
-      <div
-        className="mainn"
-        style={{ display: "flex", width: "100%", height: "102vh" }}
-      >
+      <div className="mainn" style={{ display: "flex", width: "100%" }}>
         <div
           className="feat"
           style={{
             width: "100%",
             marginTop: "10%",
-            marginLeft: "3%",
+            // marginLeft: "3%",
           }}
         >
           <Feat></Feat>

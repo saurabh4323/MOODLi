@@ -5,7 +5,7 @@ import "./hl.css";
 export default function Heroleft() {
   return (
     <div className="coleft">
-      <h5 className="nft">We are Moodlii</h5>
+      <h5 className="nft">Welcome to Moodli</h5>
       <div className="dash"></div>
       <h5 className="hhhk">
         Track Your Mood, Make New Friends, and Discover Powerful Insights.

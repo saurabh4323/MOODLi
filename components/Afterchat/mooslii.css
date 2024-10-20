@@ -58,15 +58,17 @@
 @media (max-width: 768px) {
   .moodlii-feature-card {
     width: 100%; /* Full width on mobile */
-    max-width: none; 
+    
   }
   .mainn{
-   
+   height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
-  
+  .moodlii-container{
+
+  }
   .moodlii-flex-container {
     
     justify-content: center; /* Center items on mobile */

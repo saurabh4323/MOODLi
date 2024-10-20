@@ -10,7 +10,7 @@ export default function Home() {
       {/* <Heros></Heros>
        */}
       <Newhero></Newhero>
-      <NewsLetter></NewsLetter>
+      {/* <NewsLetter></NewsLetter> */}
     </div>
   );
 }

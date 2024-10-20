@@ -72,17 +72,24 @@ font-weight: bold;
 
 @media (max-width: 768px) {
   .Newhero{
-height: 360vh;
+/* height: 360vh; */
+height: auto;
   }
   
   .containerk{
     /* margin-top: -40px; */
-    margin-top: 20px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
+    
   }
   .coleft{
+    margin-bottom: 50px;
+    
     /* height: 120vh; */
     /* background: green; */
+  }
+  .hhhk{
+font-size: 39px;
   }
 }
