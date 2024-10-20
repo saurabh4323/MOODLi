@@ -4,7 +4,7 @@ import "./newsletter.css"; // Ensure you create this CSS file.
 const NewsLetter = () => {
   return (
     <div className="newsletter-container">
-      <h2 className="newsletter-title">Get Newsletter</h2>
+      <h2 className="newsletter-title">Get Reminder</h2>
       <p className="newsletter-subtitle">Get updated with news, updates</p>
       <div className="newsletter-form">
         <input

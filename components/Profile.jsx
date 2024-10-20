@@ -9,6 +9,7 @@ import { enableDarkMode, enableLightMode } from "../app/theme"; // Import theme 
 import Changepassword from "./Changepassword";
 import Button from "./Button";
 import ContactUs from "./ContactUs";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
   const [gender, setGender] = useState("Other");
@@ -125,9 +126,8 @@ export default function Profile() {
   const handleCancelLogout = () => {
     setShowLogoutConfirmation(false); // Hide confirmation modal
   };
-  const contact = () => {
-    setshowcontact(true);
-  };
+  const rouuter = useRouter();
+
   const fetchFriends = async () => {
     if (typeof window !== "undefined") {
       const userId = window.localStorage.getItem("userId");
@@ -168,7 +168,7 @@ export default function Profile() {
         <button className="buttonk" onClick={toggleThemeModal}>
           <SunMoon color="#ffffff" /> Theme
         </button>
-        <button className="buttonk" onClick={contact}>
+        <button className="buttonk" onClick={() => rouuter.push("/contact")}>
           <Headset color="#ffffff" /> Contact us
         </button>
         <button className="buttonk" onClick={() => setshowchangepass(true)}>
@@ -325,19 +325,7 @@ export default function Profile() {
           <Changepassword />
         </div>
       )}
-      {showcontact && (
-        <div className="modal-overlayss">
-          <div className="can" style={{ marginTop: "50px" }}>
-            <button
-              className="modal-close-button"
-              onClick={() => setshowcontact(false)}
-            >
-              Close
-            </button>
-            <ContactUs></ContactUs>
-          </div>
-        </div>
-      )}
+
       {/* Theme Modal */}
       {showThemeModal && (
         <div className="modal-overlay">
