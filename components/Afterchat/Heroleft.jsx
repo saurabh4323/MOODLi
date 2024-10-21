@@ -65,7 +65,7 @@ export default function Heroleft() {
         variants={itemVariants}
         className="kbutton"
         onClick={() => {
-          router.push("/login");
+          router.push("/register");
         }}
       >
         Get Connected

@@ -6,7 +6,7 @@ import "./hero.css";
 import styles from "./Heros.module.css";
 import Head from "next/head";
 import Image from "next/image";
-
+import Script from "next/script";
 import React, { useEffect, useState } from "react";
 import MoodRecommendations from "./MoodRecommendations";
 import useDarkMode from "./useDarkMode";
@@ -82,6 +82,19 @@ export default function Hero(props) {
           content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect and chat with a community, and gain valuable insights into your mental health!"
         />
       </Head>
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.embeddedChatbotConfig = {
+              chatbotId: "1reHM86OqajPcWfR4k5u9",
+              domain: "www.chatbase.co"
+            };
+          `,
+        }}
+      />
+
+      <Script src="https://www.chatbase.co/embed.min.js" defer></Script>
+
       <div className="container">
         <div className="background1"></div>
         <div className="background2"></div>
@@ -148,14 +161,6 @@ export default function Hero(props) {
           showCard={showCard}
           onClose={handleClose}
         />
-
-        {/* Chatbot Iframe */}
-        <iframe
-          src="https://www.chatbase.co/chatbot-iframe/deZwZMHfpb9Us_5_rOqh6"
-          width="80%"
-          style={{ display: "none" }} // Fix inline styles
-          frameBorder="0"
-        ></iframe>
       </div>
     </>
   );

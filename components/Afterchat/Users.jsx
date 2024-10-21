@@ -131,7 +131,7 @@ const Users = () => {
   return (
     <div className="comm-main">
       <div className="topmain">
-        <h1>Connect with people, make them friends</h1>
+        <h1>Connect with people</h1>
         <button
           onClick={chat}
           style={{ backgroundColor: "green" }}
@@ -150,9 +150,6 @@ const Users = () => {
           onChange={handleSearch}
           className="search-input"
         />
-        <button className="show-friend-list-btn" onClick={toggleFriendList}>
-          {showFriendList ? "Hide Friend " : "Friends "}
-        </button>
       </div>
 
       {showFriendList && (

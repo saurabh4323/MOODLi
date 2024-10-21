@@ -4,14 +4,13 @@ import { enableDarkMode, enableLightMode, getInitialTheme } from "./theme";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytic from "./Analytic";
-
+import Script from "next/script";
 import Head from "next/head";
 import "./globals.css";
 import useDarkMode from "@/components/useDarkMode";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import NeonCursor from "@/components/NeonCursor";
-import Script from "next/script";
 import ConsentBanner from "@/components/ConsentBanner";
 import { Toaster } from "react-hot-toast";
 import Feedback from "@/components/Feedback";
@@ -52,11 +51,8 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-3455923870560500"
-        ></meta>
-        <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0"></meta>
+        <meta name="google-adsense-account" content="ca-pub-3455923870560500" />
+        <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0" />
 
         {/* SEO Meta Tags */}
         <meta
@@ -72,7 +68,7 @@ export default function RootLayout({ children }) {
         {/* Open Graph Meta Tags for Social Sharing */}
         <meta property="og:url" content="https://moodli.site" />
         <meta property="og:type" content="website" />
-        <meta property="og:moodli" content="https://moodli.site"></meta>
+        <meta property="og:moodli" content="https://moodli.site" />
         <meta
           property="og:title"
           content="Moodli - Track Your Mood with AI & Emoji"
@@ -103,14 +99,14 @@ export default function RootLayout({ children }) {
           type="image/png"
           sizes="32x32"
           href="/favicon-32x32.png"
-        ></link>
+        />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
           href="/favicon-16x16.png"
-        ></link>
-        <link rel="manifest" href="/site.webmanifest"></link>
+        />
+        <link rel="manifest" href="/site.webmanifest" />
         <title>Moodli - Mood Tracker & Community</title>
       </head>
       <Head>
@@ -125,21 +121,31 @@ export default function RootLayout({ children }) {
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
         crossorigin="anonymous"
-      ></Script>
+      />
+
+      {/* Chatbot Script */}
+      <Script
+        src="https://www.chatbase.co/embed.min.js"
+        defer
+        onLoad={() => {
+          window.embeddedChatbotConfig = {
+            chatbotId: "1reHM86OqajPcWfR4k5u9",
+            domain: "www.chatbase.co",
+          };
+        }}
+      />
 
       <body>
         <Header />
-
         <Toaster />
         {children}
-        <ConsentBanner></ConsentBanner>
-        {/* <NeonCursor></NeonCursor> */}
+        <ConsentBanner />
         <Footer />
         <Analytic />
         <style jsx>{`
           @media (max-width: 600px) {
             .toggle-button {
-              margin-left: 40%;
+              marginleft: "40%"; // Changed to object format
             }
           }
         `}</style>
