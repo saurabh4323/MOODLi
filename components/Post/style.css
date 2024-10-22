@@ -164,7 +164,8 @@
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .hamburger {
-    margin-top: 70px;
+    margin-top: 55px;
+    margin-left: -10px;
     display: flex; /* Show hamburger on smaller screens */
   }
 
