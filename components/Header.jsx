@@ -123,12 +123,12 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item" onClick={track}>
-            VibeTrack
+          <Link href="/community" className="nav-item" onClick={toggleMenu}>
+            Pulse
           </Link>
           {isAuthenticated && (
-            <Link href="/profile" className="nav-item">
-              Profile
+            <Link href="/create" className="nav-item" onClick={toggleMenu}>
+              MoodMojis
             </Link>
           )}
 
@@ -138,11 +138,11 @@ const Header = () => {
 
           {menu && (
             <div className="mobile-dropdown">
-              <Link href="/community" className="nav-item" onClick={toggleMenu}>
-                Pulse
+              <Link href="/track" className="nav-item" onClick={track}>
+                VibeTrack
               </Link>
-              <Link href="/create" className="nav-item" onClick={toggleMenu}>
-                MoodMojis
+              <Link href="/profile" className="nav-item">
+                Profile
               </Link>
             </div>
           )}
