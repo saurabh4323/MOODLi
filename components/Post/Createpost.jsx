@@ -43,6 +43,9 @@ export default function Createpost({ fetchPosts }) {
       setImageUrl("");
       setImageName(""); // Reset image name
       toggleModal();
+      alert(
+        "Thank you for sharing! We will check the content with our rules and privacy policy before showing it to users."
+      );
     } catch (error) {
       // Log the error for debugging
       console.error("Error creating post", error);
