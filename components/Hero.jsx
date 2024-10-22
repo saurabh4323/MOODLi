@@ -83,13 +83,14 @@ export default function Hero(props) {
         />
       </Head>
       <Script
+        id="chatbot-config" // Add a unique ID here
         dangerouslySetInnerHTML={{
           __html: `
-            window.embeddedChatbotConfig = {
-              chatbotId: "1reHM86OqajPcWfR4k5u9",
-              domain: "www.chatbase.co"
-            };
-          `,
+      window.embeddedChatbotConfig = {
+        chatbotId: "1reHM86OqajPcWfR4k5u9",
+        domain: "www.chatbase.co"
+      };
+    `,
         }}
       />
 
@@ -161,6 +162,13 @@ export default function Hero(props) {
           showCard={showCard}
           onClose={handleClose}
         />
+
+        <iframe
+          src="https://www.chatbase.co/chatbot-iframe/1reHM86OqajPcWfR4k5u9"
+          width="100%"
+          style={{ height: "100%", minHeight: "700px" }} // Change to an object
+          frameBorder="0"
+        ></iframe>
       </div>
     </>
   );
