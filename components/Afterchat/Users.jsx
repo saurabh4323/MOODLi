@@ -134,7 +134,7 @@ const Users = () => {
         <h1>Connect with people</h1>
         <button
           onClick={chat}
-          style={{ backgroundColor: "green" }}
+          style={{ backgroundColor: "#4526b1" }}
           className="show-friend-list-btn"
         >
           Chat{" "}

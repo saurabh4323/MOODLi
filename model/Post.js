@@ -2,15 +2,29 @@ import mongoose from "mongoose";
 
 const PostingSchema = new mongoose.Schema({
   userId: { type: String, required: true },
-  type: { type: String, enum: ["text", "image"] },
-  content: { type: String },
-  imageUrl: { type: String },
+  type: {
+    type: String,
+    enum: ["text", "image"],
+    required: true,
+  },
+  content: {
+    type: String,
+    required: function () {
+      return this.type === "text";
+    },
+  },
+  imageUrl: {
+    type: String,
+    required: function () {
+      return this.type === "image";
+    },
+  },
   timestamp: { type: Date, default: Date.now },
-  likes: [{ type: String }],
+  likes: [{ type: String, default: [] }],
   comments: [
     {
-      userId: String,
-      text: String,
+      userId: { type: String, required: true },
+      text: { type: String, required: true },
       timestamp: { type: Date, default: Date.now },
     },
   ],

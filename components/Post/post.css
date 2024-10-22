@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.create-post{
+  height: 45px;
+  /* background-color: #fd6a43; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonp {
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  background-color: #4526b1;
+  color: white;
+  width: 127px; /* Adjust for mobile */
+  height: 45px;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonp:hover {
+  background-color: #fd6a43;
+}
+
+/* Loading state for the button */
+.button-loading {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Modal styles */
+.modals {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+/* Modal content */
+.modals-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%; /* Set a percentage width for mobile */
+  max-width: 600px; /* Max width for larger screens */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 20px;
+  background: #ff1d1d;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+
+/* Textarea styling */
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  resize: none;
+}
+
+/* Input text box */
+.input-text {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Simple fade-in animation for the modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .buttonp {
+    width: 50%; /* Full width on mobile */
+    height: auto; /* Adjust height */
+    font-size: 14px; /* Slightly smaller font for mobile */
+  }
+
+  .modal-content {
+    padding: 15px; /* Adjust padding for mobile */
+    width: 90%; /* Width remains 90% for smaller screens */
+  }
+
+  .textarea {
+    height: 80px; /* Adjust textarea height for smaller screens */
+  }
+
+  .input-text {
+    font-size: 14px; /* Slightly smaller font size for input */
+  }
+
+  .error-message {
+    font-size: 12px; /* Smaller error message font */
+  }
+}

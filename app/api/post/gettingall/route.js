@@ -1,18 +1,26 @@
-import mongoose, { connections } from "mongoose";
+import mongoose from "mongoose";
 import { connect } from "@/config/Dbconfig";
 import Post from "@/model/Post";
+import { NextResponse } from "next/server";
+import Profile from "@/components/Profile";
 
-export default async function handler(req, res) {
+export async function GET() {
   await connect();
+  try {
+    const allpost = await Post.find(
+      {},
+      "userId content imageUrl likes comments timestamp"
+    );
 
-  if (req.method === "GET") {
-    try {
-      const posts = await Post.find().sort({ timestamp: -1 });
-      res.status(200).json(posts);
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching posts", error });
-    }
-  } else {
-    res.status(405).json({ message: "Method not allowed" });
+    return NextResponse.json({
+      status: 200,
+      post: allpost,
+    });
+  } catch (err) {
+    console.error("Error fetching posts:", err);
+    return NextResponse.json(
+      { status: 500, message: "Error fetching posts. Please try again later." },
+      { status: 500 }
+    );
   }
 }

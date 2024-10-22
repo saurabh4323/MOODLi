@@ -1,15 +1,44 @@
-import mongoose, { connections } from "mongoose";
+import mongoose from "mongoose";
 import { connect } from "@/config/Dbconfig";
 import Post from "@/model/Post";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   await connect();
-
   try {
-    const { userId, type, content, imageUrl } = req.body;
-    const newPost = await Post.create({ userId, type, content, imageUrl });
-    res.status(201).json(newPost);
-  } catch (error) {
-    res.status(500).json({ message: "Error creating post", error });
+    const reqbody = await req.json();
+    const { userId, content, imageUrl, type } = reqbody;
+
+    // Validate required fields
+    if (
+      !userId ||
+      !type ||
+      (type === "text" && !content) ||
+      (type === "image" && !imageUrl)
+    ) {
+      return NextResponse.json(
+        {
+          status: 400,
+          message: "User ID, type, and content or imageUrl are required.",
+        },
+        { status: 400 }
+      );
+    }
+
+    // Create a new post
+    const post = new Post({ userId, content, imageUrl, type });
+    await post.save();
+
+    return NextResponse.json({
+      status: 201,
+      message: "Post created successfully",
+      post,
+    });
+  } catch (err) {
+    console.error("Error creating post:", err);
+    return NextResponse.json(
+      { status: 500, message: "Error creating post. Please try again." },
+      { status: 500 }
+    );
   }
 }
