@@ -163,12 +163,12 @@ export default function Hero(props) {
           onClose={handleClose}
         />
 
-        <iframe
+        {/* <iframe
           src="https://www.chatbase.co/chatbot-iframe/1reHM86OqajPcWfR4k5u9"
           width="100%"
           style={{ height: "100%", minHeight: "700px" }} // Change to an object
           frameBorder="0"
-        ></iframe>
+        ></iframe> */}
       </div>
     </>
   );
