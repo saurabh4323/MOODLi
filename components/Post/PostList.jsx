@@ -13,8 +13,12 @@ export default function PostList() {
   // Fetch all posts
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("/api/post/gettingall");
-      setPosts(response.data.post); // Adjust based on your API response
+      const response = await axios.get("/api/post/gettingall", {
+        headers: {
+          "Cache-Control": "no-cache", // Prevent caching
+        },
+      });
+      setPosts(response.data.post);
     } catch (error) {
       console.error("Error fetching posts", error);
     }
