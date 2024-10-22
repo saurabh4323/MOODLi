@@ -70,7 +70,7 @@ const Header = () => {
   };
 
   const toggleMenu = () => {
-    setMenu(!menu); // Toggle mobile menu visibility
+    setMenu(!menu);
   };
 
   return (
