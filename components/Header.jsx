@@ -100,7 +100,7 @@ const Header = () => {
             Pulse
           </Link>
           <Link href="/create" className="nav-item">
-            MoodMojis
+            Feeltalks
           </Link>
           {isAuthenticated ? (
             <>
@@ -128,7 +128,7 @@ const Header = () => {
           </Link>
           {isAuthenticated && (
             <Link href="/create" className="nav-item" onClick={toggleMenu}>
-              MoodMojis
+              Feeltalks
             </Link>
           )}
 
