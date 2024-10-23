@@ -41,7 +41,7 @@ export default function Createpost({ fetchPosts }) {
       // fetchPosts();
       setContent("");
       setImageUrl("");
-      setImageName(""); // Reset image name
+      setImageName("");
       toggleModal();
       alert(
         "Thank you for sharing! We will check the content with our rules and privacy policy before showing it to users."

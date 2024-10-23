@@ -13,9 +13,9 @@ export default function PostList() {
   // Fetch all posts
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("/api/post/gettingall", {
+      const response = await axios.get("/api/post/posting", {
         headers: {
-          "Cache-Control": "no-cache", // Prevent caching
+          "Cache-Control": "no-cache",
         },
       });
       setPosts(response.data.post);

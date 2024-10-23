@@ -42,3 +42,23 @@ export async function POST(req) {
     );
   }
 }
+export async function GET() {
+  await connect();
+  try {
+    const allpost = await Post.find(
+      {},
+      "userId content imageUrl likes comments timestamp"
+    );
+
+    return NextResponse.json({
+      status: 200,
+      post: allpost,
+    });
+  } catch (err) {
+    console.error("Error fetching posts:", err);
+    return NextResponse.json(
+      { status: 500, message: "Error fetching posts. Please try again later." },
+      { status: 500 }
+    );
+  }
+}
