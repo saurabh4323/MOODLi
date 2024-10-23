@@ -11,8 +11,14 @@ export default function PostList() {
   const [selectedPost, setSelectedPost] = useState(null);
   const [commentText, setCommentText] = useState("");
   const [showCommentModal, setShowCommentModal] = useState(false);
+  const [userId, setUserId] = useState("");
 
-  const userId = localStorage.getItem("userId");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const UserId = localStorage.getItem("userId");
+      setUserId(UserId);
+    }
+  }, []);
 
   // Fetch all posts
   const fetchPosts = async () => {
