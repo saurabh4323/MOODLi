@@ -93,15 +93,16 @@ const Header = () => {
           <Link href="/dashboard" className="nav-item">
             Dashboard
           </Link>
-          <Link href="/track" className="nav-item" onClick={track}>
-            VibeTrack
-          </Link>
           <Link href="/community" className="nav-item">
             Pulse
           </Link>
           <Link href="/create" className="nav-item">
             Feeltalks
           </Link>
+          <Link href="/track" className="nav-item" onClick={track}>
+            VibeTrack
+          </Link>
+
           {isAuthenticated ? (
             <>
               <Link href="/profile" className="nav-item">
