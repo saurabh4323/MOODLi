@@ -8,6 +8,7 @@ import styles from "./Heros.module.css";
 import { useRouter } from "next/navigation";
 import Loading from "./Loading";
 export default function Dashboard() {
+  const route = useRouter();
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(true);
   const [clicked, setClicked] = useState(false);
@@ -109,7 +110,7 @@ export default function Dashboard() {
         particleContainerRef.current.remove();
       }
     };
-  }, []);
+  }, [createParticles]);
 
   // Fetch user profile
   useEffect(() => {
@@ -223,7 +224,7 @@ export default function Dashboard() {
     Depressed: "😔",
     Flirty: "😏",
   };
-  const route = useRouter();
+
   const chrt = () => {
     route.push("/chart");
   };
