@@ -6,8 +6,10 @@ import Calendar from "./Calander";
 import "./Dashboard.css";
 import styles from "./Heros.module.css";
 import { useRouter } from "next/navigation";
+import Loading from "./Loading";
 export default function Dashboard() {
   const [username, setUsername] = useState("");
+  const [loading, setLoading] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [hasSubmittedToday, setHasSubmittedToday] = useState(false);
@@ -119,12 +121,19 @@ export default function Dashboard() {
           setUsername(response.data.name);
         } catch (error) {
           console.error("Error fetching user profile:", error);
+        } finally {
+          setLoading(false); // Set loading to false after data is fetched
         }
+      } else {
+        setLoading(false); // Set loading to false if userId is not found
       }
     };
-
     fetchUserProfile();
   }, []);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   // Main part to post on emoji
   const handleSubmit = async () => {

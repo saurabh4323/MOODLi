@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+.s{
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.current-user{
+  border-bottom: 1px solid #9a9a9aa2;
+  height: 33vh;
+  display: flex;
+  /* width: 75%; */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.cur{
+  width: 100%;
+ 
+}
+.cur p{
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+}
+.cul{
+  width: 60%;
+ 
+  display: flex;
+  
+justify-content: end;
+/* align-items: center; */
+
+}
+.nnn{
+  text-align: left;
+  font-weight: 550;
+}
+.cul p{
+  margin-top: -10px;
+  font-size: 80px;
+}
+.ppedi{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 30px;
+}
+.bioo{
+   width: 80%
+}
+
+.btnss{
+  margin-top: 10px;
+}
+.fav{
+  margin-left: 30px;
+ border-radius: 50%;
+ display: flex;
+ border: 1px solid #5d5dff;
+}
+
+.buttond{
+ color: #fff;
+  
+  background-color: #262626;
+  width: 100px;
+  border-radius: 10px;
+  height: 40px;
+  cursor: pointer;
+}
+.buttond:hover{
+  background-color: #262626b3;
+}
+.btnss{
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .bioo{
+    width: 98%
+ }
+ .fav{
+  /* width: 60%; */
+  margin-left: 51px;
+ border-radius: 50%;
+ display: flex;
+ /* border: 1px solid #fff; */
+}
+
+.fav p{
+  font-size: 70px;
+}
+.cul{
+  margin-top: -10%;
+  margin-right: -22px;
+width:26%;
+}
+}

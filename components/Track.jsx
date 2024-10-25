@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Track.css"; // Custom styling for the card
 import "./Login.module.css";
 import Head from "next/head";
+import Loading from "./Loading";
 
 export default function Track() {
   const [track, setTrack] = useState([]);
@@ -73,8 +74,7 @@ export default function Track() {
   if (loading) {
     return (
       <div className="loading-container">
-        <div className="loading-text">Tracking your data...</div>
-        <div className="loading-spinner"></div> {/* Add loading animation */}
+        <Loading></Loading>
       </div>
     );
   }
