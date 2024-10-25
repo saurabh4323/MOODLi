@@ -199,7 +199,7 @@ export default function Displaypost() {
       {showCommentModal && selectedPost && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h2>Comments for "{selectedPost.content}"</h2>
+            {/* <h2>Comments for {selectedPost.content}"</h2> */}
             <div className="comments-container">
               {selectedPost.comments.length > 0 ? (
                 selectedPost.comments.map((comment) => {
