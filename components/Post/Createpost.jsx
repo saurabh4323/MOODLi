@@ -58,7 +58,7 @@ export default function Createpost({ fetchPosts }) {
   return (
     <div className="create-post">
       <div className="buttonp" onClick={toggleModal}>
-        Create Post
+        Create
       </div>
 
       {isModalOpen && (
