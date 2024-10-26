@@ -6,7 +6,7 @@
 }
 .post-list-container {
   display: flex;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   gap: 30px;
   width: 100%;
   flex-wrap: wrap; /* Allow items to wrap */
@@ -14,8 +14,8 @@
   overflow-y: auto;
   border-radius: 20px;
   height: 91vh;;
-  border: 1px solid rgba(124, 130, 195, 0.5); 
-  scroll-behavior: smooth;
+  border-top: 1px solid #9a9a9aa2;
+    scroll-behavior: smooth;
   /* max-width: 800px; */
   /* margin: 0 auto; */
   padding: 20px;

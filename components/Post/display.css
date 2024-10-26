@@ -7,8 +7,10 @@
   align-items: center;
 }
 .current-user{
-  border-bottom: 1px solid #9a9a9aa2;
-  height: 33vh;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  
+  /* height: 33vh; */
   /* margin-left: 10%; */
   display: flex;
   /* width: 75%; */
@@ -59,7 +61,7 @@ justify-content: end;
   margin-left: 30px;
  border-radius: 50%;
  display: flex;
- border: 1px solid #5d5dff;
+ border-top: 1px solid #5d5dff;
 }
 
 .buttond{
@@ -85,7 +87,7 @@ justify-content: end;
  }
  .fav{
   /* width: 60%; */
-  margin-left: 51px;
+  /* margin-left: 51px; */
  border-radius: 50%;
  display: flex;
  /* border: 1px solid #fff; */

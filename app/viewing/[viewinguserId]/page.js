@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Heart, MessageCircle } from "lucide-react";
@@ -7,9 +6,11 @@ import { useRouter } from "next/navigation";
 import Loading from "@/components/Loading"; // Assuming Loading is a loading spinner/component
 import "./display.css";
 import "./st.css";
+
 export default function Page({ params }) {
   const route = useRouter();
   const { viewinguserId } = params; // Extracting viewinguserId from params
+  console.log("viewusingid", viewinguserId);
   const [userpost, setUserPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -22,6 +23,7 @@ export default function Page({ params }) {
   // Fetch Functions
   const fetchProfile = async (userId) => {
     try {
+      console.log("Fetching profile...");
       const res = await axios.post("/api/users/sau", { userId });
       setcurrentUser(res.data);
       console.log("Fetched Current User:", res.data);
@@ -33,8 +35,10 @@ export default function Page({ params }) {
 
   const fetchPosts = async (userId) => {
     try {
+      console.log("Fetching posts...");
       const response = await axios.get(`/api/post/individual/${userId}`);
       setUserPost(response.data.post || []);
+      console.log("Fetched Posts:", response.data.post);
     } catch (error) {
       console.error("Error fetching posts:", error);
       setError("Failed to load posts.");
@@ -45,11 +49,13 @@ export default function Page({ params }) {
 
   const fetchFriends = async (userId) => {
     try {
+      console.log("Fetching friends...");
       const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
       const friends = Array.isArray(response.data?.friends)
         ? response.data.friends
         : [];
       setFriendList(friends);
+      console.log("Fetched Friends:", friends);
     } catch (error) {
       console.error("Error fetching friends:", error);
       setFriendList([]);
@@ -58,6 +64,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     if (viewinguserId) {
+      console.log("Starting data fetch for user:", viewinguserId);
       fetchProfile(viewinguserId);
       fetchPosts(viewinguserId);
       fetchFriends(viewinguserId);
@@ -66,6 +73,7 @@ export default function Page({ params }) {
 
   const handleLike = async (postId) => {
     try {
+      console.log("Liking post:", postId);
       await axios.post(`/api/post/${postId}/like`, { userId: viewinguserId });
       fetchPosts(viewinguserId);
     } catch (error) {
@@ -75,6 +83,7 @@ export default function Page({ params }) {
 
   const handleComment = async (postId) => {
     try {
+      console.log("Adding comment to post:", postId);
       await axios.post(`/api/post/${postId}/comment`, {
         userId: viewinguserId,
         commentText,
@@ -87,11 +96,13 @@ export default function Page({ params }) {
   };
 
   const openCommentModal = (post) => {
+    console.log("Opening comment modal for post:", post._id);
     setSelectedPost(post);
     setShowCommentModal(true);
   };
 
   const closeCommentModal = () => {
+    console.log("Closing comment modal");
     setShowCommentModal(false);
     setSelectedPost(null);
   };
@@ -156,7 +167,7 @@ export default function Page({ params }) {
                 <button onClick={() => handleLike(post._id)}>
                   <Heart /> <span>{post.likes.length}</span>
                 </button>
-                <button>
+                <button onClick={() => openCommentModal(post)}>
                   <MessageCircle /> <span>{post.comments.length}</span>
                 </button>
               </div>
@@ -166,7 +177,6 @@ export default function Page({ params }) {
           <p>No posts yet.</p>
         )}
       </div>
-
       {showCommentModal && selectedPost && (
         <div className="modal-overlay">
           <div className="modal-content">
