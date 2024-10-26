@@ -1,37 +1,33 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Heart, MessageCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import "./style.css";
+import Loading from "@/components/Loading"; // Assuming Loading is a loading spinner/component
 import "./display.css";
-import Button from "../Button";
-import Loading from "../Loading";
-
-export default function Displaypost() {
+import "./st.css";
+export default function Page({ params }) {
   const route = useRouter();
+  const { viewinguserId } = params; // Extracting viewinguserId from params
   const [userpost, setUserPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [userId, setUserId] = useState("");
+  const [currentUser, setcurrentUser] = useState(null);
+  const [friendList, setFriendList] = useState([]);
   const [commentText, setCommentText] = useState("");
   const [selectedPost, setSelectedPost] = useState(null);
   const [showCommentModal, setShowCommentModal] = useState(false);
-  const [profiles, setProfiles] = useState([]);
-  const [currentuser, setCurrentUser] = useState(null);
-  const [friendList, setFriendList] = useState([]);
-  const [viewinguser, setviewinguser] = useState("");
 
   // Fetch Functions
   const fetchProfile = async (userId) => {
     try {
       const res = await axios.post("/api/users/sau", { userId });
-      setCurrentUser(res.data);
+      setcurrentUser(res.data);
       console.log("Fetched Current User:", res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
-    } finally {
-      setLoading(false);
+      setError("Failed to fetch profile.");
     }
   };
 
@@ -41,25 +37,15 @@ export default function Displaypost() {
       setUserPost(response.data.post || []);
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setError("Failed to load posts");
+      setError("Failed to load posts.");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fetchProfiles = async () => {
-    try {
-      const response = await axios.get("/api/users/sau");
-      setProfiles(response.data);
-    } catch (error) {
-      console.error("Error fetching profiles", error);
     }
   };
 
   const fetchFriends = async (userId) => {
     try {
       const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
-      console.log("Friend profiles received:", response.data);
       const friends = Array.isArray(response.data?.friends)
         ? response.data.friends
         : [];
@@ -71,23 +57,17 @@ export default function Displaypost() {
   };
 
   useEffect(() => {
-    const userIdFromStorage = localStorage.getItem("userId");
-    setUserId(userIdFromStorage);
-    if (userIdFromStorage) {
-      fetchProfile(userIdFromStorage);
-      fetchPosts(userIdFromStorage);
-      fetchProfiles();
-      fetchFriends(userIdFromStorage);
+    if (viewinguserId) {
+      fetchProfile(viewinguserId);
+      fetchPosts(viewinguserId);
+      fetchFriends(viewinguserId);
     }
-  }, []);
-
-  const getProfileById = (userId) =>
-    profiles.find((profile) => profile.userId === userId);
+  }, [viewinguserId]);
 
   const handleLike = async (postId) => {
     try {
-      await axios.post(`/api/post/${postId}/like`, { userId });
-      fetchPosts(userId);
+      await axios.post(`/api/post/${postId}/like`, { userId: viewinguserId });
+      fetchPosts(viewinguserId);
     } catch (error) {
       console.error("Error liking post:", error);
     }
@@ -95,9 +75,12 @@ export default function Displaypost() {
 
   const handleComment = async (postId) => {
     try {
-      await axios.post(`/api/post/${postId}/comment`, { userId, commentText });
+      await axios.post(`/api/post/${postId}/comment`, {
+        userId: viewinguserId,
+        commentText,
+      });
       setCommentText("");
-      fetchPosts(userId);
+      fetchPosts(viewinguserId);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -113,26 +96,24 @@ export default function Displaypost() {
     setSelectedPost(null);
   };
 
-  const edit = () => route.push("/editprofile");
-
-  if (loading) return <Loading></Loading>;
+  if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="s">
-      {currentuser && (
+    <div className="displaypage">
+      {currentUser && (
         <div className="current-user">
           <div className="cul">
             <div className="fav">
-              <p>{currentuser.favoriteEmoji}</p>
+              <p>{currentUser.favoriteEmoji}</p>
             </div>
           </div>
           <div className="cur">
             <h3 className="nnn" style={{ marginBottom: "3px" }}>
-              {currentuser.name}
+              {currentUser.name}
             </h3>
             <h6 className="bioo" style={{ fontSize: "14px" }}>
-              {currentuser.bio}
+              {currentUser.bio}
             </h6>
             <div className="ppedi">
               <p>
@@ -161,9 +142,6 @@ export default function Displaypost() {
               </p>
             </div>
             <div className="btnss">
-              <button onClick={edit} className="buttond">
-                Edit Profile
-              </button>
               <button className="buttond">Share</button>
             </div>
           </div>
@@ -174,65 +152,47 @@ export default function Displaypost() {
           userpost.map((post) => (
             <div key={post._id} className="post-card">
               <h1>{post.content}</h1>
-              <div className="post-actions" style={{ color: "white" }}>
-                <button
-                  className="action-button"
-                  onClick={() => handleLike(post._id)}
-                >
-                  <Heart color="#fff" className="icon" />
-                  <span style={{ color: "#fff" }}>({post.likes.length})</span>
+              <div className="post-actions">
+                <button onClick={() => handleLike(post._id)}>
+                  <Heart /> <span>{post.likes.length}</span>
                 </button>
-                <button
-                  className="action-button"
-                  onClick={() => openCommentModal(post)}
-                >
-                  <MessageCircle color="#ffffff" className="icon" />
-                  <span style={{ color: "#fff" }}>{post.comments.length}</span>
+                <button onClick={() => openCommentModal(post)}>
+                  <MessageCircle /> <span>{post.comments.length}</span>
                 </button>
               </div>
             </div>
           ))
         ) : (
-          <p>No post yet</p>
+          <p>No posts yet.</p>
         )}
       </div>
 
       {showCommentModal && selectedPost && (
         <div className="modal-overlay">
           <div className="modal-content">
-            {/* <h2>Comments for {selectedPost.content}"</h2> */}
+            <h2>Comments for {selectedPost.content}</h2>
             <div className="comments-container">
               {selectedPost.comments.length > 0 ? (
-                selectedPost.comments.map((comment) => {
-                  const commenterProfile = getProfileById(comment.userId);
-                  return (
-                    <div key={comment._id} className="comment">
-                      <p>{commenterProfile?.name || "Unknown"}:</p>
-                      <span>{comment.text}</span>
-                    </div>
-                  );
-                })
+                selectedPost.comments.map((comment) => (
+                  <div key={comment._id} className="comment">
+                    <p>{comment.userId}:</p>
+                    <span>{comment.text}</span>
+                  </div>
+                ))
               ) : (
                 <p>No comments yet.</p>
               )}
             </div>
-            <div className="comment-input">
-              <input
-                type="text"
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-                placeholder="Add a comment..."
-              />
-              <button
-                className="submit-comment-btn"
-                onClick={() => handleComment(selectedPost._id)}
-              >
-                Submit
-              </button>
-            </div>
-            <button className="close-modal-btn" onClick={closeCommentModal}>
-              Close
+            <input
+              type="text"
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              placeholder="Add a comment..."
+            />
+            <button onClick={() => handleComment(selectedPost._id)}>
+              Submit
             </button>
+            <button onClick={closeCommentModal}>Close</button>
           </div>
         </div>
       )}

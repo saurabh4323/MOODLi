@@ -13,14 +13,14 @@ export default function PostList() {
   const [commentText, setCommentText] = useState("");
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [userId, setUserId] = useState("");
-  const [userPost, setUserPost] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const route = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const UserId = localStorage.getItem("userId");
-      setUserId(UserId);
+      const userIdFromStorage = localStorage.getItem("userId");
+      setUserId(userIdFromStorage);
     }
   }, []);
 
@@ -34,6 +34,7 @@ export default function PostList() {
       setPosts(response.data.post);
     } catch (error) {
       console.error("Error fetching posts", error);
+      setError("Failed to fetch posts.");
     }
   };
 
@@ -43,6 +44,7 @@ export default function PostList() {
       setProfiles(response.data);
     } catch (error) {
       console.error("Error fetching profiles", error);
+      setError("Failed to fetch profiles.");
     }
   };
 
@@ -51,8 +53,11 @@ export default function PostList() {
   };
 
   useEffect(() => {
-    fetchPosts();
-    fetchProfiles();
+    const loadData = async () => {
+      await Promise.all([fetchPosts(), fetchProfiles()]);
+      setLoading(false);
+    };
+    loadData();
   }, []);
 
   const handleLike = async (postId) => {
@@ -62,6 +67,11 @@ export default function PostList() {
     } catch (error) {
       console.error("Error liking post:", error);
     }
+  };
+
+  const viewing = (post) => {
+    const viewingUserId = post.userId; // Get the user ID from the post
+    route.push(`/viewing/${viewingUserId}`); // Navigate to the viewing page
   };
 
   const handleComment = async (postId) => {
@@ -87,6 +97,9 @@ export default function PostList() {
     setSelectedPost(null);
   };
 
+  if (loading) return <div>Loading posts...</div>; // Loading state
+  if (error) return <div>{error}</div>; // Error state
+
   return (
     <div className="post-list-container">
       {posts.map((post) => {
@@ -97,6 +110,7 @@ export default function PostList() {
             <div className="post-header">
               <div className="user-info">
                 <h4
+                  onClick={() => viewing(post)}
                   className="usernamek"
                   style={{ color: "#fff", cursor: "pointer" }}
                 >
@@ -170,7 +184,10 @@ export default function PostList() {
               />
               <button
                 className="submit-comment-btn"
-                onClick={() => handleComment(selectedPost._id)}
+                onClick={() => {
+                  handleComment(selectedPost._id);
+                  closeCommentModal(); // Close the modal after submitting
+                }}
               >
                 Submit
               </button>
