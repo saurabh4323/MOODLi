@@ -1,10 +1,16 @@
 "use client";
 import Track from "@/components/Track";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-export default function page() {
-  const rouuter = useRouter();
+import Loading from "@/components/Loading";
+
+export default function Page() {
+  // Change 'page' to 'Page'
+  const router = useRouter(); // Fix the typo from 'rouuter' to 'router'
+  const [profile, setProfile] = useState(null); // Add state for profile data
+  const [loading, setLoading] = useState(true); // Add loading state
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const checkAuthentication = async () => {
@@ -13,7 +19,7 @@ export default function page() {
 
         if (!userId || !storedEmail) {
           alert("Please log in to access your profile.");
-          rouuter.push("/login");
+          router.push("/login"); // Use 'router' instead of 'rouuter'
           return;
         }
 
@@ -23,22 +29,28 @@ export default function page() {
             alert("Don't try this again");
             localStorage.removeItem("userId");
             localStorage.removeItem("email");
-            rouuter.push("/login");
+            router.push("/login");
           } else {
             setProfile(response.data);
           }
         } catch (error) {
           console.error("Error verifying user email:", error);
-          // alert("Authentication error. Redirecting to login.");
-          // rouuter.push("/login");
         } finally {
-          setLoading(false);
+          setLoading(false); // Ensure loading is set to false
         }
       };
 
       checkAuthentication();
     }
-  }, []);
+  }, [router]); // Add 'router' to the dependency array
+
+  if (loading) {
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    ); // Show a loading indicator
+  }
   return (
     <div>
       <Track></Track>
