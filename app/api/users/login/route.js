@@ -29,9 +29,15 @@ export async function POST(req) {
         { status: 400 }
       );
     }
+    console.log(user.email);
 
     return NextResponse.json(
-      { message: "Login successful", success: true, userId: user._id },
+      {
+        message: "Login successful",
+        success: true,
+        userId: user._id,
+        email: user.email,
+      },
       { status: 200 }
     );
   } catch (error) {

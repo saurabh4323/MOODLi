@@ -37,6 +37,7 @@ export async function POST(req) {
       message: "You registered successfully",
       success: true,
       userId: savedUser._id,
+      email: savedUser.email,
     });
   } catch (error) {
     console.error("Error in user creation:", error);

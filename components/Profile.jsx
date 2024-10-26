@@ -29,6 +29,39 @@ export default function Profile() {
   const [showThemeModal, setShowThemeModal] = useState(false); // Modal state
   const [theme, setTheme] = useState("dark");
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false); // Logout confirmation modal state
+  useEffect(() => {
+    // Check if user email is authenticated on component load
+    const checkAuthentication = async () => {
+      const userId = localStorage.getItem("userId");
+      const storedEmail = localStorage.getItem("email");
+
+      if (!userId || !storedEmail) {
+        alert("Please log in to access your profile.");
+        rouuter.push("/login");
+        return;
+      }
+
+      try {
+        console.log("1", storedEmail);
+        const response = await axios.post("/api/users/sau", { userId });
+        if (response.data.email !== storedEmail) {
+          alert("Don't try this again");
+
+          rouuter.push("/login");
+        } else {
+          setProfile(response.data);
+        }
+      } catch (error) {
+        console.error("Error verifying user email:", error);
+        alert("Authentication error. Redirecting to login.");
+        rouuter.push("/login");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    // checkAuthentication();
+  }, []);
 
   const shareOnWhatsApp = () => {
     const message = encodeURIComponent(

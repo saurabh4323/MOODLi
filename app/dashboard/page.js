@@ -1,13 +1,47 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "../globals.css";
+import axios from "axios";
 import Dashboard from "@/components/Dashboard";
 import PersonalityPopup from "@/components/PersonalityPopup";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const [showPopup, setShowPopup] = useState(false);
   const [personality, setPersonality] = useState("");
   const [showQuestion, setShowQuestion] = useState(true);
+  const rouuter = useRouter();
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      const userId = localStorage.getItem("userId");
+      const storedEmail = localStorage.getItem("email");
+
+      if (!userId || !storedEmail) {
+        alert("Please log in to access your profile.");
+        rouuter.push("/login");
+        return;
+      }
+
+      try {
+        const response = await axios.post("/api/users/sau", { userId });
+        if (response.data.email !== storedEmail) {
+          alert("Don't try this again");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("email");
+          rouuter.push("/login");
+        } else {
+        }
+      } catch (error) {
+        console.error("Error verifying user email:", error);
+        // alert("Authentication error. Redirecting to login.");
+        // rouuter.push("/login");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuthentication();
+  }, []);
 
   const handleAnswer = (answer) => {
     let message = "";

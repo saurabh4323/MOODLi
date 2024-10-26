@@ -27,6 +27,7 @@ export default function Displaypost() {
     try {
       const res = await axios.post("/api/users/sau", { userId });
       setCurrentUser(res.data);
+
       console.log("Fetched Current User:", res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
@@ -120,6 +121,24 @@ export default function Displaypost() {
 
   return (
     <div className="s">
+      {!currentuser && (
+        <div
+          className="complete"
+          style={{
+            position: "absolute",
+          }}
+        >
+          <button
+            onClick={() => {
+              route.push("/editprofile");
+            }}
+            style={{ width: "300px", height: "100px" }}
+            className="buttond"
+          >
+            click to complete profile
+          </button>
+        </div>
+      )}
       {currentuser && (
         <div className="current-user">
           <div className="cul">
@@ -193,10 +212,9 @@ export default function Displaypost() {
             </div>
           ))
         ) : (
-          <p>No post yet</p>
+          <p> </p>
         )}
       </div>
-
       {showCommentModal && selectedPost && (
         <div className="modal-overlay">
           <div className="modal-content">

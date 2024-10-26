@@ -43,6 +43,7 @@ const Register = () => {
       if (response.data.success) {
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("userId", response.data.userId);
+        localStorage.setItem("email", response.data.email);
         toast.success(
           "You registered successfully. Check your email for verification!"
         );

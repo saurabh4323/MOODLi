@@ -19,17 +19,7 @@ const Login = () => {
   const handleonchangee = (event) => {
     setLogin({ ...login, [event.target.name]: event.target.value });
   };
-  const loginUser = async (userId) => {
-    // Logic to log in the user
-    await fetch("/api/users/status", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId, isOnline: true }), // Set user as online
-    });
-  };
-  
+
   const handlesubmit = async (event) => {
     event.preventDefault();
     try {
@@ -38,9 +28,10 @@ const Login = () => {
           "Content-Type": "application/json",
         },
       });
-
+      // console.log(response.data, response.data.email);
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("email", response.data.email);
       // console.log("local");
 
       toast.success("Login successful! Redirecting...");

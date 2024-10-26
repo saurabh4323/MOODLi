@@ -57,6 +57,7 @@ export async function POST(req) {
     console.log("Profile saved:", profile);
 
     const responseData = {
+      userId: userId,
       name: profile.name || user.name,
       email: user.email,
       favoriteEmoji: profile.favoriteEmoji,
