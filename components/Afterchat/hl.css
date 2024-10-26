@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap');
 .containerk{
   width: 100%;
-  /* height: 103vh; */
+  height: 60vh;
+  overflow: hidden;
   margin-top: 80px;
   display: flex;
   
@@ -13,18 +14,20 @@
   /* background-color: #fd562a; */
   margin-left: 5%;
   width:100%;
+  justify-content: center;
   /* color: white; */
-  height: auto;
+  height: 60vh;
+  gap: 5px;
 display: flex;
 flex-direction: column;
-gap: 20px;
+/* gap: 20px; */
   /* height: 70vh; */
   /* background-color: rgb(0, 0, 0); */
   /* margin-left: 102px; */
 }
 .nft{
   margin-left: 10px;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 600;
   font-family: "fugaz" , sans-serif;
 
@@ -39,7 +42,7 @@ gap: 20px;
 }
 .hhhk {
 
-font-size: 42px;
+font-size: 37px;
 font-weight: bold;
   
   
@@ -48,8 +51,9 @@ font-weight: bold;
 
 .ppp{
   /* margin-top: 70px; */
-  font-size: 1rem;
+  font-size: 01rem;
   /* color: #7150ea; */
+  margin-bottom: 4px;
   font-weight: 600;
   width: 96%;
   font-family: "fugaz" , sans-serif;
