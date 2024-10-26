@@ -156,7 +156,7 @@ export default function Page({ params }) {
                 <button onClick={() => handleLike(post._id)}>
                   <Heart /> <span>{post.likes.length}</span>
                 </button>
-                <button onClick={() => openCommentModal(post)}>
+                <button>
                   <MessageCircle /> <span>{post.comments.length}</span>
                 </button>
               </div>

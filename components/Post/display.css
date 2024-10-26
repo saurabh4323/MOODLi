@@ -9,6 +9,7 @@
 .current-user{
   border-bottom: 1px solid #9a9a9aa2;
   height: 33vh;
+  /* margin-left: 10%; */
   display: flex;
   /* width: 75%; */
   width: 100%;

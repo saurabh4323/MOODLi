@@ -184,7 +184,7 @@ export default function Displaypost() {
                 </button>
                 <button
                   className="action-button"
-                  onClick={() => openCommentModal(post)}
+                  // onClick={() => openCommentModal(post)}
                 >
                   <MessageCircle color="#ffffff" className="icon" />
                   <span style={{ color: "#fff" }}>{post.comments.length}</span>
