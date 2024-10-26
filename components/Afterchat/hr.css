@@ -1,8 +1,9 @@
 .coright {
   width: 90%;
+  height: 70vh;
   margin-left: 30px;
   /* background-color: #cf8a77; */
-  height: 70vh;
+  /* height: 70vh; */
   overflow: hidden;
   position: relative;
 }
@@ -79,7 +80,7 @@
   width: 90%;
   margin-left: 30px;
 
-  height: 56vh;
+  /* height: 56vh; */
   overflow: hidden;
   position: relative;
 }

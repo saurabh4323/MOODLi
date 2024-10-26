@@ -14,6 +14,7 @@
   margin-left: 5%;
   width:100%;
   /* color: white; */
+  height: auto;
 display: flex;
 flex-direction: column;
 gap: 20px;
