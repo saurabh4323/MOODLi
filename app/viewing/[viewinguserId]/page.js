@@ -106,6 +106,19 @@ export default function Page({ params }) {
     setShowCommentModal(false);
     setSelectedPost(null);
   };
+  const handleConfirmAddFriend = async () => {
+    if (typeof window !== "undefined") {
+      const userId = window.localStorage.getItem("userId");
+      const friendId = viewinguserId;
+
+      try {
+        await axios.post("/api/users/friend", { userId, friendId });
+        alert(`${currentUser.name} has been added as a friend!`);
+      } catch (error) {
+        console.error("Error adding friend:", error);
+      }
+    }
+  };
 
   if (loading) return <Loading />;
   if (error) return <p>{error}</p>;
@@ -153,7 +166,17 @@ export default function Page({ params }) {
               </p>
             </div>
             <div className="btnss">
-              <button className="buttond">Share</button>
+              <button className="buttond" onClick={handleConfirmAddFriend}>
+                ADD
+              </button>
+              <button
+                className="buttond"
+                onClick={() => {
+                  route.push("/chat");
+                }}
+              >
+                Chat
+              </button>
             </div>
           </div>
         </div>
@@ -163,6 +186,7 @@ export default function Page({ params }) {
           userpost.map((post) => (
             <div key={post._id} className="post-card">
               <h1>{post.content}</h1>
+              <p></p>
               <div className="post-actions">
                 <button onClick={() => handleLike(post._id)}>
                   <Heart /> <span>{post.likes.length}</span>

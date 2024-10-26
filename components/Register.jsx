@@ -37,7 +37,7 @@ const Register = () => {
 
     try {
       const response = await axios.post("/api/users/signup", signup);
-     
+
       // console.log(response.data);
 
       if (response.data.success) {
@@ -46,7 +46,7 @@ const Register = () => {
         toast.success(
           "You registered successfully. Check your email for verification!"
         );
-        window.location.href = "/dashboard";
+        window.location.href = "/editprofile";
       }
     } catch (error) {
       console.error(error);
