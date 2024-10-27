@@ -16,8 +16,10 @@ import {
   SquareM,
   User,
 } from "lucide-react";
+import axios from "axios";
 
 const Headerphone = () => {
+  const [pic, setPic] = useState(""); // Initialize state for favorite emoji
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
@@ -35,27 +37,28 @@ const Headerphone = () => {
       enableLightMode();
     }
   }, []);
-  const track = () => {
-    window.location.href = "/track";
-  };
-  const handleToggleTheme = () => {
-    setIsChecked(!isChecked);
-    document.body.classList.toggle("dark", !isChecked);
-    if (theme === "light") {
-      setTheme("dark");
-      enableDarkMode();
-    } else {
-      setTheme("light");
-      enableLightMode();
-    }
-    toggleDarkMode();
-  };
+
+  useEffect(() => {
+    // Fetch the user's favorite emoji
+    const fetchUserEmoji = async () => {
+      try {
+        const response = await axios.get("/api/users/sau");
+        if (response.data && response.data.length > 0) {
+          // Assuming the first user is the one you want to use
+          setPic(response.data[0].favoriteEmoji); // Set the favorite emoji
+        }
+      } catch (error) {
+        console.error("Error fetching user emoji:", error);
+      }
+    };
+
+    fetchUserEmoji();
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const authStatus = localStorage.getItem("isAuthenticated") === "true";
       setIsAuthenticated(authStatus);
-
       const storedUserId = localStorage.getItem("userId");
       setUserId(storedUserId);
     }
@@ -98,33 +101,35 @@ const Headerphone = () => {
         {/* Desktop Navigation */}
         <nav className="nav">
           <Link href="/main" className="nav-item">
-            <House color="#fff"></House>
+            <House color="#fff" />
           </Link>
           <Link href="/dashboard" className="nav-item">
-            <LayoutDashboard color="#fff"></LayoutDashboard>
+            <LayoutDashboard color="#fff" />
           </Link>
           <Link href="/community" className="nav-item">
-            <SquareM color="#fff"></SquareM>
+            <SquareM color="#fff" />
           </Link>
           <Link href="/create" className="nav-item">
-            <Send color="#fff"></Send>
+            <Send color="#fff" />
           </Link>
-          <Link href="/track" className="nav-item" onClick={track}>
-            <Eye color="#fff"></Eye>
+          <Link
+            href="/track"
+            className="nav-item"
+            onClick={() => (window.location.href = "/track")}
+          >
+            <Eye color="#fff" />
           </Link>
 
           {isAuthenticated ? (
-            <>
-              <Link href="/profile" className="nav-item">
-                <User color="#fff"></User>
-              </Link>
-            </>
+            <Link href="/profile" className="nav-items">
+              {pic || <User color="#fff" />}{" "}
+              {/* Display the favorite emoji or the user icon */}
+            </Link>
           ) : (
             <Link href="/register" className="nav-item">
-              <LogIn color="#fff"></LogIn>
+              <LogIn color="#fff" />
             </Link>
           )}
-          {/* <Notification></Notification> */}
         </nav>
       </div>
 
