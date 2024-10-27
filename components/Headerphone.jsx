@@ -4,11 +4,20 @@ import Link from "next/link";
 import { enableDarkMode, enableLightMode, getInitialTheme } from "../app/theme";
 import useDarkMode from "./useDarkMode";
 import { useEffect, useState } from "react";
-import "./Header.css";
+import "./headerphone.css";
 import { FaBars, FaTimes } from "react-icons/fa"; // Import icons for hamburger
 import Notification from "./Post/Notifi";
+import {
+  Eye,
+  House,
+  LayoutDashboard,
+  LogIn,
+  Send,
+  SquareM,
+  User,
+} from "lucide-react";
 
-const Header = () => {
+const Headerphone = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userId, setUserId] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
@@ -75,7 +84,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header-container">
+    <header className="header-containerkk">
       <div className="header-content">
         <Image
           style={{ marginTop: "20px" }}
@@ -89,36 +98,34 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="nav">
           <Link href="/main" className="nav-item">
-            Home
+            <House color="#fff"></House>
           </Link>
           <Link href="/dashboard" className="nav-item">
-            Dashboard
+            <LayoutDashboard color="#fff"></LayoutDashboard>
           </Link>
           <Link href="/community" className="nav-item">
-            Pulse
+            <SquareM color="#fff"></SquareM>
           </Link>
           <Link href="/create" className="nav-item">
-            Feeltalks
+            <Send color="#fff"></Send>
           </Link>
           <Link href="/track" className="nav-item" onClick={track}>
-            VibeTrack
+            <Eye color="#fff"></Eye>
           </Link>
 
           {isAuthenticated ? (
             <>
               <Link href="/profile" className="nav-item">
-                Profile
+                <User color="#fff"></User>
               </Link>
             </>
           ) : (
             <Link href="/register" className="nav-item">
-              Login
+              <LogIn color="#fff"></LogIn>
             </Link>
           )}
-          <Notification></Notification>
+          {/* <Notification></Notification> */}
         </nav>
-
-        {/* Mobile Navigation */}
       </div>
 
       {/* Confirmation Menu */}
@@ -151,4 +158,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Headerphone;

@@ -143,8 +143,11 @@ const Users = () => {
 
       <div className="search-bar">
         <input
-          style={{ height: "50px" }}
+          style={{ height: "50px", color: "#000" }}
           type="text"
+          onClick={() => {
+            rou.push("/search");
+          }}
           placeholder="Search by name or emoji..."
           value={searchTerm}
           onChange={handleSearch}

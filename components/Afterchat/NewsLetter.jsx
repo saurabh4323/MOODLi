@@ -1,7 +1,17 @@
-import React from "react";
+"use client"
+import React , {useState} from "react";
 import "./newsletter.css"; // Ensure you create this CSS file.
 
-const NewsLetter = () => {
+
+ const NewsLetter = () => {
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = () => {
+    // Add your subscription logic here
+    setIsSubscribed(true);
+  };
+
   return (
     <div className="newsletter-container">
       <h2 className="newsletter-title">Get Reminder</h2>
@@ -10,13 +20,21 @@ const NewsLetter = () => {
         <input
           style={{ color: "#000" }}
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email here"
           className="newsletter-input"
         />
-        <button className="newsletter-button">Subscribe</button>
+        <button
+          className="newsletter-button"
+          onClick={handleSubscribe}
+          disabled={isSubscribed}
+        >
+          {isSubscribed ? "Subscribed" : "Subscribe"}
+        </button>
       </div>
     </div>
   );
 };
-
 export default NewsLetter;
+

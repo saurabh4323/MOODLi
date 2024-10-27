@@ -10,22 +10,19 @@ import { useEffect } from "react";
 
 export default function Home() {
   const route = useRouter();
+
   useEffect(() => {
+    // Check if we're in a browser environment
     if (typeof window !== "undefined") {
-      const email = window.localStorage.getItem("email");
-      if (!email) {
-        alert(
-          "For your privacy and security, we have made some changes. Please log in again from your devices. Sorry for the inconvenience. If anything went wrong contact us"
-        );
-        route.push("/login");
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        route.push("/dashboard");
       }
     }
-  }, []);
+  }, [route]); // Add route as a dependency
 
   return (
     <div>
-      {/* <Heros></Heros>
-       */}
       <Newhero></Newhero>
 
       <Faq></Faq>

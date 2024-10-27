@@ -82,7 +82,7 @@ export default function Hero(props) {
           content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect and chat with a community, and gain valuable insights into your mental health!"
         />
       </Head>
-      <Script
+      {/* <Script
         id="chatbot-config" // Add a unique ID here
         dangerouslySetInnerHTML={{
           __html: `
@@ -94,7 +94,7 @@ export default function Hero(props) {
         }}
       />
 
-      <Script src="https://www.chatbase.co/embed.min.js" defer></Script>
+      <Script src="https://www.chatbase.co/embed.min.js" defer></Script> */}
 
       <div className="container">
         <div className="background1"></div>

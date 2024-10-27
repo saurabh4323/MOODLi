@@ -1,26 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
-body{
+body {
   margin: 0;
   padding: 0;
   /* cursor: none; */
   /* box-sizing: border-box; */
-  
+
   /* font-family:  'Fugaz One , cursive'; */
   /* background-color: #000; */
   /* background-color:#2b1c4f ; */
 }
 /* globals.css */
 
-
 /* Light mode (default) */
 body {
   background-color: #fff;
-  
+
   color: #000;
 }
 
@@ -29,34 +28,54 @@ body {
   background-color: #000;
   color: #fff;
 }
-:root.dark .content{
+:root.dark .content {
   border: 1px solid #1708bf;
   background-color: #000000;
 }
-:root.dark .card{
+:root.dark .card {
   border: 1px solid #fff;
 }
-:root.dark .spn{
+:root.dark .spn {
   color: #fff;
 }
-:root.dark .footer{
+:root.dark .footer {
   background-color: #000;
 }
 :root.dark .footerContent {
   color: #fff;
 }
-:root.dark .hhhk{
-  -webkit-text-stroke: 1px white; 
-} 
+:root.dark .hhhk {
+  -webkit-text-stroke: 1px white;
+}
 
 /* :root.dark .header-container{
   box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.379);
 } */
 /* Add additional dark/light-specific styles */
-:root.dark.nav-item{
+:root.dark.nav-item {
   color: #000;
 }
-
+.forphone {
+  display: none;
+}
+.topforphone {
+  display: none;
+}
 @media (max-width: 768px) {
+  .showheader {
+    display: none;
+  }
 
+  .forphone {
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    display: flex; /* Or use flex, grid, inline, inline-block, etc., as needed */
+  }
+  .showingg {
+    margin-top: 70px;
+  }
+  .topforphone {
+    display: flex;
+  }
 }

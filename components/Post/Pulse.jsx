@@ -51,10 +51,6 @@ export default function Pulse() {
 
   return (
     <div className="pulse" style={{ maxHeight: "102vh" }}>
-      <div className="hamburger" onClick={toggleMenu}>
-        <Menu color="#ffffff" />
-      </div>
-
       <div className="showpulse" style={{ display: "flex" }}>
         <div
           className="pleft"
@@ -69,7 +65,7 @@ export default function Pulse() {
         </div>
 
         {/* Conditionally show Pulseright based on menu state */}
-        <div className={`pright ${isMenuOpen ? "hidden" : ""}`}>
+        <div className="pright">
           <Pulseright />
         </div>
       </div>

@@ -13,7 +13,6 @@
 
 /* Styling for Images */
 .ima img {
-  
   border: 1px solid #4526b1;
   border-radius: 20px;
   margin-right: 30px;
@@ -22,21 +21,17 @@
   height: 150px;
 }
 
-
 .first {
   animation: infiniteScroll1 5s linear infinite;
 }
-
 
 .second {
   animation: infiniteScrollDown 5s linear infinite;
 }
 
-
 .third {
   animation: infiniteScroll3 5s linear infinite;
 }
-
 
 @keyframes infiniteScroll1 {
   0% {
@@ -66,21 +61,18 @@
 }
 
 @media (max-width: 768px) {
-  
- .ima{
+  .ima {
+    gap: 20px;
+  }
+  .third {
+    display: none;
+  }
+  .coright {
+    width: 90%;
+    margin-left: 30px;
 
-  
-  gap: 20px;
- }
- .third{
-  display: none;
- }
- .coright {
-  width: 90%;
-  margin-left: 30px;
-
-  height: 56vh;
-  overflow: hidden;
-  position: relative;
-}
+    height: 56vh;
+    overflow: hidden;
+    position: relative;
+  }
 }

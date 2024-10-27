@@ -89,7 +89,7 @@ export default function Track() {
         />
       </Head>
       <h1 className="text-4xl font-bold text-center mt-20 text-teal-700 dark:text-teal-300">
-        Track Your Mood Over the Past 21 Days
+        Track Your Mood
       </h1>
       <div className="main">
         <ul className="cards">

@@ -14,6 +14,8 @@ import NeonCursor from "@/components/NeonCursor";
 import ConsentBanner from "@/components/ConsentBanner";
 import { Toaster } from "react-hot-toast";
 import Feedback from "@/components/Feedback";
+import Headerphone from "@/components/Headerphone";
+import Headerphonetop from "@/components/Headerphonetop";
 
 export default function RootLayout({ children }) {
   const router = useRouter();
@@ -124,7 +126,7 @@ export default function RootLayout({ children }) {
       />
 
       {/* Chatbot Script */}
-      <Script
+      {/* <Script
         src="https://www.chatbase.co/embed.min.js"
         defer
         onLoad={() => {
@@ -133,14 +135,24 @@ export default function RootLayout({ children }) {
             domain: "www.chatbase.co",
           };
         }}
-      />
+      /> */}
 
       <body>
-        <Header />
+        <div className="showheader">
+          <Header />
+        </div>
+        <div className="topforphone">
+          <Headerphonetop></Headerphonetop>
+        </div>
         <Toaster />
-        {children}
+        <div className="showingg">{children}</div>
         <ConsentBanner />
-        <Footer />
+        <div className="f">
+          <Footer />
+        </div>
+        <div className="forphone">
+          <Headerphone></Headerphone>
+        </div>
         <Analytic />
         <style jsx>{`
           @media (max-width: 600px) {

@@ -7,7 +7,7 @@ import "./style.css";
 import "./display.css";
 import Button from "../Button";
 import Loading from "../Loading";
-
+import Notification from "./Notifi";
 export default function Displaypost() {
   const route = useRouter();
   const [userpost, setUserPost] = useState([]);
@@ -121,6 +121,8 @@ export default function Displaypost() {
 
   return (
     <div className="s">
+      {/* <Notification></Notification> */}
+
       {!currentuser && (
         <div
           className="complete"
@@ -152,6 +154,7 @@ export default function Displaypost() {
             </h3>
             <h6 className="bioo" style={{ fontSize: "14px" }}>
               {currentuser.bio}
+              {/* <Notification></Notification> */}
             </h6>
             <div className="ppedi">
               <p>

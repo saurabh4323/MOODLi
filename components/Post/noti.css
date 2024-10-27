@@ -1,0 +1,35 @@
+.notification-popup {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 300px;
+  max-height: 400px;
+  background-color: #1e1e1e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.notification-popup h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.notification-item {
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notification-item p {
+  margin: 0 0 5px;
+}
+
+.notification-item span {
+  font-size: 12px;
+  color: #aaa;
+}
