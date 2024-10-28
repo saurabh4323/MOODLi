@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
 import axios from "axios";
 import "./noti.css";
-
+import { useRouter } from "next/navigation";
 export default function Notification() {
   const [notifications, setNotifications] = useState([]);
   const [users, setUsers] = useState({});
   const [showPopup, setShowPopup] = useState(false);
-
+  const route = useRouter();
   useEffect(() => {
     // Fetch user data and create a map of userId to user name
     const fetchUsers = async () => {
@@ -47,7 +47,10 @@ export default function Notification() {
 
   // Toggle Popup visibility
   const handleBellClick = () => setShowPopup(!showPopup);
-
+  const navigateToSenderProfile = (senderId) => {
+    const viewinguserId = senderId;
+    route.push(`/viewing/${viewinguserId}`);
+  };
   return (
     <div>
       <div
@@ -65,6 +68,7 @@ export default function Notification() {
         onClick={handleBellClick}
       >
         <Bell color="#fff" />
+        <p style={{ marginLeft: "3px" }}>{notifications.length}</p>
       </div>
 
       {/* Notification Popup */}
@@ -74,11 +78,13 @@ export default function Notification() {
           {notifications.length > 0 ? (
             notifications.map((notification) => (
               <div key={notification._id} className="notification-item">
-                {/* <p>
-                  <strong>From:</strong>{" "}
-                  {users[notification.senderId] || "Unknown User"}
-                </p> */}
-                <p>Someone {notification.content}</p>
+                <p
+                  onClick={() => navigateToSenderProfile(notification.senderId)}
+                  style={{ cursor: "pointer", color: "#007bff" }}
+                >
+                  {users[notification.senderId] || "Unknown User"}{" "}
+                </p>
+                <p>{notification.content}</p>
                 <span>{new Date(notification.createdAt).toLocaleString()}</span>
               </div>
             ))

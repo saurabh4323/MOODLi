@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Heart, MessageCircle } from "lucide-react";
 import "./style.css";
-import { useRouter } from "next/navigation"; // Use this for Next.js 13.3+
+import { useRouter } from "next/navigation";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -64,14 +64,30 @@ export default function PostList() {
     try {
       await axios.post(`/api/post/${postId}/like`, { userId });
       fetchPosts(); // Refresh posts to update the like count
+      sendLikeNotification(postId); // Send notification after liking
     } catch (error) {
       console.error("Error liking post:", error);
     }
   };
 
+  const sendLikeNotification = async (postId) => {
+    try {
+      const post = posts.find((p) => p._id === postId);
+      if (post && userId) {
+        await axios.post(`/api/notification/${post.userId}`, {
+          senderId: userId,
+          receiverId: post.userId,
+          content: "liked your post",
+        });
+      }
+    } catch (error) {
+      console.error("Error sending like notification:", error);
+    }
+  };
+
   const viewing = (post) => {
-    const viewingUserId = post.userId; // Get the user ID from the post
-    route.push(`/viewing/${viewingUserId}`); // Navigate to the viewing page
+    const viewingUserId = post.userId;
+    route.push(`/viewing/${viewingUserId}`);
   };
 
   const handleComment = async (postId) => {
@@ -80,10 +96,26 @@ export default function PostList() {
         userId,
         commentText,
       });
-      setCommentText(""); // Clear the comment box
+      setCommentText("");
       fetchPosts(); // Refresh posts to update comments
+      sendCommentNotification(postId); // Call notification function
     } catch (error) {
       console.error("Error adding comment:", error);
+    }
+  };
+
+  const sendCommentNotification = async (postId) => {
+    try {
+      const post = posts.find((p) => p._id === postId);
+      if (post && userId) {
+        await axios.post(`/api/notification/${post.userId}`, {
+          senderId: userId,
+          receiverId: post.userId,
+          content: "commented on your post",
+        });
+      }
+    } catch (error) {
+      console.error("Error sending comment notification:", error);
     }
   };
 
@@ -97,8 +129,8 @@ export default function PostList() {
     setSelectedPost(null);
   };
 
-  if (loading) return <div>Loading posts...</div>; // Loading state
-  if (error) return <div>{error}</div>; // Error state
+  if (loading) return <div>Loading posts...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="post-list-container">
