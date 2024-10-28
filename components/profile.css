@@ -1,11 +1,74 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Roboto:wght@400;500&display=swap");
 
 .profile-container {
-
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.otp-modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.otp-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.otp-instructions {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.otp-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.otp-verify-button,
+.otp-cancel-button {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.otp-verify-button {
+  background-color: #4caf50;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.otp-cancel-button {
+  background-color: #f44336;
+  color: #fff;
 }
 
 .sidebar {
@@ -23,7 +86,7 @@
 }
 
 .main-content {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   border: 1px solid #3a5adb;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -74,7 +137,9 @@ label {
   margin-right: 20px;
 }
 
-.profileInput, .genderSelect, .profileTextarea {
+.profileInput,
+.genderSelect,
+.profileTextarea {
   width: 65%;
   background-color: transparent;
   padding: 10px;
@@ -84,7 +149,9 @@ label {
   transition: border-color 0.3s ease;
 }
 
-.profileInput:focus, .genderSelect:focus, .profileTextarea:focus {
+.profileInput:focus,
+.genderSelect:focus,
+.profileTextarea:focus {
   border-color: #28a745;
 }
 
@@ -94,7 +161,7 @@ label {
 }
 
 .button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   padding: 12px 20px;
   color: white;
@@ -117,12 +184,11 @@ label {
   cursor: not-allowed;
 }
 
-
 .buttonk {
   display: flex;
   flex-direction: row;
   gap: 15px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -136,7 +202,7 @@ label {
 }
 
 .pname {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: aliceblue;
   border-bottom: 1px solid #fff;
   font-size: 14px;
@@ -180,7 +246,7 @@ label {
   left: 0;
   bottom: 0;
   width: 100%;
- 
+
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
@@ -208,7 +274,7 @@ label {
   border-radius: 5px;
 }
 
-.modal-buttondark{
+.modal-buttondark {
   margin: 10px;
   padding: 10px 20px;
   font-size: 16px;
@@ -222,7 +288,8 @@ label {
 .teh {
   color: #fff;
   font-family: "Roboto";
-}.modal-overlays {
+}
+.modal-overlays {
   position: absolute;
   top: 0;
   left: 0;
@@ -240,11 +307,11 @@ label {
   padding: 20px;
   border-radius: 12px;
   width: 320px;
-  height: 60vh; 
-  max-height: 65vh; 
-  overflow-y: auto; 
+  height: 60vh;
+  max-height: 65vh;
+  overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
 }
 
 .modal-titles {
@@ -319,7 +386,6 @@ label {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-
 @media (max-width: 768px) {
   /* Hide sidebar by default */
   .profile-container {
@@ -332,24 +398,24 @@ label {
     height: 90vh;
     margin-bottom: 20px;
   }
-  .main-content{
+  .main-content {
     height: 80%;
     width: 80%;
   }
 
   .sidebar {
-    width: 140px; 
+    width: 140px;
     height: 80%;
     left: 0;
     z-index: 1000;
   }
-.profilePicture{
-  display: none;
-}
-  .pname{
+  .profilePicture {
+    display: none;
+  }
+  .pname {
     font-size: 16px;
   }
-  .buttonk{
+  .buttonk {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -360,5 +426,4 @@ label {
     margin-left: -20px;
     font-size: 0px;
   }
-  
 }

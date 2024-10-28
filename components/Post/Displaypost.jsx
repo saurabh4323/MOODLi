@@ -28,7 +28,7 @@ export default function Displaypost() {
       const res = await axios.post("/api/users/sau", { userId });
       setCurrentUser(res.data);
 
-      console.log("Fetched Current User:", res.data);
+      // console.log("Fetched Current User:", res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
     } finally {
@@ -60,7 +60,7 @@ export default function Displaypost() {
   const fetchFriends = async (userId) => {
     try {
       const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
-      console.log("Friend profiles received:", response.data);
+      // console.log("Friend profiles received:", response.data);
       const friends = Array.isArray(response.data?.friends)
         ? response.data.friends
         : [];

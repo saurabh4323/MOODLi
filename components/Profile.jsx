@@ -12,6 +12,8 @@ import ContactUs from "./ContactUs";
 import { useRouter } from "next/navigation";
 
 export default function Profile() {
+  const [showOtpModal, setShowOtpModal] = useState(false);
+  const [otp, setOtp] = useState("");
   const [gender, setGender] = useState("Other");
   const [showchangepass, setshowchangepass] = useState(false);
   const [friendList, setFriendList] = useState([]);
@@ -42,7 +44,7 @@ export default function Profile() {
       }
 
       try {
-        console.log("1", storedEmail);
+        // console.log("1", storedEmail);
         const response = await axios.post("/api/users/sau", { userId });
         if (response.data.email !== storedEmail) {
           alert("Don't try this again");
@@ -115,6 +117,7 @@ export default function Profile() {
             phoneNumber: profile.phoneNumber,
             gender: gender,
           });
+
           fetchProfile(userId);
           toast.success("Profile updated successfully!");
         } catch (error) {
@@ -122,6 +125,26 @@ export default function Profile() {
           toast.error("Error updating profile.");
         }
       }
+    }
+  };
+  const handleOtpVerification = async () => {
+    const fullPhoneNumber = `+91${profile.phoneNumber}`; // Ensure you use the correct variable for the phone number
+    try {
+      const response = await axios.post("/api/users/verifyOtp", {
+        phoneNumber: fullPhoneNumber, // Use the formatted phone number
+        otp: otp, // Make sure this is the OTP entered by the user
+      });
+
+      if (response.data.success) {
+        toast.success("Phone number verified successfully!");
+        setShowOtpModal(false); // Close OTP modal
+        const verified = localStorage.setItem("verified", "done");
+      } else {
+        toast.error("Incorrect OTP. Please try again."); // Notify user if OTP is incorrect
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      toast.error("Error verifying OTP.");
     }
   };
 
@@ -168,7 +191,7 @@ export default function Profile() {
         const response = await axios.get(
           `/api/feeltalk/friend?userId=${userId}`
         );
-        console.log("Friend profiles received:", response.data);
+        // console.log("Friend profiles received:", response.data);
         const friends = Array.isArray(response.data?.friends)
           ? response.data.friends
           : [];
@@ -178,6 +201,29 @@ export default function Profile() {
         console.error("Error fetching friends:", error);
         setFriendList([]); // Fallback to empty array on error
       }
+    }
+  };
+  const handlePhoneNumberChange = async (e) => {
+    const number = e.target.value;
+    setProfile({ ...profile, phoneNumber: number });
+
+    if (number.length === 10) {
+      // Check for 10 digits
+      const fullPhoneNumber = `+91${number}`; // Combine with country code
+      // setShowOtpModal(true);
+      // try {
+      //   const response = await axios.post("", {
+      //     phoneNumber: fullPhoneNumber, // Send the full phone number
+      //   });
+      //   if (response.data.success) {
+      //     toast.success("OTP sent successfully!");
+      //   } else {
+      //     toast.error(response.data.message);
+      //   }
+      // } catch (error) {
+      //   console.error("Error sending OTP:", error);
+      //   toast.error("Error sending OTP.");
+      // }
     }
   };
 
@@ -293,9 +339,7 @@ export default function Profile() {
               type="text"
               className="profileInput"
               value={profile.phoneNumber}
-              onChange={(e) =>
-                setProfile({ ...profile, phoneNumber: e.target.value })
-              }
+              onChange={handlePhoneNumberChange}
               disabled={loading} // Disable input while loading
             />
           </div>
@@ -314,7 +358,36 @@ export default function Profile() {
           </button>
         </form>
       </div>
-
+      {showOtpModal && (
+        <div className="otp-modal-overlay">
+          <div className="otp-modal-content">
+            <h2 className="otp-title">Verify Phone</h2>
+            <p className="otp-instructions">
+              Enter the 4-digit OTP sent to {profile.phoneNumber}
+            </p>
+            <input
+              type="text"
+              className="otp-input"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              maxLength="4"
+              placeholder="Enter OTP"
+            />
+            <button
+              className="otp-verify-button"
+              onClick={handleOtpVerification}
+            >
+              Verify
+            </button>
+            <button
+              className="otp-cancel-button"
+              onClick={() => setShowOtpModal(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
       {/* Friends List Modal */}
       {showFriendList && (
         <div className="modal-overlays">

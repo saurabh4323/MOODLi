@@ -23,10 +23,10 @@ export default function Page({ params }) {
   // Fetch Functions
   const fetchProfile = async (userId) => {
     try {
-      console.log("Fetching profile...");
+      // console.log("Fetching profile...");
       const res = await axios.post("/api/users/sau", { userId });
       setcurrentUser(res.data);
-      console.log("Fetched Current User:", res.data);
+      // console.log("Fetched Current User:", res.data);
     } catch (error) {
       console.error("Error fetching profile", error);
       setError("Failed to fetch profile.");
@@ -35,10 +35,10 @@ export default function Page({ params }) {
 
   const fetchPosts = async (userId) => {
     try {
-      console.log("Fetching posts...");
+      // console.log("Fetching posts...");
       const response = await axios.get(`/api/post/individual/${userId}`);
       setUserPost(response.data.post || []);
-      console.log("Fetched Posts:", response.data.post);
+      // console.log("Fetched Posts:", response.data.post);
     } catch (error) {
       console.error("Error fetching posts:", error);
       setError("Failed to load posts.");
@@ -49,13 +49,13 @@ export default function Page({ params }) {
 
   const fetchFriends = async (userId) => {
     try {
-      console.log("Fetching friends...");
+      // console.log("Fetching friends...");
       const response = await axios.get(`/api/feeltalk/friend?userId=${userId}`);
       const friends = Array.isArray(response.data?.friends)
         ? response.data.friends
         : [];
       setFriendList(friends);
-      console.log("Fetched Friends:", friends);
+      // console.log("Fetched Friends:", friends);
     } catch (error) {
       console.error("Error fetching friends:", error);
       setFriendList([]);
@@ -64,7 +64,7 @@ export default function Page({ params }) {
 
   useEffect(() => {
     if (viewinguserId) {
-      console.log("Starting data fetch for user:", viewinguserId);
+      // console.log("Starting data fetch for user:", viewinguserId);
       fetchProfile(viewinguserId);
       fetchPosts(viewinguserId);
       fetchFriends(viewinguserId);
@@ -73,7 +73,7 @@ export default function Page({ params }) {
 
   const handleLike = async (postId) => {
     try {
-      console.log("Liking post:", postId);
+      // console.log("Liking post:", postId);
       await axios.post(`/api/post/${postId}/like`, { userId: viewinguserId });
       fetchPosts(viewinguserId);
     } catch (error) {
@@ -83,7 +83,7 @@ export default function Page({ params }) {
 
   const handleComment = async (postId) => {
     try {
-      console.log("Adding comment to post:", postId);
+      // console.log("Adding comment to post:", postId);
       await axios.post(`/api/post/${postId}/comment`, {
         userId: viewinguserId,
         commentText,
