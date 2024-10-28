@@ -19,9 +19,9 @@ const faqs = [
   },
   {
     id: 7,
-    question: "How can I earn money thorugh Moodli?",
+    question: " How can I earn money through Moodli?",
     answer:
-      "When you will have a good number of connection a confirmation mail will come to you and you will be eligible to create username and then our partners will connect with you",
+      "Once you build a solid network of connections on Moodli, you'll receive a confirmation email. After that, you’ll be eligible to create a unique username, and our partners will start connecting with you for potential earning opportunities.",
   },
   {
     id: 3,
