@@ -18,6 +18,12 @@ const faqs = [
       "Mood tracking enhances self-awareness, helps with mental health management, and allows you to set goals for emotional well-being. You can also share your mood data with mental health professionals to improve treatment.",
   },
   {
+    id: 7,
+    question: "How can I earn money thorugh Moodli?",
+    answer:
+      "When you will have a good number of connection a confirmation mail will come to you and you will be eligible to create username and then our partners will connect with you",
+  },
+  {
     id: 3,
     question: "How can I connect with others on Moodli?",
     answer:
