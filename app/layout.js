@@ -146,7 +146,7 @@ export default function RootLayout({ children }) {
         </div>
         <Toaster />
         <div className="showingg">{children}</div>
-        <ConsentBanner />
+        {/* <ConsentBanner /> */}
         <div className="f">
           <Footer />
         </div>
