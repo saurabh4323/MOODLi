@@ -48,7 +48,7 @@ export async function GET() {
     const allpost = await Post.find(
       {},
       "userId content imageUrl likes comments timestamp"
-    );
+    ).sort({ _id: -1 });
 
     return NextResponse.json({
       status: 200,
