@@ -30,6 +30,12 @@ const faqs = [
       "Moodli allows you to connect with friends and meet people who are experiencing similar emotions, offering a supportive community to share and chat with.",
   },
   {
+    id: 8,
+    question: "can i post anything? ",
+    answer:
+      "Moodli encourages you to share and connect with friends and people who relate to your experiences. While you're free to post, we ask that all content contributes positively, helping to create a happy and supportive environment for everyone.",
+  },
+  {
     id: 4,
     question: "Can I share my mood data?",
     answer:
