@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-.create-post{
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap");
+.create-post {
   height: 45px;
   /* background-color: #fd6a43; */
   width: 100%;
@@ -11,7 +11,7 @@
 
 .buttonp {
   margin-top: 20px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #4526b1;
   color: white;
   width: 127px; /* Adjust for mobile */
@@ -49,12 +49,16 @@
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
 }
-
+.image-preview {
+  width: 35%;
+  height: 60%;
+}
 /* Modal content */
 .modals-content {
   background-color: white;
   padding: 20px;
   border-radius: 10px;
+
   width: 90%; /* Set a percentage width for mobile */
   max-width: 600px; /* Max width for larger screens */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -108,8 +112,12 @@
 
 /* Simple fade-in animation for the modal */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Responsive Styles */

@@ -1,16 +1,18 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./post.css";
 import { X } from "lucide-react";
 
-export default function Createpost({ fetchPosts }) {
+export default function CreatePost({ fetchPosts }) {
   const [content, setContent] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [imageName, setImageName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [file, setFile] = useState(null);
+  const [caption, setCaption] = useState(""); // State for caption
 
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
@@ -20,7 +22,8 @@ export default function Createpost({ fetchPosts }) {
     e.preventDefault();
     setError("");
 
-    if (!content && !imageUrl) {
+    // Validate input: either content or image file must be present
+    if (!content && !file) {
       setError("Please add some content or an image.");
       return;
     }
@@ -29,25 +32,37 @@ export default function Createpost({ fetchPosts }) {
 
     try {
       const userId = localStorage.getItem("userId");
-      const type = imageUrl ? "image" : "text"; // Define type outside the object
+      const type = file ? "image" : "text";
 
-      await axios.post("/api/post/posting", {
-        userId, // Pass userId
-        type, // Pass type
-        content, // Pass content
-        imageUrl, // Pass imageUrl
+      const formData = new FormData();
+      formData.append("userId", userId);
+      formData.append("type", type);
+      formData.append("caption", caption || content); // Use caption for images, or content for text posts
+
+      if (file) {
+        formData.append("image", file); // Ensure the image file is appended
+      }
+
+      // Make sure to point to the correct endpoint for image upload
+      const endpoint =
+        type === "image" ? "/api/imageupload" : "/api/post/posting";
+
+      // Post the FormData to the appropriate endpoint
+      await axios.post(endpoint, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
-      // fetchPosts();
+      // Reset state and close the modal after posting
       setContent("");
       setImageUrl("");
       setImageName("");
+      setFile(null);
+      setCaption("");
       toggleModal();
       alert(
         "Thank you for sharing! We will check the content with our rules and privacy policy before showing it to users."
       );
     } catch (error) {
-      // Log the error for debugging
       console.error("Error creating post", error);
       setError("Error creating post. Please try again.");
     } finally {
@@ -74,46 +89,46 @@ export default function Createpost({ fetchPosts }) {
                 onChange={(e) => setContent(e.target.value)}
                 className="textarea"
                 aria-label="Post content"
-                required
+                required={!file} // Require content if no image is uploaded
               />
               <input
-                placeholder="Upload an image (optional)"
                 type="file"
                 accept="image/*"
                 onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) {
+                  const selectedFile = e.target.files[0];
+                  if (selectedFile) {
+                    setFile(selectedFile); // Store the image file in state
                     const reader = new FileReader();
                     reader.onloadend = () => {
                       setImageUrl(reader.result);
                     };
-                    reader.readAsDataURL(file);
-                    setImageName(file.name); // Set the image name
+                    reader.readAsDataURL(selectedFile);
+                    setImageName(selectedFile.name); // Set the image name
                   }
                 }}
                 className="input-text"
                 aria-label="Upload Image"
               />
+
               {imageName && (
                 <p className="image-name">Uploaded Image: {imageName}</p>
-              )}{" "}
-              {/* Display the image name */}
+              )}
               {imageUrl && (
                 <img
                   src={imageUrl}
                   alt="Uploaded preview"
                   className="image-preview"
                 />
-              )}{" "}
-              {/* Display the image preview */}
+              )}
+
               {error && <p className="error-message">{error}</p>}
-              <div
+              <button
+                type="submit"
                 className={`buttonp ${isLoading ? "button-loading" : ""}`}
-                role="button"
-                onClick={handleSubmit}
+                disabled={isLoading} // Disable the button when loading
               >
                 {isLoading ? "Posting..." : "Post"}
-              </div>
+              </button>
             </form>
           </div>
         </div>

@@ -17,6 +17,7 @@
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.5",
+    "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "firebase": "^10.14.0",

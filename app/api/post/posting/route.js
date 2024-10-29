@@ -47,7 +47,7 @@ export async function GET() {
   try {
     const allpost = await Post.find(
       {},
-      "userId content imageUrl likes comments timestamp"
+      "userId type content imageUrl likes comments timestamp"
     ).sort({ _id: -1 });
 
     return NextResponse.json({

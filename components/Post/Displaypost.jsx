@@ -40,6 +40,7 @@ export default function Displaypost() {
     try {
       const response = await axios.get(`/api/post/individual/${userId}`);
       setUserPost(response.data.post || []);
+      console.log(response.data.post);
     } catch (error) {
       console.error("Error fetching posts:", error);
       setError("Failed to load posts");
@@ -195,7 +196,25 @@ export default function Displaypost() {
         {userpost.length > 0 ? (
           userpost.map((post) => (
             <div key={post._id} className="post-card">
+              {currentuser && (
+                <div className="user-info">
+                  {currentuser.favoriteEmoji}
+                  {currentuser.name || "Unknown User"}{" "}
+                  <span className="timestamp">
+                    {post.timestamp
+                      ? new Date(post.timestamp).toLocaleDateString()
+                      : "Unknown date"}
+                  </span>
+                </div>
+              )}
               <h1>{post.content}</h1>
+              {post.imageUrl && (
+                <img
+                  src={post.imageUrl}
+                  alt="Post Content"
+                  className="post-image"
+                />
+              )}
               <div className="post-actions" style={{ color: "white" }}>
                 <button
                   className="action-button"

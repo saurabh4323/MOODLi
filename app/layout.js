@@ -16,6 +16,7 @@ import { Toaster } from "react-hot-toast";
 import Feedback from "@/components/Feedback";
 import Headerphone from "@/components/Headerphone";
 import Headerphonetop from "@/components/Headerphonetop";
+import Link from "next/link";
 
 export default function RootLayout({ children }) {
   const router = useRouter();
@@ -23,6 +24,15 @@ export default function RootLayout({ children }) {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [heroopen, setheroopen] = useState(false);
 
+  useEffect(() => {
+    // Check if we're in a browser environment
+    if (typeof window !== "undefined") {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        <Link href={"/main"}></Link>;
+      }
+    }
+  }, [router]);
   useEffect(() => {
     const initialTheme = getInitialTheme();
     setTheme(initialTheme);

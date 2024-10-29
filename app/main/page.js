@@ -8,7 +8,6 @@ import React from "react";
 export default function page() {
   return (
     <div>
-      {/* <Heros></Heros> */}
       <Newhero></Newhero>
 
       <Faq></Faq>

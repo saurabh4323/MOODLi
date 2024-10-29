@@ -5,6 +5,7 @@ import axios from "axios";
 import { Heart, MessageCircle } from "lucide-react";
 import "./style.css";
 import { useRouter } from "next/navigation";
+import { comment } from "postcss";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -31,6 +32,7 @@ export default function PostList() {
           "Cache-Control": "no-cache",
         },
       });
+      console.log(response.data.post);
       setPosts(response.data.post);
     } catch (error) {
       console.error("Error fetching posts", error);
@@ -144,10 +146,15 @@ export default function PostList() {
                 <h4
                   onClick={() => viewing(post)}
                   className="usernamek"
-                  style={{ color: "#fff", cursor: "pointer" }}
+                  style={{
+                    color: "aliceblue",
+                    cursor: "pointer",
+                    fontWeight: "700",
+                  }}
                 >
-                  {profile?.name || "Unknown User"}{" "}
+                  {" "}
                   {profile?.favoriteEmoji || "🙂"}
+                  {profile?.name || "Unknown User"}{" "}
                 </h4>
                 <span className="timestamp">
                   {post.timestamp
@@ -181,7 +188,7 @@ export default function PostList() {
                 onClick={() => openCommentModal(post)}
               >
                 <MessageCircle color="#ffffff" className="icon" />{" "}
-                <span style={{ color: "#fff" }}>comment</span>
+                <span style={{ color: "#fff" }}>{post.comments.length}</span>
               </button>
             </div>
           </div>
@@ -197,8 +204,10 @@ export default function PostList() {
                   const commenterProfile = getProfileById(comment.userId);
                   return (
                     <div key={comment._id} className="comment">
-                      <p>{commenterProfile?.name || "Unknown"} :</p>{" "}
-                      <span>{comment.text}</span>
+                      <p>
+                        {commenterProfile?.name || "Unknown"}{" "}
+                        {commenterProfile?.favoriteEmoji}: {comment.text}
+                      </p>{" "}
                     </div>
                   );
                 })

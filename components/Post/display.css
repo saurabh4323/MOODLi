@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-.s{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+.s {
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.current-user{
+.current-user {
   margin-top: 50px;
   margin-bottom: 80px;
-  
+
   /* height: 33vh; */
   /* margin-left: 10%; */
   display: flex;
@@ -19,86 +19,88 @@
   justify-content: center;
   gap: 40px;
 }
-.cur{
+.cur {
   width: 100%;
- 
 }
-.cur p{
-  font-family: 'Poppins', sans-serif;
+.cur p {
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
 }
-.cul{
+.cul {
   width: 60%;
- 
-  display: flex;
-  
-justify-content: end;
-/* align-items: center; */
 
+  display: flex;
+
+  justify-content: end;
+  /* align-items: center; */
 }
-.nnn{
+.nnn {
   text-align: left;
   font-weight: 550;
 }
-.cul p{
+.cul p {
   margin-top: -10px;
   font-size: 80px;
 }
-.ppedi{
+.ppedi {
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   gap: 30px;
 }
-.bioo{
-   width: 80%
+.bioo {
+  width: 80%;
 }
 
-.btnss{
+.btnss {
   margin-top: 10px;
 }
-.fav{
+.fav {
   margin-left: 30px;
- border-radius: 50%;
- display: flex;
- border-top: 1px solid #5d5dff;
+  border-radius: 50%;
+  display: flex;
+  border-top: 1px solid #5d5dff;
 }
 
-.buttond{
- color: #fff;
-  
+.buttond {
+  color: #fff;
+
   background-color: #262626;
   width: 100px;
   border-radius: 10px;
   height: 40px;
   cursor: pointer;
 }
-.buttond:hover{
+.buttond:hover {
   background-color: #262626b3;
 }
-.btnss{
+.btnss {
   display: flex;
   gap: 10px;
 }
 
 @media (max-width: 768px) {
-  .bioo{
-    width: 98%
- }
- .fav{
-  /* width: 60%; */
-  /* margin-left: 51px; */
- border-radius: 50%;
- display: flex;
- /* border: 1px solid #fff; */
-}
+  .bioo {
+    width: 98%;
+  }
+  .fav {
+    /* width: 60%; */
+    /* margin-left: 51px; */
+    border-radius: 50%;
+    display: flex;
+    /* border: 1px solid #fff; */
+  }
 
-.fav p{
-  font-size: 70px;
-}
-.cul{
-  margin-top: -10%;
-  margin-right: -22px;
-width:26%;
-}
+  .fav p {
+    font-size: 70px;
+  }
+
+  .input-caption {
+    display: none;
+  }
+  .cul {
+    margin-top: -10%;
+    margin-right: -22px;
+    width: 26%;
+  }
 }
