@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Heart, MessageCircle } from "lucide-react";
+import { Forward, Heart, MessageCircle } from "lucide-react";
 import "./style.css";
 import { useRouter } from "next/navigation";
 import { comment } from "postcss";
+import Loading from "../Loading";
 
 export default function PostList() {
   const [posts, setPosts] = useState([]);
@@ -130,8 +131,28 @@ export default function PostList() {
     setShowCommentModal(false);
     setSelectedPost(null);
   };
-
-  if (loading) return <div>Loading posts...</div>;
+  const sharepost = (postId) => {
+    const postUrl = `${window.location.origin}/thispost/${postId}`;
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Share Post",
+          text: "Check out this post on Mood App!",
+          url: postUrl,
+        })
+        .catch((error) => console.error("Error sharing", error));
+    } else {
+      // Fallback for browsers that don't support navigator.share
+      navigator.clipboard.writeText(postUrl);
+      alert("Post link copied to clipboard!");
+    }
+  };
+  if (loading)
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
   if (error) return <div>{error}</div>;
 
   return (
@@ -182,6 +203,12 @@ export default function PostList() {
               >
                 <Heart color="#fff" className="icon" />
                 <span style={{ color: "#fff" }}>({post.likes.length})</span>
+              </button>
+              <button
+                className="action-button"
+                onClick={() => sharepost(post._id)}
+              >
+                <Forward color="#fff"></Forward>{" "}
               </button>
               <button
                 className="action-button"
