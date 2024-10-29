@@ -44,13 +44,12 @@ export default function Pulse() {
   // State to manage the hamburger menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Function to toggle menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div className="pulse" style={{ maxHeight: "102vh" }}>
+    <div className="pulse" style={{ minHeight: "100vh", maxHeight: "102vh" }}>
       <div className="showpulse" style={{ display: "flex" }}>
         <div
           className="pleft"
@@ -65,7 +64,10 @@ export default function Pulse() {
         </div>
 
         {/* Conditionally show Pulseright based on menu state */}
-        <div className="pright">
+        <div
+          className="pright"
+          style={{ minHeight: "100vh", maxHeight: "102vh" }}
+        >
           <Pulseright />
         </div>
       </div>

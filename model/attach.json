@@ -1,0 +1,72 @@
+[
+  {
+    "userId": "6720aab54d17847a33e27814",
+    "type": "text",
+    "content": "Why did the web developer go broke? Because he used up all his cache!",
+    "timestamp": "2024-10-29T10:00:00Z",
+    "likes": ["6720aab44d17847a33e27806", "6720aab54d17847a33e2782c"],
+    "comments": [
+      {
+        "userId": "6720aab64d17847a33e2783c",
+        "text": "Classic!",
+        "timestamp": "2024-10-29T10:15:00Z"
+      }
+    ]
+  },
+  {
+    "userId": "6720aab44d17847a33e27806",
+    "type": "image",
+    "imageUrl": "https://example.com/image1.jpg",
+    "timestamp": "2024-10-29T11:00:00Z",
+    "likes": ["6720aab54d17847a33e2781c"],
+    "comments": [
+      {
+        "userId": "6720aab54d17847a33e2782c",
+        "text": "Love this shot!",
+        "timestamp": "2024-10-29T11:05:00Z"
+      }
+    ]
+  },
+  {
+    "userId": "6720aab54d17847a33e2781c",
+    "type": "image",
+    "imageUrl": "https://example.com/image2.jpg",
+    "timestamp": "2024-10-29T12:00:00Z",
+    "likes": ["6720aab44d17847a33e27806"],
+    "comments": [
+      {
+        "userId": "6720aab64d17847a33e2783c",
+        "text": "Amazing view!",
+        "timestamp": "2024-10-29T12:10:00Z"
+      }
+    ]
+  },
+  {
+    "userId": "6720aab54d17847a33e2782c",
+    "type": "text",
+    "content": "Why do programmers prefer dark mode? Because light attracts bugs!",
+    "timestamp": "2024-10-29T13:00:00Z",
+    "likes": ["6720aab54d17847a33e27814"],
+    "comments": [
+      {
+        "userId": "6720aab44d17847a33e27806",
+        "text": "So true!",
+        "timestamp": "2024-10-29T13:15:00Z"
+      }
+    ]
+  },
+  {
+    "userId": "6720aab64d17847a33e2783c",
+    "type": "image",
+    "imageUrl": "https://example.com/image3.jpg",
+    "timestamp": "2024-10-29T14:00:00Z",
+    "likes": ["6720aab54d17847a33e27814"],
+    "comments": [
+      {
+        "userId": "6720aab54d17847a33e2781c",
+        "text": "Looks great!",
+        "timestamp": "2024-10-29T14:05:00Z"
+      }
+    ]
+  }
+]

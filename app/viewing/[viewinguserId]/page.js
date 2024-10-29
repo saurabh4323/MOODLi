@@ -181,13 +181,31 @@ export default function Page({ params }) {
           </div>
         </div>
       )}
-      <div className="post-list-container">
+      <div className="post-list-containerz">
         {userpost.length > 0 ? (
           userpost.map((post) => (
-            <div key={post._id} className="post-card">
-              <h1>{post.content}</h1>
+            <div key={post._id} className="post-cardz">
+              {currentUser && (
+                <div className="user-infoz">
+                  {currentUser.favoriteEmoji}
+                  {currentUser.name || "Unknown User"}{" "}
+                  <span className="timestamp">
+                    {post.timestamp
+                      ? new Date(post.timestamp).toLocaleDateString()
+                      : "Unknown date"}
+                  </span>
+                </div>
+              )}
+              <h1 className="coz">{post.content}</h1>
+              {post.imageUrl && (
+                <img
+                  src={post.imageUrl}
+                  alt="Post Content"
+                  className="post-imagez"
+                />
+              )}
               <p></p>
-              <div className="post-actions">
+              <div className="post-actionsz">
                 <button onClick={() => handleLike(post._id)}>
                   <Heart /> <span>{post.likes.length}</span>
                 </button>
@@ -202,13 +220,13 @@ export default function Page({ params }) {
         )}
       </div>
       {showCommentModal && selectedPost && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="modal-overlayq">
+          <div className="modal-contentq">
             <h2>Comments for {selectedPost.content}</h2>
             <div className="comments-container">
               {selectedPost.comments.length > 0 ? (
                 selectedPost.comments.map((comment) => (
-                  <div key={comment._id} className="comment">
+                  <div key={comment._id} className="comment-input">
                     <p>{comment.userId}:</p>
                     <span>{comment.text}</span>
                   </div>
@@ -217,16 +235,23 @@ export default function Page({ params }) {
                 <p>No comments yet.</p>
               )}
             </div>
-            <input
-              type="text"
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-              placeholder="Add a comment..."
-            />
-            <button onClick={() => handleComment(selectedPost._id)}>
-              Submit
-            </button>
-            <button onClick={closeCommentModal}>Close</button>
+            <div className="comment-input">
+              <input
+                type="text"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                placeholder="Add a comment..."
+              />
+              <button
+                className="submit-comment-btn"
+                onClick={() => handleComment(selectedPost._id)}
+              >
+                Submit
+              </button>
+              <button className="close-modal-btn" onClick={closeCommentModal}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
