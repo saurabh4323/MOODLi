@@ -1,6 +1,4 @@
-import Users from "@/components/Afterchat/Users";
-import Comm from "@/components/Comm";
-import Displaypost from "@/components/Post/Displaypost";
+"use client";
 import Pulse from "@/components/Post/Pulse";
 import React from "react";
 
