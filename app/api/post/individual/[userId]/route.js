@@ -9,7 +9,7 @@ export async function GET(req, { params }) {
   try {
     await connect();
 
-    const userpost = await Post.find({ userId });
+    const userpost = await Post.find({ userId }).sort({ _id: -1 });
     if (!userpost) {
       return NextResponse.json({ status: 404, message: "No posts found" });
     }

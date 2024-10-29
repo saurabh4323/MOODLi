@@ -81,7 +81,7 @@ export async function GET() {
     const users = await Profile.find(
       {},
       "name bio favoriteEmoji userId phoneNumber "
-    );
+    ).sort({ _id: -1 });
     return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error("Error fetching users:", error);

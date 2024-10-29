@@ -59,7 +59,8 @@ export async function GET(req, { params }) {
   try {
     const notificationDocument = await Notification.findOne({
       receiverId,
-    }).lean();
+    }).lean(); // Using lean() for better performance
+
     console.log("Retrieved notification document:", notificationDocument);
 
     if (!notificationDocument) {
@@ -69,11 +70,14 @@ export async function GET(req, { params }) {
       });
     }
 
-    console.log("Notifications array:", notificationDocument.notifications);
+    // Reverse the notifications array to ensure the newest notifications come first
+    const reversedNotifications = notificationDocument.notifications.reverse();
+
+    console.log("Notifications array (reversed):", reversedNotifications);
 
     return NextResponse.json({
       message: "Notifications retrieved successfully",
-      data: notificationDocument.notifications,
+      data: reversedNotifications,
     });
   } catch (error) {
     console.error("Error retrieving notifications:", error);
