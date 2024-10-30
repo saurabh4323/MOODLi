@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
           content="Track your mood with emojis and use AI insights to improve mental health. Join the Moodli community today!"
         />
         <meta name="twitter:image" content="/path-to-twitter-image.jpg" />
-
+        <meta name="monetag" content="a1d3fe44aacbd726b1fb33158826f915" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
