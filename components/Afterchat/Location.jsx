@@ -4,7 +4,7 @@ import "../profile.css";
 import axios from "axios";
 import "../comm.css";
 import Button from "../Button";
-import { Flame } from "lucide-react";
+import { Flame, Flower } from "lucide-react";
 export default function Location({ onNearbyUsersFetched }) {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [distance, setDistance] = useState(100); // Default distance in kilometers
