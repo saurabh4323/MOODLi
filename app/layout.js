@@ -128,12 +128,12 @@ export default function RootLayout({ children }) {
         <Analytic />
 
         {/* Ad Scripts */}
-        <Script
+        {/* <script
           src="https://alwingulla.com/88/tag.min.js"
           data-zone="111237"
           async
           data-cfasync="false"
-        ></Script>
+        ></script> */}
         <script type="text/javascript">
           {`var infolinks_pid = 3428056; var infolinks_wsid = 0;`}
         </script>
