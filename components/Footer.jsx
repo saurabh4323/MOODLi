@@ -54,10 +54,10 @@ const Footer = () => {
       title: "Legal",
       links: [
         {
-          href: "https://www.freeprivacypolicy.com/live/7f98d65c-0a4f-473c-a7df-d04f99b5df56",
+          href: "/pc.pdf",
           label: "Privacy Policy",
         },
-        { href: "/", label: "Terms and conditions" },
+        { href: "/tc.pdf", label: "Terms and conditions" },
       ],
     },
   ];
