@@ -21,7 +21,7 @@ export default function Displaypost() {
   const [currentuser, setCurrentUser] = useState(null);
   const [friendList, setFriendList] = useState([]);
   const [viewinguser, setviewinguser] = useState("");
-
+  const [days, setDays] = useState(0);
   // Fetch Functions
   const fetchProfile = async (userId) => {
     try {
@@ -35,6 +35,20 @@ export default function Displaypost() {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    const fetchTrack = async () => {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        try {
+          const response = await axios.get(`/api/users/days/${userId}`);
+          setDays(response.data.days);
+        } catch (error) {
+          console.error("Error fetching days:", error);
+        }
+      }
+    };
+    fetchTrack();
+  }, []);
 
   const fetchPosts = async (userId) => {
     try {
@@ -180,6 +194,18 @@ export default function Displaypost() {
                   }}
                 >
                   {friendList.length}
+                </span>
+              </p>
+              <p>
+                Days{" "}
+                <span
+                  style={{
+                    marginLeft: "5px",
+                    fontSize: "15px",
+                    fontWeight: "700",
+                  }}
+                >
+                  {days}
                 </span>
               </p>
             </div>

@@ -1,0 +1,75 @@
+.container {
+  max-width: 768px; /* You can adjust this value as needed */
+  margin: auto;
+  padding: 1rem; /* 4 units of padding */
+}
+
+.text-xl {
+  font-size: 1.25rem; /* Adjusting font size for headings */
+}
+
+.font-semibold {
+  font-weight: 600; /* Semibold weight */
+}
+
+.mb-4 {
+  margin-bottom: 1rem; /* Bottom margin */
+}
+
+.block {
+  display: block; /* Block display for label */
+}
+
+.font-medium {
+  font-weight: 500; /* Medium weight */
+}
+
+.w-full {
+  width: 100%; /* Full width */
+}
+
+.px-4 {
+  padding-left: 1rem; /* Horizontal padding */
+  padding-right: 1rem; /* Horizontal padding */
+}
+
+.py-2 {
+  padding-top: 0.5rem; /* Vertical padding */
+  padding-bottom: 0.5rem; /* Vertical padding */
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+}
+
+.bg-green-500 {
+  background-color: #22c55e; /* Tailwind's green-500 */
+}
+
+.text-white {
+  color: white; /* White text */
+}
+
+.rounded {
+  border-radius: 0.25rem; /* Rounded corners */
+}
+
+.mt-4 {
+  margin-top: 1rem; /* Top margin */
+}
+
+.border-b {
+  border-bottom-width: 1px; /* Bottom border */
+}
+
+.border-gray-300 {
+  border-color: #d1d5db; /* Tailwind's gray-300 */
+}
+
+.p-4 {
+  padding: 1rem; /* Padding */
+}
+
+.font-semibold {
+  font-weight: 600; /* Semibold weight */
+}

@@ -4,7 +4,8 @@ import "../comm.css";
 import axios from "axios";
 import "../profile.css";
 import { useRouter } from "next/navigation";
-import { Flame, Flower } from "lucide-react";
+import { Flame, Flower, Locate } from "lucide-react";
+import Location from "./Location";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -65,7 +66,7 @@ const Users = () => {
   };
 
   const truncateBio = (bio) =>
-    bio.length > 25 ? `${bio.substring(0, 25)}...` : bio;
+    bio.length > 25 ? ` ${bio.substring(0, 25)}... ` : bio;
 
   const handleAddFriendClick = (user) => {
     setSelectedUser(user);
@@ -127,17 +128,20 @@ const Users = () => {
     setShowFriendList((prev) => !prev);
     if (!showFriendList) fetchFriends();
   };
-
+  const [locapage, setlocapage] = useState(false);
+  const showlocapage = () => {
+    setlocapage(true);
+  };
   return (
     <div className="comm-main">
       <div className="topmain">
         <h1>Connect with people</h1>
         <button
-          onClick={chat}
+          onClick={showlocapage}
           style={{ backgroundColor: "#4526b1" }}
           className="show-friend-list-btn"
         >
-          Chat{" "}
+          Location
         </button>
       </div>
 
@@ -152,6 +156,20 @@ const Users = () => {
           className="search-input"
         />
       </div>
+      {locapage && (
+        <div
+          style={{
+            marginTop: "20px",
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginBottom: "20px",
+            borderBottom: "1px solid #ccc",
+          }}
+        >
+          <Location onNearbyUsersFetched={fetchUsers} />
+        </div>
+      )}
 
       {showFriendList && (
         <div className="modal-overlays">
@@ -202,7 +220,11 @@ const Users = () => {
                 style={{ backgroundColor: getRandomColor() }}
                 className="user-card"
               >
-                <h2 className="user-name" onClick={() => sendto(user)}>
+                <h2
+                  style={{ cursor: "pointer", position: "relative" }}
+                  className="user-name"
+                  onClick={() => sendto(user)}
+                >
                   {user.name}
                 </h2>
                 <span
@@ -211,10 +233,19 @@ const Users = () => {
                 >
                   {user.favoriteEmoji}
                 </span>
-                <p className="user-bio">{truncateBio(user.bio)}</p>
-                <p className="user-biom" style={{ marginBottom: "-15px" }}>
+                <p
+                  className="user-bio"
+                  onClick={() => handleAddFriendClick(user)}
+                >
+                  {truncateBio(user.bio)}
+                </p>
+                <p
+                  onClick={() => sendto(user)}
+                  className="user-biom"
+                  style={{ marginBottom: "-15px" }}
+                >
                   {user.gender === "Male" ? (
-                    <Flame color="#fff" />
+                    <Flame size={20} color="#fff705" strokeWidth={3} />
                   ) : (
                     <Flower color="aliceblue" />
                   )}

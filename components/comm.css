@@ -70,6 +70,10 @@
 }
 
 .topmain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -192,7 +196,48 @@
   outline: none;
   transition: all 0.3s ease;
 }
+.user-name::after {
+  content: "wanna visit";
+  position: absolute;
+  top: -25px; /* Position tooltip above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  white-space: nowrap;
+  z-index: 1000;
+}
 
+.user-name:hover::after {
+  opacity: 1; /* Make tooltip visible on hover */
+}
+.user-bio::after {
+  content: "add friend";
+  position: absolute;
+  top: -25px; /* Position tooltip above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.user-bio:hover::after {
+  opacity: 1; /* Make tooltip visible on hover */
+}
 .search-input:focus {
   border-color: #ff6347;
   box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
@@ -224,6 +269,7 @@
 }
 
 .user-name {
+  position: relative; /* Required for positioning the tooltip */
   margin-top: -15px;
   font-size: 15px;
   font-weight: 500;
@@ -231,9 +277,13 @@
 }
 
 .user-emoji {
+  position: relative;
   margin-top: -10px;
   font-size: 25px;
   color: #ff6347;
+}
+.user-bio {
+  position: relative;
 }
 
 /* Red background for filtered users */

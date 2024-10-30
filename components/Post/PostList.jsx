@@ -33,7 +33,7 @@ export default function PostList() {
           "Cache-Control": "no-cache",
         },
       });
-      console.log(response.data.post);
+      // console.log(response.data.post);
       setPosts(response.data.post);
     } catch (error) {
       console.error("Error fetching posts", error);
