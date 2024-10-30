@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="google-adsense-account" content="ca-pub-3455923870560500" />
+        <meta name="google-adsense-account" content="ca-pub-3406368595814210" />
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0" />
 
         {/* SEO Meta Tags */}
