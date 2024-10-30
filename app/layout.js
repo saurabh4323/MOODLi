@@ -25,42 +25,34 @@ export default function RootLayout({ children }) {
   const [heroopen, setheroopen] = useState(false);
 
   useEffect(() => {
-    // Check if we're in a browser environment
     if (typeof window !== "undefined") {
       const userId = localStorage.getItem("userId");
       if (!userId) {
-        <Link href={"/main"}></Link>;
+        router.push("/main"); // Use `router.push` instead of `<Link />` for navigation inside useEffect
       }
     }
   }, [router]);
+
   useEffect(() => {
     const initialTheme = getInitialTheme();
     setTheme(initialTheme);
-    if (initialTheme === "dark") {
-      enableDarkMode();
-    } else {
-      enableLightMode();
-    }
-
+    initialTheme === "dark" ? enableDarkMode() : enableLightMode();
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
     }, 0);
   }, []);
 
   const handleToggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      enableDarkMode();
-    } else {
-      setTheme("light");
-      enableLightMode();
-    }
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    newTheme === "dark" ? enableDarkMode() : enableLightMode();
     toggleDarkMode();
   };
 
   return (
     <html lang="en">
-      <head>
+      <Head>
+        <title>Moodli - Track Your Mood</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-adsense-account" content="ca-pub-3406368595814210" />
@@ -73,14 +65,13 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="keywords"
-          content="mood tracker, emotion tracking, mental health, AI mood tracking, mood analysis, emotion monitoring, mood chart, AI emotion, mood swings, mental wellness, daily mood check ,chat"
+          content="mood tracker, emotion tracking, mental health, AI mood tracking, mood analysis, emotion monitoring, mood chart, AI emotion, mood swings, mental wellness, daily mood check, chat"
         />
         <meta name="author" content="Moodli" />
 
-        {/* Open Graph Meta Tags for Social Sharing */}
+        {/* Open Graph Meta Tags */}
         <meta property="og:url" content="https://moodli.site" />
         <meta property="og:type" content="website" />
-        <meta property="og:moodli" content="https://moodli.site" />
         <meta
           property="og:title"
           content="Moodli - Track Your Mood with AI & Emoji"
@@ -119,58 +110,41 @@ export default function RootLayout({ children }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <title>Moodli - Mood Tracker & Community</title>
-      </head>
-      <Head>
-        <title>Moodli - Track Your Mood</title>
-        <meta
-          name="description"
-          content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect with a community, and gain valuable insights into your mental health!"
-        />
       </Head>
-      <Script type="text/javascript">
-        {" "}
-        var infolinks_pid = 3428056; var infolinks_wsid = 0;{" "}
-      </Script>{" "}
-      <Script
-        type="text/javascript"
-        src="//resources.infolinks.com/js/infolinks_main.js"
-      ></Script>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3406368595814210"
-        crossorigin="anonymous"
-      />
-      {/* Chatbot Script */}
-      {/* <Script
-        src="https://www.chatbase.co/embed.min.js"
-        defer
-        onLoad={() => {
-          window.embeddedChatbotConfig = {
-            chatbotId: "1reHM86OqajPcWfR4k5u9",
-            domain: "www.chatbase.co",
-          };
-        }}
-      /> */}
+
       <body>
+        <Toaster />
         <div className="showheader">
           <Header />
         </div>
         <div className="topforphone">
-          <Headerphonetop></Headerphonetop>
+          <Headerphonetop />
         </div>
-        <Toaster />
         <div className="showingg">{children}</div>
-        {/* <ConsentBanner /> */}
         <div className="f">{/* <Footer /> */}</div>
         <div className="forphone">
-          <Headerphone></Headerphone>
+          <Headerphone />
         </div>
         <Analytic />
+
+        {/* Ad Scripts */}
+        <script type="text/javascript">
+          {`var infolinks_pid = 3428056; var infolinks_wsid = 0;`}
+        </script>
+        <Script
+          type="text/javascript"
+          src="//resources.infolinks.com/js/infolinks_main.js"
+        ></Script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3406368595814210"
+          crossOrigin="anonymous"
+        />
+
         <style jsx>{`
           @media (max-width: 600px) {
             .toggle-button {
-              marginleft: "40%"; // Changed to object format
+              margin-left: 40%;
             }
           }
         `}</style>
