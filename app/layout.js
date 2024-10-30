@@ -51,6 +51,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//thubanoa.com/1?z=8443200"
+      ></script>
       <Head>
         <title>Moodli - Track Your Mood</title>
         <meta charSet="UTF-8" />
