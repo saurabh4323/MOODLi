@@ -236,9 +236,7 @@ export default function Profile() {
           </span>
         </div>
         <p className="pname">{loading ? "Loading..." : profile.name}</p>
-        <button className="buttonk" onClick={fetchFriends}>
-          <ImageUp /> My Pulse
-        </button>
+
         <button className="buttonk" onClick={fetchFriends}>
           <Handshake /> Friends
         </button>

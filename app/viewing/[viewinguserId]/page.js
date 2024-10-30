@@ -10,7 +10,7 @@ import "./st.css";
 export default function Page({ params }) {
   const route = useRouter();
   const { viewinguserId } = params; // Extracting viewinguserId from params
-  console.log("viewusingid", viewinguserId);
+  // console.log("viewusingid", viewinguserId);
   const [userpost, setUserPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,6 +25,7 @@ export default function Page({ params }) {
     try {
       // console.log("Fetching profile...");
       const res = await axios.post("/api/users/sau", { userId });
+      // console.log(res.data);
       setcurrentUser(res.data);
       // console.log("Fetched Current User:", res.data);
     } catch (error) {

@@ -42,18 +42,20 @@ const Headerphone = () => {
     // Fetch the user's favorite emoji
     const fetchUserEmoji = async () => {
       try {
-        const response = await axios.get("/api/users/sau");
-        if (response.data && response.data.length > 0) {
-          // Assuming the first user is the one you want to use
-          setPic(response.data[0].favoriteEmoji); // Set the favorite emoji
+        const userId = localStorage.getItem("userId");
+        const response = await axios.get(`/api/users/new/${userId}`);
+        console.log(response.data); // Log the entire response data
+
+        // Check if user data exists and then set the favorite emoji
+        if (response.data && response.data.user) {
+          setPic(response.data.user.favoriteEmoji); // Set the favorite emoji
         }
       } catch (error) {
         console.error("Error fetching user emoji:", error);
       }
     };
-
     fetchUserEmoji();
-  }, []);
+  }, []); // Add userId as a dependency
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -85,6 +87,7 @@ const Headerphone = () => {
   const toggleMenu = () => {
     setMenu(!menu);
   };
+  console.log(pic);
 
   return (
     <header className="header-containerkk">
@@ -112,18 +115,13 @@ const Headerphone = () => {
           <Link href="/create" className="nav-item">
             <Send color="#fff" />
           </Link>
-          <Link
-            href="/track"
-            className="nav-item"
-            onClick={() => (window.location.href = "/track")}
-          >
+          <Link href="/track" className="nav-item">
             <Eye color="#fff" />
           </Link>
 
           {isAuthenticated ? (
             <Link href="/profile" className="nav-items">
-              {pic || <User color="#fff" />}{" "}
-              {/* Display the favorite emoji or the user icon */}
+              {pic ? <span>{pic}</span> : <User color="#fff" />}
             </Link>
           ) : (
             <Link href="/register" className="nav-item">

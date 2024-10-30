@@ -63,14 +63,16 @@ export default function Displaypost() {
     }
   };
 
-  const fetchProfiles = async () => {
-    try {
-      const response = await axios.get("/api/users/sau");
-      setProfiles(response.data);
-    } catch (error) {
-      console.error("Error fetching profiles", error);
-    }
-  };
+  // const fetchProfiles = async () => {
+  //   try {
+  //     const response = await axios.get(`/api/users/sau/${userId}`);
+  //     console.log("jss");
+  //     console.log(response.data);
+  //     setProfiles(response.data.user);
+  //   } catch (error) {
+  //     console.error("Error fetching profiles", error);
+  //   }
+  // };
 
   const fetchFriends = async (userId) => {
     try {
@@ -92,7 +94,7 @@ export default function Displaypost() {
     if (userIdFromStorage) {
       fetchProfile(userIdFromStorage);
       fetchPosts(userIdFromStorage);
-      fetchProfiles();
+      // fetchProfiles();
       fetchFriends(userIdFromStorage);
     }
   }, []);
