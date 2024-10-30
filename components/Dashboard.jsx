@@ -143,7 +143,7 @@ export default function Dashboard() {
       return;
     }
 
-    if (!selectedEmoji || !emojiData.reason) {
+    if (!selectedEmoji) {
       toast.error("Please select an emoji and provide a reason."); // Use toast.error
       return;
     }
@@ -259,7 +259,7 @@ export default function Dashboard() {
           <div className="emoji-display">{selectedEmoji}</div>
           <input
             type="text"
-            placeholder="Reason for your mood"
+            placeholder="Reason (optional)"
             name="reason"
             value={emojiData.reason}
             onChange={handleInputChange}
