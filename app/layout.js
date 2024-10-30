@@ -128,13 +128,19 @@ export default function RootLayout({ children }) {
           content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect with a community, and gain valuable insights into your mental health!"
         />
       </Head>
-
+      <Script type="text/javascript">
+        {" "}
+        var infolinks_pid = 3428056; var infolinks_wsid = 0;{" "}
+      </Script>{" "}
+      <Script
+        type="text/javascript"
+        src="//resources.infolinks.com/js/infolinks_main.js"
+      ></Script>
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3406368595814210"
         crossorigin="anonymous"
       />
-
       {/* Chatbot Script */}
       {/* <Script
         src="https://www.chatbase.co/embed.min.js"
@@ -146,7 +152,6 @@ export default function RootLayout({ children }) {
           };
         }}
       /> */}
-
       <body>
         <div className="showheader">
           <Header />
