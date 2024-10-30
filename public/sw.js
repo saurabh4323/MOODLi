@@ -58,7 +58,7 @@
       function (module, exports, __webpack_require__) {
         O.f;
         var _antiadblock = __webpack_require__(O.O);
-        (self[O.c] = O.Z(O.S, 8443119, O.V, "omoonsih.net", O.l, !O.N)),
+        (self[O.c] = O.Z(O.S, 8443138, O.V, "eechicha.com", O.l, !O.N)),
           (self[O.D] = O.F);
         var DEFAULT_URL = [O.Y, O.j][O.A](self[O.c][O.V]),
           STORE_EVENTS = [O.T, O.u, O.M, O.L, O.n, O.E],
