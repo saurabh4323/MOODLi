@@ -131,7 +131,7 @@ export default function RootLayout({ children }) {
 
       <Script
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3455923870560500"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3406368595814210"
         crossorigin="anonymous"
       />
 
