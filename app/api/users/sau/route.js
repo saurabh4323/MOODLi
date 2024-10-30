@@ -80,7 +80,7 @@ export async function GET() {
   try {
     const users = await Profile.find(
       {},
-      "name bio favoriteEmoji userId phoneNumber "
+      "name bio favoriteEmoji userId phoneNumber gender "
     ).sort({ _id: -1 });
     return NextResponse.json(users, { status: 200 });
   } catch (error) {

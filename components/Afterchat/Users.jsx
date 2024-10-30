@@ -4,6 +4,7 @@ import "../comm.css";
 import axios from "axios";
 import "../profile.css";
 import { useRouter } from "next/navigation";
+import { Flame, Flower } from "lucide-react";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -29,14 +30,9 @@ const Users = () => {
     "#C084FC",
     "#FECACA",
     "#FF9AA2",
-    "#FFB3E6",
-    "#FF6666",
-    "#FFB347",
-    "#D3C0FB",
-    "#FFC3A0",
-    "#FF677D",
-    "#D4A5A5",
   ];
+
+  const rou = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -44,7 +40,7 @@ const Users = () => {
       fetchFriends();
 
       const handleResize = () => {
-        // console.log("Window width:", window.innerWidth);
+        // Window resize logic if needed
       };
       window.addEventListener("resize", handleResize);
 
@@ -118,9 +114,13 @@ const Users = () => {
     }
   };
 
-  const rou = useRouter();
   const chat = () => {
     rou.push("/chat");
+  };
+
+  const sendto = (user) => {
+    setSelectedUser(user);
+    rou.push(`/viewing/${user.userId}`);
   };
 
   const toggleFriendList = () => {
@@ -145,9 +145,7 @@ const Users = () => {
         <input
           style={{ height: "50px", color: "#000" }}
           type="text"
-          onClick={() => {
-            rou.push("/search");
-          }}
+          onClick={() => rou.push("/search")}
           placeholder="Search by name or emoji..."
           value={searchTerm}
           onChange={handleSearch}
@@ -201,13 +199,26 @@ const Users = () => {
             .map((user) => (
               <div
                 key={user._id}
-                onClick={() => handleAddFriendClick(user)}
                 style={{ backgroundColor: getRandomColor() }}
                 className="user-card"
               >
-                <h2 className="user-name">{user.name}</h2>
-                <span className="user-emoji">{user.favoriteEmoji}</span>
+                <h2 className="user-name" onClick={() => sendto(user)}>
+                  {user.name}
+                </h2>
+                <span
+                  className="user-emoji"
+                  onClick={() => handleAddFriendClick(user)}
+                >
+                  {user.favoriteEmoji}
+                </span>
                 <p className="user-bio">{truncateBio(user.bio)}</p>
+                <p className="user-biom" style={{ marginBottom: "-15px" }}>
+                  {user.gender === "Male" ? (
+                    <Flame color="#fff" />
+                  ) : (
+                    <Flower color="aliceblue" />
+                  )}
+                </p>
                 {user.hasNewMessage && (
                   <span className="new-message-indicator">•</span>
                 )}
@@ -229,6 +240,7 @@ const Users = () => {
             >
               Add
             </button>
+
             <button className="cancel-btn" onClick={handleCloseMenu}>
               Cancel
             </button>

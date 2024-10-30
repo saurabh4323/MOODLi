@@ -104,7 +104,7 @@ export default function Track() {
                     {new Date(entry.selectedAt).toLocaleDateString()}
                   </h2>
                   <div className="card_image">
-                    <span className="emoji">{entry.emoji}</span>
+                    <span className="emojipk">{entry.emoji}</span>
                   </div>
                   <div className="card_content">
                     <p className="card_reason">{entry.reason}</p>

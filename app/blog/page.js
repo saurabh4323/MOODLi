@@ -4,7 +4,7 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-
+import "./bl.css";
 const blogPosts = [
   {
     id: 1,
@@ -55,10 +55,9 @@ const blogPosts = [
     content: `Incorporating mindfulness techniques into your daily routine can significantly improve your mood. Practices such as meditation, deep breathing exercises, and mindful walking can help ground you in the present moment, reducing stress and promoting a positive emotional state. Consistent mindfulness can lead to a greater sense of peace and emotional resilience.`,
   },
 ];
-
 export default function Page() {
   return (
-    <div className="container mx-auto px-4 mt-10">
+    <div className="blog-container">
       <Head>
         <title>Moodli Blog - Track Your Mood, Enhance Your Well-Being</title>
         <meta
@@ -68,54 +67,41 @@ export default function Page() {
       </Head>
 
       {/* Moodli Blog Heading */}
-      <h1 className=" text-5xl font-bold text-center text-teal-700 dark:text-teal-300 mb-6 hover:text-teal-500 dark:hover:text-teal-400 hover:scale-105 transition-transform duration-300 ease-in-out">
-        Moodli Blog
-      </h1>
+      <h1 className="blog-heading">Moodli Blog</h1>
 
       {/* Blog Cards Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+      <div className="blog-cards">
         {blogPosts.map((post) => (
-          <div
-            key={post.id}
-            className="bg-gray-200 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:shadow-2xl hover:scale-105"
-          >
+          <div key={post.id} className="blog-card">
             <Image
               src={post.image}
               alt={post.title}
               width={400}
               height={250}
-              className="w-full h-64 object-cover"
+              className="blog-card-image"
             />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
-                {post.title}
-              </h2>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                {post.description}
-              </p>
-              <Link href={`/blog/${post.id}`}>
-                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
-                  Read More
-                </button>
-              </Link>
+            <div className="blog-card-content">
+              <h2 className="blog-card-title">{post.title}</h2>
+              <p className="blog-card-description">{post.description}</p>
+              {/* <Link href={`/blog/${post.id}`}> */}
+              <button className="blog-card-button">Read More</button>
+              {/* </Link> */}
             </div>
           </div>
         ))}
       </div>
 
       {/* Upsides and Downsides Section */}
-      <div className="mt-10 bg-gray-100 dark:bg-gray-900 p-8 rounded-lg shadow-md">
-        <h2 className="text-3xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
-          Upsides of Mood Tracking
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300 leading-7 mb-4">
+      <div className="blog-section">
+        <h2 className="blog-section-title">Upsides of Mood Tracking</h2>
+        <p className="blog-section-text">
           Mood tracking offers numerous benefits for emotional well-being. By
           consistently logging your emotions, you can gain valuable insights
           into your emotional triggers and patterns. This allows you to take
           control of your mental health by making informed decisions based on
           real data.
         </p>
-        <p className="text-gray-700 dark:text-gray-300 leading-7 mb-4">
+        <p className="blog-section-text">
           It also helps in building emotional intelligence, as you start
           recognizing how certain events or interactions affect your mood.
           Tracking your emotions over time can highlight areas where you might
@@ -123,18 +109,16 @@ export default function Page() {
           support.
         </p>
 
-        <div className="mt-10 p-6 bg-gray-100 dark:bg-gray-900 rounded-lg">
-          <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-            Benefits of Mood Tracking
-          </h2>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+        <div className="blog-subsection">
+          <h2 className="blog-subsection-title">Benefits of Mood Tracking</h2>
+          <p className="blog-subsection-text">
             <strong>Enhanced Self-Awareness:</strong> By keeping a consistent
             record of your moods, you can develop a deeper understanding of your
             emotional patterns. This self-awareness enables you to identify
             triggers that lead to positive or negative emotions, empowering you
             to make conscious choices in your daily life.
           </p>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="blog-subsection-text">
             <strong>Improved Mental Health Management:</strong> Mood tracking
             can serve as a powerful tool for managing mental health conditions
             such as anxiety and depression. By documenting your mood
@@ -142,7 +126,7 @@ export default function Page() {
             professional, providing them with critical insights into your
             emotional state over time.
           </p>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="blog-subsection-text">
             <strong>Goal Setting and Motivation:</strong> With insights from
             your mood tracking, you can set specific goals to improve your
             emotional well-being. Tracking your progress can also serve as
@@ -150,30 +134,28 @@ export default function Page() {
             contribute to your happiness.
           </p>
 
-          <h2 className="text-2xl font-bold mb-4 mt-6 text-gray-900 dark:text-gray-100">
+          <h2 className="blog-subsection-title">
             Practical Tips for Effective Mood Tracking
           </h2>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="blog-subsection-text">
             <strong>Choose a Method That Works for You:</strong> There are
             various ways to track your mood, from using apps like Moodli to
             keeping a physical journal. Consistency is key, so pick a format
             you’ll enjoy.
           </p>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="blog-subsection-text">
             <strong>Be Honest and Open:</strong> When logging your mood, it’s
             essential to be honest about how you’re feeling. The more authentic
             your entries, the more valuable your insights will be.
           </p>
-          <p className="mb-2 text-gray-700 dark:text-gray-300">
+          <p className="blog-subsection-text">
             <strong>Reflect on Your Entries:</strong> Take time each week to
             review your mood entries. Look for patterns, triggers, and changes
             in your emotional state.
           </p>
 
-          <h2 className="text-2xl font-bold mb-4 mt-6 text-gray-900 dark:text-gray-100">
-            Conclusion
-          </h2>
-          <p className="text-gray-700 dark:text-gray-300 leading-7">
+          <h2 className="blog-subsection-title">Conclusion</h2>
+          <p className="blog-subsection-text">
             Mood tracking can be a transformative practice that enhances your
             emotional well-being. By becoming aware of your moods and patterns,
             you can make informed decisions that promote a healthier mindset and

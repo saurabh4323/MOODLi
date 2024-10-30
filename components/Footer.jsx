@@ -9,9 +9,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Footer = () => {
-  const Blog = () => {
-    window.location.href = "/blog";
-  };
+  // const Blog = () => {
+  //   window.location.href = "/blog";
+  // };
 
   const socialLinks = [
     {
@@ -47,7 +47,7 @@ const Footer = () => {
       links: [
         { href: "/contact", label: "Contact" },
         // Attach the onClick event to the "Blog" link
-        { label: "Blog", onClick: Blog },
+        { href: "/blog", label: "Blog" },
       ],
     },
     {

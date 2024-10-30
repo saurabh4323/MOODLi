@@ -100,7 +100,7 @@ const Header = () => {
           <Link href="/create" className="nav-item">
             Feeltalks
           </Link>
-          <Link href="/track" className="nav-item" onClick={track}>
+          <Link href="/track" className="nav-item">
             VibeTrack
           </Link>
 

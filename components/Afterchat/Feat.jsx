@@ -2,6 +2,7 @@
 import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 export default function Feat() {
   const controls = useAnimation();
@@ -51,9 +52,11 @@ export default function Feat() {
         Sed ut perspiciatis unde omnis iste natus enim ad minim veniam, quis
         nostrud exercit.
       </motion.p>
-      <motion.button variants={itemVariants} className="kbutton">
-        Check Blogs
-      </motion.button>
+      <Link href={"/blog"}>
+        <motion.button variants={itemVariants} className="kbutton">
+          Check Blogs
+        </motion.button>
+      </Link>
     </motion.div>
   );
 }
