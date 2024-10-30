@@ -70,7 +70,7 @@ export default function Profile() {
       "Hey! Check out this awesome mood-tracking website: Moodli! 😄\n" +
         "Track your mood, join the community, and chat with me! 💬\n" +
         "Use my referral code: moodli@130 to get started.\n" +
-        " https://moodlie.site"
+        " https://moodli.site"
     );
     const whatsappURL = `https://api.whatsapp.com/send?text=${message}`;
     window.open(whatsappURL, "_blank");
@@ -235,9 +235,7 @@ export default function Profile() {
             {loading ? "😊" : profile.favoriteEmoji || "😊"}
           </span>
         </div>
-        <p className="pname">
-          Welcome! {loading ? "Loading..." : profile.name}
-        </p>
+        <p className="pname">{loading ? "Loading..." : profile.name}</p>
         <button className="buttonk" onClick={fetchFriends}>
           <ImageUp /> My Pulse
         </button>
