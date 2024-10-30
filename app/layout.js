@@ -52,12 +52,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <Script
-          src="https://alwingulla.com/88/tag.min.js"
-          data-zone="111237"
-          async
-          data-cfasync="false"
-        ></Script>
         <title>Moodli - Track Your Mood</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -134,6 +128,12 @@ export default function RootLayout({ children }) {
         <Analytic />
 
         {/* Ad Scripts */}
+        <Script
+          src="https://alwingulla.com/88/tag.min.js"
+          data-zone="111237"
+          async
+          data-cfasync="false"
+        ></Script>
         <script type="text/javascript">
           {`var infolinks_pid = 3428056; var infolinks_wsid = 0;`}
         </script>
