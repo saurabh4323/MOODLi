@@ -16,20 +16,22 @@ const blogPosts = [
   },
   {
     id: 2,
-    title: "Music for Every Mood",
+    title: "Post the Thought with Moodli",
     image: "/song.jpg",
     description:
-      "Discover curated playlists to match your emotional state with Moodli's mood tracker.",
-    content: `Music has the power to elevate mood and connect you with your emotions. A personalized playlist can enhance mood tracking by offering music that resonates with how you're feeling.`,
+      "Share your thoughts and emotions through creative expressions on Moodli, helping you connect with yourself and others.",
+    content: `Expressing your thoughts and feelings can be incredibly liberating. With Moodli, you can post your reflections, experiences, and emotions, creating a space for self-discovery and connection. By sharing your insights, you not only track your mood but also engage with a community that values open communication. This practice fosters understanding and empathy, as you discover that many others share similar thoughts and feelings. Whether you're celebrating a joyful moment or navigating a challenging time, posting your thoughts can enhance your emotional journey and inspire others to do the same.`,
   },
+
   {
-    id: 3,
-    title: "Connect with People Sharing Your Mood",
+    id: 7,
+    title: "Join Virtual Support Groups on Moodli",
     image: "/chat.jpg",
     description:
-      "Join communities and chat with people experiencing the same mood.",
-    content: `Moodli's chat feature connects you with individuals experiencing similar emotional states, helping foster empathy, understanding, and shared support.`,
+      "Discover how virtual support groups can enhance your emotional health.",
+    content: `Moodli offers virtual support groups where users can connect with others facing similar challenges. Sharing experiences and insights can foster community, reduce feelings of isolation, and provide valuable support in times of need.`,
   },
+
   {
     id: 4,
     title: "The Science Behind Mood Tracking",
@@ -40,19 +42,19 @@ const blogPosts = [
   },
   {
     id: 5,
-    title: "Creating a Daily Mood Routine",
+    title: "Find Like-Minded Friends with Moodli",
     image: "/mess.jpg",
     description:
-      "Set up a consistent mood tracking routine to boost emotional health.",
-    content: `Establishing a daily habit of mood tracking with Moodli will help you recognize patterns, manage stress, and promote mental health. Consistency is the key to long-term emotional awareness.`,
+      "Learn how to connect with like-minded individuals using Moodli.",
+    content: `Using Moodli's location-based features, you can find and connect with friends who share your interests and emotional experiences. Building friendships based on mutual understanding can enrich your social life and enhance your emotional well-being.`,
   },
   {
     id: 6,
-    title: "Mindfulness Techniques for Mood Enhancement",
+    title: "Self-Reflection Exercises to Enhance Your Mood",
     image: "/girl.jpg",
     description:
-      "Explore mindfulness practices that can enhance your mood and emotional well-being.",
-    content: `Incorporating mindfulness techniques into your daily routine can significantly improve your mood. Practices such as meditation, deep breathing exercises, and mindful walking can help ground you in the present moment, reducing stress and promoting a positive emotional state. Consistent mindfulness can lead to a greater sense of peace and emotional resilience.`,
+      "Explore self-reflection exercises that can boost your emotional well-being.",
+    content: `Engaging in self-reflection exercises can help you understand your emotions better. Use Moodli to document your thoughts and feelings, enabling deeper insights and personal growth. Self-reflection can be a powerful tool for emotional healing and development.`,
   },
 ];
 export default function Page() {
@@ -64,6 +66,11 @@ export default function Page() {
           name="description"
           content="Explore insightful articles about mood tracking, emotional health, and building better habits. Learn how Moodli helps track your emotional journey."
         />
+        <meta
+          name="keywords"
+          content="Moodli, mood tracking, anonymous chat, virtual support groups, find like-minded friends, self-reflection exercises, emotional well-being, mindfulness, connect with people"
+        />
+        <link rel="canonical" href="https://moodli.site/blog" />
       </Head>
 
       {/* Moodli Blog Heading */}

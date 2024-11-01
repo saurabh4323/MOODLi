@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
         src="//thubanoa.com/1?z=8443200"
       ></script>
       <Head>
-        <title>Moodli - Track Your Mood</title>
+        <title>Moodli - Track Your Mood and Make Friends</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-adsense-account" content="ca-pub-3406368595814210" />
@@ -66,11 +66,11 @@ export default function RootLayout({ children }) {
         {/* SEO Meta Tags */}
         <meta
           name="description"
-          content="Track your mood, emotions, and mental health with Moodli. Get AI-powered insights, chat with the community, and use emojis to track your mood. Join today for free!"
+          content="Moodli is your go-to platform for tracking moods, sharing emotions, and making friends. Join an anonymous chat community to explore your feelings, connect with locals, and enhance your mental wellness."
         />
         <meta
           name="keywords"
-          content="mood tracker, emotion tracking, mental health, AI mood tracking, mood analysis, emotion monitoring, mood chart, AI emotion, mood swings, mental wellness, daily mood check, chat"
+          content="Anonymous chat app, Mood tracking and chat, Share your thoughts anonymously, Make friends online, Mood reflection posts, Connect with local users, Daily mood updates and posts, Emotional support chat platform, Find like-minded friends, Anonymous support community, Mood logging and sharing, Discover nearby friends, Safe space for sharing emotions, Chat and connect with others, Mood journaling and posting, Build friendships online, Peer support network for moods, Interactive mood diary app, Chat anonymously about feelings, Create and share mood posts, Emotional wellness and friendships, Join a mood-focused community, Daily mood updates and connections, Friendship building app, Digital mood diary, Emotional intelligence app"
         />
         <meta name="author" content="Moodli" />
 
@@ -83,7 +83,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           property="og:description"
-          content="Track your mood with emojis, get AI-powered insights, and connect with others in the Moodli community. Start tracking your emotions today!"
+          content="Join Moodli for an anonymous chat, mood tracking, and emotional support. Share your thoughts and connect with like-minded individuals today!"
         />
         <meta property="og:image" content="/path-to-social-image.jpg" />
         <meta property="og:locale" content="en_US" />
@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:title" content="Moodli - Mood Tracking Community" />
         <meta
           name="twitter:description"
-          content="Track your mood with emojis and use AI insights to improve mental health. Join the Moodli community today!"
+          content="Explore your feelings, track your mood, and connect with others in a safe, anonymous environment. Join Moodli now!"
         />
         <meta name="twitter:image" content="/path-to-twitter-image.jpg" />
         <meta name="monetag" content="a1d3fe44aacbd726b1fb33158826f915" />
@@ -133,12 +133,6 @@ export default function RootLayout({ children }) {
         <Analytic />
 
         {/* Ad Scripts */}
-        {/* <script
-          src="https://alwingulla.com/88/tag.min.js"
-          data-zone="111237"
-          async
-          data-cfasync="false"
-        ></script> */}
         <script type="text/javascript">
           {`var infolinks_pid = 3428056; var infolinks_wsid = 0;`}
         </script>
