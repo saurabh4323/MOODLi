@@ -57,17 +57,22 @@ export default function RootLayout({ children }) {
         src="//thubanoa.com/1?z=8443200"
       ></script>
       <Head>
-        <title>Moodli - Track Your Mood and Make Friends</title>
+        <title>Moodli - Your Anonymous Mood Tracking and Chat Platform</title>
+        <meta
+          name="description"
+          content="Join Moodli to track your mood, connect with friends, and share feelings. Experience a supportive community and powerful insights tailored for you."
+        />
+        <meta
+          name="keywords"
+          content="Anonymous chat app, mood tracking, mood sharing platform, location-based connections, make friends online, daily mood updates, emotional support community, connect with locals, mood tracking features, self-discovery network, mental wellness chat, share your feelings, find like-minded friends, mood reflection posts, safe space for emotions, anonymous support groups, mood logging tool, emotional intelligence app, discover nearby users, friendship building app, interactive mood journal, personal growth community, well-being chat features, peer support network, share your thoughts anonymously, digital mood diary, chat and connect with others, mood journaling and posting, build friendships online, peer support network for moods, interactive mood diary app, chat anonymously about feelings, create and share mood posts, emotional wellness and friendships, join a mood-focused community, daily mood updates and connections, friend-making and mood sharing, digital platform for mood and chat"
+        />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="google-adsense-account" content="ca-pub-3406368595814210" />
         <meta name="monetag" content="2dd97c23f06425300d541e99b197e7a0" />
 
         {/* SEO Meta Tags */}
-        <meta
-          name="description"
-          content="Moodli is your go-to platform for tracking moods, sharing emotions, and making friends. Join an anonymous chat community to explore your feelings, connect with locals, and enhance your mental wellness."
-        />
+
         <meta
           name="keywords"
           content="Anonymous chat app, Mood tracking and chat, Share your thoughts anonymously, Make friends online, Mood reflection posts, Connect with local users, Daily mood updates and posts, Emotional support chat platform, Find like-minded friends, Anonymous support community, Mood logging and sharing, Discover nearby friends, Safe space for sharing emotions, Chat and connect with others, Mood journaling and posting, Build friendships online, Peer support network for moods, Interactive mood diary app, Chat anonymously about feelings, Create and share mood posts, Emotional wellness and friendships, Join a mood-focused community, Daily mood updates and connections, Friendship building app, Digital mood diary, Emotional intelligence app"
@@ -132,10 +137,15 @@ export default function RootLayout({ children }) {
         </div>
         <Analytic />
 
+        {/* <Script
+          id="custom-script"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `(function(s,u,z,p){s.src=u;s.setAttribute('data-zone',z);p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8451620,document.body||document.documentElement);`,
+          }}
+        ></Script> */}
         {/* Ad Scripts */}
-        <script type="text/javascript">
-          {`var infolinks_pid = 3428056; var infolinks_wsid = 0;`}
-        </script>
+
         <Script
           type="text/javascript"
           src="//resources.infolinks.com/js/infolinks_main.js"
