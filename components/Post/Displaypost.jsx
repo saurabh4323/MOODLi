@@ -225,10 +225,19 @@ export default function Displaypost() {
           userpost.map((post) => (
             <div key={post._id} className="post-card">
               {currentuser && (
-                <div className="user-info">
-                  {currentuser.favoriteEmoji}
-                  {currentuser.name || "Unknown User"}{" "}
-                  <span className="timestamp">
+                <div className="post-header">
+                  <h3
+                    className="usernamek"
+                    style={{
+                      // color: "aliceblue",
+                      cursor: "pointer",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {currentuser.name || "Unknown User"}{" "}
+                  </h3>
+
+                  <span className="timestamp" style={{ marginLeft: "50px" }}>
                     {post.timestamp
                       ? new Date(post.timestamp).toLocaleDateString()
                       : "Unknown date"}
@@ -248,15 +257,19 @@ export default function Displaypost() {
                   className="action-button"
                   onClick={() => handleLike(post._id)}
                 >
-                  <Heart color="#fff" className="icon" />
-                  <span style={{ color: "#fff" }}>({post.likes.length})</span>
+                  <Heart />
+                  <span style={{ color: "#727272d8" }}>
+                    ({post.likes.length})
+                  </span>
                 </button>
                 <button
                   className="action-button"
                   // onClick={() => openCommentModal(post)}
                 >
-                  <MessageCircle color="#ffffff" className="icon" />
-                  <span style={{ color: "#fff" }}>{post.comments.length}</span>
+                  <MessageCircle />
+                  <span style={{ color: "#727272d8" }}>
+                    {post.comments.length}
+                  </span>
                 </button>
               </div>
             </div>

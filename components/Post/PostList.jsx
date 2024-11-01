@@ -168,7 +168,7 @@ export default function PostList() {
                   onClick={() => viewing(post)}
                   className="usernamek"
                   style={{
-                    color: "aliceblue",
+                    // color: "aliceblue",
                     cursor: "pointer",
                     fontWeight: "700",
                   }}
@@ -186,7 +186,7 @@ export default function PostList() {
             </div>
 
             <div className="post-content">
-              <p>{post.content}</p>
+              <p className="post-contentd">{post.content}</p>
               {post.imageUrl && (
                 <img
                   src={post.imageUrl}
@@ -201,21 +201,21 @@ export default function PostList() {
                 className="action-button"
                 onClick={() => handleLike(post._id)}
               >
-                <Heart color="#fff" className="icon" />
-                <span style={{ color: "#fff" }}>({post.likes.length})</span>
+                <Heart className="icon" />
+                <span>({post.likes.length})</span>
               </button>
               <button
                 className="action-button"
                 onClick={() => sharepost(post._id)}
               >
-                <Forward color="#fff"></Forward>{" "}
+                <Forward></Forward>{" "}
               </button>
               <button
                 className="action-button"
                 onClick={() => openCommentModal(post)}
               >
-                <MessageCircle color="#ffffff" className="icon" />{" "}
-                <span style={{ color: "#fff" }}>{post.comments.length}</span>
+                <MessageCircle className="icon" />{" "}
+                <span>{post.comments.length}</span>
               </button>
             </div>
           </div>
