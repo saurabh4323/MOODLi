@@ -1,15 +1,14 @@
 /* Main container for the dashboard */
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One:wght@400&display=swap");
 
 .dashboard-container {
-  font-family: "fugaz" , sans-serif;
+  font-family: "fugaz", sans-serif;
   /* background-color: #; */
   /* margin-top: -3%; */
   height: auto;
- /* height: 220vh; */
+  /* height: 220vh; */
   padding: 30px;
-  font-family:  'Fugaz One';
-
+  font-family: "Fugaz One";
 }
 .particle-containers {
   position: fixed; /* Make it fill the screen */
@@ -72,7 +71,7 @@
 /* Mood heading styling */
 .mood-heading {
   margin-top: 40px;
-  
+
   text-align: center;
   margin-bottom: 30px;
 }
@@ -81,9 +80,9 @@
   margin-top: 40px;
   font-family: fantasy;
   font-size: 2.5rem;
- /* Text color */
+  /* Text color */
   font-weight: bld;
-  -webkit-text-stroke: 1px #0f0f0f; 
+  -webkit-text-stroke: 1px #0f0f0f;
   /* text-stroke: 1px #f90b0b; For standard compliance */
 }
 
@@ -125,7 +124,6 @@
   text-align: center;
 } */
 .emoji-section {
-  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -153,7 +151,7 @@
 }
 
 .emoji-card:hover {
-  transform: scale(0.75) ;
+  transform: scale(0.75);
   transform: rotate3d(10, 10, 10, 12deg);
   /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); */
 }
@@ -164,12 +162,12 @@
   /* font-weight: 200; */
 }
 .emoji-text:hover {
-transform: scale(0.8);
+  transform: scale(0.8);
 }
 
 /* Animated Card */
 .animated-cardclick {
-  background-color: #1730f0;
+  background-color: #141b4e;
   position: absolute;
   border-radius: 20px;
   padding: 30px;
@@ -189,10 +187,10 @@ transform: scale(0.8);
   justify-content: center;
   animation: slideIn 0.5s ease forwards;
 }
-.name-display{
+.name-display {
   font-size: 1.5em;
 }
-.emoji-display{
+.emoji-display {
   font-size: 60px;
 }
 /* Slide in animation */
@@ -206,8 +204,7 @@ transform: scale(0.8);
     opacity: 1;
   }
 }
-.emoji-display{
-
+.emoji-display {
 }
 /* Input for the reason */
 .reason-input {
@@ -244,7 +241,7 @@ transform: scale(0.8);
 /* Button container for submit and close */
 .button-containerclick {
   display: flex;
-  
+
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;
@@ -254,6 +251,7 @@ transform: scale(0.8);
   background-color: #60a5fa; /* Blue color */
   color: white;
   padding: 10px 20px;
+  margin-top: 4px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -284,7 +282,6 @@ img {
   z-index: 10000;
 }
 
-
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -302,7 +299,7 @@ img {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 12px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: #37474f;
   transition: border-color 0.4s ease;
@@ -333,7 +330,7 @@ img {
 /* Uploaded image styling */
 img {
   border-radius: 10px;
- 
+
   /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); */
 }
 
@@ -350,7 +347,7 @@ img {
   background-color: #00796b; /* Teal background */
   color: white;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -405,7 +402,7 @@ img {
 }
 
 /* Mobile responsive styles */
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   .dashboard-container {
     padding: 20px;
     margin-top: 5%;
@@ -413,7 +410,7 @@ img {
 
   .status-section {
     flex-direction: column;
-    
+
     align-items: center;
     margin-bottom: 30px;
   }
@@ -421,10 +418,10 @@ img {
   .status-item {
     width: 80%;
     height: 60px;
-  
+
     margin-bottom: 10px;
   }
-  .status-text{
+  .status-text {
     font-size: 18px;
   }
 
@@ -433,14 +430,21 @@ img {
     font-weight: 400;
   }
 
+  /* Updated styling for two cards per row */
   .emoji-section {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensures spacing between cards */
+    gap: 10px;
   }
 
   .emoji-card {
-    width: 80%;
-    padding: 15px;
+    width: calc(70% -5px);
+    box-sizing: border-box;
+    padding: 10px;
+    max-height: 150px;
+    margin-bottom: 10px;
+    max-width: 120px; /* Optional constraint */
   }
 
   .emoji-text {
@@ -461,13 +465,13 @@ img {
   .button-containerclick {
     flex-direction: row;
     width: 40%;
-    
+
     align-items: center;
-    gap: 10px;
   }
 
   .button {
-    width: 100%;
+    width: 70%;
+    margin-top: 10px;
     font-size: 12px;
   }
 }

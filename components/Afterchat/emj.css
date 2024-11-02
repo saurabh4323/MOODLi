@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Main container styling */
@@ -31,7 +31,8 @@
   transform: translateY(-10px);
 }
 
-.emoji-title, .emoji-subtitle {
+.emoji-title,
+.emoji-subtitle {
   /* color: #333; */
   margin-bottom: 30px;
   text-align: center;
@@ -64,8 +65,8 @@
 .recommendation-box {
   /* background: linear-gradient(135deg, #36a2eb, #4bc0c0); */
   border: 3px solid #5d40f4;
-border-radius: 20px;
-  color: #fff;
+  border-radius: 20px;
+  /* color: #fff; */
   padding: 20px;
   /* border-radius: 15px; */
   text-align: center;
@@ -79,7 +80,7 @@ border-radius: 20px;
 }
 
 .recommendation-box p {
-    /* border: 3px solid #5d40f4; */
+  /* border: 3px solid #5d40f4; */
 
   font-size: 1.2rem;
   line-height: 1.6;
@@ -114,26 +115,26 @@ border-radius: 20px;
   margin-top: 40px;
   font-family: fantasy;
   font-size: 2.5rem;
- /* Text color */
+  /* Text color */
   font-weight: bld;
-  -webkit-text-stroke: 1px #0f0f0f; 
+  -webkit-text-stroke: 1px #0f0f0f;
 }
 
 .chart-container {
-  
   margin-bottom: 30px;
   border: 3px solid #5d40f4;
 }
-.line-chart{
+.line-chart {
   margin-bottom: 20px;
 }
- .line-chart, .bar-chart {
+.line-chart,
+.bar-chart {
   align-items: center;
   max-width: 600px;
   gap: 20px;
   /* margin: auto; */
 }
-.pie-chart{
+.pie-chart {
   max-width: 400px;
 }
 
@@ -143,12 +144,13 @@ border-radius: 20px;
   text-align: center;
 }
 
-.recommendation-box, .remedies-box {
+.recommendation-box,
+.remedies-box {
   margin-top: 20px;
   padding: 15px;
   border: 3px solid #5d40f4;
-margin-top: 20px;
-border-radius: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
   /* background-color: #e6f7ff; */
   border-left: 5px solid #36a2eb;
   /* border-radius: 8px; */
