@@ -145,6 +145,7 @@ export default function RootLayout({ children }) {
           }}
         ></Script> */}
         {/* Ad Scripts */}
+        {/* <Script src="https://alwingulla.com/88/tag.min.js" data-zone="111237" async data-cfasync="false"></Script> */}
 
         <style jsx>{`
           @media (max-width: 600px) {

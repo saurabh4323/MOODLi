@@ -1,11 +1,9 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Forward, Heart, MessageCircle } from "lucide-react";
 import "./style.css";
 import { useRouter } from "next/navigation";
-import { comment } from "postcss";
 import Loading from "../Loading";
 
 export default function PostList() {
@@ -33,7 +31,6 @@ export default function PostList() {
           "Cache-Control": "no-cache",
         },
       });
-      // console.log(response.data.post);
       setPosts(response.data.post);
     } catch (error) {
       console.error("Error fetching posts", error);
@@ -131,6 +128,7 @@ export default function PostList() {
     setShowCommentModal(false);
     setSelectedPost(null);
   };
+
   const sharepost = (postId) => {
     const postUrl = `${window.location.origin}/thispost/${postId}`;
     if (navigator.share) {
@@ -147,6 +145,7 @@ export default function PostList() {
       alert("Post link copied to clipboard!");
     }
   };
+
   if (loading)
     return (
       <div>
@@ -159,6 +158,7 @@ export default function PostList() {
     <div className="post-list-container">
       {posts.map((post) => {
         const profile = getProfileById(post.userId);
+        const isLikedByUser = post.likes.includes(userId); // Check if the post is liked by the current user
 
         return (
           <div key={post._id} className="post-card">
@@ -168,14 +168,12 @@ export default function PostList() {
                   onClick={() => viewing(post)}
                   className="usernamek"
                   style={{
-                    // color: "aliceblue",
                     cursor: "pointer",
                     fontWeight: "700",
                   }}
                 >
-                  {" "}
                   {profile?.favoriteEmoji || "🙂"}
-                  {profile?.name || "Unknown User"}{" "}
+                  {profile?.name || "Unknown User"}
                 </h4>
                 <span className="timestamp">
                   {post.timestamp
@@ -201,20 +199,24 @@ export default function PostList() {
                 className="action-button"
                 onClick={() => handleLike(post._id)}
               >
-                <Heart className="icon" />
-                <span>({post.likes.length})</span>
+                {isLikedByUser ? (
+                  <Heart color="#ff0000" />
+                ) : (
+                  <Heart className="icon" />
+                )}
+                <span style={{ marginLeft: "5px" }}>({post.likes.length})</span>
               </button>
               <button
                 className="action-button"
                 onClick={() => sharepost(post._id)}
               >
-                <Forward></Forward>{" "}
+                <Forward />
               </button>
               <button
                 className="action-button"
                 onClick={() => openCommentModal(post)}
               >
-                <MessageCircle className="icon" />{" "}
+                <MessageCircle className="icon" />
                 <span>{post.comments.length}</span>
               </button>
             </div>
@@ -234,7 +236,7 @@ export default function PostList() {
                       <p>
                         {commenterProfile?.name || "Unknown"}{" "}
                         {commenterProfile?.favoriteEmoji}: {comment.text}
-                      </p>{" "}
+                      </p>
                     </div>
                   );
                 })

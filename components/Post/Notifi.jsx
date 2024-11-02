@@ -10,7 +10,6 @@ export default function Notification() {
   const [showPopup, setShowPopup] = useState(false);
   const route = useRouter();
   useEffect(() => {
-    // Fetch user data and create a map of userId to user name
     const fetchUsers = async () => {
       try {
         const response = await axios.get("/api/users/sau");
@@ -26,7 +25,6 @@ export default function Notification() {
       }
     };
 
-    // Fetch notifications for the current user
     const fetchNotifications = async () => {
       try {
         const userId = localStorage.getItem("userId");

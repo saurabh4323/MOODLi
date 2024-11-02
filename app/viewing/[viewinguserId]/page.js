@@ -207,10 +207,18 @@ export default function Page({ params }) {
               )}
               <p></p>
               <div className="post-actionsz">
-                <button onClick={() => handleLike(post._id)}>
-                  <Heart /> <span>{post.likes.length}</span>
+                {" "}
+                <button
+                  onClick={() => handleLike(post._id)}
+                  style={{ display: "flex" }}
+                >
+                  <Heart />{" "}
+                  <span style={{ marginLeft: "5px" }}>{post.likes.length}</span>
                 </button>
-                <button onClick={() => openCommentModal(post)}>
+                <button
+                  onClick={() => openCommentModal(post)}
+                  style={{ display: "flex" }}
+                >
                   <MessageCircle /> <span>{post.comments.length}</span>
                 </button>
               </div>

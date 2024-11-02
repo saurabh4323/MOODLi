@@ -258,7 +258,7 @@ export default function Displaypost() {
                   onClick={() => handleLike(post._id)}
                 >
                   <Heart />
-                  <span style={{ color: "#727272d8" }}>
+                  <span style={{ marginLeft: "5px" }}>
                     ({post.likes.length})
                   </span>
                 </button>
