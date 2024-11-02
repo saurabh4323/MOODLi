@@ -146,16 +146,6 @@ export default function RootLayout({ children }) {
         ></Script> */}
         {/* Ad Scripts */}
 
-        <Script
-          type="text/javascript"
-          src="//resources.infolinks.com/js/infolinks_main.js"
-        ></Script>
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3406368595814210"
-          crossOrigin="anonymous"
-        />
-
         <style jsx>{`
           @media (max-width: 600px) {
             .toggle-button {
