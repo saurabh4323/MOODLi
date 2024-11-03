@@ -89,9 +89,7 @@ export default function Page() {
 
       <div className="blog-cards">
         {blogPosts.map((post) => (
-          <h1>
-            <BlogCard key={post.id} post={post} />
-          </h1>
+          <BlogCard key={post.id} post={post} />
         ))}
       </div>
 
