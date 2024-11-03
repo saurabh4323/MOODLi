@@ -80,7 +80,10 @@ export default function Page() {
         />
         <meta
           name="keywords"
-          content="Moodli, mood tracking, anonymous chat, virtual support groups, find like-minded friends, self-reflection exercises, emotional well-being, mindfulness, connect with people"
+          content="Moodli, mood tracking, anonymous chat, virtual support groups, find like-minded friends, self-reflection exercises, emotional well-being, mindfulness, connect with people , tracker mood
+mood tracker
+mood tracker journal
+mood chart"
         />
         <link rel="canonical" href="https://moodli.site/blog" />
       </Head>

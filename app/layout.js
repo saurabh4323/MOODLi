@@ -75,8 +75,9 @@ export default function RootLayout({ children }) {
 
       <meta
         name="keywords"
-        content="Anonymous chat app, Mood tracking and chat, Share your thoughts anonymously, Make friends online, Mood reflection posts, Connect with local users, Daily mood updates and posts, Emotional support chat platform, Find like-minded friends, Anonymous support community, Mood logging and sharing, Discover nearby friends, Safe space for sharing emotions, Chat and connect with others, Mood journaling and posting, Build friendships online, Peer support network for moods, Interactive mood diary app, Chat anonymously about feelings, Create and share mood posts, Emotional wellness and friendships, Join a mood-focused community, Daily mood updates and connections, Friendship building app, Digital mood diary, Emotional intelligence app"
+        content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness , online chat , "
       />
+
       <meta name="author" content="Moodli" />
 
       {/* Open Graph Meta Tags */}

@@ -75,13 +75,6 @@ export default function Hero(props) {
 
   return (
     <>
-      <Head>
-        <title>Moodli</title>
-        <meta
-          name="description"
-          content="Welcome to Moodli, the best mood tracker powered by AI and emojis. Start tracking your mood and emotions, connect and chat with a community, and gain valuable insights into your mental health!"
-        />
-      </Head>
       {/* <Script
         id="chatbot-config" // Add a unique ID here
         dangerouslySetInnerHTML={{
