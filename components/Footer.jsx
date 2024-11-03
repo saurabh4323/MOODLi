@@ -16,7 +16,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FaFacebook,
-      // href: "https://www.facebook.com/",
+      href: "https://www.facebook.com/",
       label: "Facebook",
     },
     {
