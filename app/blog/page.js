@@ -25,8 +25,9 @@ const blogPosts = [
     title: "Join Virtual Support Groups on Moodli",
     image: "/chat.jpg",
     description:
-      "Discover how virtual support groups can enhance your emotional health. Moodli offers virtual support groups where users can connect with others facing similar challenges. Sharing experiences and insights can foster community, reduce feelings of isolation, and provide valuable support in times of need.",
+      "Enhance your emotional health by joining virtual support groups on Moodli! Connect with individuals facing similar challenges and build a supportive community that fosters understanding and compassion. Sharing experiences in a safe and anonymous environment can significantly reduce feelings of isolation and provide you with the encouragement you need. Moodli's virtual support groups are designed to empower you by creating a sense of belonging and offering valuable insights from others who relate to your struggles. Whether you're navigating stress, anxiety, or any other life challenges, our community is here to support you every step of the way. Take the first step towards emotional wellness and join a virtual support group on Moodli today!",
   },
+
   {
     id: 4,
     title: "The Science Behind Mood Tracking",
@@ -39,7 +40,7 @@ const blogPosts = [
     title: "Find Like-Minded Friends with Moodli",
     image: "/mess.jpg",
     description:
-      "Learn how to connect with like-minded individuals using Moodli. Using Moodli's location-based features, you can find and connect with friends who share your interests and emotional experiences. Building friendships based on mutual understanding can enrich your social life and enhance your emotional well-being.",
+      "Unlock the power of connection with Moodli!  In today’s digital age, finding like-minded individuals who resonate with your emotional experiences is easier than ever. With Moodli's innovative location-based features, you can discover and connect with friends who share your interests, values, and feelings. This unique platform enhances your ability to forge meaningful relationships, promoting a sense of belonging and understanding.  Building friendships based on mutual experiences not only enriches your social life but also boosts your emotional well-being. Engaging with others who understand your journey can provide invaluable support and encouragement, helping you navigate life’s ups and downs. Whether you're seeking companionship, advice, or simply someone to share your thoughts with, Moodli creates a welcoming environment for genuine connections.  Learn how to leverage Moodli’s features to enhance your social network, share your experiences, and uplift your mood. Start connecting today and become part of a community that values emotional wellness and shared understanding. Join Moodli and take the first step towards building fulfilling friendships that make a positive impact on your life!",
   },
   {
     id: 6,
@@ -47,6 +48,24 @@ const blogPosts = [
     image: "/girl.jpg",
     description:
       "Explore self-reflection exercises that can boost your emotional well-being. Engaging in self-reflection exercises can help you understand your emotions better. Use Moodli to document your thoughts and feelings, enabling deeper insights and personal growth. Self-reflection can be a powerful tool for emotional healing and development.",
+  },
+  {
+    id: 7,
+    title: "Daily Mood Logs: How to Start and Stick With It",
+    image: "/science.jpg",
+    description: ` Unlock the transformative power of daily mood logs with Moodli!  Daily mood logging is an effective tool for improving emotional well-being and self-awareness. This practice encourages you to record your feelings each day, helping you identify patterns, triggers, and emotional fluctuations.
+ Starting is simple: choose a user-friendly platform like Moodli, set a daily reminder, and spend just a few minutes reflecting on your day. Create a supportive environment where you feel comfortable expressing your thoughts. This can lead to enhanced emotional intelligence and improved mental health outcomes over time. 
+     Stick with it by making mood logging a part of your daily routine—consider it a form of self-care. The benefits of daily mood tracking extend beyond personal insight; they can also help you communicate more effectively with mental health professionals by providing them with a clearer picture of your emotional state. 
+    Start your journey today with Moodli and experience the profound impact that daily mood logs can have on your life. Join a community of users who are committed to understanding their emotions better and achieving greater well-being!"
+
+`,
+  },
+  {
+    id: 8,
+    title: "The Benefits of Sharing Your Feelings in an Anonymous Space",
+    image: "/chat.jpg",
+    description:
+      "Discover the powerful benefits of sharing your feelings in an anonymous space with Moodli!In today's fast-paced world, mental health is more important than ever. Anonymity can provide a safe haven for individuals seeking to express their emotions without the fear of judgment. Sharing your feelings can lead to increased emotional relief, reduced feelings of isolation, and a sense of community among those facing similar challenges.By opening up in a confidential setting, users can explore their emotions more freely, which can be crucial for personal growth and healing. Anonymous platforms like Moodli create a unique opportunity to connect with others, gain diverse perspectives, and find support from a community that truly understands. Engaging in discussions about mental health can break down stigmas and empower individuals to seek help and foster open communication. Additionally, sharing your experiences can contribute to a larger dialogue about emotional well-being, helping others feel less alone in their struggles. Make the most of your emotional journey by leveraging the benefits of anonymity. Join Moodli today to connect, share, and grow in a secure environment where your feelings matter. Experience the transformative impact of sharing your thoughts and become part of a compassionate community committed to mental wellness!",
   },
 ];
 
@@ -70,7 +89,9 @@ export default function Page() {
 
       <div className="blog-cards">
         {blogPosts.map((post) => (
-          <BlogCard key={post.id} post={post} />
+          <h1>
+            <BlogCard key={post.id} post={post} />
+          </h1>
         ))}
       </div>
 
