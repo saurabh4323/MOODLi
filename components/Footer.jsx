@@ -16,7 +16,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: FaFacebook,
-      href: "https://www.facebook.com/",
+      // href: "https://www.facebook.com/",
       label: "Facebook",
     },
     {
@@ -24,9 +24,6 @@ const Footer = () => {
       href: "https://instagram.com/moodli.mine",
       label: "Instagram",
     },
-    { icon: FaTwitter, href: "https://twitter.com/", label: "Twitter" },
-    { icon: FaGithub, href: "https://github.com/", label: "GitHub" },
-    { icon: FaYoutube, href: "https://www.youtube.com/", label: "Youtube" },
   ];
 
   const footerSections = [

@@ -49,9 +49,11 @@ export default function Feat() {
         Complete Solutions for your Mood
       </motion.h5>
       <motion.p variants={itemVariants} className="ppp">
-        Sed ut perspiciatis unde omnis iste natus enim ad minim veniam, quis
-        nostrud exercit.
+        Join Moodli to track your mood, connect with friends, and share
+        feelings. Experience a supportive community and powerful insights
+        tailored for you.
       </motion.p>
+
       <Link href={"/blog"}>
         <motion.button variants={itemVariants} className="kbutton">
           Check Blogs

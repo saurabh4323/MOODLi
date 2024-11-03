@@ -56,7 +56,7 @@ export default function Heroleft() {
         className="coleft"
       >
         <motion.h5 variants={itemVariants} className="nft">
-          Welcome to Moodli
+          Moodli - Your Anonymous Mood Tracking and Chat Platform
         </motion.h5>
         <div className="dash"></div>
         <h1 className="hhhk">

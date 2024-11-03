@@ -6,7 +6,7 @@ export default function Analytic() {
     <>
       <Script
         async
-        src="https://www.googletagmanager.com/gtag/js?id=G-92CJYNZLPX"
+        src="https://www.googletagmanager.com/gtag/js?id=G-D8F8GCXR49"
       />
 
       <Script id="google-analytics" strategy="afterInteractive">
@@ -15,7 +15,7 @@ export default function Analytic() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-92CJYNZLPX');
+  gtag('config', 'G-D8F8GCXR49');
         `}
       </Script>
     </>

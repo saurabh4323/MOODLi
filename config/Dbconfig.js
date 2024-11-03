@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 export async function connect() {
   try {
-    const mongoUri = process.env.mongourl;
+    const mongoUri =
+      "mongodb+srv://saurabhiitr:saurabh8810@cluster0.r522b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
     if (!mongoUri) {
       throw new Error("MongoDB URI is not defined in environment variables.");
     }

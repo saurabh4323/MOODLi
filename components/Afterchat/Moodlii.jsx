@@ -26,24 +26,24 @@ const Moodlii = () => {
             <div className="moodlii-flex-container">
               {[
                 {
-                  title: "01. Track Your Mood",
+                  title: " Track Your Mood",
                   description:
-                    "Ever wonder how your mood changes throughout the day? Now you can easily track your emotions.",
+                    "Monitor your emotions effortlessly with our intuitive tracking system, helping you recognize patterns in your mood throughout the day.",
                 },
                 {
-                  title: "02. Make New Friends",
+                  title: " Make Friends Online Using Location",
                   description:
-                    "Connect with others and share your experiences with like-minded individuals.",
+                    "Discover and connect with local individuals who share your interests, fostering meaningful  relationships and a sense of community.",
                 },
                 {
-                  title: "03. Powerful Insights",
+                  title: " Post content ,Chat  Anonymously",
                   description:
-                    "Get insights and suggestions tailored to your current mood.",
+                    "Engage in candid discussions without revealing your identity, allowing for honest sharing images and content and support users.",
                 },
                 {
-                  title: "04. Get Support Easily",
+                  title: " Grow Your Personali -ty with Moodli",
                   description:
-                    "Share your feelings with friends and get the support you need.",
+                    "Enhance your self-awareness by tracking your mood and getting personalized chart data to improve your mood insights.",
                 },
               ].map((feature, index) => (
                 <motion.div

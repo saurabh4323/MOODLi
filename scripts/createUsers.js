@@ -1,95 +1,82 @@
-// import mongoose from "mongoose";
-// import { connect } from "../config/Dbconfig.js"; // Adjust the path based on your project structure
-// import User from "../model/Login.js"; // Adjust the path based on your project structure
-// import Profile from "../model/Profile.js"; // Adjust the path based on your project structure
-// connect();
-// // List of names for 20 users
-// const names = [
-//   "Aditi",
-//   "Priya",
-//   "Ananya",
-//   "Kavya",
-//   "Sneha",
-//   "Meera",
-//   "Pooja",
-//   "Riya",
-//   "Neha",
-//   "Simran",
-//   "Arjun",
-//   "Ravi",
-//   "Siddharth",
-//   "Karan",
-//   "Vikram",
-//   "Rohit",
-//   "Aman",
-//   "Harsh",
-//   "Sameer",
-//   "Varun",
-// ];
+import mongoose from "mongoose";
+import { connect } from "../config/Dbconfig.js";
+import Post from "../model/Post.js";
 
-// // List of bios for users
-// const bios = [
-//   "Coffee lover adventure seeker cat mom",
-//   "Bookworm yoga enthusiast dessert connoisseur",
-//   "Wanderlust-driven always planning big trips",
-//   "Music junkie crafting queen beach dreamer",
-//   "Plant parent movie buff pizza fanatic",
-//   "Fitness freak chocolate lover doggo friend",
-//   "Travel addict foodie explorer road tripper",
-//   "Art lover nature explorer ice cream",
-//   "Tech geek coffee addict late-night snack",
-//   "Fashionista selfie queen always up adventures",
-//   "Gamer comic book nerd pizza lover",
-//   "Music buff football fanatic world traveler",
-//   "Tech enthusiast coffee snob movie marathoner",
-//   "Gym lover foodie explorer karaoke champion",
-//   "Adventure seeker travel addict trivia guru",
-//   "Photography lover cooking enthusiast dog dad",
-//   "Sports buff gaming enthusiast weekend road tripper",
-//   "Nature lover hiking addict weekend BBQ master",
-//   "Fashion lover beauty guru always Instagram",
-//   "Craft beer enthusiast movie buff late-night snack",
-// ];
+const samplePosts = [
+  // Text posts about life
+  {
+    userId: "67277d428f30455d97f56772",
+    type: "text",
+    content: "Life is a journey, filled with beautiful moments and challenges.",
+  },
+  {
+    userId: "67277d418f30455d97f5676a",
+    type: "text",
+    content: "Happiness comes from appreciating the little things in life.",
+  },
 
-// // Generate sample user data based on provided names
-// const sampleUsers = names.map((name, index) => ({
-//   name,
-//   email: `user${index + 1}@example.com`, // Unique email for each user
-//   password: `password${index + 1}`, // Remember to hash passwords in production
-//   bio: bios[index], // Assigning a unique bio from the list
-// }));
+  {
+    userId: "67277d418f30455d97f56770",
+    type: "text",
+    content: "Life is short. Smile while you still have teeth!",
+  },
+  {
+    userId: "67277d418f30455d97f5676c",
+    type: "text",
+    content:
+      "If we aren't supposed to eat midnight snacks, why is there even a light in the fridge?",
+  },
 
-// const createUsersAndProfiles = async () => {
-//   try {
-//     for (const userData of sampleUsers) {
-//       // Create user
-//       const user = await User.create(userData);
+  // Image posts with sample Cloudinary URLs
+  {
+    userId: "67277d428f30455d97f5676e",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample1.jpg",
+  },
+  {
+    userId: "67277d418f30455d97f5676c",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample2.jpg",
+  },
+  {
+    userId: "67277d418f30455d97f56768",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample3.jpg",
+  },
+  {
+    userId: "67277d418f30455d97f5675e",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample4.jpg",
+  },
+  {
+    userId: "67277d418f30455d97f56756",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample5.jpg",
+  },
+  {
+    userId: "67277d418f30455d97f56752",
+    type: "image",
+    imageUrl:
+      "https://res.cloudinary.com/dinqw15wy/image/upload/v1/sample6.jpg",
+  },
+];
 
-//       // Create profile associated with the user
-//       const profileData = {
-//         userId: user._id,
-//         email: user.email,
-//         name: user.name,
-//         favoriteEmoji: "😊", // Default emoji
-//         bio: userData.bio, // Use the bio from userData
-//         phoneNumber: `1${Math.floor(100000000 + Math.random() * 900000000)}`, // Generates a random 10-digit number
-//         gender: ["Male", "Female", "Other"][Math.floor(Math.random() * 3)], // Random gender
-//       };
+const run = async () => {
+  await connect(); // Connect to MongoDB
 
-//       await Profile.create(profileData);
-//     }
+  try {
+    await Post.insertMany(samplePosts);
+    console.log("Sample posts created successfully");
+  } catch (error) {
+    console.error("Error creating sample posts:", error);
+  } finally {
+    mongoose.connection.close();
+  }
+};
 
-//     console.log("Users and profiles created successfully");
-//   } catch (error) {
-//     console.error("Error creating users and profiles:", error);
-//   } finally {
-//     mongoose.disconnect(); // Disconnect from the database
-//   }
-// };
-
-// const run = async () => {
-//   await connect(); // Connect to MongoDB
-//   await createUsersAndProfiles(); // Create users and profiles
-// };
-
-// run();
+run();
