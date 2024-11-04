@@ -157,7 +157,7 @@ export default function Dashboard() {
     }
 
     try {
-      setClicked(false);
+      // setClicked(false);
       await axios.post(`/api/users/tracker/${userId}`, {
         userId,
         days: days,
@@ -165,7 +165,9 @@ export default function Dashboard() {
         reason: emojiData.reason,
         name: username,
       });
-      toast.success("Submission successful!");
+      toast.success(
+        "Submission successful! Share it with the community to get support and feedback."
+      );
 
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
@@ -241,7 +243,7 @@ export default function Dashboard() {
     }
     const userId = localStorage.getItem("userId");
     try {
-      setClicked(false);
+      // setClicked(false);
       await axios.post(`/api/post/posting`, {
         userId,
         type: "text",
