@@ -453,6 +453,7 @@ img {
   }
 
   .animated-cardclick {
+    height: auto;
     /* margin-left: 10px; */
     width: 85%;
     padding: 15px;
