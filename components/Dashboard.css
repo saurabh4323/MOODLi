@@ -90,6 +90,7 @@
 .emoji-section {
   display: flex;
   flex-wrap: wrap;
+
   justify-content: center;
   gap: 15px; /* Adjust gap as needed */
 }
@@ -165,28 +166,26 @@
   transform: scale(0.8);
 }
 
-/* Animated Card */
 .animated-cardclick {
   background-color: #141b4e;
   position: absolute;
   border-radius: 20px;
   padding: 30px;
-  margin-top: 10%;
-  margin-left: 45%;
   max-width: 420px;
   height: 45vh;
-  width: 100%;
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 1;
-  transform: scale(1);
-  /* margin: 20px auto; */
+  transform: translate(-50%, -50%) scale(1);
+  top: 50%;
+  left: 50%;
+  animation: slideIn 0.5s ease forwards;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: slideIn 0.5s ease forwards;
 }
+
 .name-display {
   font-size: 1.5em;
 }
@@ -435,7 +434,9 @@ img {
   .emoji-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Ensures spacing between cards */
+    align-items: center;
+
+    justify-content: center; /* Ensures spacing between cards */
     gap: 10px;
   }
 

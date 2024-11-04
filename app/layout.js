@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
       />
       <meta
         name="keywords"
-        content="Anonymous chat app, mood tracking, mood sharing platform, location-based connections, make friends online, daily mood updates, emotional support community, connect with locals, mood tracking features, self-discovery network, mental wellness chat, share your feelings, find like-minded friends, mood reflection posts, safe space for emotions, anonymous support groups, mood logging tool, emotional intelligence app, discover nearby users, friendship building app, interactive mood journal, personal growth community, well-being chat features, peer support network, share your thoughts anonymously, digital mood diary, chat and connect with others, mood journaling and posting, build friendships online, peer support network for moods, interactive mood diary app, chat anonymously about feelings, create and share mood posts, emotional wellness and friendships, join a mood-focused community, daily mood updates and connections, friend-making and mood sharing, digital platform for mood and chat"
+        content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness , online chat "
       />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
 
       <meta
         name="keywords"
-        content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness , online chat , "
+        content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness , online chat  "
       />
 
       <meta name="author" content="Moodli" />
@@ -85,18 +85,21 @@ export default function RootLayout({ children }) {
       <meta property="og:type" content="website" />
       <meta
         property="og:title"
-        content="Moodli - Track Your Mood with AI & Emoji"
+        content="Moodli - Your Anonymous Mood Tracking and Chat Platform"
       />
       <meta
         property="og:description"
-        content="Join Moodli for an anonymous chat, mood tracking, and emotional support. Share your thoughts and connect with like-minded individuals today!"
+        content="Join Moodli to track your mood, connect with friends, and share feelings. Experience a supportive community and powerful insights tailored for you."
       />
       <meta property="og:image" content="/path-to-social-image.jpg" />
       <meta property="og:locale" content="en_US" />
 
       {/* Twitter Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Moodli - Mood Tracking Community" />
+      <meta
+        name="twitter:title"
+        content="Moodli - Your Anonymous Mood Tracking and Chat Platform"
+      />
       <meta
         name="twitter:description"
         content="Explore your feelings, track your mood, and connect with others in a safe, anonymous environment. Join Moodli now!"

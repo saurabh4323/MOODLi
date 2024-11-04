@@ -1,12 +1,12 @@
 import Faq from "@/components/Afterchat/Faq";
 import Newhero from "@/components/Afterchat/Newhero";
 import NewsLetter from "@/components/Afterchat/NewsLetter";
-import Footer from "@/components/Footer";
-import Heros from "@/components/Heros";
+import Footer from "@/components/Footer"; // Uncomment if you want to use Footer
 import Head from "next/head";
-import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function page() {
+export default function Page() {
   return (
     <div>
       <Head>
@@ -17,14 +17,25 @@ export default function page() {
         />
         <meta
           name="keywords"
-          content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness , online chat , "
+          content="Mood tracker, Emotional support, Connect with friends, Mood reflection, Online community, Mental wellness, online chat"
         />
       </Head>
-      <Newhero></Newhero>
+      <Newhero />
+      <Faq />
+      <NewsLetter />
+      {/* <Footer /> */}
 
-      <Faq></Faq>
-      <NewsLetter></NewsLetter>
-      {/* <Footer></Footer> */}
+      <Link
+        href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-moodli"
+        target="_blank"
+      >
+        <Image
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=dark"
+          alt="Moodli - Your anonymous mood tracking and chat platform | Product Hunt"
+          width={250}
+          height={54}
+        />
+      </Link>
     </div>
   );
 }

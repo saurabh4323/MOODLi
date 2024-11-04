@@ -47,6 +47,17 @@ export default function Home() {
           <Newhero />
           <Faq />
           <NewsLetter />
+          <Link
+            href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-moodli"
+            target="_blank"
+          >
+            <Image
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=dark"
+              alt="Moodli - Your anonymous mood tracking and chat platform | Product Hunt"
+              width={250}
+              height={54}
+            />
+          </Link>
         </>
       )}
     </div>
