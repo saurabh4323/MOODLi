@@ -25,17 +25,28 @@ export default function Page() {
       <NewsLetter />
       {/* <Footer /> */}
 
-      <Link
-        href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-moodli"
-        target="_blank"
+      <div
+        className="hunt"
+        style={{
+          height: "150px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        <img
-          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=dark"
-          alt="Moodli - Your anonymous mood tracking and chat platform | Product Hunt"
-          width={250}
-          height={100}
-        />
-      </Link>
+        {" "}
+        <Link
+          href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-moodli"
+          target="_blank"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=light"
+            alt="Moodli - Your anonymous mood tracking and chat platform | Product Hunt"
+            width={250}
+            height={100}
+          />
+        </Link>
+      </div>
     </div>
   );
 }

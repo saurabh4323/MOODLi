@@ -184,12 +184,7 @@ export default function PostList() {
             </div>
 
             <div className="post-content">
-              <p
-                className="post-contentd"
-                style={{ backgroundColor: "#0c0404" }}
-              >
-                {post.content}
-              </p>
+              <p className="post-contentd">{post.content}</p>
               {post.imageUrl && (
                 <img
                   src={post.imageUrl}
