@@ -24,7 +24,7 @@ export default function page() {
 
       <Faq></Faq>
       <NewsLetter></NewsLetter>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 }

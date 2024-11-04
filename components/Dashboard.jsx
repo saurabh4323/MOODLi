@@ -8,6 +8,7 @@ import styles from "./Heros.module.css";
 import { useRouter } from "next/navigation";
 import Loading from "./Loading";
 import Head from "next/head";
+import { ShareIcon } from "lucide-react";
 export default function Dashboard() {
   const route = useRouter();
   const [username, setUsername] = useState("");
@@ -164,6 +165,7 @@ export default function Dashboard() {
         reason: emojiData.reason,
         name: username,
       });
+      toast.success("Submission successful!");
 
       const newDays = days + 1;
       await axios.post(`/api/users/days/${userId}`, { days: 1 });
@@ -177,8 +179,6 @@ export default function Dashboard() {
 
       localStorage.setItem("lastSubmissionDate", todayDate);
       setHasSubmittedToday(true);
-
-      toast.success("Submission successful!"); // Use toast.success
     } catch (error) {
       console.error("Error submitting emoji report:", error);
       toast.error(
@@ -229,7 +229,33 @@ export default function Dashboard() {
   const chrt = () => {
     route.push("/chart");
   };
+  const handleSharePost = async () => {
+    if (hasSubmittedToday) {
+      toast.error("You have already submitted your mood for today."); // Use toast.error
+      return;
+    }
 
+    if (!selectedEmoji || !emojiData.reason) {
+      toast.error("Please select an emoji and  and provide a reason."); // Use toast.error
+      return;
+    }
+    const userId = localStorage.getItem("userId");
+    try {
+      setClicked(false);
+      await axios.post(`/api/post/posting`, {
+        userId,
+        type: "text",
+        content: `Mood: ${selectedEmoji}\nReason: ${emojiData.reason}`,
+
+        imageUrl: "",
+      });
+
+      toast.success("shared as post!");
+    } catch (error) {
+      console.log("Error sharing post:", error);
+      toast.error(" Please try again.");
+    }
+  };
   return (
     <div className="dashboard-container">
       <Toaster /> {/* Ensure the Toaster component is rendered */}
@@ -273,6 +299,16 @@ export default function Dashboard() {
               style={{ marginRight: "10px" }}
             >
               Close
+            </button>
+            <button
+              className="button close-button"
+              onClick={handleSharePost}
+              style={{
+                marginRight: "10px",
+                backgroundColor: "#0288d1",
+              }}
+            >
+              share
             </button>
             <button className="button submit-button" onClick={handleSubmit}>
               Submit

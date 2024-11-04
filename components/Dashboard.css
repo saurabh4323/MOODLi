@@ -239,10 +239,11 @@
 }
 
 /* Button container for submit and close */
-.button-containerclick {
+.button-container {
   display: flex;
+  flex-direction: row;
 
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 100%;
   margin-top: 20px;
 }
@@ -452,7 +453,8 @@ img {
   }
 
   .animated-cardclick {
-    width: 90%;
+    /* margin-left: 10px; */
+    width: 85%;
     padding: 15px;
   }
 
@@ -462,8 +464,8 @@ img {
     color: #000;
   }
 
-  .button-containerclick {
-    flex-direction: row;
+  .button-container {
+    flex-direction: column;
     width: 40%;
 
     align-items: center;

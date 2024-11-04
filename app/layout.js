@@ -131,7 +131,9 @@ export default function RootLayout({ children }) {
           <Headerphonetop />
         </div>
         <div className="showingg">{children}</div>
-        <div className="f">{/* <Footer /> */}</div>
+        <div className="f">
+          <Footer />
+        </div>
         <div className="forphone">
           <Headerphone />
         </div>
