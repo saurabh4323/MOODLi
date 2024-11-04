@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"; // Import useState for managing state
 import Pulse from "@/components/Post/Pulse";
 import Loading from "@/components/Loading";
-
+import Link from "next/link";
 export default function Home() {
   const route = useRouter();
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(null); // State to track user login status
