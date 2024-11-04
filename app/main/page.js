@@ -29,13 +29,16 @@ export default function Page() {
         href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-moodli"
         target="_blank"
       >
-        <Image
+        <img
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=dark"
           alt="Moodli - Your anonymous mood tracking and chat platform | Product Hunt"
           width={250}
-          height={54}
+          height={100}
         />
       </Link>
     </div>
   );
+}
+{
+  /* <a href="https://www.producthunt.com/posts/moodli?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-moodli" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=573818&theme=dark" alt="Moodli - Your&#0032;anonymous&#0032;mood&#0032;tracking&#0032;and&#0032;chat&#0032;platform | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a> */
 }
